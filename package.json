@@ -1,0 +1,22 @@
+{
+  "name": "stayora-workspace",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22 <23"
+  },
+  "scripts": {
+    "setup": "npm ci --prefix frontend && node scripts/backend.mjs package -DskipTests",
+    "dev": "node scripts/dev.mjs",
+    "dev:backend": "node scripts/backend.mjs spring-boot:run",
+    "dev:frontend": "npm start --prefix frontend",
+    "check": "npm run lint --prefix frontend && npm test --prefix frontend && npm run build --prefix frontend && node scripts/backend.mjs verify spotless:check",
+    "format": "prettier --write . && node scripts/backend.mjs spotless:apply",
+    "format:check": "prettier --check . && node scripts/backend.mjs spotless:check"
+  },
+  "devDependencies": {
+    "concurrently": "9.1.2",
+    "dotenv": "16.4.7",
+    "prettier": "3.4.2"
+  }
+}

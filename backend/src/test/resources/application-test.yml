@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: ${TEST_DB_URL:jdbc:postgresql://127.0.0.1:5433/stayora_test}
+    username: ${TEST_DB_USERNAME:stayora}
+    password: ${TEST_DB_PASSWORD:stayora}
+  flyway:
+    url: ${TEST_DB_URL:jdbc:postgresql://127.0.0.1:5433/stayora_test}
+    user: ${TEST_DB_USERNAME:stayora}
+    password: ${TEST_DB_PASSWORD:stayora}
+stayora:
+  demo-enabled: true

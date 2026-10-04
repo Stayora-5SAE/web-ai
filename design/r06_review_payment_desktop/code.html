@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review &amp; Confirm Reservation — Stayora</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..700;1,400..700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Script -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary": "#ffffff",
+            "background": "#FAF7F2",
+            "on-background": "#0d1f18",
+            "on-surface": "#0d1f18",
+            "tertiary-fixed-dim": "#c0c8c5",
+            "on-tertiary-container": "#c0c8c4",
+            "on-secondary-fixed-variant": "#7f2a18",
+            "on-error-container": "#93000a",
+            "on-primary-fixed-variant": "#005049",
+            "inverse-surface": "#22342c",
+            "secondary-fixed-dim": "#ffb4a4",
+            "surface-variant": "#d2e7dc",
+            "secondary-fixed": "#ffdad3",
+            "primary-container": "#145c55",
+            "surface-container-highest": "#d2e7dc",
+            "primary-fixed": "#adefe5",
+            "error": "#ba1a1a",
+            "on-secondary-fixed": "#3d0600",
+            "surface-container": "#def3e7",
+            "secondary": "#9e412d",
+            "inverse-on-surface": "#e1f6ea",
+            "surface-bright": "#e9fef2",
+            "surface-dim": "#cadfd3",
+            "tertiary-fixed": "#dce4e0",
+            "tertiary": "#353d3a",
+            "on-primary-fixed": "#00201d",
+            "surface": "#FAF7F2",
+            "surface-tint": "#256861",
+            "surface-container-low": "#e3f9ec",
+            "on-error": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#414846",
+            "outline-variant": "#bfc9c6",
+            "secondary-container": "#fe8b71",
+            "surface-container-high": "#d8ede1",
+            "primary": "#00433e",
+            "on-tertiary-fixed": "#161d1b",
+            "outline": "#6f7977",
+            "primary-fixed-dim": "#91d3c9",
+            "on-secondary": "#ffffff",
+            "inverse-primary": "#91d3c9",
+            "on-primary-container": "#91d2c9",
+            "on-secondary-container": "#752311",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-container": "#4c5451",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#3f4947"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.25rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.25rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "1.25rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Noto Serif", "serif"],
+            "headline-md": ["Noto Serif", "serif"],
+            "headline-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "title-md": ["Plus Jakarta Sans", "sans-serif"],
+            "label-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "label-md": ["Plus Jakarta Sans", "sans-serif"],
+            "label-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "body-md": ["Plus Jakarta Sans", "sans-serif"],
+            "price-display": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          "fontSize": {
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "title-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "price-display": ["18px", { "lineHeight": "22px", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md antialiased selection:bg-surface-variant selection:text-primary">
+<!-- Desktop Top Navigation Bar (Shared Component: TopNavBar with checkout variation context) -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none docked full-width top-0 sticky z-50">
+<div class="w-full max-w-[1120px] mx-auto px-5 flex items-center justify-between h-20">
+<!-- Brand Logo -->
+<a class="flex items-center gap-2 group" href="#">
+<span class="text-headline-md font-headline-md text-primary dark:text-primary-fixed tracking-tight">Stayora</span>
+</a>
+<!-- Security / Checkout Badge -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-outline-variant text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span>Secure Checkout</span>
+</div>
+<!-- User Context Indicator -->
+<div class="flex items-center gap-3">
+<span class="text-label-md font-label-md text-on-surface-variant hidden md:inline">Logged in as Sami</span>
+<div class="w-9 h-9 rounded-full bg-surface-variant text-primary flex items-center justify-center font-label-lg text-label-lg border border-outline-variant">
+          SB
+        </div>
+</div>
+</div>
+</header>
+<!-- Main Canvas Container -->
+<main class="w-full max-w-[1120px] mx-auto px-5 pt-8 pb-20 flex-grow">
+<!-- Breadcrumb / Back Link -->
+<div class="mb-6">
+<a class="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary font-label-lg text-label-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span>Back to property</span>
+</a>
+</div>
+<!-- Editorial Page Heading -->
+<div class="mb-10">
+<h1 class="text-headline-lg font-headline-lg text-primary text-[32px] leading-[40px] tracking-tight">
+        Review &amp; confirm your reservation
+      </h1>
+<p class="text-on-surface-variant text-body-lg font-body-lg mt-1">
+        Please review your stay itinerary and guest details prior to booking.
+      </p>
+</div>
+<!-- Two-Column Desktop Checkout Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+<!-- LEFT COLUMN: 58% (7 cols on 12-col grid) -->
+<div class="lg:col-span-7 space-y-8">
+<!-- SECTION 1: Trip Details -->
+<section class="bg-surface-container-lowest p-7 rounded-2xl border border-outline-variant shadow-[0px_2px_8px_rgba(37,55,47,0.04)]">
+<h2 class="text-headline-sm font-headline-sm text-primary mb-6 flex items-center gap-2">
+<span>Your trip details</span>
+</h2>
+<div class="space-y-5">
+<!-- Dates Block -->
+<div class="flex items-start justify-between pb-5 border-b border-outline-variant">
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Dates</p>
+<p class="text-body-md font-body-md text-on-surface-variant mt-0.5">Nov 12 – 15, 2026 (3 nights)</p>
+</div>
+<button class="font-label-lg text-label-lg text-primary hover:underline px-3 py-1.5 rounded-lg hover:bg-surface-container transition-colors">
+                Edit
+              </button>
+</div>
+<!-- Guests Block -->
+<div class="flex items-start justify-between pb-5 border-b border-outline-variant">
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Guests</p>
+<p class="text-body-md font-body-md text-on-surface-variant mt-0.5">2 adults</p>
+</div>
+<button class="font-label-lg text-label-lg text-primary hover:underline px-3 py-1.5 rounded-lg hover:bg-surface-container transition-colors">
+                Edit
+              </button>
+</div>
+<!-- Check-in Timing -->
+<div class="flex items-center gap-3 pt-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[20px]">key</span>
+<p class="text-body-md font-body-md">
+                Check-in starts at 3:00 PM · Self check-in via smart keypad
+              </p>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Guest Information -->
+<section class="bg-surface-container-lowest p-7 rounded-2xl border border-outline-variant shadow-[0px_2px_8px_rgba(37,55,47,0.04)]">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-headline-sm font-headline-sm text-primary">Guest information</h2>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Verified Guest</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-xl bg-background border border-outline-variant">
+<div>
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Primary guest</p>
+<p class="font-label-lg text-label-lg text-on-surface mt-1">Sami Ben Ali</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Email address</p>
+<p class="font-label-lg text-label-lg text-on-surface mt-1 truncate">sami.benali@example.com</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Phone number</p>
+<p class="font-label-lg text-label-lg text-on-surface mt-1">+216 20 123 456</p>
+</div>
+</div>
+</section>
+<!-- SECTION 3: Payment Method -->
+<section class="bg-surface-container-lowest p-7 rounded-2xl border border-outline-variant shadow-[0px_2px_8px_rgba(37,55,47,0.04)]">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-headline-sm font-headline-sm text-primary">Payment method</h2>
+<span class="px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-secondary-fixed text-on-secondary-fixed-variant font-bold">
+              PROTOTYPE
+            </span>
+</div>
+<!-- Radio Card Option -->
+<div class="p-4 rounded-xl border-2 border-primary bg-surface-container-low flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center bg-surface-container-lowest">
+<div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">credit_card</span>
+<span class="font-label-lg text-label-lg text-on-surface">Demo card •••• 4242</span>
+<span class="text-on-surface-variant font-body-md text-body-md">· Expires 12/28</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- Simulated Payment Security Notice -->
+<div class="mt-4 flex items-center gap-2 text-on-surface-variant text-label-md font-label-md">
+<span class="material-symbols-outlined text-[18px]">info</span>
+<span>This is a simulated demo payment. No real charges will be made.</span>
+</div>
+</section>
+<!-- SECTION 4: Ground rules & Cancellation policy -->
+<section class="bg-surface-container-lowest p-7 rounded-2xl border border-outline-variant shadow-[0px_2px_8px_rgba(37,55,47,0.04)]">
+<h2 class="text-headline-sm font-headline-sm text-primary mb-3">Ground rules &amp; Cancellation policy</h2>
+<div class="p-4 rounded-xl bg-background border border-outline-variant mb-6 text-on-surface-variant text-body-md font-body-md">
+<p>
+<strong class="text-on-surface font-semibold">Full refund</strong> before November 5, 2026, at 3:00 PM local time. After that deadline, the booking is non-refundable.
+            </p>
+</div>
+<!-- Checkbox / Agreement Confirmation -->
+<div class="flex items-start gap-3">
+<input checked="" class="w-5 h-5 mt-0.5 rounded border-outline-variant text-primary focus:ring-primary focus:ring-offset-0 transition-colors" id="rules-consent" type="checkbox"/>
+<label class="text-body-md font-body-md text-on-surface-variant leading-relaxed select-none cursor-pointer" for="rules-consent">
+              By selecting the button below, I agree to the <a class="text-primary underline font-medium" href="#">House Rules</a>, <a class="text-primary underline font-medium" href="#">Ground Rules for Guests</a>, and the <a class="text-primary underline font-medium" href="#">Cancellation Policy</a>.
+            </label>
+</div>
+</section>
+<!-- Primary CTA Trigger Container -->
+<div class="pt-2">
+<button class="w-full h-[54px] rounded-2xl bg-primary text-on-primary font-label-lg text-label-lg text-[16px] font-semibold flex items-center justify-center gap-3 hover:bg-primary-container active:scale-[0.98] transition-all shadow-[0px_4px_16px_rgba(20,92,85,0.2)]">
+<span>Confirm and pay — 540.000 TND</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<p class="text-center text-on-surface-variant text-label-md font-label-md mt-3 flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+<span>Your booking will be confirmed immediately with reference ST-1026.</span>
+</p>
+</div>
+</div>
+<!-- RIGHT COLUMN: 42% (5 cols on 12-col grid) Sticky Price & Summary -->
+<div class="lg:col-span-5 lg:sticky lg:top-28">
+<aside class="bg-surface-container-lowest rounded-2xl border border-outline-variant shadow-[0px_2px_8px_rgba(37,55,47,0.06)] overflow-hidden">
+<!-- Property Overview Card Header -->
+<div class="p-6">
+<div class="flex gap-4">
+<!-- Property Image Thumbnail -->
+<div class="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Sunlit Mediterranean style courtyard apartment featuring traditional terracotta tiles, white arched doorways, lush potted jasmine plants, and soft morning sunlight casting tranquil shadows. High quality architectural editorial travel photography with warm natural green and stone accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATfEddICEJvHuPAoqTDIN9y_ybYEq9FeHPPA9TxMbi9z-P4N61vzSowhYPJ-lqyP62Iv6GQ7Ng0mFaJMXsV9UyPqOOE3zlmL-Q1-LnQKb_7fAC4LDeoYe6dyL9H-4XBNOlL_j8xRwleMCE9X1LX3KAU_apiTJJTll4lH_kFg5_EHyk0KEh35I6VyzYi2Yj_4n5Ainb6TadJMcfIh7O3dWowKx-XmJz-MhydyxR2lj5Xn5xaOYqB5G3"/>
+</div>
+<!-- Property Summary Meta -->
+<div class="flex flex-col justify-center">
+<div class="mb-1">
+<span class="inline-block px-2 py-0.5 text-[10px] tracking-wider uppercase font-semibold text-secondary bg-surface rounded border border-secondary">
+                    RARE FIND
+                  </span>
+</div>
+<h3 class="font-headline-md text-headline-sm text-primary text-[18px] leading-tight">
+                  Sunlit courtyard apartment
+                </h3>
+<p class="text-on-surface-variant text-label-md font-label-md mt-0.5">
+                  Entire apartment · La Marsa, Tunis
+                </p>
+<div class="flex items-center gap-1.5 mt-2 text-label-sm font-label-sm text-on-surface">
+<span class="material-symbols-outlined text-[15px] text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-semibold">4.96</span>
+<span class="text-on-surface-variant">(48 reviews) · Hosted by Nadia</span>
+</div>
+</div>
+</div>
+<!-- Free Cancellation Guarantee Pill -->
+<div class="mt-5 p-3 rounded-xl bg-surface-container-low border border-outline-variant flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+<p class="text-label-md font-label-md text-primary leading-snug">
+                Free cancellation before Nov 5, 2026 at 3:00 PM local time.
+              </p>
+</div>
+</div>
+<div class="h-px bg-outline-variant mx-6"></div>
+<!-- Price Details Section -->
+<div class="p-6">
+<h4 class="font-title-md text-title-md text-primary mb-4">Price details</h4>
+<div class="space-y-3 font-body-md text-body-md text-on-surface">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">160.000 TND × 3 nights</span>
+<span class="font-medium">480.000 TND</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Cleaning fee</span>
+<span class="font-medium">35.000 TND</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Stayora service fee</span>
+<span class="font-medium">25.000 TND</span>
+</div>
+</div>
+<div class="h-px bg-outline-variant my-5"></div>
+<!-- Total Price Calculation -->
+<div class="flex items-end justify-between">
+<div>
+<span class="font-title-md text-title-md text-on-surface block">Total (TND)</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Includes all applicable fees</span>
+</div>
+<div class="text-right">
+<span class="font-price-display text-price-display text-[22px] text-primary block leading-none">
+                  540.000 TND
+                </span>
+</div>
+</div>
+</div>
+<!-- Bottom reassurance panel -->
+<div class="bg-background px-6 py-4 border-t border-outline-variant flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">price_check</span>
+<span>Transparent pricing</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">encrypted</span>
+<span>256-bit SSL encrypted</span>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Editorial Footer (Shared Component: Footer) -->
+<footer class="bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant dark:border-outline full-width mt-auto">
+<div class="w-full max-w-[1120px] mx-auto px-5 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+<!-- Brand & Copyright -->
+<div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+<span class="text-headline-sm font-headline-sm text-primary dark:text-primary-fixed">Stayora</span>
+<span class="hidden md:inline text-outline-variant">|</span>
+<p class="text-body-md font-body-md text-on-surface-variant dark:text-inverse-on-surface">
+          © 2025 Stayora, Inc. Warm editorial travel discoveries and sanctuaries.
+        </p>
+</div>
+<!-- Links Cluster -->
+<div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-label-md font-label-md">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Privacy</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Terms</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Sitemap</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Destinations</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Company</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>

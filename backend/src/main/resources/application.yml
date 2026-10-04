@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: stayora
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 0
+      connection-timeout: 30000
+  flyway:
+    url: ${DB_MIGRATION_URL}
+    user: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    schemas: stayora
+    default-schema: stayora
+    clean-disabled: true
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: stayora
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  port: ${PORT:8081}
+  error:
+    include-message: never
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+stayora:
+  demo-enabled: false
+springdoc:
+  swagger-ui:
+    path: /api/docs

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stayora — Stays in La Marsa, Tunis</title>
+<!-- Google Fonts: Noto Serif & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config derived from Design System -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary": "#ffffff",
+            "background": "#FAF7F2",
+            "on-background": "#0d1f18",
+            "on-surface": "#0d1f18",
+            "tertiary-fixed-dim": "#c0c8c5",
+            "on-tertiary-container": "#c0c8c4",
+            "on-secondary-fixed-variant": "#7f2a18",
+            "on-error-container": "#93000a",
+            "on-primary-fixed-variant": "#005049",
+            "inverse-surface": "#22342c",
+            "secondary-fixed-dim": "#ffb4a4",
+            "surface-variant": "#d2e7dc",
+            "secondary-fixed": "#ffdad3",
+            "primary-container": "#145c55",
+            "surface-container-highest": "#d2e7dc",
+            "primary-fixed": "#adefe5",
+            "error": "#ba1a1a",
+            "on-secondary-fixed": "#3d0600",
+            "surface-container": "#def3e7",
+            "secondary": "#A64732",
+            "inverse-on-surface": "#e1f6ea",
+            "surface-bright": "#FAF7F2",
+            "surface-dim": "#cadfd3",
+            "tertiary-fixed": "#dce4e0",
+            "tertiary": "#353d3a",
+            "on-primary-fixed": "#00201d",
+            "surface": "#FAF7F2",
+            "surface-tint": "#256861",
+            "surface-container-low": "#f4efe8",
+            "on-error": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#414846",
+            "outline-variant": "#E4E7E1",
+            "secondary-container": "#fe8b71",
+            "surface-container-high": "#d8ede1",
+            "primary": "#145C55",
+            "on-tertiary-fixed": "#161d1b",
+            "outline": "#6f7977",
+            "primary-fixed-dim": "#91d3c9",
+            "on-secondary": "#ffffff",
+            "inverse-primary": "#91d3c9",
+            "on-primary-container": "#91d2c9",
+            "on-secondary-container": "#752311",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-container": "#4c5451",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#3f4947"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.25rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "1.25rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Noto Serif", "serif"],
+            "headline-md": ["Noto Serif", "serif"],
+            "headline-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "title-md": ["Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "body-md": ["Plus Jakarta Sans", "sans-serif"],
+            "label-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "label-md": ["Plus Jakarta Sans", "sans-serif"],
+            "label-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "price-display": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          "fontSize": {
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "title-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "price-display": ["18px", { "lineHeight": "22px", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+          },
+          "boxShadow": {
+            "level-1": "0px 2px 8px rgba(37, 55, 47, 0.04)",
+            "level-2": "0px 4px 16px rgba(37, 55, 47, 0.08)",
+            "level-3": "0px 8px 24px rgba(37, 55, 47, 0.12)"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md selection:bg-primary selection:text-on-primary">
+<!-- SHARED COMPONENT: TopNavBar -->
+<header class="docked full-width top-0 sticky z-50 bg-surface-container-lowest border-b border-outline-variant shadow-sm">
+<div class="w-full max-w-[1440px] mx-auto px-6 flex items-center justify-between h-20 gap-4">
+<!-- Brand & Left Search Summary -->
+<div class="flex items-center gap-6">
+<a class="font-headline-md text-headline-md text-primary tracking-tight flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="villa">villa</span>
+<span>Stayora</span>
+</a>
+<!-- Compact Interactive Search Summary Pill -->
+<div class="hidden lg:flex items-center bg-surface-container-low hover:bg-surface-container border border-outline-variant rounded-full px-4 py-2 transition-all duration-150 cursor-pointer shadow-level-1">
+<div class="flex items-center gap-3 divide-x divide-outline-variant text-label-md font-label-md">
+<span class="text-on-surface font-semibold pl-1">La Marsa</span>
+<span class="text-on-surface-variant pl-3">Nov 12–15</span>
+<span class="text-on-surface-variant pl-3">2 guests</span>
+</div>
+<button aria-label="Edit Search" class="ml-4 w-7 h-7 rounded-full bg-primary flex items-center justify-center text-on-primary hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<!-- Navigation Links (Active state: Explore) -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary border-b-2 border-primary pb-1 font-semibold text-label-lg font-label-lg transition-colors" href="#">
+          Explore
+        </a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1 text-label-lg font-label-lg" href="#">
+          Wishlists
+        </a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1 text-label-lg font-label-lg" href="#">
+          Trips
+        </a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1 text-label-lg font-label-lg" href="#">
+          Messages
+        </a>
+</nav>
+<!-- Trailing Action & Account Cluster -->
+<div class="flex items-center gap-3">
+<a class="hidden sm:inline-flex items-center px-4 py-2 rounded-full text-label-md font-label-md text-primary hover:bg-surface-container transition-colors duration-150" href="#">
+          Switch to hosting
+        </a>
+<div class="flex items-center border border-outline-variant rounded-full py-1.5 px-3 bg-surface-container-lowest hover:shadow-level-1 transition-all duration-150 cursor-pointer gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-xl" data-icon="menu">menu</span>
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label-md font-bold">
+<span class="material-symbols-outlined text-lg" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Sub-header Filter Bar -->
+<section class="bg-surface-container-lowest border-b border-outline-variant sticky top-20 z-40">
+<div class="max-w-[1440px] mx-auto px-6 py-3 flex flex-wrap items-center justify-between gap-4">
+<!-- Interactive Pill Filters -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
+<!-- Active Filter: Dates -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-primary text-on-primary text-label-md font-label-md shadow-sm transition-transform active:scale-95 whitespace-nowrap">
+<span>Dates: Nov 12–15</span>
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+<!-- Active Filter: Guests -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-primary text-on-primary text-label-md font-label-md shadow-sm transition-transform active:scale-95 whitespace-nowrap">
+<span>Guests: 2 adults</span>
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+<!-- Filter Pill: Entire Place -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:border-primary hover:text-on-surface text-label-md font-label-md transition-all whitespace-nowrap">
+<span>Entire place</span>
+</button>
+<!-- Filter Pill: Price -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:border-primary hover:text-on-surface text-label-md font-label-md transition-all whitespace-nowrap">
+<span>Price (TND)</span>
+<span class="material-symbols-outlined text-xs" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+<!-- Filter Pill: Property Type -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:border-primary hover:text-on-surface text-label-md font-label-md transition-all whitespace-nowrap">
+<span>Property type</span>
+<span class="material-symbols-outlined text-xs" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+<!-- Filter Pill: Amenities -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:border-primary hover:text-on-surface text-label-md font-label-md transition-all whitespace-nowrap">
+<span>Amenities</span>
+<span class="material-symbols-outlined text-xs" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+<!-- Filter Pill: More Filters -->
+<button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-surface-container-low border border-outline-variant text-primary font-semibold hover:bg-surface-container text-label-md font-label-md transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined text-sm" data-icon="tune">tune</span>
+<span>More filters (3)</span>
+</button>
+</div>
+<!-- Sort Dropdown Action -->
+<div class="flex items-center gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant whitespace-nowrap" for="sort-dropdown">Sort by:</label>
+<div class="relative inline-block">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant rounded-xl pl-3.5 pr-8 py-1.5 text-label-md font-label-md text-on-surface focus:outline-none focus:border-primary cursor-pointer shadow-level-1" id="sort-dropdown">
+<option>Recommended (highest rated)</option>
+<option>Price: low to high</option>
+<option>Price: high to low</option>
+<option>Newest sanctuaries</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-sm pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Results count contextual banner -->
+<div class="bg-surface-container-low/60 border-t border-outline-variant py-2 px-6">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between">
+<p class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+<span><strong>3 stays</strong> found in La Marsa for Nov 12–15 (3 nights) · All prices show transparent total stay cost including fees</span>
+</p>
+<div class="hidden md:flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-xs" data-icon="verified_user">verified_user</span>
+<span>Stayora Verified Quality Hostings</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SPLIT VIEW CONTENT (55% Listings Left / 45% Map Canvas Right) -->
+<main class="w-full max-w-[1440px] mx-auto flex flex-col lg:flex-row min-h-[calc(100vh-148px)]">
+<!-- LEFT SIDE: Scrollable Listings Column (55%) -->
+<section class="w-full lg:w-[55%] px-6 lg:px-8 py-8 flex flex-col gap-6 overflow-y-auto">
+<!-- Canonical Property Card 1 (Sunlit courtyard apartment) -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-5 shadow-level-1 hover:shadow-level-2 transition-all duration-200 group flex flex-col md:flex-row gap-5 relative">
+<!-- Carousel / Image Container -->
+<div class="relative w-full md:w-[260px] h-[220px] rounded-xl overflow-hidden shrink-0 bg-surface-container-high">
+<img alt="Sunlit courtyard apartment patio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="A sun-drenched private courtyard apartment in La Marsa, featuring pristine whitewashed walls, vibrant fuchsia bougainvillea creeping up rustic stone pillars, hand-crafted terracotta tiles, and elegant wrought iron French doors under clear Mediterranean skies. Warm cinematic light floods the patio, exuding peace and architectural tranquility in a warm editorial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxWrG-BymmxFQP-WFtBCErkgsYFgOIlpQpBT7557S-Cq0EN88IjReN-faTB0Yh9LIdj00cUmJK42FaKUTcrL8TbFM8HX0FVxZgZ1W5kbbYDVw-kxhfniYuAUVX_8HMapSVAvGM6xo3dxuYfkb949QxaIsLWVJKeJpWpNq7YUBxqvZkM2BSRQM6-wwgyWL42zL3IeKandYAPVy_Z-j5LIdiwFFNCw7ybyKm3MST5GoHFDT8HN8A2pr-"/>
+<!-- Badges & Wishlist -->
+<div class="absolute top-3 left-3">
+<span class="bg-surface/95 text-secondary border border-secondary px-2.5 py-0.5 rounded-full text-label-sm font-label-sm tracking-wider uppercase backdrop-blur-sm">
+              RARE FIND
+            </span>
+</div>
+<button aria-label="Save to wishlist" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-secondary hover:scale-110 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl" data-icon="favorite" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<!-- Subtle Carousel Indicator -->
+<div class="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-inverse-surface/40 backdrop-blur-sm px-2 py-1 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary/50"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary/50"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary/50"></span>
+</div>
+</div>
+<!-- Listing Content -->
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<!-- Header & Rating -->
+<div class="flex items-start justify-between gap-2">
+<span class="text-label-md font-label-md text-on-surface-variant truncate">Entire apartment in La Marsa, Tunis</span>
+<div class="flex items-center gap-1 shrink-0 text-label-md font-label-md text-on-surface">
+<span class="material-symbols-outlined text-secondary text-base" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.96</span>
+<span class="text-on-surface-variant">(48)</span>
+</div>
+</div>
+<!-- Title -->
+<h2 class="font-headline-md text-headline-sm text-on-surface mt-1 group-hover:text-primary transition-colors">
+              Sunlit courtyard apartment
+            </h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">
+              2 guests · 1 bedroom · 1 bed · 1 bath
+            </p>
+<!-- Amenity Tags -->
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface-variant text-label-sm font-label-sm">Wi-Fi</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface-variant text-label-sm font-label-sm">Kitchen</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface-variant text-label-sm font-label-sm">Dedicated workspace</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface-variant text-label-sm font-label-sm">Private courtyard</span>
+</div>
+</div>
+<!-- Price Block & Action -->
+<div class="mt-4 pt-3 border-t border-outline-variant/60 flex items-end justify-between">
+<div>
+<div class="font-price-display text-price-display text-primary font-bold">
+                540.000 TND <span class="font-normal text-body-md text-on-surface-variant">total</span>
+</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">
+                160.000 TND / night · 3 nights · inc. taxes
+              </div>
+</div>
+<button class="h-10 px-4 rounded-xl bg-surface-container hover:bg-primary hover:text-on-primary text-primary font-label-md font-semibold transition-colors duration-150 flex items-center gap-1">
+<span>View details</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Property Card 2 (Villa Jasmine by the Sea) -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-5 shadow-level-1 hover:shadow-level-2 transition-all duration-200 group flex flex-col md:flex-row gap-5 relative">
+<!-- Carousel / Image Container -->
+<div class="relative w-full md:w-[260px] h-[220px] rounded-xl overflow-hidden shrink-0 bg-surface-container-high">
+<img alt="Villa Jasmine by the Sea patio with ocean views" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="An elegant coastal villa in La Marsa overlooking azure Mediterranean waters, with arched stone verandas, blossoming jasmine vines cascading along white stucco balustrades, and modern woven lounge chairs on a limestone sun deck. Soft sea mist and warm morning sunbeams enhance the architectural grandeur and coastal luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA08ARfgEV-FJmrHLIrXhWRSP2cJuVZsRHKa43H6Bmn7P0ZsZynL66bAJ3QM5VLX5npnDNqr9kiTT6skQk-GfRy3-kFY73vHzFRYEefpQXekJSaNWrCo7_Fkh7tPcvNyjZyVosFdeIwuHYGMGYHy7a544WO9Iwz_jFh5-3ARoarXu8hJnBZmRpPjlC36RQDKDsOmZHvE5yvi14ZhG1tI3rwTlGLwTzagl4Yod82nmY0qHvOJzGizV5C"/>
+<button aria-label="Save to wishlist" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface hover:text-secondary hover:scale-110 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl" data-icon="favorite">favorite</span>
+</button>
+<!-- Subtle Carousel Indicator -->
+<div class="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-inverse-surface/40 backdrop-blur-sm px-2 py-1 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary/50"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary/50"></span>
+</div>
+</div>
+<!-- Listing Content -->
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<!-- Header & Rating -->
+<div class="flex items-start justify-between gap-2">
+<span class="text-label-md font-label-md text-on-surface-variant truncate">Entire home in La Marsa, Tunis</span>
+<div class="flex items-center gap-1 shrink-0 text-label-md font-label-md text-on-surface">
+<span class="material-symbols-outlined text-secondary text-base" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.88</span>
+<span class="text-on-surface-variant">(31)</span>
+</div>
+</div>
+<!-- Title -->
+<h2 class="font-headline-md text-headline-sm text-on-surface mt-1 group-hover:text-primary transition-colors">
+              Villa Jasmine by the Sea
+            </h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">
+              4 guests · 2 bedrooms · 2 baths
+            </p>
+<!-- Amenity Tags -->
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface-variant text-label-sm font-label-sm">Sea view</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface-variant text-label-sm font-label-sm">Patio</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface-variant text-label-sm font-label-sm">Free parking</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface-variant text-label-sm font-label-sm">Air conditioning</span>
+</div>
+</div>
+<!-- Price Block & Action -->
+<div class="mt-4 pt-3 border-t border-outline-variant/60 flex items-end justify-between">
+<div>
+<div class="font-price-display text-price-display text-primary font-bold">
+                720.000 TND <span class="font-normal text-body-md text-on-surface-variant">total</span>
+</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">
+                240.000 TND / night · 3 nights · inc. taxes
+              </div>
+</div>
+<button class="h-10 px-4 rounded-xl bg-surface-container hover:bg-primary hover:text-on-primary text-primary font-label-md font-semibold transition-colors duration-150 flex items-center gap-1">
+<span>View details</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Property Card 3 (Artisan Loft overlooking Port) -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-5 shadow-level-1 hover:shadow-level-2 transition-all duration-200 group flex flex-col md:flex-row gap-5 relative">
+<!-- Carousel / Image Container -->
+<div class="relative w-full md:w-[260px] h-[220px] rounded-xl overflow-hidden shrink-0 bg-surface-container-high">
+<img alt="Artisan Loft overlooking port in La Marsa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="An artistic high-ceiling loft overlooking the harbor in La Marsa, with large floor-to-ceiling iron windows, exposed warm brick, bespoke ceramic pottery on open timber shelves, and a sunny private balcony showing docked fishing boats in the harbor. Warm, gentle lighting reflects off artisanal timber floors with an inviting, modern interior design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrbqUFfjzW8TkxNpMKPMUBmx9i4FhUyVrVfOv6jDEvJpiJT6cxKfJyOzWtBEgJA8rlQl08-O5IFBFvsyohq_KrqtTnYpu_itYiXtyS64z-RMYgPIviuf9lLDysdqkNuy5kt0ezLzNYEzPxG9iF_1e6Wf1BUev0RpRhmGhD3C-7-M0afk1KnkMD_Ux9RvTYJI_WuRCVBs8aeg2AR1-giLF0mp6tovHHP4Ac-OCHd6QTMB3fy1-RimK3"/>
+<button aria-label="Save to wishlist" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface hover:text-secondary hover:scale-110 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl" data-icon="favorite">favorite</span>
+</button>
+<!-- Subtle Carousel Indicator -->
+<div class="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-inverse-surface/40 backdrop-blur-sm px-2 py-1 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary/50"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary/50"></span>
+</div>
+</div>
+<!-- Listing Content -->
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<!-- Header & Rating -->
+<div class="flex items-start justify-between gap-2">
+<span class="text-label-md font-label-md text-on-surface-variant truncate">Entire loft in La Marsa, Tunis</span>
+<div class="flex items-center gap-1 shrink-0 text-label-md font-label-md text-on-surface">
+<span class="material-symbols-outlined text-secondary text-base" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.92</span>
+<span class="text-on-surface-variant">(19)</span>
+</div>
+</div>
+<!-- Title -->
+<h2 class="font-headline-md text-headline-sm text-on-surface mt-1 group-hover:text-primary transition-colors">
+              Artisan Loft overlooking Port
+            </h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">
+              2 guests · 1 bed · 1 bath
+            </p>
+<!-- Amenity Tags -->
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface-variant text-label-sm font-label-sm">Balcony</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface-variant text-label-sm font-label-sm">Harbor view</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface-variant text-label-sm font-label-sm">Fast Wi-Fi</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low text-on-surface-variant text-label-sm font-label-sm">Espresso machine</span>
+</div>
+</div>
+<!-- Price Block & Action -->
+<div class="mt-4 pt-3 border-t border-outline-variant/60 flex items-end justify-between">
+<div>
+<div class="font-price-display text-price-display text-primary font-bold">
+                495.000 TND <span class="font-normal text-body-md text-on-surface-variant">total</span>
+</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">
+                165.000 TND / night · 3 nights · inc. taxes
+              </div>
+</div>
+<button class="h-10 px-4 rounded-xl bg-surface-container hover:bg-primary hover:text-on-primary text-primary font-label-md font-semibold transition-colors duration-150 flex items-center gap-1">
+<span>View details</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Editorial Guarantee Callout Box -->
+<div class="rounded-2xl border border-outline-variant bg-surface-container-low/70 p-5 mt-2 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest border border-outline-variant flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="shield_with_heart">shield_with_heart</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-label-lg font-bold text-on-surface">The Stayora Transparent Rate Commitment</h4>
+<p class="text-body-md font-body-md text-on-surface-variant mt-0.5">
+            Every booking in Tunisia includes local municipality fees, linen service, and damage deposit safeguards. No surprises at checkout.
+          </p>
+</div>
+</div>
+</section>
+<!-- RIGHT SIDE: Sticky Interactive Map Canvas (45%) -->
+<aside class="w-full lg:w-[45%] h-[550px] lg:h-auto sticky top-[138px] overflow-hidden border-l border-outline-variant bg-[#e3ecf0] relative select-none">
+<!-- Styled Editorial Vector Map Background Simulation -->
+<svg class="w-full h-full object-cover" preserveaspectratio="xMidYMid slice" viewbox="0 0 700 800" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="seaGradient" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#cae5e7"></stop>
+<stop offset="100%" stop-color="#b6dce0"></stop>
+</lineargradient>
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="#d5dfd9" stroke-width="0.5"></path>
+</pattern>
+</defs>
+<!-- Sea / Gulf of Tunis (Right side curving) -->
+<rect fill="url(#seaGradient)" height="800" width="700"></rect>
+<!-- Landmass (La Marsa Peninsula) -->
+<path d="M 0,0 L 460,0 C 470,120 440,240 480,340 C 510,410 560,490 530,620 C 510,700 480,750 450,800 L 0,800 Z" fill="#F4EFE6"></path>
+<!-- Sandy Coastline Accent / Dunes -->
+<path d="M 460,0 C 470,120 440,240 480,340 C 510,410 560,490 530,620 C 510,700 480,750 450,800" fill="none" stroke="#E9DEC9" stroke-width="12"></path>
+<!-- Subtle Topographic Roads & Street Grid -->
+<g opacity="0.9" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+<!-- Main Avenue Habib Bourguiba (Coastal artery) -->
+<path d="M 50,780 C 180,680 320,580 430,420 C 460,380 440,260 410,120 L 380,0" stroke="#fff" stroke-width="5"></path>
+<path d="M 50,780 C 180,680 320,580 430,420 C 460,380 440,260 410,120 L 380,0" stroke="#DFD8C9" stroke-width="3.5"></path>
+<!-- Secondary streets -->
+<path d="M 120,400 L 430,420"></path>
+<path d="M 80,260 L 450,290"></path>
+<path d="M 180,120 L 420,150"></path>
+<path d="M 280,650 L 500,560"></path>
+<path d="M 220,500 L 360,300" stroke="#c9d6ce" stroke-dasharray="4,4"></path>
+<path d="M 320,200 L 470,230"></path>
+</g>
+<!-- Coastal Parks / Greenery Accents (Parc Sidi Bou Said nearby) -->
+<path d="M 340,680 C 370,660 430,690 420,740 C 400,770 330,760 340,680 Z" fill="#DEEDE2" opacity="0.8"></path>
+<path d="M 260,280 C 300,270 320,310 310,340 C 280,360 250,330 260,280 Z" fill="#DEEDE2" opacity="0.8"></path>
+<!-- Geographical typography labels -->
+<text fill="#256861" font-family="'Noto Serif', serif" font-size="16" font-style="italic" letter-spacing="2" opacity="0.6" x="560" y="240">GULF OF TUNIS</text>
+<text fill="#75827d" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" letter-spacing="1" x="360" y="490">LA MARSA CORNICHE</text>
+<text fill="#75827d" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" letter-spacing="1" x="140" y="320">MARSA VILLE</text>
+<text fill="#75827d" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" letter-spacing="1" x="380" y="730">SIDI BOU SAÏD</text>
+</svg>
+<!-- Map Overlay Header Controls (Search this area pill) -->
+<div class="absolute top-5 left-1/2 -translate-x-1/2 z-20">
+<label class="flex items-center gap-2 bg-surface-container-lowest/95 backdrop-blur-md px-4 py-2 rounded-full border border-outline-variant shadow-level-2 cursor-pointer hover:bg-surface-container-lowest transition-all">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-primary border-outline-variant accent-primary cursor-pointer" type="checkbox"/>
+<span class="text-label-md font-label-md text-on-surface font-semibold">Search as I move the map</span>
+</label>
+</div>
+<!-- Map Floating Navigation Controls (+ / - & Reset) -->
+<div class="absolute bottom-8 right-6 z-20 flex flex-col gap-2 shadow-level-2">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden flex flex-col divide-y divide-outline-variant">
+<button aria-label="Zoom in" class="w-10 h-10 flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface">
+<span class="material-symbols-outlined text-lg" data-icon="add">add</span>
+</button>
+<button aria-label="Zoom out" class="w-10 h-10 flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface">
+<span class="material-symbols-outlined text-lg" data-icon="remove">remove</span>
+</button>
+</div>
+<button aria-label="Reset map view" class="w-10 h-10 rounded-xl bg-surface-container-lowest border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface">
+<span class="material-symbols-outlined text-lg" data-icon="near_me">near_me</span>
+</button>
+</div>
+<!-- MAP MARKER 1 (ACTIVE / SELECTED: Sunlit Courtyard Apartment) -->
+<div class="absolute top-[38%] left-[45%] -translate-x-1/2 -translate-y-full z-30 flex flex-col items-center">
+<!-- Floating Preview Card on Map -->
+<div class="mb-2 bg-surface-container-lowest rounded-xl p-2 shadow-level-3 border border-outline-variant w-52 animate-fade-in">
+<div class="w-full h-24 rounded-lg overflow-hidden relative">
+<img alt="Courtyard preview" class="w-full h-full object-cover" data-alt="Close-up of the charming sunlit private courtyard in La Marsa, with lush bougainvillea flowers, handcrafted tiles, and warm Mediterranean midday glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAcL-DairTbTFMEBy-iZowK3ARJzYrczRfSU7Ti5GLPHOShh6E36BioPmRB3qq4NYCnw6zrcRiGGa_iMl2czYrsxBAJiH-H8IFspHbJst1yzWyJhXKAtajzcnSleG9ZsXtpBFcVmo2v1u-QvR9bXMDCDgSOBl3c5BDVCVqfIRGdITtDTsSOj7J3UOrB6HGwiWN6dEiycl5XR7ZEvH934hZsqdladbjhikrVPzG6as_hKyqWO329BPU"/>
+<span class="absolute bottom-1.5 left-1.5 bg-surface-container-lowest/90 px-1.5 py-0.5 rounded text-[10px] font-bold text-on-surface flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[11px] text-secondary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+              4.96
+            </span>
+</div>
+<div class="mt-2 px-1">
+<h5 class="font-headline-sm text-label-md font-bold text-on-surface truncate">Sunlit courtyard apt</h5>
+<p class="font-price-display text-label-md font-bold text-primary mt-0.5">540 TND total</p>
+</div>
+</div>
+<!-- Primary Teal Active Pill Marker -->
+<button class="bg-primary text-on-primary font-price-display text-label-md font-bold px-3 py-1.5 rounded-full shadow-level-2 border-2 border-on-primary ring-2 ring-primary/40 flex items-center gap-1 scale-110 cursor-pointer">
+<span class="material-symbols-outlined text-xs" data-icon="check">check</span>
+<span>540 TND</span>
+</button>
+<!-- Pin Tip Indicator -->
+<div class="w-2.5 h-2.5 bg-primary rotate-45 -mt-1 shadow-sm"></div>
+</div>
+<!-- MAP MARKER 2 (Villa Jasmine by the Sea) -->
+<div class="absolute top-[26%] left-[62%] -translate-x-1/2 -translate-y-1/2 z-20">
+<button class="bg-surface-container-lowest hover:bg-primary hover:text-on-primary text-on-surface font-price-display text-label-md font-bold px-3 py-1.5 rounded-full shadow-level-1 border border-outline-variant hover:border-primary transition-all duration-150 flex items-center cursor-pointer">
+<span>720 TND</span>
+</button>
+</div>
+<!-- MAP MARKER 3 (Artisan Loft overlooking Port) -->
+<div class="absolute top-[65%] left-[55%] -translate-x-1/2 -translate-y-1/2 z-20">
+<button class="bg-surface-container-lowest hover:bg-primary hover:text-on-primary text-on-surface font-price-display text-label-md font-bold px-3 py-1.5 rounded-full shadow-level-1 border border-outline-variant hover:border-primary transition-all duration-150 flex items-center cursor-pointer">
+<span>495 TND</span>
+</button>
+</div>
+<!-- Secondary Landmark Indicators for Editorial Depth -->
+<div class="absolute top-[48%] left-[72%] text-center pointer-events-none opacity-80">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="beach_access">beach_access</span>
+<p class="text-[10px] font-semibold text-on-surface-variant bg-surface-container-lowest/80 px-1 rounded backdrop-blur-sm">Marsa Plage</p>
+</div>
+<div class="absolute top-[78%] left-[64%] text-center pointer-events-none opacity-80">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="anchor">anchor</span>
+<p class="text-[10px] font-semibold text-on-surface-variant bg-surface-container-lowest/80 px-1 rounded backdrop-blur-sm">Old Port</p>
+</div>
+</aside>
+</main>
+<!-- SHARED COMPONENT: Footer -->
+<footer class="full-width bg-surface-container-low border-t border-outline-variant">
+<div class="w-full max-w-[1120px] mx-auto px-5 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+<!-- Logo & Editorial Copyright -->
+<div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+<a class="font-headline-sm text-headline-sm text-primary tracking-tight" href="#">Stayora</a>
+<span class="hidden sm:inline text-outline">|</span>
+<p class="text-body-md font-body-md text-on-surface-variant">
+          © 2025 Stayora, Inc. Warm editorial travel discoveries and sanctuaries.
+        </p>
+</div>
+<!-- Mandatory Footer Links -->
+<div class="flex flex-wrap items-center justify-center gap-6 text-label-md font-label-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Terms</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Sitemap</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Destinations</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Company</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>

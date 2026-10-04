@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stayora Host Suite — Host Dashboard</title>
+<!-- Google Fonts: Noto Serif & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#7f2a18",
+            "secondary-container": "#fe8b71",
+            "surface-tint": "#256861",
+            "on-secondary": "#ffffff",
+            "on-background": "#0d1f18",
+            "on-primary-fixed": "#00201d",
+            "outline": "#6f7977",
+            "primary-container": "#145c55",
+            "inverse-surface": "#22342c",
+            "secondary": "#9e412d",
+            "primary": "#00433e",
+            "on-secondary-container": "#752311",
+            "outline-variant": "#bfc9c6",
+            "primary-fixed": "#adefe5",
+            "on-surface-variant": "#3f4947",
+            "secondary-fixed-dim": "#ffb4a4",
+            "tertiary": "#353d3a",
+            "on-secondary-fixed": "#3d0600",
+            "inverse-on-surface": "#e1f6ea",
+            "surface": "#FAF7F2",
+            "on-error": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#91d3c9",
+            "on-primary-fixed-variant": "#005049",
+            "on-surface": "#0d1f18",
+            "on-tertiary-container": "#c0c8c4",
+            "error": "#ba1a1a",
+            "surface-variant": "#d2e7dc",
+            "inverse-primary": "#91d3c9",
+            "surface-container-low": "#f4efe7",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#dce4e0",
+            "tertiary-container": "#4c5451",
+            "on-tertiary-fixed-variant": "#414846",
+            "on-tertiary-fixed": "#161d1b",
+            "surface-bright": "#FAF7F2",
+            "tertiary-fixed-dim": "#c0c8c5",
+            "on-primary-container": "#91d2c9",
+            "surface-container-highest": "#e8e2d8",
+            "surface-container-high": "#efe9e0",
+            "background": "#FAF7F2",
+            "on-error-container": "#93000a",
+            "surface-dim": "#e4ded4",
+            "on-tertiary": "#ffffff",
+            "surface-container": "#FAF7F2",
+            "secondary-fixed": "#ffdad3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-lg": "1.25rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "1.25rem",
+            "space-md": "1rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Noto Serif"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Noto Serif"],
+            "title-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "price-display": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "headline-sm": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "price-display": ["18px", { "lineHeight": "22px", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md text-body-md selection:bg-primary selection:text-on-primary min-h-screen">
+<!-- TopNavBar (Shared Component JSON Blueprint) -->
+<header class="docked full-width top-0 w-full bg-surface-container-lowest border-b border-outline-variant shadow-sm z-30 sticky top-0">
+<div class="flex justify-between items-center w-full px-space-lg mx-auto max-w-[1120px] h-16">
+<!-- Left: Brand Logo + Host Mode Badge -->
+<div class="flex items-center gap-3">
+<a class="font-headline-lg text-headline-lg text-primary tracking-tight font-semibold flex items-center gap-2" href="#">
+<span>Stayora</span>
+</a>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-surface-container-high text-primary border border-outline-variant/60 font-semibold tracking-wide">
+          Host Mode
+        </span>
+</div>
+<!-- Navigation Links from Shared Components JSON: ['Today', 'Listings', 'Calendar', 'Messages'] -->
+<!-- Active Intent: Dashboard/Today => 'Today' is active -->
+<nav class="hidden md:flex items-center gap-8 h-full">
+<a class="border-b-2 border-primary text-primary font-label-lg text-label-lg py-4 flex items-center gap-1.5 transition-colors" href="#">
+<span>Today</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg py-4 transition-colors" href="#">
+<span>Listings</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg py-4 transition-colors" href="#">
+<span>Calendar</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg py-4 transition-colors relative" href="#">
+<span>Messages</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary absolute top-4 right-[-6px]"></span>
+</a>
+</nav>
+<!-- Trailing Action Cluster: Switch to Guest Mode, Notifications, Avatar -->
+<div class="flex items-center gap-3">
+<a class="hidden sm:inline-block text-on-surface-variant hover:text-primary font-label-md text-label-md py-2 px-3 rounded-lg hover:bg-surface-container-low transition-colors duration-200" href="#">
+          Switch to Guest mode
+        </a>
+<!-- Notification Bell Icon (trailing_icon_actions: ['notifications']) -->
+<button aria-label="Notifications" class="relative p-2 rounded-full hover:bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<!-- Nadia Profile Avatar -->
+<button class="flex items-center gap-2 pl-1 pr-2 py-1 rounded-full border border-outline-variant hover:border-primary transition-all duration-150 active:scale-[0.98]">
+<img alt="Host profile portrait" class="w-8 h-8 rounded-full object-cover" data-alt="Close-up portrait of Nadia, a stylish Tunisian female host with a warm, serene smile wearing an elegant linen scarf. Natural warm Mediterranean morning light enters from the side, with soft cream and architectural foliage softly blurred in the background, matching warm editorial hospitality tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFLieN6U8NhVITO7P0CYxYtgwGlUE3R1BwDQv8LkiP6Z-O225YDTdRiPx4VmH2oRjvxxc9fybYKBgsH5Qzt2Qnss2fnsoFzSCrGZgApPNoS24raWVJRfSTQOGMVTdh2T_3CuMO-CfY2drCv-NEvUz0RXMR3zK_TFyahAbrfO7j5bgqevIVFDE57y4kip0wZwOLuG5DjGWhgLKpBY-bgwVKTBdlf4EDz6yn5id_DBgZu8rWU_YcbKf-"/>
+<span class="font-label-md text-label-md font-semibold text-on-surface hidden lg:inline">Nadia</span>
+<span class="material-symbols-outlined text-[18px] text-outline">expand_more</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="w-full max-w-[1120px] mx-auto px-5 lg:px-8 py-8">
+<!-- Welcome & Live Activity Banner -->
+<section class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-outline-variant/60">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest text-primary text-label-sm font-label-sm border border-outline-variant/50 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+            All systems active · 1 check-in arriving today
+          </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight font-semibold">
+          Welcome back, Nadia
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+          Here is your property activity for Wednesday, Nov 12 · 2 published properties in La Marsa, Tunis
+        </p>
+</div>
+<!-- Quick Action Pill Group -->
+<div class="flex items-center gap-2">
+<button class="h-[40px] px-4 rounded-xl border border-outline-variant bg-surface-container-lowest hover:bg-surface-container-low text-primary font-label-md text-label-md flex items-center gap-2 transition-all duration-150 active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Create Listing</span>
+</button>
+<button class="h-[40px] px-4 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md flex items-center gap-2 transition-all duration-150 active:scale-[0.98] shadow-sm">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>Quick Settings</span>
+</button>
+</div>
+</section>
+<!-- Multi-Column Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT COLUMN (8 cols / ~2/3) -->
+<div class="lg:col-span-8 space-y-6">
+<!-- CARD 1: Today's Turnover & Check-ins Card -->
+<article class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-6 shadow-[0px_2px_8px_rgba(37,55,47,0.04)]">
+<div class="flex items-start justify-between border-b border-outline-variant/50 pb-4 mb-5">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">luggage</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-primary font-bold">Upcoming Arrival</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-1">Today's Turnover &amp; Check-ins</h2>
+</div>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+              Est. 4:00 PM
+            </span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+<!-- Property Preview Mini -->
+<div class="sm:col-span-1 rounded-xl overflow-hidden border border-outline-variant/70 relative group">
+<img alt="Sunlit courtyard apartment preview" class="w-full h-36 sm:h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Editorial photograph of a tranquil sunlit traditional courtyard apartment in La Marsa, Tunisia. Hand-painted ceramic mosaic tiles surround a small serene stone water fountain, bathed in warm Mediterranean afternoon sunlight. Cream stucco walls, potted citrus trees, and artisanal wrought-iron details evoke a calm, authentic sanctuary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxmOT7Q37WesC3zabM0tFAb1pHlEESqKIictDSM5dvc6zTe2WcMeGq2N0krYzv-W2UVnRYdtvJa1lrl9vzoCebm_sY9Xs3RUW1BkoQYQXAyQtTy-3TIXhKS3VkDDpKbh_pDNSwXSNnL7UT6isaMKCXfVkJRpikyLe6ZUocCF69hd3jw5Q1_QyaD7SElksNrEca1JPnm6jsaH6EtznU9HIbUWKT9QvP8yKkDiplRdYFEGaTw9aq_nOJ"/>
+<div class="absolute bottom-2 left-2 bg-inverse-surface/80 backdrop-blur-sm text-surface px-2 py-0.5 rounded text-[11px] font-medium">
+                La Marsa Plage
+              </div>
+</div>
+<!-- Guest & Booking Summary -->
+<div class="sm:col-span-2 flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-primary flex items-center justify-center font-bold text-title-md">
+                    SB
+                  </div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Sami Ben Ali</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Sunlit courtyard apartment · 2 guests · 3 nights (Nov 12–15)</p>
+</div>
+</div>
+<!-- Smart Lock Keypad Code Highlight Box -->
+<div class="mt-4 p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/60 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container text-[22px]">pin</span>
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Smart-lock keypad code</div>
+<div class="font-price-display text-price-display text-primary tracking-widest">8492#</div>
+</div>
+</div>
+<div class="text-right">
+<span class="inline-block text-[11px] font-label-sm text-outline">Activates at 3:00 PM</span>
+<span class="block text-[11px] text-primary-container font-semibold">Self check-in ready</span>
+</div>
+</div>
+</div>
+<!-- Action buttons -->
+<div class="flex flex-wrap items-center gap-3 pt-2">
+<button class="h-[44px] px-5 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md flex items-center gap-2 transition-all duration-150 active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span>Message Sami</span>
+</button>
+<button class="h-[44px] px-4 rounded-xl border border-outline-variant bg-surface-container-lowest hover:bg-surface-container-low text-on-surface font-label-md text-label-md flex items-center gap-2 transition-all duration-150 active:scale-[0.98]">
+<span>View reservation details</span>
+<span class="material-symbols-outlined text-[16px] text-outline">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- CARD 2: Pending Booking Requests (Action Needed) -->
+<article class="bg-surface-container-lowest rounded-2xl border-2 border-secondary-container/40 p-6 shadow-[0px_2px_8px_rgba(37,55,47,0.04)] relative overflow-hidden">
+<!-- Subtle Accent bar on top -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-secondary"></div>
+<div class="flex items-start justify-between border-b border-outline-variant/50 pb-4 mb-5">
+<div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold uppercase bg-secondary-fixed text-on-secondary-fixed-variant tracking-wider">
+                  Action Needed
+                </span>
+<span class="text-label-sm font-label-sm text-secondary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">hourglass_top</span>
+                  Expires in 14 hours
+                </span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-1">Pending Booking Request</h2>
+</div>
+<div class="text-right">
+<span class="block font-price-display text-price-display text-primary">960.000 TND</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total payout (4 nights)</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
+<!-- Property thumbnail and details -->
+<div class="md:col-span-8 flex gap-4 items-start">
+<img alt="Villa Jasmine by the Sea" class="w-20 h-20 rounded-xl object-cover border border-outline-variant flex-shrink-0" data-alt="Architectural photograph of Villa Jasmine by the Sea in La Marsa, Tunisia. Whitewashed walls, deep cobalt-blue shutters, fragrant jasmine trellises climbing a pergola, and calm azure Mediterranean sea horizon in the background under clear soft daylight. Warm, luxurious, minimalist seaside sanctuary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlPZI2vWhEkoOfnmu16wxRJKvMiverjd5W897eNCpclryRA9XY8glJmYRu1kV7pUk-j_ZsJkA6cGTNmgu8qzqOd-Wo_t4QxsavrwhFrUBht1lj6eQO4ir3W_Nh_32vp10ATak2WMME_64pTBb4zQYDFadOHWb91Zio1oDKjEz5wGjPCr7f4bGWxVpGoUKxZmO0pcqJwGZ0ggnsiOr9FrO4UsUAx5ilGefFQZ_OzhrNOdluENsvliHI"/>
+<div>
+<h3 class="font-headline-md text-[18px] text-on-surface font-semibold">Villa Jasmine by the Sea</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+                  Request from <span class="font-semibold text-on-surface">Elena Rostova</span>
+</p>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-label-sm font-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">calendar_today</span>
+                    Nov 18–22 (4 nights)
+                  </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">group</span>
+                    4 guests (2 adults, 2 kids)
+                  </span>
+</div>
+</div>
+</div>
+<!-- Dual CTAs: Decline and Accept Request -->
+<div class="md:col-span-4 flex md:flex-col gap-2.5 justify-end">
+<button class="h-[46px] w-full px-4 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-semibold transition-all duration-150 active:scale-[0.98] shadow-sm flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>Accept Request</span>
+</button>
+<button class="h-[46px] w-full px-4 rounded-xl border border-outline-variant hover:bg-surface-container-low text-secondary font-label-md text-label-md font-medium transition-all duration-150 active:scale-[0.98] flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">close</span>
+<span>Decline</span>
+</button>
+</div>
+</div>
+</article>
+<!-- CARD 3: Unread Messages Widget -->
+<article class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-6 shadow-[0px_2px_8px_rgba(37,55,47,0.04)]">
+<div class="flex items-center justify-between border-b border-outline-variant/50 pb-4 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">chat_bubble</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Recent Messages</h2>
+</div>
+<a class="font-label-md text-label-md text-primary font-semibold hover:underline flex items-center gap-1" href="#">
+              View all messages
+              <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+<!-- Message Thread item -->
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/60 mb-4">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-label-lg">
+                  SB
+                </div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Sami Ben Ali</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Checking in today · Sunlit courtyard apartment</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-outline">10:45 AM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mt-3 italic pl-12 border-l-2 border-primary-container/40">
+              "Thank you Nadia! Could you confirm if early luggage drop-off around 1:30 PM would be feasible with your cleaning team?"
+            </p>
+</div>
+<!-- Quick reply field -->
+<div class="flex items-center gap-3">
+<div class="relative flex-grow">
+<input class="w-full h-[48px] pl-4 pr-12 rounded-xl bg-surface-container-lowest border border-outline-variant text-body-md font-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container" placeholder="Type a quick reply to Sami..." type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" title="Attach check-in guide">
+<span class="material-symbols-outlined text-[20px]">attachment</span>
+</button>
+</div>
+<button class="h-[48px] px-5 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-semibold flex items-center gap-2 transition-all duration-150 active:scale-[0.98] shadow-sm">
+<span>Send</span>
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</article>
+</div>
+<!-- RIGHT COLUMN (4 cols / ~1/3) -->
+<div class="lg:col-span-4 space-y-6">
+<!-- WIDGET 1: November 2026 Performance card -->
+<article class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-6 shadow-[0px_2px_8px_rgba(37,55,47,0.04)]">
+<div class="flex items-center justify-between border-b border-outline-variant/50 pb-4 mb-5">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">November Performance</h2>
+<span class="font-label-sm text-label-sm text-outline">Nov 2026</span>
+</div>
+<div class="space-y-4">
+<!-- Stat Pill 1: Occupancy -->
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/50">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-md text-label-md text-on-surface-variant">Occupancy rate</span>
+<span class="inline-flex items-center text-[12px] font-semibold text-primary gap-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                  +6% vs Oct
+                </span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-[26px] font-bold text-on-surface">84%</span>
+<span class="text-label-sm font-label-sm text-outline">Target: 80%</span>
+</div>
+<div class="w-full bg-outline-variant/40 rounded-full h-1.5 mt-3 overflow-hidden">
+<div class="bg-primary-container h-1.5 rounded-full" style="width: 84%"></div>
+</div>
+</div>
+<!-- Stat Pill 2: Gross payout -->
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/50">
+<span class="font-label-md text-label-md text-on-surface-variant block mb-1">Gross payout (MTD)</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-[26px] font-bold text-primary">2,480.000</span>
+<span class="font-label-lg text-label-lg font-semibold text-on-surface-variant">TND</span>
+</div>
+<span class="text-[12px] text-outline mt-1 block">Expected on Friday, Nov 14</span>
+</div>
+<!-- Stat Pill 3: Active listings -->
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/50 flex items-center justify-between">
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant block">Active listings</span>
+<span class="font-title-md text-title-md font-bold text-on-surface">2 Properties</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-lowest border border-outline-variant text-[12px] font-semibold text-primary">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                Both Live
+              </span>
+</div>
+</div>
+</article>
+<!-- WIDGET 2: Calendar Quick-Glance Widget -->
+<article class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-6 shadow-[0px_2px_8px_rgba(37,55,47,0.04)]">
+<div class="flex items-center justify-between border-b border-outline-variant/50 pb-3 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">calendar_month</span>
+<h2 class="font-headline-sm text-[18px] text-on-surface font-semibold">Calendar Glance</h2>
+</div>
+<span class="font-label-md text-label-md font-semibold text-primary">November 2026</span>
+</div>
+<!-- Mini Calendar Grid -->
+<div class="text-center">
+<!-- Day labels -->
+<div class="grid grid-cols-7 gap-1 text-[11px] font-label-sm font-semibold text-outline mb-2">
+<span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+</div>
+<!-- Calendar Days (Focusing around Nov 10 - Nov 23) -->
+<div class="grid grid-cols-7 gap-1 text-[12px] font-label-md">
+<span class="py-1.5 text-outline-variant">9</span>
+<span class="py-1.5 text-on-surface-variant">10</span>
+<span class="py-1.5 text-on-surface-variant">11</span>
+<!-- Day 12: Today (Active check-in) -->
+<span class="py-1.5 bg-primary text-on-primary rounded-lg font-bold shadow-xs relative">
+                12
+                <span class="w-1 h-1 bg-secondary-fixed rounded-full absolute bottom-0.5 left-1/2 -translate-x-1/2"></span>
+</span>
+<!-- Days 13-14-15 (Sami booking) -->
+<span class="py-1.5 bg-surface-container-high text-primary rounded-lg font-medium">13</span>
+<span class="py-1.5 bg-surface-container-high text-primary rounded-lg font-medium">14</span>
+<span class="py-1.5 bg-surface-container-high text-primary rounded-lg font-medium">15</span>
+<span class="py-1.5 text-on-surface-variant">16</span>
+<span class="py-1.5 text-on-surface-variant">17</span>
+<!-- Days 18-21 (Pending Elena) -->
+<span class="py-1.5 border border-dashed border-secondary text-secondary rounded-lg font-semibold" title="Pending Elena">18</span>
+<span class="py-1.5 border border-dashed border-secondary text-secondary rounded-lg font-semibold" title="Pending Elena">19</span>
+<span class="py-1.5 border border-dashed border-secondary text-secondary rounded-lg font-semibold" title="Pending Elena">20</span>
+<span class="py-1.5 border border-dashed border-secondary text-secondary rounded-lg font-semibold" title="Pending Elena">21</span>
+<span class="py-1.5 text-on-surface-variant">22</span>
+</div>
+</div>
+<!-- Calendar legend -->
+<div class="mt-4 pt-3 border-t border-outline-variant/40 flex items-center justify-between text-[11px] font-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary"></span>
+              Today
+            </span>
+<span class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-sm bg-surface-container-high"></span>
+              Confirmed
+            </span>
+<span class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-sm border border-dashed border-secondary"></span>
+              Pending
+            </span>
+</div>
+</article>
+<!-- WIDGET 3: Host Insights & Tips card -->
+<article class="bg-surface-container-low rounded-2xl border border-outline-variant p-6 shadow-[0px_2px_8px_rgba(37,55,47,0.04)] relative">
+<div class="flex items-center gap-2 mb-3 text-secondary font-semibold font-label-sm text-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[18px]">lightbulb</span>
+<span>Host Insights &amp; Tips</span>
+</div>
+<h3 class="font-headline-sm text-[17px] text-on-surface font-semibold mb-2">
+            Boost booking pace
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Hosts in La Marsa who sync their calendar with local weekend festivals see an <strong class="text-primary font-semibold">18% increase</strong> in reservations during shoulder season.
+          </p>
+<a class="mt-4 inline-flex items-center gap-1.5 font-label-md text-label-md text-primary font-semibold hover:underline" href="#">
+<span>Explore La Marsa event dates</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</article>
+</div>
+</div>
+</main>
+<!-- Editorial Footer -->
+<footer class="w-full border-t border-outline-variant/60 bg-surface-container-lowest mt-16 py-8">
+<div class="max-w-[1120px] mx-auto px-5 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-sm text-primary font-bold">Stayora</span>
+<span>· Host Suite · Hospitality with soul</span>
+</div>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary transition-colors" href="#">Host Standards</a>
+<a class="hover:text-primary transition-colors" href="#">Property Insurance</a>
+<a class="hover:text-primary transition-colors" href="#">Support Concierge</a>
+</div>
+</div>
+</footer>
+</body></html>

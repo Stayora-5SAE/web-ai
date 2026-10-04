@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.angular/
+coverage/
+target/
+.env
+.env.*
+!.env.example
+*.log
+.idea/
+.vscode/
+tmp/
+test-results/
+playwright-report/
+.playwright-cli/
+output/playwright/

@@ -1,0 +1,52 @@
+{
+  "name": "stayora-frontend",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22 <23"
+  },
+  "scripts": {
+    "start": "ng serve --host 127.0.0.1",
+    "build": "ng build",
+    "lint": "ng lint",
+    "test": "ng test --watch=false --browsers=ChromeHeadless"
+  },
+  "dependencies": {
+    "@angular/animations": "18.2.14",
+    "@angular/common": "18.2.14",
+    "@angular/compiler": "18.2.14",
+    "@angular/core": "18.2.14",
+    "@angular/forms": "18.2.14",
+    "@angular/platform-browser": "18.2.14",
+    "@angular/platform-browser-dynamic": "18.2.14",
+    "@angular/router": "18.2.14",
+    "leaflet": "1.9.4",
+    "rxjs": "7.8.2",
+    "tslib": "2.8.1",
+    "zone.js": "0.14.10"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "18.2.21",
+    "@angular-eslint/builder": "18.4.3",
+    "@angular-eslint/eslint-plugin": "18.4.3",
+    "@angular-eslint/eslint-plugin-template": "18.4.3",
+    "@angular-eslint/template-parser": "18.4.3",
+    "@angular/cli": "18.2.21",
+    "@angular/compiler-cli": "18.2.14",
+    "@types/jasmine": "5.1.4",
+    "@types/leaflet": "1.9.15",
+    "@typescript-eslint/eslint-plugin": "8.18.0",
+    "@typescript-eslint/parser": "8.18.0",
+    "autoprefixer": "10.4.24",
+    "eslint": "8.57.1",
+    "jasmine-core": "5.2.0",
+    "karma": "6.4.4",
+    "karma-chrome-launcher": "3.2.0",
+    "karma-coverage": "2.2.1",
+    "karma-jasmine": "5.1.0",
+    "karma-jasmine-html-reporter": "2.1.0",
+    "postcss": "8.5.6",
+    "tailwindcss": "3.4.19",
+    "typescript": "5.5.4"
+  }
+}
