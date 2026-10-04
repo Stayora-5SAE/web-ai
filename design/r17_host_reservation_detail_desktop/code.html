@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stayora - Reservation ST-1026</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#7f2a18",
+            "secondary-container": "#fe8b71",
+            "surface-tint": "#256861",
+            "on-secondary": "#ffffff",
+            "on-background": "#0d1f18",
+            "on-primary-fixed": "#00201d",
+            "outline": "#6f7977",
+            "primary-container": "#145c55",
+            "inverse-surface": "#22342c",
+            "secondary": "#9e412d",
+            "primary": "#00433e",
+            "on-secondary-container": "#752311",
+            "outline-variant": "#bfc9c6",
+            "primary-fixed": "#adefe5",
+            "on-surface-variant": "#3f4947",
+            "secondary-fixed-dim": "#ffb4a4",
+            "tertiary": "#353d3a",
+            "on-secondary-fixed": "#3d0600",
+            "inverse-on-surface": "#e1f6ea",
+            "surface": "#e9fef2",
+            "on-error": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#91d3c9",
+            "on-primary-fixed-variant": "#005049",
+            "on-surface": "#0d1f18",
+            "on-tertiary-container": "#c0c8c4",
+            "error": "#ba1a1a",
+            "surface-variant": "#d2e7dc",
+            "inverse-primary": "#91d3c9",
+            "surface-container-low": "#e3f9ec",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#dce4e0",
+            "tertiary-container": "#4c5451",
+            "on-tertiary-fixed-variant": "#414846",
+            "on-tertiary-fixed": "#161d1b",
+            "surface-bright": "#e9fef2",
+            "tertiary-fixed-dim": "#c0c8c5",
+            "on-primary-container": "#91d2c9",
+            "surface-container-highest": "#d2e7dc",
+            "surface-container-high": "#d8ede1",
+            "background": "#FAF7F2",
+            "on-error-container": "#93000a",
+            "surface-dim": "#cadfd3",
+            "on-tertiary": "#ffffff",
+            "surface-container": "#def3e7",
+            "secondary-fixed": "#ffdad3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-lg": "1.25rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "1.25rem",
+            "space-md": "1rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Noto Serif"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Noto Serif"],
+            "title-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "price-display": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "headline-sm": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "price-display": ["18px", { "lineHeight": "22px", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopNavBar (Shared Component JSON Execution) -->
+<header class="bg-surface-container-lowest border-b border-outline-variant shadow-sm docked full-width top-0 w-full z-30 sticky">
+<div class="flex justify-between items-center w-full px-space-lg mx-auto max-w-[1120px] h-16">
+<!-- Left: Logo & Context -->
+<div class="flex items-center gap-6">
+<a class="font-headline-lg text-headline-lg text-primary tracking-tight font-semibold flex items-center gap-2" href="#">
+<span>Stayora</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider bg-surface-container-high text-primary px-2 py-0.5 rounded-full border border-outline-variant">Host Mode</span>
+</a>
+</div>
+<!-- Center: Navigation Links -->
+<nav class="hidden md:flex items-center space-x-8 h-full">
+<a class="text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg py-4 transition-colors" href="#">Today</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg py-4 transition-colors" href="#">Listings</a>
+<a class="border-b-2 border-primary text-primary font-label-lg text-label-lg py-4" href="#">Calendar</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg py-4 transition-colors" href="#">Messages</a>
+</nav>
+<!-- Right: Trailing Actions -->
+<div class="flex items-center space-x-4">
+<button class="hidden lg:flex items-center font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low px-3 py-1.5 rounded-lg active:scale-[0.98]">
+          Switch to Guest mode
+        </button>
+<button aria-label="Notifications" class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-full transition-colors relative">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<div class="flex items-center gap-3 pl-2 border-l border-outline-variant">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Host profile portrait" class="w-full h-full object-cover" data-alt="Editorial portrait of Nadia, an experienced Tunisian superhost wearing an elegant linen outfit in a serene warm courtyard bathed in Mediterranean morning natural light. The mood is welcoming and refined." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc9_zY0Wtv5UaSHm1XCYdsmhVKJjQ3W-KMrobpDAJaSufa5bmqVlUld9VMy2eEmpKZ1YHkiJk__vGtF3PNwXDtaxwNi5Yn5ztNYCDcb7ju0ZkdACt5atMZu_qiM2a_RZ5j5EKAqm8rjFXzAKPdB__-y57cXSkXXf4EhN2FBWkZu7Xx0HhJBhPo5gk1jM00xP2HQ2frZ8OxdvaeeoDjZRkS875OoTaKWey9xSOIsR3cIf5IGP1CFebv"/>
+</div>
+<span class="hidden sm:inline-block font-label-md text-label-md text-on-surface">Nadia</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Sub-header Breadcrumb & Actions Bar -->
+<div class="bg-surface-container-lowest/80 backdrop-blur-sm border-b border-outline-variant/60">
+<div class="max-w-7xl mx-auto px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center space-x-3">
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary hover:underline group" href="#">
+<span class="material-symbols-outlined text-[18px] group-hover:-translate-x-0.5 transition-transform" data-icon="arrow_back">arrow_back</span>
+<span>Back to Calendar / Reservations</span>
+</a>
+<span class="text-outline-variant">•</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Reference: <strong class="text-on-surface font-semibold">ST-1026</strong></span>
+</div>
+<div class="flex items-center space-x-3">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md border border-outline-variant/50 transition-colors" onclick="window.print()">
+<span class="material-symbols-outlined text-[16px]" data-icon="print">print</span>
+<span>Print PDF summary</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md border border-outline-variant/50 transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="share">share</span>
+<span>Share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Canvas Container -->
+<main class="flex-grow max-w-7xl w-full mx-auto px-6 lg:px-8 py-8 space-y-6">
+<!-- Top Summary Banner -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant/80 shadow-[0px_2px_8px_rgba(37,55,47,0.04)] flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-wrap items-center gap-3 md:gap-4">
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight">Reservation ST-1026</span>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold tracking-wide">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+          Confirmed (Instant Book)
+        </span>
+<span class="text-on-surface-variant font-body-md text-body-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="schedule">schedule</span>
+          Booked Oct 28, 2026
+        </span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container-high text-primary font-label-sm text-label-sm border border-outline-variant/60">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+          Upcoming in 15 days
+        </span>
+</div>
+</div>
+<!-- 2-Column Responsive Desktop Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column (w-2/3) -->
+<section class="lg:col-span-8 space-y-6">
+<!-- 1. Guest Profile Card -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/80 p-6 shadow-[0px_2px_8px_rgba(37,55,47,0.04)]">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-5">
+<div class="flex items-start gap-4">
+<div class="relative">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary-container/20">
+<img alt="Guest Sami Ben Ali profile" class="w-full h-full object-cover" data-alt="Natural editorial close-up headshot of guest Sami Ben Ali, a calm 30-year-old traveler with a warm smile, wearing a dark green tailored jacket with soft daylight filtering through warm Tunisian architectural archways. Pristine natural tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBggF4_cQ-jOU4HWVD6V7r8-qDzk0OUK4m5tm_j4Afw8-zgGd2r8-IVCzgx745L77gIAEY01-VLcmN8-6GNqtuinakWtZEx11VJn0J8DBp8zuTc0X1oKJKlH_lqtmQ9i7TJbwsSiA55wWy6XlJuwMOCv5NSMIbEHZBzHm6MbR3ka_W0MyCES2PH3POWRx89Py0DeSeu2PmFwflLh6AeIV3PH9xDQwLm1j5TGYRMo_RxFUVoV-Mmsdf9"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-primary text-on-primary rounded-full p-0.5 border-2 border-surface-container-lowest" title="Identity Verified">
+<span class="material-symbols-outlined text-[14px] block" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Sami Ben Ali</h2>
+<span class="bg-surface-container-low text-primary border border-outline-variant/60 px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold">Verified Identity</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Guest from Tunis · 2 guests (2 adults)</p>
+<div class="flex items-center gap-3 mt-2 text-on-surface">
+<div class="flex items-center gap-1 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-semibold">4.9</span>
+</div>
+<span class="text-outline-variant">•</span>
+<span class="font-body-md text-body-md text-on-surface-variant underline cursor-pointer hover:text-primary">8 reviews from previous hosts</span>
+</div>
+</div>
+</div>
+<!-- Guest Action Buttons -->
+<div class="flex sm:flex-col gap-2.5 sm:min-w-[140px]">
+<a class="flex-1 inline-flex items-center justify-center gap-2 h-[44px] px-4 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg transition-all active:scale-[0.98] shadow-sm" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="chat_bubble">chat_bubble</span>
+<span>Message guest</span>
+</a>
+<a class="flex-1 inline-flex items-center justify-center gap-2 h-[44px] px-4 rounded-xl bg-surface-container-low hover:bg-surface-container text-primary border border-outline-variant/70 font-label-lg text-label-lg transition-all active:scale-[0.98]" href="tel:+21671000000">
+<span class="material-symbols-outlined text-[18px]" data-icon="call">call</span>
+<span>Call guest</span>
+</a>
+</div>
+</div>
+</div>
+<!-- 2. Property & Stay Schedule Card -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/80 p-6 shadow-[0px_2px_8px_rgba(37,55,47,0.04)] space-y-6">
+<div class="flex items-start gap-4 pb-5 border-b border-outline-variant/60">
+<div class="w-24 h-20 rounded-xl overflow-hidden flex-shrink-0 border border-outline-variant/50">
+<img alt="Sunlit courtyard apartment, La Marsa" class="w-full h-full object-cover" data-alt="Architectural photograph of a sunlit courtyard apartment in La Marsa Tunis featuring traditional zellige tiled walls, lush potted jasmine plants, white carved stucco archways, and soft morning sunlight reflecting on polished stone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEGjfBB5WT14wmn47VvlNh4naxqmB1BIGnAQ-kl1odBR5ZY6H_5cIkCt-uRJL3fvbUCoz6u_i0A4u8U2WUiWLpXk0MCxS-jlCtCYJnN84-sSRKddiOTTaHgn7k_djzmdKJemBnnUuiyq9MVDCtxrFiuetcgVKo2jV4dsGp2EgK2xx1OReTtJ4SbBExmGFUclfio3fSPx66kc-gcgduzRE-OkWbZbhMLhmg1dA0PCNZs_CESWEoN6GX"/>
+</div>
+<div class="flex-1 min-w-0">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">Entire Apartment</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Sunlit courtyard apartment, La Marsa, Tunis</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1.5 mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="location_on">location_on</span>
+                Rue de la Plage, La Marsa Plage, Tunis 2078
+              </p>
+</div>
+</div>
+<!-- Schedule Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-surface-container-low/50 rounded-xl p-4 border border-outline-variant/40">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-medium">Check-in</span>
+<p class="font-headline-sm text-headline-sm text-on-surface">Thu, Nov 12, 2026</p>
+<p class="font-body-md text-body-md text-on-surface-variant">From 3:00 PM</p>
+<div class="inline-flex items-center gap-1 text-primary font-label-sm text-label-sm font-semibold bg-surface-container px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]" data-icon="flight_land">flight_land</span>
+                Est. arrival: 4:00 PM
+              </div>
+</div>
+<div class="space-y-1 md:border-l md:border-outline-variant/50 md:pl-4">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-medium">Check-out</span>
+<p class="font-headline-sm text-headline-sm text-on-surface">Sun, Nov 15, 2026</p>
+<p class="font-body-md text-body-md text-on-surface-variant">By 11:00 AM</p>
+<div class="inline-flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]" data-icon="cleaning_services">cleaning_services</span>
+                Turnover scheduled
+              </div>
+</div>
+<div class="space-y-1 md:border-l md:border-outline-variant/50 md:pl-4 flex flex-col justify-center">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-medium">Duration</span>
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md text-primary font-bold">3</span>
+<span class="font-body-lg text-body-lg text-on-surface">nights total</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Standard autumn rate</p>
+</div>
+</div>
+</div>
+<!-- 3. Smart Keycode & Access Information Card -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/80 p-6 shadow-[0px_2px_8px_rgba(37,55,47,0.04)] space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="key">key</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Smart Keycode &amp; Access Information</h3>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container-high text-primary px-2.5 py-1 rounded-full font-medium">Yale Assure Smart Lock</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-surface-container-low/70 border border-outline-variant/60">
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider block">Generated Guest Keycode</span>
+<div class="flex items-center gap-3 mt-1">
+<span class="font-mono text-2xl font-bold tracking-widest text-primary bg-surface-container-lowest px-3 py-1 rounded-lg border border-outline-variant">8492#</span>
+<button class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary hover:text-primary-container underline" onclick="navigator.clipboard?.writeText('8492#'); alert('Keycode 8492# copied to clipboard');">
+<span class="material-symbols-outlined text-[16px]" data-icon="content_copy">content_copy</span>
+<span>Copy Code</span>
+</button>
+</div>
+</div>
+<div class="text-sm sm:text-right text-on-surface-variant">
+<p class="font-label-sm text-label-sm text-primary font-semibold">Active window</p>
+<p class="font-body-md text-body-md">Nov 12 (3:00 PM) – Nov 15 (11:30 AM)</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-start gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary flex-shrink-0 mt-0.5" data-icon="info">info</span>
+<span>Code automatically activates on smart lock at 3:00 PM on Nov 12, 2026. Guest has already received digital instructions.</span>
+</p>
+<div class="bg-surface-container/40 rounded-xl p-3.5 border border-outline-variant/50">
+<span class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider font-semibold block mb-1">Host Notes</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Guest requested self check-in via keypad. Arrival flight arrives at Tunis-Carthage at 2:30 PM.</p>
+</div>
+</div>
+<!-- 4. Guest Communication History Card -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/80 p-6 shadow-[0px_2px_8px_rgba(37,55,47,0.04)] space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="forum">forum</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Guest Communication</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Response time: &lt; 15 min</span>
+</div>
+<div class="bg-surface-container-low/40 rounded-xl p-4 border border-outline-variant/60 flex items-start gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-outline-variant">
+<img alt="Sami Ben Ali thumbnail" class="w-full h-full object-cover" data-alt="Close headshot of Sami Ben Ali in natural soft warm Mediterranean lighting, looking friendly and polite with a welcoming demeanor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBqMFFpFzdJujJc3Dm0iYET7waw-01l1avmHDEPMFJIBAQ2lwOPwuzqnOj6O2DsKDBfCR9IkrGixPsJMS6gkkKjdB8PIOvccn-W5sXf8CBhvBTMMGESPbZw4QEvE7iL6WgnsfZrOjjz7OYUSX7vgw4mleEsdSYI2tb14NRdexqzKBN0mEettdBEqtLUrpMPXyHs40NRKND8ZLfxUoTaMpGgvSb4ap4zvreOaWxzBzG6zoijWxKHMKT"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-on-surface">Sami Ben Ali</span>
+<span class="font-label-sm text-label-sm text-outline">Oct 28, 6:42 PM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mt-1 leading-relaxed bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/50">
+                “Hi Nadia! We expect to arrive around 4:00 PM on Thursday, Nov 12. Looking forward to our stay in La Marsa!”
+              </p>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<a class="inline-flex items-center gap-1.5 font-label-lg text-label-lg text-primary hover:underline" href="#">
+<span>Open full conversation</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<span class="font-label-sm text-label-sm text-outline">3 messages exchanged</span>
+</div>
+</div>
+</section>
+<!-- Right Column (w-1/3) -->
+<aside class="lg:col-span-4 space-y-6">
+<!-- 1. Financial Payout Breakdown Card -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/80 p-6 shadow-[0px_2px_8px_rgba(37,55,47,0.04)] space-y-5">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">Scheduled Payout</span>
+<h3 class="font-headline-md text-headline-md text-primary">515.000 TND</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-surface-tint"></span>
+              Direct payout scheduled 24h post check-in
+            </p>
+</div>
+<div class="pt-4 border-t border-outline-variant/60 space-y-3 font-body-md text-body-md">
+<div class="flex justify-between text-on-surface">
+<span>Accommodation (3 nights × 160.000 TND)</span>
+<span class="font-medium">480.000 TND</span>
+</div>
+<div class="flex justify-between text-on-surface">
+<span>Cleaning fee (reimbursed)</span>
+<span class="font-medium">35.000 TND</span>
+</div>
+<div class="flex justify-between text-secondary">
+<span>Stayora host service fee (3%)</span>
+<span class="font-medium">-15.450 TND</span>
+</div>
+<div class="pt-3 border-t border-dashed border-outline-variant flex justify-between items-baseline font-price-display text-price-display text-primary">
+<span class="font-semibold text-body-lg">Net payout expected</span>
+<span class="font-bold text-headline-sm">499.550 TND</span>
+</div>
+</div>
+<!-- Payout Schedule & Account Info -->
+<div class="bg-surface-container-low/60 rounded-xl p-4 border border-outline-variant/50 space-y-2">
+<div class="flex items-center gap-2 font-label-md text-label-md text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="account_balance">account_balance</span>
+<span>Direct Deposit (BIAT Tunisia)</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-xs leading-relaxed">
+              Bank account ending in <strong class="text-on-surface">••89</strong>. Payout will be released automatically on <strong>Nov 13, 2026</strong>.
+            </p>
+</div>
+<button class="w-full h-[48px] rounded-xl border border-outline-variant hover:bg-surface-container-low text-primary font-label-md text-label-md transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="receipt_long">receipt_long</span>
+<span>View full tax invoice &amp; VAT receipt</span>
+</button>
+</div>
+<!-- 2. Policy & Host Protection Card -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/80 p-6 shadow-[0px_2px_8px_rgba(37,55,47,0.04)] space-y-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="shield">shield</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Policy &amp; Protection</h3>
+</div>
+<div class="space-y-3">
+<div class="p-3.5 bg-surface-container-low/40 rounded-xl border border-outline-variant/50">
+<span class="font-label-md text-label-md font-semibold text-on-surface block">Flexible Cancellation</span>
+<p class="font-body-md text-body-md text-on-surface-variant text-xs mt-1 leading-relaxed">
+                Guest receives full refund if cancelled up to 24 hours before check-in (by Nov 11, 3:00 PM). If cancelled afterwards, host retains first night plus 50%.
+              </p>
+</div>
+<div class="p-3.5 bg-surface-container-low/40 rounded-xl border border-outline-variant/50">
+<div class="flex items-center gap-1.5 text-primary font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified_user">verified_user</span>
+<span>Stayora Host Cover</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-xs mt-1 leading-relaxed">
+                Your reservation includes up to $1M USD property damage and liability protection automatically at no extra fee.
+              </p>
+</div>
+</div>
+<!-- Help Actions -->
+<div class="pt-4 border-t border-outline-variant/60 space-y-2">
+<a class="flex items-center justify-between p-2.5 rounded-lg hover:bg-surface-container-low text-on-surface font-label-md text-label-md transition-colors" href="#">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="support_agent">support_agent</span>
+<span>Contact Stayora Support</span>
+</span>
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="chevron_right">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-2.5 rounded-lg hover:bg-surface-container-low text-secondary font-label-md text-label-md transition-colors" href="#">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="report_problem">report_problem</span>
+<span>Report an issue with this reservation</span>
+</span>
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Property Rules Summary Snippet -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/80 p-5 shadow-[0px_2px_8px_rgba(37,55,47,0.04)] space-y-2 text-on-surface-variant">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">House Rules Agreed By Guest</span>
+<div class="grid grid-cols-2 gap-2 text-xs pt-1">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="smoke_free">smoke_free</span> No smoking
+            </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="pets">pets</span> Pets allowed
+            </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="volume_off">volume_off</span> Quiet after 10 PM
+            </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="groups">groups</span> Max 2 guests
+            </span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Editorial Minimal Footer -->
+<footer class="mt-12 border-t border-outline-variant bg-surface-container-lowest py-6">
+<div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-label-sm text-label-sm text-outline">
+<div class="flex items-center gap-4">
+<span>© 2026 Stayora Host Operations.</span>
+<span>All host payouts processed in Tunisian Dinars (TND).</span>
+</div>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary transition-colors" href="#">Host Guidelines</a>
+<a class="hover:text-primary transition-colors" href="#">Cancellation Terms</a>
+<a class="hover:text-primary transition-colors" href="#">Safety Center</a>
+</div>
+</div>
+</footer>
+</body></html>

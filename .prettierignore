@@ -1,0 +1,14 @@
+design/
+docs/*.pdf
+backend/
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+package-lock.json
+frontend/package-lock.json
+tmp/
+output/
+# Preserve raw static-analysis evidence and its archived report files.
+docs/static-testing-*/
+docs/testing-report/evidence/

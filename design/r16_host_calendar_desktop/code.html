@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Host Calendar &amp; Pricing Matrix | Stayora</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#7f2a18",
+            "secondary-container": "#fe8b71",
+            "surface-tint": "#256861",
+            "on-secondary": "#ffffff",
+            "on-background": "#0d1f18",
+            "on-primary-fixed": "#00201d",
+            "outline": "#6f7977",
+            "primary-container": "#145c55",
+            "inverse-surface": "#22342c",
+            "secondary": "#9e412d",
+            "primary": "#00433e",
+            "on-secondary-container": "#752311",
+            "outline-variant": "#bfc9c6",
+            "primary-fixed": "#adefe5",
+            "on-surface-variant": "#3f4947",
+            "secondary-fixed-dim": "#ffb4a4",
+            "tertiary": "#353d3a",
+            "on-secondary-fixed": "#3d0600",
+            "inverse-on-surface": "#e1f6ea",
+            "surface": "#e9fef2",
+            "on-error": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#91d3c9",
+            "on-primary-fixed-variant": "#005049",
+            "on-surface": "#0d1f18",
+            "on-tertiary-container": "#c0c8c4",
+            "error": "#ba1a1a",
+            "surface-variant": "#d2e7dc",
+            "inverse-primary": "#91d3c9",
+            "surface-container-low": "#e3f9ec",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#dce4e0",
+            "tertiary-container": "#4c5451",
+            "on-tertiary-fixed-variant": "#414846",
+            "on-tertiary-fixed": "#161d1b",
+            "surface-bright": "#e9fef2",
+            "tertiary-fixed-dim": "#c0c8c5",
+            "on-primary-container": "#91d2c9",
+            "surface-container-highest": "#d2e7dc",
+            "surface-container-high": "#d8ede1",
+            "background": "#e9fef2",
+            "on-error-container": "#93000a",
+            "surface-dim": "#cadfd3",
+            "on-tertiary": "#ffffff",
+            "surface-container": "#def3e7",
+            "secondary-fixed": "#ffdad3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-lg": "1.25rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "1.25rem",
+            "space-md": "1rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Noto Serif"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Noto Serif"],
+            "title-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "price-display": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "headline-sm": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "price-display": ["18px", { "lineHeight": "22px", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .striped-pattern {
+      background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(111, 121, 119, 0.08),
+        rgba(111, 121, 119, 0.08) 6px,
+        rgba(255, 255, 255, 0.6) 6px,
+        rgba(255, 255, 255, 0.6) 12px
+      );
+    }
+    .legend-striped {
+      background-image: repeating-linear-gradient(
+        -45deg,
+        #6f7977,
+        #6f7977 2px,
+        #ffffff 2px,
+        #ffffff 5px
+      );
+    }
+  </style>
+</head>
+<body class="bg-surface-container-low min-h-screen text-on-surface antialiased font-body-md text-body-md flex flex-col">
+<!-- TopNavBar (Derived directly from Shared Components JSON) -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none docked full-width top-0 w-full z-40 sticky">
+<div class="flex justify-between items-center w-full px-space-lg mx-auto max-w-[1120px] h-16">
+<!-- Brand & Left Navigation Links -->
+<div class="flex items-center gap-8">
+<a class="font-headline-lg text-headline-lg text-primary dark:text-inverse-primary tracking-tight font-semibold flex items-center gap-1" href="#">
+<span>Stayora</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed ml-1">Host Mode</span>
+</a>
+<!-- Global Host Navigation Tabs -->
+<nav class="hidden md:flex items-center space-x-6">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface font-label-lg text-label-lg py-4 transition-colors" href="#">Today</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface font-label-lg text-label-lg py-4 transition-colors" href="#">Listings</a>
+<a class="border-b-2 border-primary text-primary dark:border-inverse-primary dark:text-inverse-primary font-label-lg text-label-lg py-4" href="#">Calendar</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface font-label-lg text-label-lg py-4 transition-colors" href="#">Messages</a>
+</nav>
+</div>
+<!-- Trailing Switcher, Icon Actions, & Host Identity -->
+<div class="flex items-center gap-4">
+<!-- Property Switcher Dropdown -->
+<div class="relative hidden lg:flex items-center">
+<button class="flex items-center gap-2 bg-surface-container-low hover:bg-surface-container-high transition-colors duration-200 px-3 py-1.5 rounded-lg border border-outline-variant text-on-surface">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-md text-label-md truncate max-w-[200px]">Sunlit courtyard apartment (Active)</span>
+<span class="material-symbols-outlined text-outline text-base" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<div class="h-6 w-px bg-outline-variant hidden sm:block"></div>
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors duration-200 text-on-surface-variant flex items-center justify-center" title="Sync calendar">
+<span class="material-symbols-outlined text-xl" data-icon="sync">sync</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors duration-200 text-on-surface-variant flex items-center justify-center" title="Pricing settings">
+<span class="material-symbols-outlined text-xl" data-icon="tune">tune</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors duration-200 text-on-surface-variant relative flex items-center justify-center" title="Notifications">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<!-- Host Nadia Profile -->
+<div class="flex items-center gap-2 pl-1 cursor-pointer">
+<img class="w-9 h-9 rounded-full object-cover border border-outline-variant" data-alt="A warm, professional portrait photograph of Nadia, a Mediterranean Airbnb superhost with dark wavy hair and a joyful expression, wearing a neutral linen shirt. Soft natural light streams into a high-end white plaster courtyard in Tunis, highlighting architectural textures and terracotta details. The aesthetic reflects understated Mediterranean luxury and calm hospitality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV8NCUYjKWdmk2LY0vb6DUUknAxtdJGltZPdZ9lcXLzEkiEzc1Ko1KFuJyTqHo4XxIGILT_3TORtDt7yy_xiHvY3QkeOaulb04fKWiJIzc3wBdYE0jV9PcyR1Z55XB32UO_FVFCND3eNZQm2kD_aiNGYrGmK1UphwlwY1qClbMUVE6AZ3PEJCiTmvNsIUbWWWU6DGQ4IjtlbeOvIgNm9WWTzQnv2PEcsFRuCN0AVXKgHSMW9rfAym6"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Secondary Bar: Breadcrumb & Context Tools -->
+<div class="bg-surface-container-lowest border-b border-outline-variant py-2.5">
+<div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="home_work">home_work</span>
+<span class="font-label-lg text-label-lg text-primary">Sunlit courtyard apartment</span>
+<span class="text-outline-variant">/</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Rates &amp; Availability Matrix</span>
+<span class="px-2 py-0.5 rounded-full text-secondary bg-surface-container border border-secondary text-xs font-semibold">High Season</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-label-md text-label-md text-on-surface-variant">Base nightly rate: <strong class="text-primary font-bold">160.000 TND</strong></span>
+<button class="flex items-center gap-1.5 text-primary hover:text-primary-container font-label-md text-label-md transition-colors pl-2 border-l border-outline-variant">
+<span class="material-symbols-outlined text-base" data-icon="edit_calendar">edit_calendar</span>
+<span>Pricing rules</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Viewport Layout -->
+<main class="max-w-7xl mx-auto px-6 lg:px-8 py-8 w-full flex-1">
+<div class="flex flex-col lg:flex-row gap-8 items-start">
+<!-- LEFT SECTION: Expansive Month Calendar & Controls (w-2/3) -->
+<section class="w-full lg:w-2/3 flex flex-col gap-6">
+<!-- Month Navigation Bar & Legend -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">November 2026</h1>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed px-2.5 py-1 rounded-full uppercase tracking-wider font-semibold">High Season</span>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-3">
+<!-- Nav Arrows & Today -->
+<div class="flex items-center bg-surface-container-low rounded-lg p-1 border border-outline-variant">
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface hover:bg-surface-container-lowest transition-colors" title="Previous Month">
+<span class="material-symbols-outlined text-lg" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="px-3 py-1 font-label-md text-label-md text-on-surface hover:bg-surface-container-lowest rounded transition-colors font-medium">
+                Today
+              </button>
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface hover:bg-surface-container-lowest transition-colors" title="Next Month">
+<span class="material-symbols-outlined text-lg" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<div class="h-6 w-px bg-outline-variant hidden sm:block"></div>
+<!-- Status Legend -->
+<div class="flex items-center gap-3.5">
+<div class="flex items-center gap-1.5" title="Guests can book">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-container-lowest border border-outline"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Available</span>
+</div>
+<div class="flex items-center gap-1.5" title="Confirmed reservation">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Booked</span>
+</div>
+<div class="flex items-center gap-1.5" title="Dates locked manually">
+<span class="w-2.5 h-2.5 rounded-full legend-striped border border-outline"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Blocked</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 7-Column Calendar Grid Matrix Container -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant shadow-sm overflow-hidden">
+<!-- Days of Week Header -->
+<div class="grid grid-cols-7 border-b border-outline-variant bg-surface-container-low text-center py-2.5">
+<span class="font-label-md text-label-md font-semibold text-on-surface-variant">Sun</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface-variant">Mon</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface-variant">Tue</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface-variant">Wed</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface-variant">Thu</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface-variant">Fri</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface-variant">Sat</span>
+</div>
+<!-- Calendar Matrix (November 2026 begins on Sunday Nov 1) -->
+<div class="grid grid-cols-7 auto-rows-fr divide-x divide-y divide-outline-variant">
+<!-- Day 1: Past Date -->
+<div class="p-3 min-h-[92px] bg-surface-container-low/50 text-outline flex flex-col justify-between select-none">
+<span class="font-label-md text-label-md text-outline">1</span>
+<div class="text-right">
+<span class="text-xs line-through opacity-60">160 TND</span>
+</div>
+</div>
+<!-- Day 2: Past Date -->
+<div class="p-3 min-h-[92px] bg-surface-container-low/50 text-outline flex flex-col justify-between select-none">
+<span class="font-label-md text-label-md text-outline">2</span>
+<div class="text-right">
+<span class="text-xs line-through opacity-60">160 TND</span>
+</div>
+</div>
+<!-- Day 3: Past Date -->
+<div class="p-3 min-h-[92px] bg-surface-container-low/50 text-outline flex flex-col justify-between select-none">
+<span class="font-label-md text-label-md text-outline">3</span>
+<div class="text-right">
+<span class="text-xs line-through opacity-60">160 TND</span>
+</div>
+</div>
+<!-- Day 4: Past Date -->
+<div class="p-3 min-h-[92px] bg-surface-container-low/50 text-outline flex flex-col justify-between select-none">
+<span class="font-label-md text-label-md text-outline">4</span>
+<div class="text-right">
+<span class="text-xs line-through opacity-60">160 TND</span>
+</div>
+</div>
+<!-- Day 5: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">5</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 6: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">6</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 7: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">7</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 8: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">8</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 9: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">9</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 10: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">10</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 11: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">11</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Nov 12-15: BOOKED RANGE (Sami Ben Ali) Highlighted in Deep Teal -->
+<!-- Day 12: Start of reservation -->
+<div class="p-3 min-h-[92px] bg-primary-container text-white cursor-pointer relative ring-2 ring-inset ring-primary transition-all">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-bold text-white">12</span>
+<span class="font-label-sm text-[10px] bg-primary/40 px-1 rounded uppercase tracking-wider">Check-in</span>
+</div>
+<div class="mt-1">
+<p class="font-label-sm text-label-sm text-primary-fixed truncate font-semibold">Sami Ben Ali</p>
+<p class="text-[11px] text-primary-fixed-dim leading-none">ST-1026</p>
+</div>
+<div class="text-right mt-1">
+<span class="font-label-sm text-label-sm text-white/90">160 TND</span>
+</div>
+</div>
+<!-- Day 13: Middle of reservation -->
+<div class="p-3 min-h-[92px] bg-primary-container/95 text-white cursor-pointer relative ring-2 ring-inset ring-primary transition-all">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-bold text-white">13</span>
+<span class="material-symbols-outlined text-xs text-primary-fixed" data-icon="lock">lock</span>
+</div>
+<div class="mt-1">
+<p class="font-label-sm text-label-sm text-primary-fixed truncate">Booked</p>
+<p class="text-[11px] text-primary-fixed-dim leading-none">Night 2</p>
+</div>
+<div class="text-right mt-1">
+<span class="font-label-sm text-label-sm text-white/90">160 TND</span>
+</div>
+</div>
+<!-- Day 14: Middle of reservation -->
+<div class="p-3 min-h-[92px] bg-primary-container/95 text-white cursor-pointer relative ring-2 ring-inset ring-primary transition-all">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-bold text-white">14</span>
+<span class="material-symbols-outlined text-xs text-primary-fixed" data-icon="lock">lock</span>
+</div>
+<div class="mt-1">
+<p class="font-label-sm text-label-sm text-primary-fixed truncate">Booked</p>
+<p class="text-[11px] text-primary-fixed-dim leading-none">Night 3</p>
+</div>
+<div class="text-right mt-1">
+<span class="font-label-sm text-label-sm text-white/90">160 TND</span>
+</div>
+</div>
+<!-- Day 15: Check-out date -->
+<div class="p-3 min-h-[92px] bg-primary-container/85 text-white cursor-pointer relative ring-2 ring-inset ring-primary transition-all">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-bold text-white">15</span>
+<span class="font-label-sm text-[10px] bg-primary/40 px-1 rounded uppercase tracking-wider">Check-out</span>
+</div>
+<div class="mt-1">
+<p class="font-label-sm text-label-sm text-primary-fixed truncate">11:00 AM</p>
+<p class="text-[11px] text-primary-fixed-dim leading-none">Turnover</p>
+</div>
+<div class="text-right mt-1">
+<span class="font-label-sm text-label-sm text-white/90">160 TND</span>
+</div>
+</div>
+<!-- Day 16: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">16</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 17: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">17</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 18: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">18</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 19: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">19</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 20: Blocked by Host -->
+<div class="p-3 min-h-[92px] striped-pattern cursor-not-allowed flex flex-col justify-between border-t border-outline-variant">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface-variant">20</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="lock">lock</span>
+</div>
+<div class="text-center py-1">
+<span class="font-label-sm text-label-sm text-outline font-semibold">Blocked</span>
+</div>
+<div class="text-right">
+<span class="text-xs text-outline">—</span>
+</div>
+</div>
+<!-- Day 21: Blocked by Host -->
+<div class="p-3 min-h-[92px] striped-pattern cursor-not-allowed flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface-variant">21</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="lock">lock</span>
+</div>
+<div class="text-center py-1">
+<span class="font-label-sm text-label-sm text-outline font-semibold">Blocked</span>
+</div>
+<div class="text-right">
+<span class="text-xs text-outline">—</span>
+</div>
+</div>
+<!-- Day 22: Blocked by Host -->
+<div class="p-3 min-h-[92px] striped-pattern cursor-not-allowed flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface-variant">22</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="lock">lock</span>
+</div>
+<div class="text-center py-1">
+<span class="font-label-sm text-label-sm text-outline font-semibold">Blocked</span>
+</div>
+<div class="text-right">
+<span class="text-xs text-outline">—</span>
+</div>
+</div>
+<!-- Day 23: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">23</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 24: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">24</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 25: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">25</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 26: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">26</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 27: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">27</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 28: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">28</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 29: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">29</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Day 30: Available -->
+<div class="p-3 min-h-[92px] hover:bg-surface-container-low/60 transition-colors cursor-pointer flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md font-medium text-on-surface group-hover:text-primary">30</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm font-semibold text-primary">160 TND</span>
+</div>
+</div>
+<!-- Dec 1 (Next Month Preview) -->
+<div class="p-3 min-h-[92px] bg-surface-container-low/30 text-outline-variant flex flex-col justify-between select-none">
+<span class="font-label-md text-label-md">Dec 1</span>
+<div class="text-right">
+<span class="text-xs">160 TND</span>
+</div>
+</div>
+<!-- Dec 2 (Next Month Preview) -->
+<div class="p-3 min-h-[92px] bg-surface-container-low/30 text-outline-variant flex flex-col justify-between select-none">
+<span class="font-label-md text-label-md">Dec 2</span>
+<div class="text-right">
+<span class="text-xs">160 TND</span>
+</div>
+</div>
+<!-- Dec 3 (Next Month Preview) -->
+<div class="p-3 min-h-[92px] bg-surface-container-low/30 text-outline-variant flex flex-col justify-between select-none">
+<span class="font-label-md text-label-md">Dec 3</span>
+<div class="text-right">
+<span class="text-xs">160 TND</span>
+</div>
+</div>
+<!-- Dec 4 (Next Month Preview) -->
+<div class="p-3 min-h-[92px] bg-surface-container-low/30 text-outline-variant flex flex-col justify-between select-none">
+<span class="font-label-md text-label-md">Dec 4</span>
+<div class="text-right">
+<span class="text-xs">160 TND</span>
+</div>
+</div>
+<!-- Dec 5 (Next Month Preview) -->
+<div class="p-3 min-h-[92px] bg-surface-container-low/30 text-outline-variant flex flex-col justify-between select-none">
+<span class="font-label-md text-label-md">Dec 5</span>
+<div class="text-right">
+<span class="text-xs">160 TND</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Summary Bar Below Grid -->
+<div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md px-2">
+<span>November occupancy: <strong class="text-primary font-semibold">10% booked (3/30 nights)</strong></span>
+<span class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-base" data-icon="cloud_sync">cloud_sync</span>
+            Synced with Airbnb &amp; Booking.com 4 mins ago
+          </span>
+</div>
+</section>
+<!-- RIGHT SECTION: Inspection Drawer / Sidebar (w-1/3) -->
+<aside class="w-full lg:w-1/3 bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm space-y-6">
+<!-- Selected Range Header & Badge -->
+<div class="border-b border-outline-variant pb-5">
+<div class="flex items-center justify-between gap-2 mb-2">
+<span class="font-label-sm text-label-sm tracking-wider uppercase font-semibold text-primary bg-surface-container px-2.5 py-1 rounded-full">
+              Selected Range
+            </span>
+<span class="inline-flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed">
+<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span>
+              Confirmed · Instant Book
+            </span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mt-1">Nov 12 – Nov 15, 2026</h2>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md mt-1">
+<span>3 nights</span>
+<span>•</span>
+<span class="font-semibold text-on-surface">Reservation Code: ST-1026</span>
+</div>
+</div>
+<!-- Guest Details Card -->
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/60 flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container text-white flex items-center justify-center font-bold text-lg flex-shrink-0">
+            SB
+          </div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold truncate">Sami Ben Ali</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">2 adults · Guest from Tunis</p>
+<div class="flex items-center gap-1.5 mt-2 text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="star">star</span>
+<span class="font-semibold text-on-surface">5.0</span>
+<span>(12 prior reviews on Stayora)</span>
+</div>
+</div>
+</div>
+<!-- Host Payout Breakdown -->
+<div class="space-y-3 border-b border-outline-variant pb-5">
+<h4 class="font-label-lg text-label-lg text-on-surface font-semibold">Host Payout Breakdown</h4>
+<div class="space-y-2 text-body-md text-on-surface-variant">
+<div class="flex justify-between items-center">
+<span>3 nights × 160.000 TND</span>
+<span class="font-medium text-on-surface">480.000 TND</span>
+</div>
+<div class="flex justify-between items-center text-xs text-outline">
+<span>Cleaning fee (handled on arrival)</span>
+<span>45.000 TND</span>
+</div>
+<div class="flex justify-between items-center text-xs text-outline">
+<span>Stayora Host Service Fee (0%)</span>
+<span>0.000 TND</span>
+</div>
+</div>
+<div class="pt-3 border-t border-outline-variant flex justify-between items-baseline">
+<span class="font-label-lg text-label-lg font-bold text-primary">Host Payout</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">480.000 TND</span>
+</div>
+<p class="text-xs text-outline text-right">Scheduled for payout Nov 13, 2026</p>
+</div>
+<!-- Smart-Lock Keypad Code -->
+<div class="p-4 rounded-xl bg-surface-container border border-outline-variant/80 flex items-start gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary flex-shrink-0 border border-outline-variant">
+<span class="material-symbols-outlined text-xl" data-icon="key">key</span>
+</div>
+<div class="flex-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Smart-lock Keypad</span>
+<span class="font-headline-sm text-headline-sm text-primary font-mono font-bold tracking-widest mt-0.5 block">8492#</span>
+<span class="font-body-md text-body-md text-xs text-on-surface-variant mt-1 block">Activates automatically on Nov 12, 3:00 PM</span>
+</div>
+</div>
+<!-- Quick Actions CTAs -->
+<div class="space-y-3 pt-2">
+<button class="w-full h-[52px] bg-primary-container text-white font-label-lg text-label-lg font-semibold rounded-2xl flex items-center justify-center gap-2 hover:bg-primary transition-all duration-150 active:scale-[0.98] shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+<span>View full reservation</span>
+</button>
+<button class="w-full h-[52px] bg-surface-container-low text-primary-container border border-outline-variant font-label-lg text-label-lg font-semibold rounded-2xl flex items-center justify-center gap-2 hover:bg-surface-container-high transition-all duration-150 active:scale-[0.98]">
+<span class="material-symbols-outlined text-lg" data-icon="chat_bubble">chat_bubble</span>
+<span>Message guest</span>
+</button>
+</div>
+<!-- Calendar Rules Notification Box -->
+<div class="p-4 rounded-xl bg-surface-container-lowest border border-dashed border-outline text-xs text-on-surface-variant flex items-start gap-2.5">
+<span class="material-symbols-outlined text-base text-outline flex-shrink-0 mt-0.5" data-icon="info">info</span>
+<p class="leading-relaxed">
+            To edit nightly pricing or block unbooked dates, select an open range on the calendar grid.
+          </p>
+</div>
+</aside>
+</div>
+</main>
+<!-- Editorial Subtle Host Footer Note -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant py-4 mt-auto">
+<div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-on-surface-variant gap-2">
+<div class="flex items-center gap-2">
+<span class="font-semibold text-primary">Stayora Host Suite</span>
+<span>•</span>
+<span>Tunis Medina Quarter, Tunisia</span>
+</div>
+<div class="flex items-center gap-4">
+<a class="hover:underline" href="#">Pricing Strategy Guide</a>
+<a class="hover:underline" href="#">Cancellation Policies</a>
+<a class="hover:underline" href="#">Host Support 24/7</a>
+</div>
+</div>
+</footer>
+</body></html>

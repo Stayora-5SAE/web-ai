@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: stayora
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 0
+      connection-timeout: 30000
+  flyway:
+    url: ${DB_MIGRATION_URL}
+    user: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    schemas: stayora
+    default-schema: stayora
+    clean-disabled: true
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: stayora
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  port: ${PORT:8081}
+  error:
+    include-message: never
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+stayora:
+  demo-enabled: ${DEMO_ENABLED:false}
+  auth:
+    cookie-secure: ${AUTH_COOKIE_SECURE:true}
+    origins: ${APP_ORIGINS:http://localhost:4200,http://127.0.0.1:4200}
+  ai:
+    provider: ${AI_PROVIDER:openrouter}
+    base-url: ${AI_BASE_URL:https://openrouter.ai/api/v1}
+    api-key: ${OPENROUTER_API_KEY:${AI_API_KEY:}}
+    model: ${AI_MODEL:google/gemma-4-26b-a4b-it:free}
+    fallback-models: ${AI_FALLBACK_MODELS:google/gemma-4-31b-it:free,cohere/north-mini-code:free}
+    timeout-seconds: ${AI_TIMEOUT_SECONDS:30}
+springdoc:
+  swagger-ui:
+    path: /api/docs

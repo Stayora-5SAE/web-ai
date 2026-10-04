@@ -1,0 +1,4 @@
+stayora:
+  demo-enabled: ${DEMO_ENABLED:true}
+  auth:
+    cookie-secure: ${AUTH_COOKIE_SECURE:false}

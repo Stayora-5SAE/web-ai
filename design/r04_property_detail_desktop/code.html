@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sunlit courtyard apartment - Stayora</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary": "#ffffff",
+            "background": "#FAF7F2",
+            "on-background": "#0d1f18",
+            "on-surface": "#0d1f18",
+            "tertiary-fixed-dim": "#c0c8c5",
+            "on-tertiary-container": "#c0c8c4",
+            "on-secondary-fixed-variant": "#7f2a18",
+            "on-error-container": "#93000a",
+            "on-primary-fixed-variant": "#005049",
+            "inverse-surface": "#22342c",
+            "secondary-fixed-dim": "#ffb4a4",
+            "surface-variant": "#d2e7dc",
+            "secondary-fixed": "#ffdad3",
+            "primary-container": "#145c55",
+            "surface-container-highest": "#d2e7dc",
+            "primary-fixed": "#adefe5",
+            "error": "#ba1a1a",
+            "on-secondary-fixed": "#3d0600",
+            "surface-container": "#def3e7",
+            "secondary": "#9e412d",
+            "inverse-on-surface": "#e1f6ea",
+            "surface-bright": "#FAF7F2",
+            "surface-dim": "#cadfd3",
+            "tertiary-fixed": "#dce4e0",
+            "tertiary": "#353d3a",
+            "on-primary-fixed": "#00201d",
+            "surface": "#FAF7F2",
+            "surface-tint": "#256861",
+            "surface-container-low": "#e3f9ec",
+            "on-error": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#414846",
+            "outline-variant": "#bfc9c6",
+            "secondary-container": "#fe8b71",
+            "surface-container-high": "#d8ede1",
+            "primary": "#00433e",
+            "on-tertiary-fixed": "#161d1b",
+            "outline": "#6f7977",
+            "primary-fixed-dim": "#91d3c9",
+            "on-secondary": "#ffffff",
+            "inverse-primary": "#91d3c9",
+            "on-primary-container": "#91d2c9",
+            "on-secondary-container": "#752311",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-container": "#4c5451",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#3f4947"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.25rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "1.25rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Noto Serif", "serif"],
+            "label-md": ["Plus Jakarta Sans", "sans-serif"],
+            "body-md": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-md": ["Noto Serif", "serif"],
+            "title-md": ["Plus Jakarta Sans", "sans-serif"],
+            "price-display": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "label-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "label-sm": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          "fontSize": {
+            "headline-lg": [
+              "28px",
+              {
+                "lineHeight": "36px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "label-md": [
+              "13px",
+              {
+                "lineHeight": "16px",
+                "fontWeight": "500"
+              }
+            ],
+            "body-md": [
+              "14px",
+              {
+                "lineHeight": "20px",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-md": [
+              "24px",
+              {
+                "lineHeight": "32px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "title-md": [
+              "18px",
+              {
+                "lineHeight": "24px",
+                "fontWeight": "600"
+              }
+            ],
+            "price-display": [
+              "18px",
+              {
+                "lineHeight": "22px",
+                "fontWeight": "700"
+              }
+            ],
+            "headline-sm": [
+              "20px",
+              {
+                "lineHeight": "26px",
+                "fontWeight": "600"
+              }
+            ],
+            "label-lg": [
+              "14px",
+              {
+                "lineHeight": "18px",
+                "fontWeight": "600"
+              }
+            ],
+            "body-lg": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "fontWeight": "400"
+              }
+            ],
+            "label-sm": [
+              "11px",
+              {
+                "lineHeight": "14px",
+                "letterSpacing": "0.02em",
+                "fontWeight": "600"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md selection:bg-primary-fixed selection:text-primary">
+<!-- Desktop TopNavBar (Predicted Component) -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none docked full-width top-0 sticky z-50">
+<div class="w-full max-w-[1120px] mx-auto px-5 flex items-center justify-between h-20">
+<!-- Left: Logo & Search Trigger -->
+<div class="flex items-center gap-8">
+<a class="text-headline-md font-headline-md text-primary dark:text-primary-fixed transition-transform active:scale-[0.98]" href="#">
+          Stayora
+        </a>
+<div class="hidden md:flex items-center gap-3 bg-background border border-outline-variant px-4 py-2 rounded-full cursor-pointer hover:bg-surface-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="search">search</span>
+<span class="text-label-md font-label-md text-on-surface-variant">La Marsa, Tunis · Any week</span>
+<span class="w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]" data-icon="tune">tune</span>
+</span>
+</div>
+</div>
+<!-- Center: Navigation Links -->
+<nav class="hidden lg:flex items-center gap-8">
+<!-- Explore -->
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors pb-1 text-label-lg font-label-lg" href="#">
+          Explore
+        </a>
+<!-- Wishlists -->
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors pb-1 text-label-lg font-label-lg" href="#">
+          Wishlists
+        </a>
+<!-- Trips -->
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1 font-semibold text-label-lg font-label-lg" href="#">
+          Trips
+        </a>
+<!-- Messages -->
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors pb-1 text-label-lg font-label-lg" href="#">
+          Messages
+        </a>
+</nav>
+<!-- Right: Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="text-label-lg font-label-lg text-primary dark:text-inverse-primary hover:bg-surface-container dark:hover:bg-surface-container-high px-4 py-2 rounded-full transition-colors duration-150">
+          Switch to hosting
+        </button>
+<div class="flex items-center gap-2 border border-outline-variant dark:border-outline rounded-full p-1.5 pl-3 hover:shadow-md transition-shadow cursor-pointer bg-surface-container-lowest dark:bg-inverse-surface">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="menu">menu</span>
+<span class="material-symbols-outlined text-primary text-[28px]" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Container -->
+<main class="w-full max-w-[1120px] mx-auto px-5 pt-6 pb-20 flex-grow">
+<!-- Breadcrumbs & Meta Heading -->
+<div class="mb-4">
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant mb-2">
+<span class="hover:text-primary cursor-pointer transition-colors">Tunisia</span>
+<span class="text-outline-variant">/</span>
+<span class="hover:text-primary cursor-pointer transition-colors">Tunis Governorate</span>
+<span class="text-outline-variant">/</span>
+<span class="hover:text-primary cursor-pointer transition-colors">La Marsa</span>
+<span class="text-outline-variant">/</span>
+<span class="text-on-surface font-semibold">Sunlit courtyard apartment</span>
+</nav>
+<div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-2">
+            Sunlit courtyard apartment
+          </h1>
+<div class="flex flex-wrap items-center gap-2 text-body-md font-body-md text-on-surface-variant">
+<span class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+              4.96
+            </span>
+<span>·</span>
+<span class="underline cursor-pointer hover:text-primary font-medium">48 reviews</span>
+<span>·</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="verified_user">verified_user</span>
+              Superhost Nadia
+            </span>
+<span>·</span>
+<span>La Marsa, Tunis</span>
+</div>
+</div>
+<!-- Share and Save Actions -->
+<div class="flex items-center gap-3 self-start md:self-auto">
+<button class="flex items-center gap-2 px-3 py-2 rounded-xl text-label-md font-label-md text-on-surface-variant hover:bg-surface-container transition-colors border border-outline-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="share">share</span>
+<span>Share</span>
+</button>
+<button class="flex items-center gap-2 px-3 py-2 rounded-xl text-label-md font-label-md text-on-surface-variant hover:bg-surface-container transition-colors border border-outline-variant">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="favorite_border">favorite_border</span>
+<span>Save</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bento Grid Gallery (5 Photos) -->
+<div class="relative grid grid-cols-1 md:grid-cols-2 gap-3 rounded-2xl overflow-hidden mb-10 border border-outline-variant bg-surface-container-lowest p-1 shadow-sm">
+<!-- Hero Large Photo (Left 50%) -->
+<div class="relative h-[440px] overflow-hidden rounded-xl group cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="A sun-drenched serene Mediterranean courtyard apartment sanctuary in La Marsa, Tunisia. The scene reveals whitewashed textured lime walls, vibrant magenta bougainvillea vines spilling over an arched pergola, and handcrafted geometric terracotta tiles across the sunlit floor. A low rustic wooden coffee table with ceramic teacups sits peacefully under soft golden morning Mediterranean light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7Rjy6mUX0iyXif21OD0Jj_U4HbLvtubgpAf_Trzj_w1X-tGCDpUPe5gkr2av5FH7Oqx5uMQSRD0uN8aijlajkBY9m5I6pDi3LZ_GJCjYxbbwvROv-XXr0FPQLLYqwrixM1PkUrll6Hw8wHphh-eskEWyfuXJgD0JMO8k3-ZeWMKFF8SIQBgMqfssHEVXo_1Hef0Li4MPmqbxal1RNYLKn0voORTaI_-dM9OHf54GTcxtNFzfskgr5"/>
+<div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+</div>
+<!-- 2x2 Grid Photos (Right 50%) -->
+<div class="grid grid-cols-2 gap-3 h-[440px]">
+<!-- Bedroom 1 -->
+<div class="relative h-[213px] overflow-hidden rounded-xl group cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="A serene minimalist bedroom featuring a queen bed draped with textured organic natural linen bedding in warm ecru and terracotta tones. Handwoven Tunisian wool tapestries hang above the headboard on whitewashed plaster walls. Soft diffused ambient sunlight pours through sheer cotton curtains, illuminating warm timber wood floors and ceramic side lamps." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOEu6gv_anLdxUza4b1zUksxaedX_gkuILOMdUlrjR6chcjReM6GrWuM7cxGkzUolZ04r22wmM78rYLvaAUdWi7RI49AAIUybdznnrDjbkz6YSycfVklZI_SVLUotmqmJaT7aeSfQF7_mObpeI_txZiZqwH-vdao5o6MhW7V1lUUhG8-_oZbHm3Bs7m9FowLemuVWRpMHR85Ovs4G5gwWEqLQXK0AxgqTrxewWmbO-9YE1fdNa_c4o"/>
+</div>
+<!-- Living / Workspace -->
+<div class="relative h-[213px] overflow-hidden rounded-xl group cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="An inspiring dedicated workspace nook featuring an antique carved olive wood writing desk under an authentic Tunisian horseshoe arch window. A sleek modern laptop rests beside a potted lush olive plant, ceramic espresso cup, and bespoke stationery. The natural daylight floods the warm creamy textured room, evoking an editorial travel magazine aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF_ta7cRLo7UQHe-ueLrWbx84Ejki4NFkmovnjg5Au9GdWWWWXhq--n4JtxNUsDxU3XSu8OU9mEj3wlIwLefkOd3P1BMWHrtEs7nILOPzrDP4n6YHONNIeRxDiz4J9sQ5xJ2_3xvMoyf7RRr7E7hzhWMThr-ayQCj4alOhq4lub6ZO4dCXnNzS9dwGRbqbKu7DCgtdzTPanHXcZK4Lq2YWN2GlRbsLa-BC6RU13n66GYrRCiF-1-YM"/>
+</div>
+<!-- Bathroom -->
+<div class="relative h-[213px] overflow-hidden rounded-xl group cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="An artisanal bathroom sanctuary showing intricate hand-painted emerald green and ochre zellij mosaic tiles covering the walk-in rainfall shower. Brushed brass fixtures shine gently against neutral clay plaster walls. Clean folded off-white waffle towels and natural botanical amenities rest neatly on a floating stone vanity in soft natural light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoM_S7Zv0EZj0YHeUAm97zxn6FDUVAKmDmKZSkpB-5QWvs21tU5bHcNvRqGlIo5LGAjEUobX8YDeHRaLSjdRhYjfMNeS5nq2VwxXYQuVZqFOUdh02KJ3KC84OlpzMvLqcZJAQxgLPFgE0CRIvmpA8A-4tcZOP4zmzhKJX9SP_xDr6l_jtyyzawjAmccSt6xRwN_fS7RlSat8KxPY8GqWUdrLlKEpH7xUS-wlfd3oa5XloYhWDHMwwM"/>
+</div>
+<!-- Dining / Kitchen -->
+<div class="relative h-[213px] overflow-hidden rounded-xl group cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="An intimate Mediterranean kitchen and dining nook showcasing terracotta ceramic dishware and rustic olive wood cutting boards arranged on open timber shelves. Sunlight hits a small dining table displaying fresh local figs, citrus fruits, and an earthenware water pitcher against bright whitewashed walls with a warm and inviting atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdOX7z3jMtUtAfqBD8mfyYny6eHdDnlsId3dxcuPdWfrRpvC9wIF3TReCMUJSBHSiGoQdyp1pqGuptBLKiQhR8DxLLrCl3L5If4-x2ORCpAqOwtFAYywF000ncCKVnbxfbiA5wafRupATeZ-qRe07Vd408YFpSAWJ0-uWGHhHsYJcPAcYdI1mGEsU6aO4_enTmc5VLkFib2HLIX-QD3XSyPjoK92C-TVNq2vUUqF_SjZot7p4DRI_9"/>
+<!-- Floating "Show all 24 photos" Button -->
+<button class="absolute bottom-4 right-4 z-10 flex items-center gap-2 bg-surface-container-lowest/90 backdrop-blur-md px-3.5 py-2 rounded-xl text-label-md font-label-md text-on-surface border border-outline-variant shadow-md hover:bg-surface-container-lowest active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="grid_view">grid_view</span>
+<span>Show all 24 photos</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Two-Column Content Layout (65% Left Details, 35% Right Widget) -->
+<div class="flex flex-col lg:flex-row gap-12 items-start">
+<!-- Left Column: Details & Specifications (65%) -->
+<div class="w-full lg:w-[65%] space-y-10">
+<!-- Host Introduction Card -->
+<div class="flex items-center justify-between pb-8 border-b border-outline-variant">
+<div>
+<h2 class="text-headline-md font-headline-md text-primary mb-1">
+              Entire apartment hosted by Nadia
+            </h2>
+<p class="text-body-md font-body-md text-on-surface-variant">
+              Experienced Superhost (5.0 rating, 48 reviews) · Speaks French, Arabic &amp; English
+            </p>
+</div>
+<div class="relative flex-shrink-0">
+<img class="w-16 h-16 rounded-full object-cover border-2 border-primary-container shadow-sm" data-alt="A warm and welcoming close-up portrait of Nadia, a local Tunisian host in her late thirties, smiling warmly outdoors against a sunlit garden backdrop. She has natural dark hair and wears an elegant relaxed terracotta linen shirt, conveying professional hospitality and authentic warmth in natural outdoor light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCH5CZCtIgAv6__07dM3WvCChflJu98_b0FaBzlB7CzBYUZYZB9wxdBIMkYy8F3koQMQbFDgGWYNrIf6V1y13gDPEbfzUM8eLC63qt65yBO3p5ar09bmgP0i1ZyT7x_Qtu1z7mZ3mxlkMcs-LTennU6AYGcXByVk_LsgY1rtRtIs4TdPsvgGr9IrSK0l-bm0oWZq2AXOOVt09ar35VRav93ThFI0NwnFj8fskWeiUs2_v4sZ2bV_Ho"/>
+<span class="absolute bottom-0 right-0 w-5 h-5 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[13px]" data-icon="verified">verified</span>
+</span>
+</div>
+</div>
+<!-- Property Stats Row -->
+<div class="flex flex-wrap items-center gap-y-3 gap-x-6 py-4 px-5 rounded-2xl bg-surface-container-low border border-outline-variant text-body-md font-body-md text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="group">group</span>
+<span>2 guests</span>
+</div>
+<span class="text-outline-variant">·</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="bed">bed</span>
+<span>1 bedroom</span>
+</div>
+<span class="text-outline-variant">·</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="king_bed">king_bed</span>
+<span>1 queen bed</span>
+</div>
+<span class="text-outline-variant">·</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="bathtub">bathtub</span>
+<span>1 bathroom</span>
+</div>
+<span class="text-outline-variant">·</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="key">key</span>
+<span>Smart keypad entry</span>
+</div>
+</div>
+<!-- Key Highlights -->
+<div class="space-y-5 pb-8 border-b border-outline-variant">
+<!-- Rare Find -->
+<div class="flex items-start gap-4">
+<div class="p-2.5 rounded-xl bg-surface-container border border-outline-variant text-secondary">
+<span class="material-symbols-outlined text-[24px]" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<span class="inline-block px-2 py-0.5 mb-1 text-label-sm font-label-sm rounded-md bg-secondary-fixed text-on-secondary-fixed-variant uppercase tracking-wider font-semibold">Rare find in La Marsa</span>
+<p class="text-body-md font-body-md text-on-surface-variant">Nadia’s sanctuary is usually booked months ahead. Highly praised for historic architecture and tranquility.</p>
+</div>
+</div>
+<!-- Dedicated Workspace -->
+<div class="flex items-start gap-4">
+<div class="p-2.5 rounded-xl bg-surface-container border border-outline-variant text-primary">
+<span class="material-symbols-outlined text-[24px]" data-icon="wifi">wifi</span>
+</div>
+<div>
+<h4 class="text-title-md font-title-md text-on-surface">Dedicated workspace with 120 Mbps Wi-Fi</h4>
+<p class="text-body-md font-body-md text-on-surface-variant">Ergonomic seating and high-speed fiber internet designed for focused remote creators and professionals.</p>
+</div>
+</div>
+<!-- Self Check-in -->
+<div class="flex items-start gap-4">
+<div class="p-2.5 rounded-xl bg-surface-container border border-outline-variant text-primary">
+<span class="material-symbols-outlined text-[24px]" data-icon="meeting_room">meeting_room</span>
+</div>
+<div>
+<h4 class="text-title-md font-title-md text-on-surface">Self check-in with smart keypad</h4>
+<p class="text-body-md font-body-md text-on-surface-variant">Seamless arrival experience using a private digital access code generated upon reservation.</p>
+</div>
+</div>
+</div>
+<!-- Section "About this sanctuary" -->
+<div class="pb-8 border-b border-outline-variant">
+<h3 class="text-headline-md font-headline-md text-primary mb-4">About this sanctuary</h3>
+<div class="text-body-lg font-body-lg text-on-surface-variant space-y-4 leading-relaxed">
+<p>
+              Enjoy a calm, sunlit retreat in the heart of La Marsa. Featuring a secluded private courtyard, high ceilings, traditional whitewashed walls, and a dedicated workspace with fast Wi-Fi. Just a 7-minute stroll to the beach and local cafes.
+            </p>
+<p>
+              Step through arched double doors into an oasis of Mediterranean stillness. Wake up to gentle birdsong in the secluded courtyard, sip fresh mint tea surrounded by flowering bougainvillea, and experience an authentic blend of Tunisian heritage craftsmanship and contemporary comfort.
+            </p>
+</div>
+<button class="mt-4 flex items-center gap-1 text-label-lg font-label-lg text-primary hover:underline">
+<span>Read more</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Section "Where you will sleep" -->
+<div class="pb-8 border-b border-outline-variant">
+<h3 class="text-headline-md font-headline-md text-primary mb-6">Where you will sleep</h3>
+<div class="max-w-xs rounded-2xl border border-outline-variant bg-surface-container-lowest p-5 space-y-4 shadow-sm hover:border-primary transition-colors">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]" data-icon="king_bed">king_bed</span>
+</div>
+<div>
+<h4 class="text-title-md font-title-md text-on-surface">Bedroom 1</h4>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">1 queen bed with comfortable organic linen bedding and soft acoustic buffering.</p>
+</div>
+</div>
+</div>
+<!-- Section "Amenities" -->
+<div class="pb-8 border-b border-outline-variant">
+<h3 class="text-headline-md font-headline-md text-primary mb-6">Amenities</h3>
+<div class="grid grid-cols-2 gap-y-4 gap-x-6 text-on-surface">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="wifi">wifi</span>
+<span class="text-body-lg font-body-lg">Fast Wi-Fi (120 Mbps)</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="countertops">countertops</span>
+<span class="text-body-lg font-body-lg">Full kitchen</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="ac_unit">ac_unit</span>
+<span class="text-body-lg font-body-lg">Air conditioning</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="desk">desk</span>
+<span class="text-body-lg font-body-lg">Dedicated workspace</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="deck">deck</span>
+<span class="text-body-lg font-body-lg">Private courtyard</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="pin">pin</span>
+<span class="text-body-lg font-body-lg">Smart keypad</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="coffee_maker">coffee_maker</span>
+<span class="text-body-lg font-body-lg">Coffee maker</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="local_laundry_service">local_laundry_service</span>
+<span class="text-body-lg font-body-lg">Washer</span>
+</div>
+</div>
+<button class="mt-8 px-6 py-3 rounded-xl border border-outline text-on-surface hover:bg-surface-container font-label-lg text-label-lg transition-colors active:scale-95">
+            Show all 16 amenities
+          </button>
+</div>
+<!-- Section "House rules & Stay policies" -->
+<div class="pb-8 border-b border-outline-variant space-y-4">
+<h3 class="text-headline-md font-headline-md text-primary">House rules &amp; Stay policies</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-body-md font-body-md text-on-surface-variant">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="schedule">schedule</span>
+<div>
+<p class="text-on-surface font-semibold">Check-in: from 3:00 PM</p>
+<p>Check-out: by 11:00 AM</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="hotel">hotel</span>
+<div>
+<p class="text-on-surface font-semibold">Minimum stay: 2 nights</p>
+<p>Maximum 2 guests allowed</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="smoke_free">smoke_free</span>
+<span>No smoking indoors</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="celebration">celebration</span>
+<span>No parties or loud gatherings</span>
+</div>
+</div>
+</div>
+<!-- Section "Cancellation policy" -->
+<div class="space-y-3">
+<h3 class="text-headline-md font-headline-md text-primary">Cancellation policy</h3>
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[22px] mt-0.5" data-icon="event_available">event_available</span>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+<strong class="text-on-surface font-semibold">Full refund before November 5, 2026, at 3:00 PM local time.</strong> After that deadline, the booking is non-refundable.
+            </p>
+</div>
+</div>
+</div>
+<!-- Right Column: Sticky Booking Widget (35%) -->
+<div class="w-full lg:w-[35%] lg:sticky lg:top-28">
+<div class="rounded-2xl bg-surface-container-lowest border border-outline-variant p-6 shadow-sm space-y-6">
+<!-- Price Header -->
+<div class="border-b border-outline-variant pb-5">
+<div class="flex items-baseline justify-between">
+<div class="text-primary font-bold text-[28px] tracking-tight">
+                540.000 TND <span class="text-label-md font-label-md font-normal text-on-surface-variant">total</span>
+</div>
+<span class="px-2 py-0.5 text-label-sm font-label-sm rounded bg-surface-container text-primary font-semibold">Best Price</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">
+              160.000 TND / night · 3 nights
+            </p>
+</div>
+<!-- Date & Guest Selector Box -->
+<div class="border border-outline-variant rounded-xl overflow-hidden divide-y divide-outline-variant bg-surface-container-lowest">
+<!-- Dates Row -->
+<div class="grid grid-cols-2 divide-x divide-outline-variant">
+<div class="p-3 hover:bg-surface-container/50 cursor-pointer transition-colors">
+<span class="block text-label-sm font-label-sm text-on-surface-variant uppercase">Check-in</span>
+<span class="text-body-md font-body-md font-semibold text-on-surface">Thu, Nov 12, 2026</span>
+</div>
+<div class="p-3 hover:bg-surface-container/50 cursor-pointer transition-colors">
+<span class="block text-label-sm font-label-sm text-on-surface-variant uppercase">Check-out</span>
+<span class="text-body-md font-body-md font-semibold text-on-surface">Sun, Nov 15, 2026</span>
+</div>
+</div>
+<!-- Guests Row -->
+<div class="p-3 flex items-center justify-between hover:bg-surface-container/50 cursor-pointer transition-colors">
+<div>
+<span class="block text-label-sm font-label-sm text-on-surface-variant uppercase">Guests</span>
+<span class="text-body-md font-body-md font-semibold text-on-surface">2 guests (2 adults)</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Primary CTA Button -->
+<button class="w-full h-[52px] rounded-2xl bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform duration-100 ease-out">
+<span>Reserve</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="text-center text-label-sm font-label-sm text-on-surface-variant">
+            You won't be charged yet
+          </p>
+<!-- Pricing Calculation Breakdown -->
+<div class="space-y-3 pt-4 border-t border-outline-variant text-body-md font-body-md">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="underline decoration-dotted cursor-help">160.000 TND × 3 nights</span>
+<span>480.000 TND</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="underline decoration-dotted cursor-help">Cleaning fee</span>
+<span>35.000 TND</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="underline decoration-dotted cursor-help">Stayora service fee</span>
+<span>25.000 TND</span>
+</div>
+<div class="pt-3 border-t border-outline-variant flex items-center justify-between font-bold text-title-md text-on-surface">
+<span>Total before taxes</span>
+<span class="text-primary font-bold">540.000 TND</span>
+</div>
+</div>
+<!-- Guarantee Badge -->
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5" data-icon="shield">shield</span>
+<p class="text-label-sm font-label-sm text-on-surface-variant leading-tight">
+<span class="font-semibold text-on-surface">Free cancellation</span> before Nov 5, 2026 at 3:00 PM.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Editorial Footer (Predicted Component) -->
+<footer class="bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant dark:border-outline full-width flat no shadows">
+<div class="w-full max-w-[1120px] mx-auto px-5 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+<!-- Brand & Copyright -->
+<div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+<span class="text-headline-sm font-headline-sm text-primary dark:text-primary-fixed">
+          Stayora
+        </span>
+<span class="hidden md:inline text-outline-variant">|</span>
+<p class="text-body-md font-body-md text-on-surface-variant dark:text-outline-variant">
+          © 2025 Stayora, Inc. Warm editorial travel discoveries and sanctuaries.
+        </p>
+</div>
+<!-- Links Cluster -->
+<div class="flex flex-wrap items-center justify-center gap-6">
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">
+          Privacy
+        </a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">
+          Terms
+        </a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">
+          Sitemap
+        </a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">
+          Destinations
+        </a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">
+          Company
+        </a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">
+          Support
+        </a>
+</div>
+</div>
+</footer>
+</body></html>

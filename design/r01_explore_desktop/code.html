@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stayora — Find a place to feel at home</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary": "#ffffff",
+            "background": "#e9fef2",
+            "on-background": "#0d1f18",
+            "on-surface": "#0d1f18",
+            "tertiary-fixed-dim": "#c0c8c5",
+            "on-tertiary-container": "#c0c8c4",
+            "on-secondary-fixed-variant": "#7f2a18",
+            "on-error-container": "#93000a",
+            "on-primary-fixed-variant": "#005049",
+            "inverse-surface": "#22342c",
+            "secondary-fixed-dim": "#ffb4a4",
+            "surface-variant": "#d2e7dc",
+            "secondary-fixed": "#ffdad3",
+            "primary-container": "#145c55",
+            "surface-container-highest": "#d2e7dc",
+            "primary-fixed": "#adefe5",
+            "error": "#ba1a1a",
+            "on-secondary-fixed": "#3d0600",
+            "surface-container": "#def3e7",
+            "secondary": "#9e412d",
+            "inverse-on-surface": "#e1f6ea",
+            "surface-bright": "#e9fef2",
+            "surface-dim": "#cadfd3",
+            "tertiary-fixed": "#dce4e0",
+            "tertiary": "#353d3a",
+            "on-primary-fixed": "#00201d",
+            "surface": "#e9fef2",
+            "surface-tint": "#256861",
+            "surface-container-low": "#e3f9ec",
+            "on-error": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#414846",
+            "outline-variant": "#bfc9c6",
+            "secondary-container": "#fe8b71",
+            "surface-container-high": "#d8ede1",
+            "primary": "#00433e",
+            "on-tertiary-fixed": "#161d1b",
+            "outline": "#6f7977",
+            "primary-fixed-dim": "#91d3c9",
+            "on-secondary": "#ffffff",
+            "inverse-primary": "#91d3c9",
+            "on-primary-container": "#91d2c9",
+            "on-secondary-container": "#752311",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-container": "#4c5451",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#3f4947"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.25rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "1.25rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Noto Serif"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Noto Serif"],
+            "title-md": ["Plus Jakarta Sans"],
+            "price-display": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "price-display": ["18px", { "lineHeight": "22px", "fontWeight": "700" }],
+            "headline-sm": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-surface text-on-surface antialiased selection:bg-primary-fixed selection:text-primary min-h-screen flex flex-col font-body-md text-body-md">
+<!-- Desktop TopNavBar (From Shared Component JSON) -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none docked full-width top-0 sticky z-50 transition-colors">
+<div class="w-full max-w-[1120px] mx-auto px-5 flex items-center justify-between h-20">
+<!-- Brand Logo Wordmark -->
+<div class="flex items-center gap-8">
+<a class="text-headline-md font-headline-md text-primary dark:text-primary-fixed tracking-tight hover:opacity-90 transition-opacity" href="#">
+          Stayora
+        </a>
+</div>
+<!-- Navigation Links -->
+<nav class="flex items-center space-x-8">
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1 font-semibold text-label-lg font-label-lg" href="#">
+          Explore
+        </a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors pb-1 text-label-lg font-label-lg" href="#">
+          Wishlists
+        </a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors pb-1 text-label-lg font-label-lg" href="#">
+          Trips
+        </a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors pb-1 text-label-lg font-label-lg" href="#">
+          Messages
+        </a>
+</nav>
+<!-- Trailing Actions & Profile -->
+<div class="flex items-center gap-4">
+<a class="text-label-lg font-label-lg text-primary dark:text-inverse-primary hover:bg-surface-container dark:hover:bg-surface-container-high px-4 py-2 rounded-full transition-colors duration-150" href="#">
+          Switch to hosting
+        </a>
+<!-- Profile & Menu Pill -->
+<button class="flex items-center gap-3 p-1.5 pl-3.5 border border-outline-variant rounded-full hover:shadow-sm bg-surface-container-lowest dark:bg-inverse-surface active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-outline text-xl" data-icon="menu">menu</span>
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label-md font-semibold text-xs tracking-wider">
+<span class="material-symbols-outlined text-sm" data-icon="account_circle">account_circle</span>
+</div>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="w-full max-w-[1120px] mx-auto px-5 pt-12 pb-8">
+<div class="max-w-2xl">
+<h1 class="font-headline-lg text-headline-lg md:text-[40px] md:leading-[48px] text-primary tracking-tight mb-3">
+          Find a place to feel at home.
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Handpicked sanctuaries and authentic stays across the Mediterranean and Tunisian coast.
+        </p>
+</div>
+<!-- Floating Persistent Search Pill -->
+<div class="mt-8 bg-surface-container-lowest border border-outline-variant rounded-full shadow-sm p-2 pl-7 flex items-center justify-between hover:shadow-md transition-shadow duration-200">
+<div class="flex items-center divide-x divide-outline-variant flex-1 text-left">
+<!-- Where -->
+<div class="pr-6 cursor-pointer flex-1">
+<span class="block text-label-sm font-label-sm text-outline uppercase tracking-wider">Where: Search destinations</span>
+<span class="block font-label-lg text-label-lg text-on-surface mt-0.5">La Marsa, Tunis</span>
+</div>
+<!-- When -->
+<div class="px-6 cursor-pointer flex-1">
+<span class="block text-label-sm font-label-sm text-outline uppercase tracking-wider">Check-in / Check-out: 3 nights</span>
+<span class="block font-label-lg text-label-lg text-on-surface mt-0.5">Nov 12 – 15, 2026</span>
+</div>
+<!-- Who -->
+<div class="pl-6 cursor-pointer flex-1">
+<span class="block text-label-sm font-label-sm text-outline uppercase tracking-wider">Guests: Add guests</span>
+<span class="block font-label-lg text-label-lg text-on-surface mt-0.5">2 guests, Adults</span>
+</div>
+</div>
+<!-- Search CTA Button -->
+<button aria-label="Search" class="w-[52px] h-[52px] rounded-full bg-primary-container text-on-primary flex items-center justify-center hover:opacity-90 active:scale-[0.98] transition-all ml-4 shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-2xl" data-icon="search">search</span>
+</button>
+</div>
+<!-- Category Filter Pills -->
+<div class="flex items-center gap-3 mt-8 overflow-x-auto pb-2 scrollbar-none">
+<!-- Active Filter: Apartments -->
+<button class="h-9 px-5 rounded-full bg-primary-container text-on-primary font-label-md text-label-md flex items-center gap-2 shrink-0 transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]" data-icon="apartment">apartment</span>
+<span>Apartments</span>
+</button>
+<!-- Filter: Houses -->
+<button class="h-9 px-5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface font-label-md text-label-md flex items-center gap-2 shrink-0 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="cottage">cottage</span>
+<span>Houses</span>
+</button>
+<!-- Filter: Guesthouses / Dars -->
+<button class="h-9 px-5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface font-label-md text-label-md flex items-center gap-2 shrink-0 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="holiday_village">holiday_village</span>
+<span>Guesthouses / Dars</span>
+</button>
+<!-- Filter: Coastal Escapes -->
+<button class="h-9 px-5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface font-label-md text-label-md flex items-center gap-2 shrink-0 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="beach_access">beach_access</span>
+<span>Coastal Escapes</span>
+</button>
+<!-- Filter: Countryside Retreats -->
+<button class="h-9 px-5 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface font-label-md text-label-md flex items-center gap-2 shrink-0 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="nature">nature</span>
+<span>Countryside Retreats</span>
+</button>
+</div>
+</section>
+<!-- Main Content Section 1: Places for your next break -->
+<section class="w-full max-w-[1120px] mx-auto px-5 py-8">
+<div class="flex items-baseline justify-between mb-6">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Places for your next break</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Handpicked homes with verified amenities</p>
+</div>
+<a class="font-label-lg text-label-lg text-primary hover:underline flex items-center gap-1" href="#">
+<span>Show all</span>
+<span class="material-symbols-outlined text-base" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- 3-Column Curated Property Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Property Card 1: Canonical Sunlit courtyard apartment -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+<div class="relative aspect-[4/3] w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A sun-drenched traditional Mediterranean courtyard apartment in Tunisia, featuring crisp whitewashed walls, vibrant flowering bougainvillea spilling over an archway, warm terracotta tile pots, and an intimate hand-carved wooden patio table setting. Natural mid-day warm sunlight illuminates the stone pavers, evoking an editorial, tranquil sanctuary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVDdGSZ-djRNqxDm60M4wgvAzDNguqOLn0eEK-dvsD9pLwP94X-s3mhjtyNOZhhGbDcF6x8Q3PUPufYf_3bv0cRwOv5fSpeofiVGd8N5IUPxfh0-58LM_azCBJViZAINEjYd4s6EKorjl3PXROPZRW0k30ic8cWqG6yFepfeKzZSjvskQ1esApuf_ezO2qoYvrk0lLp6jj4JuFb_afYZGfoW43ZVJdpEqaIEjhImYbnbL6Omw6xPNJ"/>
+<!-- Badge -->
+<div class="absolute top-3.5 left-3.5 bg-surface-container-lowest/90 backdrop-blur-sm border border-secondary px-2.5 py-1 rounded">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">RARE FIND</span>
+</div>
+<!-- Wishlist Heart Button -->
+<button aria-label="Save to wishlist" class="absolute top-3.5 right-3.5 w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-tertiary hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-base text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-lg text-label-lg text-on-surface">4.96</span>
+<span class="font-body-md text-body-md text-on-surface-variant">(48 reviews)</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1 mb-1">
+                Sunlit courtyard apartment
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-1 mb-4">
+                La Marsa, Tunis · Entire apartment · 2 guests · 1 bed
+              </p>
+</div>
+<div class="pt-4 border-t border-outline-variant flex items-end justify-between">
+<div>
+<span class="block font-price-display text-price-display text-on-surface">540.000 TND <span class="font-body-md text-body-md font-normal text-on-surface-variant">total</span></span>
+<span class="block text-label-sm font-label-sm text-on-surface-variant mt-0.5">160.000 TND / night · Nov 12–15 (3 nights)</span>
+</div>
+<a class="h-[42px] px-5 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg flex items-center justify-center hover:opacity-95 active:scale-[0.98] transition-all" href="#">
+                Reserve
+              </a>
+</div>
+</div>
+</article>
+<!-- Property Card 2: Villa Jasmine by the Sea -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+<div class="relative aspect-[4/3] w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A serene Mediterranean sea-facing villa terrace in La Marsa, overlooking crystal turquoise coastal water through an authentic sculpted white stone balustrade. Soft afternoon light glazes the terracotta potted citrus trees and linen loungers under a subtle woven canopy, creating an airy coastal retreat atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj_UVmcITDw2Ypyel4FgHaAZdvK9Ksf7FOceZ5vkGLQgk1Ik_vW8dRsLvbVdcSKTdohubPIbigZ2BC1c5Ngra_NpZqz_RB5laBplFilEo8VECZB1lE88G6a_-NUlCDy-wLOAQP4HWuaBe0EQzVNtt8R2zX5k_QsPP5087eQkyyxWbl7n_1Llyg2LceamkkibMm6kIYccSxlx8-59isLJXZ5MC4YGJWNuEqTOMXzbmaovVKjxljObDx"/>
+<!-- Badge -->
+<div class="absolute top-3.5 left-3.5 bg-surface-container-lowest/90 backdrop-blur-sm border border-primary-container px-2.5 py-1 rounded">
+<span class="font-label-sm text-label-sm text-primary-container uppercase tracking-wider">COASTAL ESCAPE</span>
+</div>
+<!-- Wishlist Heart Button -->
+<button aria-label="Save to wishlist" class="absolute top-3.5 right-3.5 w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-tertiary hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-base text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-lg text-label-lg text-on-surface">4.88</span>
+<span class="font-body-md text-body-md text-on-surface-variant">(31 reviews)</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1 mb-1">
+                Villa Jasmine by the Sea
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-1 mb-4">
+                La Marsa · Entire home · 4 guests · 2 bedrooms · 2 baths
+              </p>
+</div>
+<div class="pt-4 border-t border-outline-variant flex items-end justify-between">
+<div>
+<span class="block font-price-display text-price-display text-on-surface">720.000 TND <span class="font-body-md text-body-md font-normal text-on-surface-variant">total</span></span>
+<span class="block text-label-sm font-label-sm text-on-surface-variant mt-0.5">240.000 TND / night · 3 nights</span>
+</div>
+<a class="h-[42px] px-4 rounded-lg bg-surface-container-low text-primary-container border border-primary-container font-label-lg text-label-lg flex items-center justify-center hover:bg-surface-container active:scale-[0.98] transition-all" href="#">
+                Check availability
+              </a>
+</div>
+</div>
+</article>
+<!-- Property Card 3: Garden guesthouse in Djerba -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+<div class="relative aspect-[4/3] w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="An authentic Djerbian Dar guesthouse interior courtyard featuring sculpted vaulted lime-plaster arches, a calm turquoise plunge pool reflecting graceful date palm fronds, and handcrafted ceramic artisan tiles in earth tones. Golden sunset hour brings soft ambient warmth across the peaceful sanctuary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCskzpGWEf0tlhUe33e6uZ-fP6C2XJgfLLg85RvrwCh_SlGWHDnWnjT1HcFQVWtbaLfp5TjBV1CC1OoHITwq3RRfQOVQPtKXUiOiZcQ7gYJbjdMW8Z8luRnmjDBm1gl46TH_uZiGX0LKTN-VhbtYCbf1_xrL777_ucvHYms_nGg7l4Zuf3k6SGWYDpo7_tokngbTNRll8rB1Ai-poq9XnUrOaaDGq1Qll3N5yiCGXSdJzzUyfcujytC"/>
+<!-- Badge -->
+<div class="absolute top-3.5 left-3.5 bg-surface-container-lowest/90 backdrop-blur-sm border border-outline px-2.5 py-1 rounded">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">ISLAND LIVING</span>
+</div>
+<!-- Wishlist Heart Button -->
+<button aria-label="Save to wishlist" class="absolute top-3.5 right-3.5 w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-tertiary hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center justify-between gap-2 mb-1.5">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-base text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-lg text-label-lg text-on-surface">4.92</span>
+<span class="font-body-md text-body-md text-on-surface-variant">(29 reviews)</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1 mb-1">
+                Garden guesthouse in Djerba
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-1 mb-4">
+                Djerba · Entire guesthouse · 3 guests · 1 bed · 1 bath
+              </p>
+</div>
+<div class="pt-4 border-t border-outline-variant flex items-end justify-between">
+<div>
+<span class="block font-price-display text-price-display text-on-surface">555.000 TND <span class="font-body-md text-body-md font-normal text-on-surface-variant">total</span></span>
+<span class="block text-label-sm font-label-sm text-on-surface-variant mt-0.5">185.000 TND / night · 3 nights</span>
+</div>
+<a class="h-[42px] px-4 rounded-lg bg-surface-container-low text-primary-container border border-primary-container font-label-lg text-label-lg flex items-center justify-center hover:bg-surface-container active:scale-[0.98] transition-all" href="#">
+                Check availability
+              </a>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Main Content Section 2: Explore nearby coastal retreats -->
+<section class="w-full max-w-[1120px] mx-auto px-5 py-8 pb-16">
+<div class="flex items-baseline justify-between mb-6">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Explore nearby coastal retreats</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Calm weekend getaways within two hours of Tunis</p>
+</div>
+<a class="font-label-lg text-label-lg text-primary hover:underline flex items-center gap-1" href="#">
+<span>See more retreats</span>
+<span class="material-symbols-outlined text-base" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- 3-Column Secondary Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Property 4: Hammamet Seaside Studio -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+<div class="relative aspect-[4/3] w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A minimalist seaside studio in Hammamet with large arched patio windows opening directly toward a sparkling golden sand beach. Crisp linen curtains flutter in the Mediterranean breeze, complemented by neutral artisan ceramic decor and calm warm sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL5SqGieXBlI0tN6qGZT4qsMcFCjutWSrSp0bX15wC2X_dNiRLmKSQZPfK5MqOjk6Lrz7KAm45jzem8yb5CI_GswD1tu4uD33Pa6udFMwWUp3O5pCcvhj1orYvrav47knjifZXTyPe8Eot0gK1jsiZSYgGCUKY3oWtUnPaBJQa62zTIfg4WuM3_M6gmJxI-Cl5FjKrmqAUOhu5aj1kAD0k-Wi4YmxtnEDHFne9znFQJb3FztmFjiSo"/>
+<div class="absolute top-3.5 left-3.5 bg-surface-container-lowest/90 backdrop-blur-sm border border-outline px-2.5 py-1 rounded">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">BEACHFRONT</span>
+</div>
+<button aria-label="Save to wishlist" class="absolute top-3.5 right-3.5 w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-tertiary hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center gap-1 text-primary mb-1.5">
+<span class="material-symbols-outlined text-base text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-lg text-label-lg text-on-surface">4.91</span>
+<span class="font-body-md text-body-md text-on-surface-variant">(19 reviews)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1 mb-1">
+                Hammamet Seaside Studio
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-1 mb-4">
+                Hammamet · Studio · 2 guests · 1 bed · 1 bath
+              </p>
+</div>
+<div class="pt-4 border-t border-outline-variant flex items-end justify-between">
+<div>
+<span class="block font-price-display text-price-display text-on-surface">420.000 TND <span class="font-body-md text-body-md font-normal text-on-surface-variant">total</span></span>
+<span class="block text-label-sm font-label-sm text-on-surface-variant mt-0.5">140.000 TND / night</span>
+</div>
+<a class="h-[42px] px-4 rounded-lg bg-surface-container-low text-primary-container border border-primary-container font-label-lg text-label-lg flex items-center justify-center hover:bg-surface-container active:scale-[0.98] transition-all" href="#">
+                Check availability
+              </a>
+</div>
+</div>
+</article>
+<!-- Property 5: Sidi Bou Said Artisan Loft -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+<div class="relative aspect-[4/3] w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="An artistic cliffside loft in Sidi Bou Said overlooking the Gulf of Tunis, adorned with iconic blue-painted window lattices (moucharabieh), whitewashed stucco, and vintage woven rugs. High-ceilinged reading nook with abundant gentle natural daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCINU7EWCtLTnnSN13qWLw2v3WnqIVdo7L0rmBd-qQapJOtlqx0HDqxmx6pjl-T08fgovVjX49uRiItRW0ZJi54MtQ2uSBeHknc5pPLNOLLy20Az9N_ih2yXkuCXQCIGvKauZTIytLu5-J7pi3LyshRmV5uKuZLMp8BQmkNkozMqY8yy9QgpS8NG00hb9S2lmaF5DmZW0ufOThSEbiRjqrSd3H79gtSUXgDJHE9_Oro_Y5ZeXRlb0Zy"/>
+<div class="absolute top-3.5 left-3.5 bg-surface-container-lowest/90 backdrop-blur-sm border border-secondary px-2.5 py-1 rounded">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">PANORAMIC VIEW</span>
+</div>
+<button aria-label="Save to wishlist" class="absolute top-3.5 right-3.5 w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-tertiary hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center gap-1 text-primary mb-1.5">
+<span class="material-symbols-outlined text-base text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-lg text-label-lg text-on-surface">4.98</span>
+<span class="font-body-md text-body-md text-on-surface-variant">(64 reviews)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1 mb-1">
+                Sidi Bou Said Artisan Loft
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-1 mb-4">
+                Sidi Bou Said · Loft apartment · 2 guests · 1 bed
+              </p>
+</div>
+<div class="pt-4 border-t border-outline-variant flex items-end justify-between">
+<div>
+<span class="block font-price-display text-price-display text-on-surface">630.000 TND <span class="font-body-md text-body-md font-normal text-on-surface-variant">total</span></span>
+<span class="block text-label-sm font-label-sm text-on-surface-variant mt-0.5">210.000 TND / night</span>
+</div>
+<a class="h-[42px] px-4 rounded-lg bg-surface-container-low text-primary-container border border-primary-container font-label-lg text-label-lg flex items-center justify-center hover:bg-surface-container active:scale-[0.98] transition-all" href="#">
+                Check availability
+              </a>
+</div>
+</div>
+</article>
+<!-- Property 6: Tunis Medina Riad -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+<div class="relative aspect-[4/3] w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A historic restored palace Dar in the heart of the UNESCO Tunis Medina, showcasing majestic carved plaster ceilings, zellij tiled columns, an indoor fountain surrounded by sweet orange trees, and warm lantern lighting casting delicate lattice shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqv4gowLLCoVYfOEpKaMDUYQ6NWJOSciraDDiB0ij0rs0ybS3DdZ4n6uI5ZQqkkkNFwBFD3VAc5XbPa-2l2-NRUMEa2fSC4NDb3WEEUrKQAUNYJjDUhZVMTT0vhvgbdKV-ofY2ircrQn8f3goMFRCiqyVh1yYQfK1zSnEKQMswPhqU8y45a5LnfI77lqSzLa4jhuooespijWhsAVBsZMOn4aZcr2zKbKDqksBJcto2rbUNHPKnaSfg"/>
+<div class="absolute top-3.5 left-3.5 bg-surface-container-lowest/90 backdrop-blur-sm border border-outline px-2.5 py-1 rounded">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">HERITAGE</span>
+</div>
+<button aria-label="Save to wishlist" class="absolute top-3.5 right-3.5 w-10 h-10 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm flex items-center justify-center text-tertiary hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-5 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center gap-1 text-primary mb-1.5">
+<span class="material-symbols-outlined text-base text-primary" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-lg text-label-lg text-on-surface">4.89</span>
+<span class="font-body-md text-body-md text-on-surface-variant">(42 reviews)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1 mb-1">
+                Tunis Medina Riad
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-1 mb-4">
+                Tunis · Heritage home · 5 guests · 3 bedrooms
+              </p>
+</div>
+<div class="pt-4 border-t border-outline-variant flex items-end justify-between">
+<div>
+<span class="block font-price-display text-price-display text-on-surface">810.000 TND <span class="font-body-md text-body-md font-normal text-on-surface-variant">total</span></span>
+<span class="block text-label-sm font-label-sm text-on-surface-variant mt-0.5">270.000 TND / night</span>
+</div>
+<a class="h-[42px] px-4 rounded-lg bg-surface-container-low text-primary-container border border-primary-container font-label-lg text-label-lg flex items-center justify-center hover:bg-surface-container active:scale-[0.98] transition-all" href="#">
+                Check availability
+              </a>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- Editorial Footer (From Shared Component JSON) -->
+<footer class="bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant dark:border-outline full-width">
+<div class="w-full max-w-[1120px] mx-auto px-5 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex flex-col items-center md:items-start gap-1">
+<span class="text-headline-sm font-headline-sm text-primary dark:text-primary-fixed">Stayora</span>
+<p class="text-body-md font-body-md text-on-surface-variant dark:text-outline-variant">
+          © 2025 Stayora, Inc. Warm editorial travel discoveries and sanctuaries.
+        </p>
+</div>
+<!-- Footer Navigation Links -->
+<nav class="flex flex-wrap items-center justify-center gap-6">
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150" href="#">
+          Privacy
+        </a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150" href="#">
+          Terms
+        </a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150" href="#">
+          Sitemap
+        </a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150" href="#">
+          Destinations
+        </a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150" href="#">
+          Company
+        </a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150" href="#">
+          Support
+        </a>
+</nav>
+</div>
+</footer>
+</body></html>
