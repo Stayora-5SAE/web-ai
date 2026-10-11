@@ -8,6 +8,8 @@ import { SelectionService } from '../core/selection.service';
 import { FeedbackComponent } from '../shared/feedback.component';
 import { IconComponent } from '../shared/icon.component';
 import { MoneyPipe } from '../shared/money.pipe';
+import { WishlistService } from './wishlist.service';
+import { IdentityService } from '../accounts/identity.service';
 @Component({
   selector: 'app-property-detail',
   standalone: true,
@@ -24,16 +26,28 @@ import { MoneyPipe } from '../shared/money.pipe';
         <div>
           <h1>{{ p.title }}</h1>
           <p class="mt-2">
-            <app-icon name="star" /> {{ p.rating }} · {{ p.reviewCount }} reviews ·
+            <app-icon name="star" /> {{ p.rating }} ·
+            <a class="underline" [routerLink]="['/properties', p.id, 'reviews']"
+              >{{ p.reviewCount }} reviews</a
+            >
+            ·
             {{ p.destination }}
           </p>
         </div>
         <div class="flex gap-3">
-          <button class="btn secondary small" disabled title="Wishlist module coming soon">
-            <app-icon name="heart" /> Save · coming soon
+          <button
+            class="btn secondary small"
+            [disabled]="wishlistBusy"
+            [attr.aria-pressed]="wishlists.has(p.id)"
+            (click)="toggleWishlist()"
+          >
+            <app-icon name="heart" /> {{ wishlists.has(p.id) ? 'Saved' : 'Save' }}
           </button>
         </div>
       </div>
+      @if (wishlistError) {
+        <p class="inset" role="alert">{{ wishlistError }}</p>
+      }
       <div class="gallery">
         @for (image of photos; track $index) {
           <img
@@ -75,6 +89,15 @@ import { MoneyPipe } from '../shared/money.pipe';
           <div class="divider"></div>
           <h2>About this sanctuary</h2>
           <p class="muted mt-4">{{ p.description }}</p>
+          @if (!identity.account() || identity.account()?.role === 'GUEST') {
+            <a
+              class="btn secondary mt-4"
+              routerLink="/messages"
+              [queryParams]="{ propertyId: p.id }"
+            >
+              <app-icon name="message" /> Contact host
+            </a>
+          }
           <div class="divider"></div>
           <h2>Where you will sleep</h2>
           <div class="inset mt-5">
@@ -97,6 +120,7 @@ import { MoneyPipe } from '../shared/money.pipe';
           </p>
         </section>
         <aside class="panel booking-panel">
+          <span class="eyebrow">Base nightly rate</span>
           <h2>
             {{ p.nightlyPrice | money }} <span class="text-sm font-normal muted">/ night</span>
           </h2>
@@ -140,9 +164,13 @@ import { MoneyPipe } from '../shared/money.pipe';
             </button>
             @if (quote; as q) {
               <div class="price-row">
-                <span>{{ q.nightlyPrice | money }} × {{ q.nights }} nights</span
+                <span>Accommodation · {{ q.nights }} nights</span
                 ><span>{{ q.subtotal | money }}</span>
               </div>
+              <p class="text-xs muted">
+                Accommodation includes any date-specific prices. The displayed nightly rate is the
+                base rate.
+              </p>
               <div class="price-row">
                 <span>Cleaning fee</span><span>{{ q.cleaningFee | money }}</span>
               </div>
@@ -172,6 +200,10 @@ export class PropertyDetailComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly destroy = inject(DestroyRef);
   readonly selection = inject(SelectionService);
+  readonly wishlists = inject(WishlistService);
+  readonly identity = inject(IdentityService);
+  wishlistBusy = false;
+  wishlistError = '';
   property: Property | null = null;
   quote: Quote | null = null;
   loading = true;
@@ -186,10 +218,23 @@ export class PropertyDetailComponent implements OnInit {
     return Array.from({ length: this.property?.capacity ?? 1 }, (_, i) => i + 1);
   }
   ngOnInit() {
+    void this.wishlists.load().catch(() => this.wishlists.reset());
     this.route.paramMap.pipe(takeUntilDestroyed(this.destroy)).subscribe(() => {
       this.selection.restore(this.route.snapshot.queryParamMap);
       void this.load();
     });
+  }
+  async toggleWishlist() {
+    if (!this.property || this.wishlistBusy) return;
+    this.wishlistBusy = true;
+    this.wishlistError = '';
+    try {
+      await this.wishlists.toggle(this.property);
+    } catch (e) {
+      this.wishlistError = errorMessage(e);
+    } finally {
+      this.wishlistBusy = false;
+    }
   }
   async load() {
     this.loading = true;

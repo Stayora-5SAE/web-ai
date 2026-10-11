@@ -12,8 +12,7 @@ class DemoConfigurationTest {
     env.setActiveProfiles("production");
     assertThatThrownBy(() -> new DemoConfiguration(env, true).verify())
         .isInstanceOf(IllegalStateException.class);
-    assertThatThrownBy(() -> new DemoConfiguration(env, false).verify())
-        .isInstanceOf(IllegalStateException.class);
+    assertThatCode(() -> new DemoConfiguration(env, false).verify()).doesNotThrowAnyException();
   }
 
   @Test

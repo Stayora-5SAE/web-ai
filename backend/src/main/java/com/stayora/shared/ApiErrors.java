@@ -46,4 +46,15 @@ public class ApiErrors {
             Map.of(
                 "status", 500, "message", "The request could not be completed. Please try again."));
   }
+
+  @ExceptionHandler(org.springframework.dao.DataIntegrityViolationException.class)
+  ResponseEntity<Map<String, Object>> conflict(Exception e) {
+    return ResponseEntity.status(409)
+        .body(
+            Map.of(
+                "status",
+                409,
+                "message",
+                "This operation conflicts with an existing record. Refresh and try again."));
+  }
 }

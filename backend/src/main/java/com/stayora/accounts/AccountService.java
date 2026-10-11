@@ -11,13 +11,25 @@ public class AccountService {
   public static final UUID HOST_ID = UUID.fromString("00000000-0000-0000-0000-000000000002");
   private final AccountRepository accounts;
   private final HttpServletRequest request;
+  private final AuthService auth;
+  private final boolean demo;
 
-  public AccountService(AccountRepository accounts, HttpServletRequest request) {
+  public AccountService(
+      AccountRepository accounts,
+      HttpServletRequest request,
+      AuthService auth,
+      @org.springframework.beans.factory.annotation.Value("${stayora.demo-enabled:false}")
+          boolean demo) {
     this.accounts = accounts;
     this.request = request;
+    this.auth = auth;
+    this.demo = demo;
   }
 
   public AccountView current() {
+    AccountSession session = auth.session(request);
+    if (session != null) return auth.account(session);
+    if (!demo) throw ApiException.unauthorized("Sign in to continue.");
     String identity = request.getHeader("X-Demo-Identity");
     if (identity != null && !identity.equals("guest") && !identity.equals("host"))
       throw ApiException.forbidden();

@@ -25,7 +25,7 @@ export interface Property {
   serviceFee: number;
   rating: number;
   reviewCount: number;
-  status: 'PUBLISHED' | 'DRAFT';
+  status: 'PUBLISHED' | 'DRAFT' | 'ARCHIVED';
 }
 export interface BookingRequest {
   propertyId: string;
@@ -57,8 +57,8 @@ export interface Reservation {
   cleaningFee: number;
   serviceFee: number;
   total: number;
-  status: 'PENDING' | 'CONFIRMED' | 'DECLINED';
-  paymentStatus: 'SIMULATED';
+  status: 'PENDING' | 'CONFIRMED' | 'DECLINED' | 'CANCELLED';
+  paymentStatus: 'SIMULATED' | 'SIMULATED_REFUNDED';
 }
 export interface Dashboard {
   host: Account;
@@ -73,7 +73,15 @@ export interface CalendarData {
   blocks: { startDate: string; endDate: string; reason: string }[];
 }
 export interface AiResponse {
-  mode: 'mock';
+  mode: 'mock' | 'live';
   skill: string;
   text: string;
+  notice?: string;
+  reviewRequired?: boolean;
+}
+
+export interface AiSkill {
+  id: string;
+  label: string;
+  owner: string;
 }

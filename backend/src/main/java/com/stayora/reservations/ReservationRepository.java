@@ -11,4 +11,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, UUID> 
       UUID id, Collection<String> statuses, LocalDate end, LocalDate start);
 
   List<Reservation> findByPropertyId(UUID id);
+
+  List<Reservation> findByGuestIdOrderByCheckInDesc(UUID id);
 }

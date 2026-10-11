@@ -3,32 +3,48 @@ package com.stayora.ai;
 import com.stayora.shared.ApiException;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AiService {
-  private final Map<String, Function<String, String>> skills =
-      Map.of(
-          "listing-description",
-              context ->
-                  "A peaceful Mediterranean stay in "
-                      + context.strip()
-                      + ". Enjoy thoughtful amenities, local character, and a welcoming space to unwind.",
-          "host-summary",
-              context ->
-                  "Demo host insight: review pending requests, prepare upcoming arrivals, and keep your listing calendar current. Focus: "
-                      + context.strip()
-                      + ".");
+  private final Map<String, AiSkill> skills = new LinkedHashMap<>();
+  private final AiProvider provider;
+  private final AiPrivacy privacy;
 
-  public AiResponse assist(AiRequest request) {
-    Function<String, String> skill = skills.get(request.skill());
-    if (skill == null) throw ApiException.badRequest("Unknown mock AI skill.");
-    return new AiResponse("mock", request.skill(), skill.apply(request.context()));
+  public AiService(List<AiSkill> contributed, AiProvider provider, AiPrivacy privacy) {
+    this.provider = provider;
+    this.privacy = privacy;
+    for (AiSkill skill : contributed)
+      if (skills.putIfAbsent(skill.id(), skill) != null)
+        throw new IllegalStateException("Duplicate business AI skill.");
   }
 
-  public record AiRequest(@NotBlank String skill, @NotBlank @Size(max = 300) String context) {}
+  public List<SkillView> skills() {
+    return skills.values().stream().map(s -> new SkillView(s.id(), s.label(), s.owner())).toList();
+  }
 
-  public record AiResponse(String mode, String skill, String text) {}
+  public AiResponse assist(AiRequest request) {
+    AiSkill skill = skills.get(request.skill());
+    if (skill == null) throw ApiException.badRequest("Unknown AI skill.");
+    String safeContext = privacy.context(request.context());
+    AiProvider.ProviderResult result = provider.generate(skill.systemPrompt(), safeContext);
+    if (result.text() != null && privacy.safeOutput(result.text()))
+      return new AiResponse("live", skill.id(), result.text(), result.notice(), true);
+    String notice =
+        result.text() == null
+            ? result.notice()
+            : "The provider response did not pass validation. Showing the offline response.";
+    return new AiResponse("mock", skill.id(), skill.mock(safeContext), notice, true);
+  }
+
+  public record AiRequest(
+      @NotBlank @Size(max = 80) String skill, @NotBlank @Size(max = 2000) String context) {}
+
+  public record AiResponse(
+      String mode, String skill, String text, String notice, boolean reviewRequired) {}
+
+  public record SkillView(String id, String label, String owner) {}
 }

@@ -9,3 +9,7 @@ spring:
     password: ${TEST_DB_PASSWORD:stayora}
 stayora:
   demo-enabled: true
+  auth:
+    cookie-secure: false
+  ai:
+    provider: mock

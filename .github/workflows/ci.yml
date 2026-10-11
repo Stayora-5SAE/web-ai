@@ -1,4 +1,4 @@
-name: Verify baseline
+name: Verify Stayora
 on:
   push:
   pull_request:
@@ -14,8 +14,16 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
       - run: npm ci
         working-directory: frontend
-      - run: npm run lint && npm test && npm run build
+      - run: npm run lint && npm run test:coverage && npm run build
         working-directory: frontend
+      - name: Upload frontend coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-coverage
+          path: frontend/coverage/stayora/
+          if-no-files-found: warn
+          retention-days: 14
   backend:
     runs-on: ubuntu-latest
     services:
@@ -40,5 +48,29 @@ jobs:
           distribution: temurin
           java-version: 17
           cache: maven
-      - run: bash mvnw -B verify spotless:check
+      - run: bash mvnw -B clean verify -Pcoverage spotless:check dependency:copy-dependencies -DoutputDirectory=target/sonar-libraries
         working-directory: backend
+      - name: Upload backend coverage and analysis inputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage-and-analysis-inputs
+          path: |
+            backend/target/site/jacoco/
+            backend/target/surefire-reports/
+            backend/target/classes/
+            backend/target/test-classes/
+            backend/target/sonar-libraries/
+          if-no-files-found: warn
+          retention-days: 14
+  sonar-workflow-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - run: npm ci
+      - run: npm run sonar:test

@@ -37,7 +37,16 @@ management:
     health:
       show-details: never
 stayora:
-  demo-enabled: false
+  demo-enabled: ${DEMO_ENABLED:false}
+  auth:
+    cookie-secure: ${AUTH_COOKIE_SECURE:true}
+    origins: ${APP_ORIGINS:http://localhost:4200,http://127.0.0.1:4200}
+  ai:
+    provider: ${AI_PROVIDER:mock}
+    base-url: ${AI_BASE_URL:https://api.groq.com/openai/v1}
+    api-key: ${AI_API_KEY:}
+    model: ${AI_MODEL:llama-3.3-70b-versatile}
+    timeout-seconds: ${AI_TIMEOUT_SECONDS:12}
 springdoc:
   swagger-ui:
     path: /api/docs

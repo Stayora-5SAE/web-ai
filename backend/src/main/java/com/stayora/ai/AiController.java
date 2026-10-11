@@ -16,4 +16,9 @@ public class AiController {
   public AiService.AiResponse assist(@Valid @RequestBody AiService.AiRequest request) {
     return ai.assist(request);
   }
+
+  @GetMapping("/skills")
+  public java.util.List<AiService.SkillView> skills() {
+    return ai.skills();
+  }
 }

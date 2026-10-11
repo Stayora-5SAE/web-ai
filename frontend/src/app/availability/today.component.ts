@@ -2,14 +2,16 @@ import { Component, OnInit, inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ApiService, errorMessage } from '../core/api.service';
-import { Dashboard, Reservation } from '../core/models';
+import { Reservation } from '../core/models';
+import { FormsModule } from '@angular/forms';
+import { AvailabilityApi, HostPerformance } from './availability-api.service';
 import { FeedbackComponent } from '../shared/feedback.component';
 import { IconComponent } from '../shared/icon.component';
 import { MoneyPipe } from '../shared/money.pipe';
 @Component({
   selector: 'app-today',
   standalone: true,
-  imports: [DatePipe, RouterLink, FeedbackComponent, IconComponent, MoneyPipe],
+  imports: [DatePipe, FormsModule, RouterLink, FeedbackComponent, IconComponent, MoneyPipe],
   template: ` <main id="main" class="container page">
     <div class="page-intro">
       <div>
@@ -20,13 +22,9 @@ import { MoneyPipe } from '../shared/money.pipe';
         </p>
       </div>
       <div class="flex gap-3">
-        <button
-          class="btn secondary"
-          disabled
-          title="Listing editing is assigned to the listings module"
+        <a class="btn secondary" routerLink="/host/listings/new"
+          ><app-icon name="plus" />Create listing</a
         >
-          <app-icon name="plus" />Create listing · soon
-        </button>
       </div>
     </div>
     <div class="divider"></div>
@@ -107,18 +105,32 @@ import { MoneyPipe } from '../shared/money.pipe';
           <section class="panel">
             <h2><app-icon name="message" /> Recent messages</h2>
             <div class="inset">
-              <p class="muted">Guest conversations will appear here. Messaging is coming soon.</p>
+              <p class="muted">
+                Stay connected with your guests. Open your inbox to reply to inquiries and
+                reservation messages.
+              </p>
             </div>
-            <button class="btn secondary mt-4" disabled>Send message · coming soon</button>
+            <a class="btn secondary mt-4" routerLink="/host/messages">Open inbox</a>
           </section>
         </div>
         <aside>
           <section class="panel">
             <h2>{{ d.month + '-01' | date: 'MMMM' }} performance</h2>
+            <label class="block mt-4"
+              >Reporting month<input
+                type="month"
+                name="month"
+                [(ngModel)]="month"
+                (ngModelChange)="load()"
+            /></label>
             <p class="text-xs muted">Computed from persisted reservations</p>
             <div class="stat">
               <p>Occupancy</p>
               <strong>{{ d.occupancy }}%</strong>
+              <p class="text-xs muted">
+                {{ d.bookedNights }} confirmed nights / {{ d.sellableNights }} sellable nights ·
+                {{ d.blockedNights }} owner-blocked nights excluded
+              </p>
               <div class="progress"><span [style.width.%]="d.occupancy"></span></div>
             </div>
             <div class="stat">
@@ -148,9 +160,21 @@ import { MoneyPipe } from '../shared/money.pipe';
             <span class="eyebrow">Host insights & tips</span>
             <h3 class="mt-3">Hospitality starts with clarity</h3>
             <p class="muted mt-2">
-              Keep your calendar current and review new requests. Try the Demo AI assistant for a
-              mock host summary.
+              Summarize aggregate performance. No guest names or reservation details are sent.
             </p>
+            <button class="btn secondary full mt-4" [disabled]="insightBusy" (click)="summarize()">
+              {{ insightBusy ? 'Preparing summary…' : 'Generate host summary' }}
+            </button>
+            @if (insightText) {
+              <span class="status mt-4">AI mode: {{ insightMode }}</span>
+              <p class="mt-4" style="white-space: pre-wrap">{{ insightText }}</p>
+              <p class="text-xs muted mt-3">
+                Recommendations need human review. AI cannot alter your calendar or prices.
+              </p>
+            }
+            @if (insightError) {
+              <p class="error-text mt-4" role="alert">{{ insightError }}</p>
+            }
           </section>
         </aside>
       </div>
@@ -159,7 +183,13 @@ import { MoneyPipe } from '../shared/money.pipe';
 })
 export class TodayComponent implements OnInit {
   private readonly api = inject(ApiService);
-  dashboard: Dashboard | null = null;
+  private readonly availability = inject(AvailabilityApi);
+  dashboard: HostPerformance | null = null;
+  month = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}`;
+  insightBusy = false;
+  insightText = '';
+  insightMode = '';
+  insightError = '';
   loading = true;
   error = '';
   busy = false;
@@ -168,10 +198,9 @@ export class TodayComponent implements OnInit {
     return this.dashboard?.reservations.filter((r) => r.status === 'PENDING') ?? [];
   }
   get arrival() {
-    const today = new Date().toISOString().slice(0, 10);
-    return this.dashboard?.reservations.find(
-      (r) => r.status === 'CONFIRMED' && r.checkOut >= today,
-    );
+    const now = new Date();
+    const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    return this.dashboard?.reservations.find((r) => r.status === 'CONFIRMED' && r.checkIn >= today);
   }
   ngOnInit() {
     void this.load();
@@ -180,10 +209,8 @@ export class TodayComponent implements OnInit {
     this.loading = true;
     this.error = '';
     try {
-      const month = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1);
-      this.dashboard = await this.api.dashboard(
-        `${month.getFullYear()}-${String(month.getMonth() + 1).padStart(2, '0')}`,
-      );
+      this.dashboard = await this.availability.dashboard(this.month);
+      this.insightText = '';
     } catch (e) {
       this.error = errorMessage(e);
     } finally {
@@ -191,6 +218,7 @@ export class TodayComponent implements OnInit {
     }
   }
   async decide(r: Reservation, status: 'CONFIRMED' | 'DECLINED') {
+    if (this.busy) return;
     this.busy = true;
     this.actionError = '';
     try {
@@ -200,6 +228,24 @@ export class TodayComponent implements OnInit {
       this.actionError = errorMessage(e);
     } finally {
       this.busy = false;
+    }
+  }
+  async summarize() {
+    if (!this.dashboard || this.insightBusy) return;
+    this.insightBusy = true;
+    this.insightError = '';
+    const d = this.dashboard;
+    try {
+      const response = await this.api.assist(
+        'host-summary',
+        `month=${d.month}; publishedProperties=${d.activeListings}; confirmedNights=${d.bookedNights}; sellableNights=${d.sellableNights}; ownerBlockedNights=${d.blockedNights}; occupancyPercent=${d.occupancy}; simulatedPayoutTND=${d.payout.toFixed(3)}; pendingRequests=${d.pendingRequests}`,
+      );
+      this.insightText = response.text;
+      this.insightMode = response.mode;
+    } catch (error) {
+      this.insightError = errorMessage(error);
+    } finally {
+      this.insightBusy = false;
     }
   }
 }

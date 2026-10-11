@@ -23,6 +23,7 @@ public class DevSeeder implements ApplicationRunner {
   }
 
   @Override
+  @org.springframework.transaction.annotation.Transactional
   public void run(ApplicationArguments args) throws Exception {
     try (Connection connection = dataSource.getConnection()) {
       ScriptUtils.executeSqlScript(connection, new ClassPathResource("dev-seed.sql"));
@@ -52,6 +53,34 @@ public class DevSeeder implements ApplicationRunner {
         "INSERT INTO stayora.availability_blocks VALUES ('30000000-0000-0000-0000-000000000001','10000000-0000-0000-0000-000000000002', ?, ?, 'Owner stay') ON CONFLICT DO NOTHING",
         start.plusDays(12),
         start.plusDays(14));
+    LocalDate completed = LocalDate.now().minusDays(10);
+    insert(
+        "20000000-0000-0000-0000-000000000091",
+        "10000000-0000-0000-0000-000000000001",
+        completed,
+        completed.plusDays(3),
+        2,
+        160,
+        35,
+        25,
+        "CONFIRMED");
+    insert(
+        "20000000-0000-0000-0000-000000000092",
+        "10000000-0000-0000-0000-000000000002",
+        completed.minusDays(5),
+        completed.minusDays(2),
+        2,
+        240,
+        0,
+        0,
+        "CONFIRMED");
+    jdbc.update(
+        "INSERT INTO stayora.reviews (id,property_id,author_id,rating,body,reservation_id,created_at,updated_at) VALUES ('50000000-0000-0000-0000-000000000092','10000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000001',5,'A peaceful seaside stay with a comfortable space and thoughtful amenities.','20000000-0000-0000-0000-000000000092',now(),now()) ON CONFLICT DO NOTHING");
+    jdbc.update(
+        "INSERT INTO stayora.reservation_payments SELECT id,id,total,'TND','SIMULATED',CASE WHEN payment_status='SIMULATED_REFUNDED' THEN 'REFUNDED' ELSE 'CAPTURED' END,'DEMO-'||id::text,created_at,CASE WHEN payment_status='SIMULATED_REFUNDED' THEN created_at ELSE NULL END FROM stayora.reservations ON CONFLICT DO NOTHING");
+    jdbc.query("SELECT id FROM stayora.properties ORDER BY id FOR UPDATE", rs -> {});
+    jdbc.update(
+        "UPDATE stayora.properties p SET rating=COALESCE((SELECT round(avg(r.rating),2) FROM stayora.reviews r WHERE r.property_id=p.id),0),review_count=(SELECT count(*) FROM stayora.reviews r WHERE r.property_id=p.id)");
   }
 
   private void insert(

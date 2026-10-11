@@ -1,13 +1,27 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Property } from '../core/models';
 import { SelectionService } from '../core/selection.service';
 import { IconComponent } from './icon.component';
 import { MoneyPipe } from './money.pipe';
+import { WishlistService } from '../listings/wishlist.service';
+import { errorMessage } from '../core/api.service';
 @Component({
   selector: 'app-property-card',
   standalone: true,
   imports: [RouterLink, IconComponent, MoneyPipe],
+  styles: [
+    `
+      .heart.saved {
+        color: var(--terracotta);
+        background: var(--sage);
+      }
+      .wishlist-error {
+        color: var(--terracotta);
+        margin-top: 8px;
+      }
+    `,
+  ],
   template: ` <article class="property-card" [class.horizontal]="horizontal">
     <div class="card-media">
       <a
@@ -18,16 +32,25 @@ import { MoneyPipe } from './money.pipe';
       ><span class="badge">{{ property.badge }}</span
       ><button
         class="heart"
-        aria-label="Wishlist — available in a future module"
-        title="Persistent wishlists are coming with the accounts module"
-        disabled
+        [class.saved]="wishlists.has(property.id)"
+        [attr.aria-label]="
+          (wishlists.has(property.id) ? 'Remove ' : 'Save ') +
+          property.title +
+          (wishlists.has(property.id) ? ' from wishlist' : ' to wishlist')
+        "
+        [attr.aria-pressed]="wishlists.has(property.id)"
+        [disabled]="busy"
+        (click)="toggleWishlist()"
       >
         <app-icon name="heart" />
       </button>
     </div>
     <div class="card-content">
+      @if (wishlistError) {
+        <p class="wishlist-error text-sm" role="alert">{{ wishlistError }}</p>
+      }
       <div class="rating">
-        <app-icon name="star" /> {{ property.rating }}
+        <app-icon name="star" /> {{ property.reviewCount ? property.rating : 'New' }}
         <span>({{ property.reviewCount }} reviews)</span>
       </div>
       <a [routerLink]="['/properties', property.id]" [queryParams]="selection.params()"
@@ -47,7 +70,7 @@ import { MoneyPipe } from './money.pipe';
       <div class="card-bottom">
         <div>
           <strong>{{ total | money }}</strong
-          ><span class="text-xs"> total</span>
+          ><span class="text-xs"> estimated total</span>
           <p class="text-xs">
             {{ property.nightlyPrice | money }} / night · {{ selection.nights }} nights
           </p>
@@ -62,10 +85,28 @@ import { MoneyPipe } from './money.pipe';
     </div>
   </article>`,
 })
-export class PropertyCardComponent {
+export class PropertyCardComponent implements OnInit {
   @Input({ required: true }) property!: Property;
   @Input() horizontal = false;
   readonly selection = inject(SelectionService);
+  readonly wishlists = inject(WishlistService);
+  busy = false;
+  wishlistError = '';
+  ngOnInit() {
+    void this.wishlists.load().catch(() => this.wishlists.reset());
+  }
+  async toggleWishlist() {
+    if (this.busy) return;
+    this.busy = true;
+    this.wishlistError = '';
+    try {
+      await this.wishlists.toggle(this.property);
+    } catch (e) {
+      this.wishlistError = errorMessage(e);
+    } finally {
+      this.busy = false;
+    }
+  }
   get total() {
     return (
       this.property.nightlyPrice * this.selection.nights +

@@ -12,7 +12,7 @@ import { MoneyPipe } from '../shared/money.pipe';
   standalone: true,
   imports: [DatePipe, RouterLink, FeedbackComponent, IconComponent, MoneyPipe],
   template: ` <main id="main" class="container page">
-    <a routerLink="/host/today" class="inline-flex items-center gap-2"
+    <a routerLink="/host/reservations" class="inline-flex items-center gap-2"
       ><app-icon name="back" /> Back to reservations</a
     ><app-feedback [loading]="loading" [error]="error" (retry)="load()" />
     @if (reservation; as r) {
@@ -34,17 +34,17 @@ import { MoneyPipe } from '../shared/money.pipe';
         <div class="stack">
           <section class="panel">
             <div class="guest-profile">
-              <span class="large-avatar">SB</span>
+              <span class="large-avatar">{{ initials(r.guest.name) }}</span>
               <div>
                 <h2 class="editorial mb-0">{{ r.guest.name }}</h2>
-                <p class="muted">Demo guest · {{ r.guests }} adults</p>
+                <p class="muted">Guest · {{ r.guests }} guests</p>
               </div>
             </div>
             <div class="divider"></div>
             <p class="text-sm">{{ r.guest.email }}</p>
-            <button class="btn secondary small mt-4" disabled title="Messaging module coming soon">
-              <app-icon name="message" /> Message guest · soon
-            </button>
+            <a class="btn secondary small mt-4" [routerLink]="['/host/messages', r.id]">
+              <app-icon name="message" /> Message guest
+            </a>
           </section>
           <section class="panel">
             <div class="reservation-property">
@@ -89,14 +89,26 @@ import { MoneyPipe } from '../shared/money.pipe';
           </section>
           <section class="panel">
             <h2>Guest communication</h2>
-            <p class="muted">Keep in touch with your guest. Messaging is coming soon.</p>
-            <button class="btn secondary mt-4" disabled>Send message · coming soon</button>
+            <p class="muted">Keep in touch with your guest through the reservation conversation.</p>
+            <a class="btn secondary mt-4" [routerLink]="['/host/messages', r.id]"
+              >Open conversation</a
+            >
           </section>
         </div>
         <aside>
           <section class="panel">
-            <span class="eyebrow">Host payout · simulated</span>
-            <h1 class="mt-3">{{ r.subtotal + r.cleaningFee | money }}</h1>
+            <span class="eyebrow"
+              >{{ r.status === 'PENDING' ? 'Projected host payout' : 'Host payout' }} ·
+              simulated</span
+            >
+            <h1 class="mt-3">
+              {{
+                (r.status === 'DECLINED' || r.status === 'CANCELLED'
+                  ? 0
+                  : r.subtotal + r.cleaningFee
+                ) | money
+              }}
+            </h1>
             <p class="text-xs muted mt-2">{{ r.paymentStatus }} payment · No real money movement</p>
             <div class="divider"></div>
             <div class="price-row">
@@ -146,6 +158,15 @@ export class HostReservationComponent implements OnInit {
   busy = false;
   actionError = '';
   copyStatus = '';
+  initials(name: string) {
+    return name
+      .trim()
+      .split(/\s+/)
+      .slice(0, 2)
+      .map((part) => part.charAt(0))
+      .join('')
+      .toUpperCase();
+  }
   ngOnInit() {
     this.route.paramMap.pipe(takeUntilDestroyed(this.destroy)).subscribe(() => void this.load());
   }

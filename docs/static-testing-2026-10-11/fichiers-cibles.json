@@ -1,0 +1,214 @@
+[
+  {
+    "fichier": "frontend/src/app/accounts/auth.component.ts",
+    "lignes": 170
+  },
+  {
+    "fichier": "frontend/src/app/accounts/identity.service.spec.ts",
+    "lignes": 58
+  },
+  {
+    "fichier": "frontend/src/app/accounts/identity.service.ts",
+    "lignes": 67
+  },
+  {
+    "fichier": "frontend/src/app/app.component.ts",
+    "lignes": 125
+  },
+  {
+    "fichier": "frontend/src/app/app.routes.ts",
+    "lignes": 162
+  },
+  {
+    "fichier": "frontend/src/app/availability/availability-api.service.ts",
+    "lignes": 65
+  },
+  {
+    "fichier": "frontend/src/app/availability/calendar.component.spec.ts",
+    "lignes": 85
+  },
+  {
+    "fichier": "frontend/src/app/availability/calendar.component.ts",
+    "lignes": 436
+  },
+  {
+    "fichier": "frontend/src/app/availability/today.component.ts",
+    "lignes": 252
+  },
+  {
+    "fichier": "frontend/src/app/core/api.service.spec.ts",
+    "lignes": 46
+  },
+  {
+    "fichier": "frontend/src/app/core/api.service.ts",
+    "lignes": 79
+  },
+  {
+    "fichier": "frontend/src/app/core/models.ts",
+    "lignes": 88
+  },
+  {
+    "fichier": "frontend/src/app/core/selection.service.ts",
+    "lignes": 41
+  },
+  {
+    "fichier": "frontend/src/app/listings/explore.component.ts",
+    "lignes": 107
+  },
+  {
+    "fichier": "frontend/src/app/listings/host-listings.component.ts",
+    "lignes": 157
+  },
+  {
+    "fichier": "frontend/src/app/listings/listing-editor.component.spec.ts",
+    "lignes": 39
+  },
+  {
+    "fichier": "frontend/src/app/listings/listing-editor.component.ts",
+    "lignes": 369
+  },
+  {
+    "fichier": "frontend/src/app/listings/listing-management.service.spec.ts",
+    "lignes": 61
+  },
+  {
+    "fichier": "frontend/src/app/listings/listing-management.service.ts",
+    "lignes": 40
+  },
+  {
+    "fichier": "frontend/src/app/listings/map.component.ts",
+    "lignes": 121
+  },
+  {
+    "fichier": "frontend/src/app/listings/property-detail.component.ts",
+    "lignes": 274
+  },
+  {
+    "fichier": "frontend/src/app/listings/search.component.ts",
+    "lignes": 154
+  },
+  {
+    "fichier": "frontend/src/app/listings/wishlist.service.spec.ts",
+    "lignes": 47
+  },
+  {
+    "fichier": "frontend/src/app/listings/wishlist.service.ts",
+    "lignes": 54
+  },
+  {
+    "fichier": "frontend/src/app/listings/wishlists.component.ts",
+    "lignes": 56
+  },
+  {
+    "fichier": "frontend/src/app/messages/messages.component.spec.ts",
+    "lignes": 75
+  },
+  {
+    "fichier": "frontend/src/app/messages/messages.component.ts",
+    "lignes": 457
+  },
+  {
+    "fichier": "frontend/src/app/messages/messaging-api.service.spec.ts",
+    "lignes": 53
+  },
+  {
+    "fichier": "frontend/src/app/messages/messaging-api.service.ts",
+    "lignes": 63
+  },
+  {
+    "fichier": "frontend/src/app/reservations/host-requests.component.ts",
+    "lignes": 87
+  },
+  {
+    "fichier": "frontend/src/app/reservations/host-reservation.component.ts",
+    "lignes": 206
+  },
+  {
+    "fichier": "frontend/src/app/reservations/reservation-api.service.spec.ts",
+    "lignes": 34
+  },
+  {
+    "fichier": "frontend/src/app/reservations/reservation-api.service.ts",
+    "lignes": 39
+  },
+  {
+    "fichier": "frontend/src/app/reservations/review.component.spec.ts",
+    "lignes": 56
+  },
+  {
+    "fichier": "frontend/src/app/reservations/review.component.ts",
+    "lignes": 224
+  },
+  {
+    "fichier": "frontend/src/app/reservations/trip-detail.component.spec.ts",
+    "lignes": 61
+  },
+  {
+    "fichier": "frontend/src/app/reservations/trip-detail.component.ts",
+    "lignes": 217
+  },
+  {
+    "fichier": "frontend/src/app/reservations/trips.component.ts",
+    "lignes": 65
+  },
+  {
+    "fichier": "frontend/src/app/reviews/property-reviews.component.spec.ts",
+    "lignes": 50
+  },
+  {
+    "fichier": "frontend/src/app/reviews/property-reviews.component.ts",
+    "lignes": 120
+  },
+  {
+    "fichier": "frontend/src/app/reviews/review-api.service.spec.ts",
+    "lignes": 42
+  },
+  {
+    "fichier": "frontend/src/app/reviews/review-api.service.ts",
+    "lignes": 52
+  },
+  {
+    "fichier": "frontend/src/app/reviews/reviews.component.spec.ts",
+    "lignes": 32
+  },
+  {
+    "fichier": "frontend/src/app/reviews/reviews.component.ts",
+    "lignes": 243
+  },
+  {
+    "fichier": "frontend/src/app/shared/feedback.component.ts",
+    "lignes": 25
+  },
+  {
+    "fichier": "frontend/src/app/shared/icon.component.ts",
+    "lignes": 36
+  },
+  {
+    "fichier": "frontend/src/app/shared/layout.component.ts",
+    "lignes": 106
+  },
+  {
+    "fichier": "frontend/src/app/shared/money.pipe.spec.ts",
+    "lignes": 8
+  },
+  {
+    "fichier": "frontend/src/app/shared/money.pipe.ts",
+    "lignes": 8
+  },
+  {
+    "fichier": "frontend/src/app/shared/property-card.component.ts",
+    "lignes": 118
+  },
+  {
+    "fichier": "frontend/src/app/shared/search-bar.component.ts",
+    "lignes": 60
+  },
+  {
+    "fichier": "frontend/src/index.html",
+    "lignes": 21
+  },
+  {
+    "fichier": "frontend/src/main.ts",
+    "lignes": 21
+  }
+]

@@ -1,5 +1,6 @@
 import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ApiService, errorMessage } from '../core/api.service';
 import { Property } from '../core/models';
@@ -11,7 +12,13 @@ import { MapComponent } from './map.component';
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [FeedbackComponent, SearchBarComponent, PropertyCardComponent, MapComponent],
+  imports: [
+    FormsModule,
+    FeedbackComponent,
+    SearchBarComponent,
+    PropertyCardComponent,
+    MapComponent,
+  ],
   template: ` <main id="main">
     <div class="search-controls">
       <app-search-bar />
@@ -30,11 +37,31 @@ import { MapComponent } from './map.component';
         }
       </div>
     </div>
+    <form class="container flex flex-wrap items-end gap-3 pb-4" (ngSubmit)="applyPrices()">
+      <label
+        >Minimum nightly price (TND)<input
+          type="number"
+          name="minPrice"
+          min="0"
+          step="0.001"
+          [(ngModel)]="minPrice"
+      /></label>
+      <label
+        >Maximum nightly price (TND)<input
+          type="number"
+          name="maxPrice"
+          min="0"
+          step="0.001"
+          [(ngModel)]="maxPrice"
+      /></label>
+      <button class="btn secondary small" type="submit">Apply price range</button>
+      <button class="btn secondary small" type="button" (click)="clearPrices()">Clear</button>
+    </form>
     <div class="results-info">
       {{ properties.length }} stays found{{
         selection.destination ? ' in ' + selection.destination : ''
       }}
-      · {{ selection.nights }} nights · Prices include all booking fees
+      · {{ selection.nights }} nights · Check each stay's quote for date-specific prices and fees
     </div>
     <app-feedback [loading]="loading" [error]="error" (retry)="load()" />
     @if (!loading && !error) {
@@ -78,16 +105,20 @@ export class SearchComponent implements OnInit {
   loading = true;
   error = '';
   selected = '';
+  minPrice: number | null = null;
+  maxPrice: number | null = null;
   private requestVersion = 0;
   ngOnInit() {
     this.route.queryParamMap.pipe(takeUntilDestroyed(this.destroy)).subscribe((params) => {
       this.selection.restore(params);
+      this.minPrice = params.has('minPrice') ? Number(params.get('minPrice')) : null;
+      this.maxPrice = params.has('maxPrice') ? Number(params.get('maxPrice')) : null;
       void this.load();
     });
   }
   filter(category: string) {
     this.selection.category = category;
-    void this.router.navigate(['/search'], { queryParams: this.selection.params() });
+    void this.router.navigate(['/search'], { queryParams: this.priceParams() });
   }
   open(id: string) {
     void this.router.navigate(['/properties', id], { queryParams: this.selection.params() });
@@ -97,12 +128,26 @@ export class SearchComponent implements OnInit {
     this.loading = true;
     this.error = '';
     try {
-      const properties = await this.api.properties(this.selection.params());
+      const properties = await this.api.properties(this.priceParams());
       if (version === this.requestVersion) this.properties = properties;
     } catch (e) {
       if (version === this.requestVersion) this.error = errorMessage(e);
     } finally {
       if (version === this.requestVersion) this.loading = false;
     }
+  }
+  priceParams(): Record<string, string | number> {
+    const params: Record<string, string | number> = { ...this.selection.params() };
+    if (this.minPrice !== null) params['minPrice'] = this.minPrice;
+    if (this.maxPrice !== null) params['maxPrice'] = this.maxPrice;
+    return params;
+  }
+  applyPrices() {
+    void this.router.navigate(['/search'], { queryParams: this.priceParams() });
+  }
+  clearPrices() {
+    this.minPrice = null;
+    this.maxPrice = null;
+    this.applyPrices();
   }
 }

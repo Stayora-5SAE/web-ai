@@ -9,7 +9,8 @@
     "start": "ng serve --host 127.0.0.1",
     "build": "ng build",
     "lint": "ng lint",
-    "test": "ng test --watch=false --browsers=ChromeHeadless"
+    "test": "ng test --watch=false --browsers=ChromeHeadless",
+    "test:coverage": "ng test --configuration=coverage --watch=false --browsers=ChromeHeadless"
   },
   "dependencies": {
     "@angular/animations": "18.2.14",

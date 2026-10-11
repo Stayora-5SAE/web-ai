@@ -54,14 +54,39 @@ a {
 }
 button,
 input,
-select {
+select,
+textarea {
   font: inherit;
 }
 button,
 a,
 input,
-select {
+select,
+textarea {
   touch-action: manipulation;
+}
+.header-account {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  max-width: 160px;
+  overflow-wrap: anywhere;
+}
+.text-link {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: var(--teal);
+  text-decoration: underline;
+  text-align: left;
+}
+.assistant-panel {
+  max-height: calc(100dvh - 100px);
+  overflow-y: auto;
+}
+.assistant-panel textarea {
+  min-height: 90px;
+  resize: vertical;
 }
 button {
   cursor: pointer;
@@ -1196,7 +1221,7 @@ app-map {
     margin-left: auto;
   }
   .avatar-pill {
-    display: none;
+    margin-left: auto;
   }
   .brand {
     font-size: 24px;

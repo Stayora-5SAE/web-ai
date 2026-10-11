@@ -6,6 +6,7 @@ import { Property } from '../core/models';
 import { FeedbackComponent } from '../shared/feedback.component';
 import { IconComponent } from '../shared/icon.component';
 import { MoneyPipe } from '../shared/money.pipe';
+import { ListingManagementService } from './listing-management.service';
 @Component({
   selector: 'app-host-listings',
   standalone: true,
@@ -16,9 +17,7 @@ import { MoneyPipe } from '../shared/money.pipe';
         <h1>Your Listings</h1>
         <p class="muted">Thoughtful spaces. Memorable stays. Manage your property portfolio.</p>
       </div>
-      <button class="btn" disabled title="Listing editing is coming soon">
-        <app-icon name="plus" /> Create listing · soon
-      </button>
+      <a class="btn" routerLink="/host/listings/new"><app-icon name="plus" /> Create listing</a>
     </div>
     <div class="listing-toolbar">
       <div class="flex gap-2">
@@ -33,6 +32,9 @@ import { MoneyPipe } from '../shared/money.pipe';
         ><button class="chip" [class.active]="filter === 'DRAFT'" (click)="filter = 'DRAFT'">
           Drafts
         </button>
+        <button class="chip" [class.active]="filter === 'ARCHIVED'" (click)="filter = 'ARCHIVED'">
+          Archived
+        </button>
       </div>
       <label
         ><span class="sr-only">Search your listings</span
@@ -40,13 +42,29 @@ import { MoneyPipe } from '../shared/money.pipe';
       /></label>
     </div>
     <app-feedback [loading]="loading" [error]="error" (retry)="load()" />
+    @if (archiveId) {
+      <div class="inset mb-4" role="alert">
+        <strong>Archive this listing?</strong>
+        <p>The listing will disappear from guest search. Reservation history stays available.</p>
+        <button class="btn small mt-2" [disabled]="busy" (click)="archive()">
+          {{ busy ? 'Archiving…' : 'Confirm archive' }}
+        </button>
+        <button class="btn secondary small ml-2" [disabled]="busy" (click)="archiveId = ''">
+          Cancel
+        </button>
+      </div>
+    }
     @for (p of visible; track p.id) {
       <article class="panel host-listing">
         <img [src]="p.images[0]" [alt]="p.title" loading="lazy" />
         <div>
           <div class="flex justify-between gap-4">
             <span class="status" [class.pending]="p.status === 'DRAFT'">{{
-              p.status === 'PUBLISHED' ? '● Published' : 'Draft · not bookable'
+              p.status === 'PUBLISHED'
+                ? '● Published'
+                : p.status === 'ARCHIVED'
+                  ? 'Archived'
+                  : 'Draft · not bookable'
             }}</span
             ><span class="text-xs">☆ {{ p.rating }} ({{ p.reviewCount }})</span>
           </div>
@@ -68,13 +86,14 @@ import { MoneyPipe } from '../shared/money.pipe';
                 >Preview in guest mode</a
               >
             }
-            <button
-              class="btn secondary small"
-              disabled
-              title="Full editing is reserved for the listings module"
-            >
-              Edit · coming soon
-            </button>
+            @if (p.status !== 'ARCHIVED') {
+              <a class="btn secondary small" [routerLink]="['/host/listings', p.id, 'edit']"
+                >Edit listing</a
+              >
+              <button class="btn secondary small" [disabled]="busy" (click)="archiveId = p.id">
+                Archive
+              </button>
+            }
           </div>
         </div>
       </article>
@@ -85,12 +104,15 @@ import { MoneyPipe } from '../shared/money.pipe';
     }
     <div class="inset mt-8">
       <strong>Professional photography tip:</strong> bright photos and thoughtful details help
-      guests picture their stay. Listing editing and publishing are coming soon.
+      guests picture their stay. Preview every detail before publishing.
     </div>
   </main>`,
 })
 export class HostListingsComponent implements OnInit {
   private readonly api = inject(ApiService);
+  private readonly listings = inject(ListingManagementService);
+  archiveId = '';
+  busy = false;
   properties: Property[] = [];
   loading = true;
   error = '';
@@ -99,7 +121,7 @@ export class HostListingsComponent implements OnInit {
   get visible() {
     return this.properties.filter(
       (p) =>
-        (this.filter === 'ALL' || p.status === this.filter) &&
+        (this.filter === 'ALL' ? p.status !== 'ARCHIVED' : p.status === this.filter) &&
         p.title.toLowerCase().includes(this.search.toLowerCase()),
     );
   }
@@ -115,6 +137,20 @@ export class HostListingsComponent implements OnInit {
       this.error = errorMessage(e);
     } finally {
       this.loading = false;
+    }
+  }
+  async archive() {
+    if (this.busy || !this.archiveId) return;
+    this.busy = true;
+    this.error = '';
+    try {
+      await this.listings.archive(this.archiveId);
+      this.archiveId = '';
+      await this.load();
+    } catch (e) {
+      this.error = errorMessage(e);
+    } finally {
+      this.busy = false;
     }
   }
 }

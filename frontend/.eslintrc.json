@@ -6,7 +6,10 @@
       "files": ["*.ts"],
       "parser": "@typescript-eslint/parser",
       "plugins": ["@typescript-eslint"],
-      "extends": ["plugin:@angular-eslint/recommended"],
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
       "rules": {
         "@angular-eslint/prefer-standalone": "error",
         "@typescript-eslint/no-explicit-any": "error"

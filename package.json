@@ -12,7 +12,12 @@
     "dev:frontend": "npm start --prefix frontend",
     "check": "npm run lint --prefix frontend && npm test --prefix frontend && npm run build --prefix frontend && node scripts/backend.mjs verify spotless:check",
     "format": "prettier --write . && node scripts/backend.mjs spotless:apply",
-    "format:check": "prettier --check . && node scripts/backend.mjs spotless:check"
+    "format:check": "prettier --check . && node scripts/backend.mjs spotless:check",
+    "sonar:start": "node scripts/sonar.mjs start",
+    "sonar:coverage": "node scripts/sonar.mjs coverage",
+    "sonar:scan": "node scripts/sonar.mjs scan",
+    "sonar:test": "node --test scripts/sonar.test.mjs",
+    "sonar:export": "node scripts/sonar-export.mjs"
   },
   "devDependencies": {
     "concurrently": "9.1.2",

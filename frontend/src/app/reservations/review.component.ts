@@ -35,8 +35,7 @@ import { MoneyPipe } from '../shared/money.pipe';
           {{ r.guests }} guests · {{ r.total | money }}
         </p>
         <div class="dashboard-actions">
-          <a class="btn" [routerLink]="['/host/reservations', r.id]"
-            >View in demo host mode <app-icon name="arrow" /></a
+          <a class="btn" [routerLink]="['/trips', r.id]">View your trip <app-icon name="arrow" /></a
           ><a class="btn secondary" routerLink="/explore">Explore more stays</a>
         </div>
       </section>
@@ -76,7 +75,7 @@ import { MoneyPipe } from '../shared/money.pipe';
           <section class="panel">
             <div class="flex justify-between">
               <h2>Guest information</h2>
-              <span class="status">Demo guest</span>
+              <span class="status">Guest</span>
             </div>
             <div class="inset guest-information">
               <div>
@@ -104,7 +103,8 @@ import { MoneyPipe } from '../shared/money.pipe';
             <h2>Ground rules & cancellation policy</h2>
             <div class="inset">
               Respect the property and your neighbors. Your request remains pending until the host
-              accepts. Payments and refunds are simulated.
+              accepts. You can cancel before the check-in date for a full simulated refund. Payments
+              and refunds are simulated.
             </div>
             <label class="agreement"
               ><input type="checkbox" name="agreed" [(ngModel)]="agreed" required /><span
@@ -143,9 +143,13 @@ import { MoneyPipe } from '../shared/money.pipe';
           <div class="divider"></div>
           <h2>Price details</h2>
           <div class="price-row">
-            <span>{{ quote.nightlyPrice | money }} × {{ quote.nights }} nights</span
+            <span>Accommodation · {{ quote.nights }} nights</span
             ><span>{{ quote.subtotal | money }}</span>
           </div>
+          <p class="text-xs muted">
+            Base nightly rate: {{ quote.nightlyPrice | money }}. Accommodation includes any
+            date-specific prices.
+          </p>
           <div class="price-row">
             <span>Cleaning fee</span><span>{{ quote.cleaningFee | money }}</span>
           </div>

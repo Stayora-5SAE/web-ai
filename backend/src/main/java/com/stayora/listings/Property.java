@@ -46,4 +46,5 @@ public class Property {
 
   public int reviewCount;
   public String status;
+  public boolean archived;
 }

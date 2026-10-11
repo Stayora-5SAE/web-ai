@@ -41,6 +41,12 @@
             "tsConfig": "tsconfig.spec.json",
             "styles": ["src/styles.css"],
             "scripts": []
+          },
+          "configurations": {
+            "coverage": {
+              "codeCoverage": true,
+              "karmaConfig": "karma.coverage.conf.cjs"
+            }
           }
         },
         "lint": {

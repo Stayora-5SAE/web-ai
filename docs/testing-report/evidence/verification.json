@@ -1,0 +1,101 @@
+{
+  "capturedAt": "2026-10-11T20:03:13.421660+00:00",
+  "backend": {
+    "tests": 51,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "backendSuites": [
+    {
+      "name": "com.stayora.accounts.AuthIntegrationTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.stayora.ai.AiSafetyTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.stayora.AvailabilityManagementIntegrationTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.stayora.BookingIntegrationTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.stayora.ListingManagementIntegrationTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.stayora.listings.ListingAiSkillTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.stayora.MessagingIntegrationTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.stayora.ReservationLifecycleIntegrationTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.stayora.ReviewManagementIntegrationTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.stayora.shared.DemoConfigurationTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "frontend": {
+    "tests": 33,
+    "failures": 0
+  },
+  "workflow": {
+    "tests": 6,
+    "failures": 0
+  },
+  "eslint": {
+    "files": 53,
+    "errors": 0,
+    "warnings": 1
+  },
+  "sonar": {
+    "version": "26.9.0.129388",
+    "analysisId": "dddfabf4-67ed-4916-a2b3-a524a8fcd976",
+    "gate": "OK",
+    "distinctIssues": 44
+  },
+  "sources": 139
+}

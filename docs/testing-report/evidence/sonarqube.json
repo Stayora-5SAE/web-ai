@@ -1,0 +1,4209 @@
+{
+  "capturedAt": "2026-10-11T19:57:55.191Z",
+  "serverVersion": "26.9.0.129388",
+  "analysis": {
+    "id": "47bb83a4-1aff-4aa3-8ac3-a24d92adbaaa",
+    "type": "REPORT",
+    "componentId": "ff1cc076-afd7-4683-a18c-bc7c88a5bf4c",
+    "componentKey": "stayora",
+    "componentName": "Stayora",
+    "componentQualifier": "TRK",
+    "analysisId": "dddfabf4-67ed-4916-a2b3-a524a8fcd976",
+    "status": "SUCCESS",
+    "submittedAt": "2026-10-11T20:57:34+0100",
+    "submitterLogin": "admin",
+    "startedAt": "2026-10-11T20:57:35+0100",
+    "executedAt": "2026-10-11T20:57:40+0100",
+    "executionTimeMs": 4524,
+    "hasScannerContext": true,
+    "warningCount": 1,
+    "warnings": [
+      "Missing blame information for 109 files. This may lead to some features not working correctly. Please check the analysis logs and refer to <a href=\"https://docs.sonarsource.com/sonarqube-community-build/analyzing-source-code/scm-integration/\" rel=\"noopener noreferrer\" target=\"_blank\">the documentation</a>."
+    ],
+    "infoMessages": []
+  },
+  "metrics": {
+    "component": {
+      "key": "stayora",
+      "name": "Stayora",
+      "qualifier": "TRK",
+      "measures": [
+        {
+          "metric": "duplicated_lines_density",
+          "value": "0.4",
+          "bestValue": false
+        },
+        {
+          "metric": "software_quality_security_rating",
+          "value": "1.0",
+          "bestValue": true
+        },
+        {
+          "metric": "software_quality_security_issues",
+          "value": "0",
+          "bestValue": true
+        },
+        {
+          "metric": "sqale_index",
+          "value": "345",
+          "bestValue": false
+        },
+        {
+          "metric": "sqale_rating",
+          "value": "1.0",
+          "bestValue": true
+        },
+        {
+          "metric": "bugs",
+          "value": "1",
+          "bestValue": false
+        },
+        {
+          "metric": "test_failures",
+          "value": "0",
+          "bestValue": true
+        },
+        {
+          "metric": "lines_to_cover",
+          "value": "1990"
+        },
+        {
+          "metric": "uncovered_conditions",
+          "value": "214",
+          "bestValue": false
+        },
+        {
+          "metric": "software_quality_reliability_issues",
+          "value": "16",
+          "bestValue": false
+        },
+        {
+          "metric": "branch_coverage",
+          "value": "64.1",
+          "bestValue": false
+        },
+        {
+          "metric": "ncloc",
+          "value": "9451"
+        },
+        {
+          "metric": "software_quality_reliability_rating",
+          "value": "3.0",
+          "bestValue": false
+        },
+        {
+          "metric": "line_coverage",
+          "value": "68.0",
+          "bestValue": false
+        },
+        {
+          "metric": "test_errors",
+          "value": "0",
+          "bestValue": true
+        },
+        {
+          "metric": "coverage",
+          "value": "67.1",
+          "bestValue": false
+        },
+        {
+          "metric": "reliability_rating",
+          "value": "3.0",
+          "bestValue": false
+        },
+        {
+          "metric": "code_smells",
+          "value": "43",
+          "bestValue": false
+        },
+        {
+          "metric": "security_rating",
+          "value": "1.0",
+          "bestValue": true
+        },
+        {
+          "metric": "security_hotspots",
+          "value": "0",
+          "bestValue": true
+        },
+        {
+          "metric": "tests",
+          "value": "51"
+        },
+        {
+          "metric": "uncovered_lines",
+          "value": "637",
+          "bestValue": false
+        },
+        {
+          "metric": "software_quality_maintainability_issues",
+          "value": "40",
+          "bestValue": false
+        },
+        {
+          "metric": "files",
+          "value": "103"
+        },
+        {
+          "metric": "vulnerabilities",
+          "value": "0",
+          "bestValue": true
+        },
+        {
+          "metric": "conditions_to_cover",
+          "value": "596"
+        },
+        {
+          "metric": "skipped_tests",
+          "value": "0",
+          "bestValue": true
+        },
+        {
+          "metric": "software_quality_maintainability_rating",
+          "value": "1.0",
+          "bestValue": true
+        }
+      ]
+    }
+  },
+  "gate": {
+    "projectStatus": {
+      "status": "OK",
+      "conditions": [
+        {
+          "status": "OK",
+          "metricKey": "new_violations",
+          "comparator": "GT",
+          "errorThreshold": "0",
+          "actualValue": "0"
+        }
+      ],
+      "ignoredConditions": false,
+      "period": {
+        "mode": "PREVIOUS_VERSION",
+        "date": "2026-10-11T20:53:51+0100"
+      },
+      "caycStatus": "compliant"
+    }
+  },
+  "issues": {
+    "total": 44,
+    "p": 1,
+    "ps": 500,
+    "paging": {
+      "pageIndex": 1,
+      "pageSize": 500,
+      "total": 44
+    },
+    "effortTotal": 350,
+    "issues": [
+      {
+        "key": "4baccd07-b5ae-43db-97f1-7ebf856bc18b",
+        "rule": "java:S9142",
+        "severity": "MAJOR",
+        "component": "stayora:backend/src/main/java/com/stayora/accounts/AuthService.java",
+        "project": "stayora",
+        "line": 95,
+        "hash": "033ad150bc85559d01d0514d4dcf6daa",
+        "textRange": {
+          "startLine": 95,
+          "endLine": 95,
+          "startOffset": 47,
+          "endOffset": 93
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Extract this regular expression to a Pattern compiled outside the loop.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "regex",
+          "performance",
+          "sql"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "EFFICIENT",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "c5eaf7b2-b8c3-400b-8622-83a502e6f2a3",
+        "rule": "java:S8786",
+        "severity": "MAJOR",
+        "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+        "project": "stayora",
+        "line": 113,
+        "hash": "c767aa5f9f7a49dbe502e351efa31e6f",
+        "textRange": {
+          "startLine": 113,
+          "endLine": 113,
+          "startOffset": 14,
+          "endOffset": 21
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Simplify this regular expression to reduce its runtime, as it has super-linear performance due to backtracking.",
+        "effort": "20min",
+        "debt": "20min",
+        "author": "",
+        "tags": [
+          "regex",
+          "performance"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "EFFICIENT",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "691c6c09-0574-49bd-9b9e-348bf632d920",
+        "rule": "java:S8786",
+        "severity": "MAJOR",
+        "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+        "project": "stayora",
+        "line": 116,
+        "hash": "c767aa5f9f7a49dbe502e351efa31e6f",
+        "textRange": {
+          "startLine": 116,
+          "endLine": 116,
+          "startOffset": 14,
+          "endOffset": 21
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Simplify this regular expression to reduce its runtime, as it has super-linear performance due to backtracking.",
+        "effort": "20min",
+        "debt": "20min",
+        "author": "",
+        "tags": [
+          "regex",
+          "performance"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "EFFICIENT",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "fc28273d-b380-43d8-a310-f5a81edbd2e4",
+        "rule": "java:S5843",
+        "severity": "MAJOR",
+        "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+        "project": "stayora",
+        "line": 117,
+        "hash": "b2e15e7672c47561f2e711859d8a567e",
+        "textRange": {
+          "startLine": 117,
+          "endLine": 117,
+          "startOffset": 10,
+          "endOffset": 11
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+                "textRange": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startOffset": 53,
+                  "endOffset": 54
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+                "textRange": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startOffset": 79,
+                  "endOffset": 80
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+                "textRange": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startOffset": 11,
+                  "endOffset": 15
+                },
+                "msg": "+2 (incl 1 for nesting)",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+                "textRange": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startOffset": 28,
+                  "endOffset": 29
+                },
+                "msg": "+2 (incl 1 for nesting)",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+                "textRange": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startOffset": 15,
+                  "endOffset": 16
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+                "textRange": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startOffset": 40,
+                  "endOffset": 41
+                },
+                "msg": "+2 (incl 1 for nesting)",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+                "textRange": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startOffset": 30,
+                  "endOffset": 31
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+                "textRange": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startOffset": 49,
+                  "endOffset": 53
+                },
+                "msg": "+2 (incl 1 for nesting)",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+                "textRange": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startOffset": 44,
+                  "endOffset": 45
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+                "textRange": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startOffset": 73,
+                  "endOffset": 79
+                },
+                "msg": "+2 (incl 1 for nesting)",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+                "textRange": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startOffset": 60,
+                  "endOffset": 61
+                },
+                "msg": "+3 (incl 2 for nesting)",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+                "textRange": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startOffset": 71,
+                  "endOffset": 72
+                },
+                "msg": "+3 (incl 2 for nesting)",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+                "textRange": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startOffset": 64,
+                  "endOffset": 65
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+                "textRange": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startOffset": 85,
+                  "endOffset": 86
+                },
+                "msg": "+2 (incl 1 for nesting)",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+                "textRange": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startOffset": 92,
+                  "endOffset": 93
+                },
+                "msg": "+2 (incl 1 for nesting)",
+                "msgFormattings": []
+              }
+            ]
+          }
+        ],
+        "status": "OPEN",
+        "message": "Simplify this regular expression to reduce its complexity from 26 to the 20 allowed.",
+        "effort": "20min",
+        "debt": "20min",
+        "author": "",
+        "tags": [
+          "regex"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "CLEAR",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "ea7dd140-40ef-4d64-8a87-cb2d77cee6d0",
+        "rule": "java:S8786",
+        "severity": "MAJOR",
+        "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+        "project": "stayora",
+        "line": 35,
+        "hash": "9ee7f06e011d2e7e917459bb2e3da8ac",
+        "textRange": {
+          "startLine": 35,
+          "endLine": 35,
+          "startOffset": 27,
+          "endOffset": 37
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Simplify this regular expression to reduce its runtime, as it has super-linear performance due to backtracking.",
+        "effort": "20min",
+        "debt": "20min",
+        "author": "",
+        "tags": [
+          "regex",
+          "performance"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "EFFICIENT",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "84cf4351-59e4-457d-a929-b680b7119606",
+        "rule": "java:S1192",
+        "severity": "CRITICAL",
+        "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+        "project": "stayora",
+        "line": 41,
+        "hash": "f2889af48e26c573b1de0df0d100c170",
+        "textRange": {
+          "startLine": 41,
+          "endLine": 41,
+          "startOffset": 53,
+          "endOffset": 61
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 50,
+                  "endLine": 50,
+                  "startOffset": 25,
+                  "endOffset": 33
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 57,
+                  "endLine": 57,
+                  "startOffset": 33,
+                  "endOffset": 41
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          }
+        ],
+        "status": "OPEN",
+        "message": "Define a constant instead of duplicating this literal \"ollama\" 3 times.",
+        "effort": "8min",
+        "debt": "8min",
+        "author": "",
+        "tags": [
+          "design"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "DISTINCT",
+        "cleanCodeAttributeCategory": "ADAPTABLE",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "HIGH"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "d36beeea-b957-4849-8de0-02fcc7823496",
+        "rule": "java:S3776",
+        "severity": "CRITICAL",
+        "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+        "project": "stayora",
+        "line": 47,
+        "hash": "dcce666f7b17d9f6466c734c18a659e3",
+        "textRange": {
+          "startLine": 47,
+          "endLine": 47,
+          "startOffset": 24,
+          "endOffset": 32
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 48,
+                  "endLine": 48,
+                  "startOffset": 4,
+                  "endOffset": 6
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 50,
+                  "endLine": 50,
+                  "startOffset": 4,
+                  "endOffset": 6
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 50,
+                  "endLine": 50,
+                  "startOffset": 35,
+                  "endOffset": 37
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 55,
+                  "endLine": 55,
+                  "startOffset": 6,
+                  "endOffset": 8
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 56,
+                  "endLine": 56,
+                  "startOffset": 10,
+                  "endOffset": 12
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 57,
+                  "endLine": 57,
+                  "startOffset": 14,
+                  "endOffset": 16
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 57,
+                  "endLine": 57,
+                  "startOffset": 43,
+                  "endOffset": 45
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 82,
+                  "endLine": 82,
+                  "startOffset": 6,
+                  "endOffset": 8
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 85,
+                  "endLine": 85,
+                  "startOffset": 6,
+                  "endOffset": 8
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 88,
+                  "endLine": 88,
+                  "startOffset": 6,
+                  "endOffset": 8
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 88,
+                  "endLine": 88,
+                  "startOffset": 38,
+                  "endOffset": 40
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 91,
+                  "endLine": 91,
+                  "startOffset": 6,
+                  "endOffset": 8
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 97,
+                  "endLine": 97,
+                  "startOffset": 30,
+                  "endOffset": 31
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 99,
+                  "endLine": 99,
+                  "startOffset": 6,
+                  "endOffset": 11
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 101,
+                  "endLine": 101,
+                  "startOffset": 6,
+                  "endOffset": 11
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 105,
+                  "endLine": 105,
+                  "startOffset": 6,
+                  "endOffset": 11
+                },
+                "msg": "+1",
+                "msgFormattings": []
+              }
+            ]
+          }
+        ],
+        "status": "OPEN",
+        "message": "Refactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.",
+        "effort": "6min",
+        "debt": "6min",
+        "author": "",
+        "tags": [
+          "brain-overload"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "FOCUSED",
+        "cleanCodeAttributeCategory": "ADAPTABLE",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "HIGH"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "784f3c06-750a-4164-8931-c0953bbe5fb9",
+        "rule": "java:S1192",
+        "severity": "CRITICAL",
+        "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+        "project": "stayora",
+        "line": 73,
+        "hash": "6334f55bb1d48ab8b99d5fac69b4c243",
+        "textRange": {
+          "startLine": 73,
+          "endLine": 73,
+          "startOffset": 22,
+          "endOffset": 31
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 76,
+                  "endLine": 76,
+                  "startOffset": 41,
+                  "endOffset": 50
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+                "textRange": {
+                  "startLine": 95,
+                  "endLine": 95,
+                  "startOffset": 86,
+                  "endOffset": 95
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          }
+        ],
+        "status": "OPEN",
+        "message": "Define a constant instead of duplicating this literal \"content\" 3 times.",
+        "effort": "8min",
+        "debt": "8min",
+        "author": "",
+        "tags": [
+          "design"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "DISTINCT",
+        "cleanCodeAttributeCategory": "ADAPTABLE",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "HIGH"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "70cdfeda-6338-4c80-9e1a-6f6461153e27",
+        "rule": "java:S8688",
+        "severity": "INFO",
+        "component": "stayora:backend/src/main/java/com/stayora/availability/HostAvailabilityManager.java",
+        "project": "stayora",
+        "line": 47,
+        "hash": "d230aab1c95387740b611da4c7bcd2a2",
+        "textRange": {
+          "startLine": 47,
+          "endLine": 47,
+          "startOffset": 36,
+          "endOffset": 41
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Explicitly specify the time zone by passing a ZoneId or a Clock to the .now() method.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "datetime",
+          "java8",
+          "timezone",
+          "pitfall"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "INFO"
+          },
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "INFO"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "8b13700e-a843-45e7-8706-bebd63c876e7",
+        "rule": "java:S8688",
+        "severity": "INFO",
+        "component": "stayora:backend/src/main/java/com/stayora/availability/HostAvailabilityManager.java",
+        "project": "stayora",
+        "line": 50,
+        "hash": "3adc2cb3bb2598be29ffb4f24c7855f2",
+        "textRange": {
+          "startLine": 50,
+          "endLine": 50,
+          "startOffset": 33,
+          "endOffset": 38
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Explicitly specify the time zone by passing a ZoneId or a Clock to the .now() method.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "datetime",
+          "java8",
+          "timezone",
+          "pitfall"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "INFO"
+          },
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "INFO"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "b929cb13-019e-4cbb-9ab5-f6e78e51c799",
+        "rule": "java:S8688",
+        "severity": "INFO",
+        "component": "stayora:backend/src/main/java/com/stayora/availability/HostController.java",
+        "project": "stayora",
+        "line": 106,
+        "hash": "6bfafa22cecd22eb97cb8768086adc4e",
+        "textRange": {
+          "startLine": 106,
+          "endLine": 106,
+          "startOffset": 49,
+          "endOffset": 54
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Explicitly specify the time zone by passing a ZoneId or a Clock to the .now() method.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "datetime",
+          "java8",
+          "timezone",
+          "pitfall"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "INFO"
+          },
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "INFO"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "e2741fbf-ea2d-4629-aa41-73d1ba2333c7",
+        "rule": "java:S1659",
+        "severity": "MINOR",
+        "component": "stayora:backend/src/main/java/com/stayora/availability/HostController.java",
+        "project": "stayora",
+        "line": 114,
+        "hash": "992e92c80549752376e2a7efc2b97dec",
+        "textRange": {
+          "startLine": 114,
+          "endLine": 114,
+          "startOffset": 39,
+          "endOffset": 42
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Declare \"end\" on a separate line.",
+        "effort": "2min",
+        "debt": "2min",
+        "author": "",
+        "tags": [
+          "convention",
+          "cert"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": true,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "FORMATTED",
+        "cleanCodeAttributeCategory": "CONSISTENT",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "LOW"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "1389be88-1f57-4a0b-a003-4ef9ff6adcb2",
+        "rule": "java:S1700",
+        "severity": "MAJOR",
+        "component": "stayora:backend/src/main/java/com/stayora/availability/NightlyPrice.java",
+        "project": "stayora",
+        "line": 16,
+        "hash": "c71f151ba76bf8a39c1dd454ef9442dc",
+        "textRange": {
+          "startLine": 16,
+          "endLine": 16,
+          "startOffset": 20,
+          "endOffset": 32
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Rename field \"nightlyPrice\"",
+        "effort": "10min",
+        "debt": "10min",
+        "author": "",
+        "tags": [
+          "brain-overload"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "IDENTIFIABLE",
+        "cleanCodeAttributeCategory": "CONSISTENT",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "d456640d-b3e2-4dff-8a9d-5398256ca6c3",
+        "rule": "java:S8688",
+        "severity": "INFO",
+        "component": "stayora:backend/src/main/java/com/stayora/listings/PropertyManagementService.java",
+        "project": "stayora",
+        "line": 91,
+        "hash": "80c05b8f6f72eb6321af060a6b8ee616",
+        "textRange": {
+          "startLine": 91,
+          "endLine": 91,
+          "startOffset": 52,
+          "endOffset": 57
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Explicitly specify the time zone by passing a ZoneId or a Clock to the .now() method.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "datetime",
+          "java8",
+          "timezone",
+          "pitfall"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "INFO"
+          },
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "INFO"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "7f5f8279-85a4-487f-85a6-8beccdbc1c14",
+        "rule": "java:S1192",
+        "severity": "CRITICAL",
+        "component": "stayora:backend/src/main/java/com/stayora/listings/WishlistService.java",
+        "project": "stayora",
+        "line": 24,
+        "hash": "02044b38236eb48e4c6fa5200510e591",
+        "textRange": {
+          "startLine": 24,
+          "endLine": 24,
+          "startOffset": 42,
+          "endOffset": 49
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/listings/WishlistService.java",
+                "textRange": {
+                  "startLine": 33,
+                  "endLine": 33,
+                  "startOffset": 42,
+                  "endOffset": 49
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/listings/WishlistService.java",
+                "textRange": {
+                  "startLine": 42,
+                  "endLine": 42,
+                  "startOffset": 64,
+                  "endOffset": 71
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          }
+        ],
+        "status": "OPEN",
+        "message": "Define a constant instead of duplicating this literal \"GUEST\" 3 times.",
+        "effort": "8min",
+        "debt": "8min",
+        "author": "",
+        "tags": [
+          "design"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "DISTINCT",
+        "cleanCodeAttributeCategory": "ADAPTABLE",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "HIGH"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "fd2eba7f-c4d5-43ae-9b74-252ed2d24815",
+        "rule": "java:S3358",
+        "severity": "MAJOR",
+        "component": "stayora:backend/src/main/java/com/stayora/messages/MessageDraftAiSkill.java",
+        "project": "stayora",
+        "line": 29,
+        "hash": "23e08cce84c77e1f5947f11a77f12f4a",
+        "textRange": {
+          "startLine": 29,
+          "endLine": 31,
+          "startOffset": 14,
+          "endOffset": 28
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Extract this nested ternary operation into an independent statement.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "confusing"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "CLEAR",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "55dc5bb7-8456-4ddc-b5ed-62d23bf66225",
+        "rule": "java:S8688",
+        "severity": "INFO",
+        "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+        "project": "stayora",
+        "line": 47,
+        "hash": "d230aab1c95387740b611da4c7bcd2a2",
+        "textRange": {
+          "startLine": 47,
+          "endLine": 47,
+          "startOffset": 36,
+          "endOffset": 41
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Explicitly specify the time zone by passing a ZoneId or a Clock to the .now() method.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "datetime",
+          "java8",
+          "timezone",
+          "pitfall"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "INFO"
+          },
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "INFO"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "9ecb5f3f-2e30-42cd-a82b-2940b03c9558",
+        "rule": "java:S1192",
+        "severity": "CRITICAL",
+        "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+        "project": "stayora",
+        "line": 57,
+        "hash": "b9a11b784f2cdee752216c5cfba6b3c4",
+        "textRange": {
+          "startLine": 57,
+          "endLine": 57,
+          "startOffset": 32,
+          "endOffset": 41
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+                "textRange": {
+                  "startLine": 104,
+                  "endLine": 104,
+                  "startOffset": 15,
+                  "endOffset": 24
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+                "textRange": {
+                  "startLine": 130,
+                  "endLine": 130,
+                  "startOffset": 9,
+                  "endOffset": 18
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+                "textRange": {
+                  "startLine": 158,
+                  "endLine": 158,
+                  "startOffset": 17,
+                  "endOffset": 26
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          }
+        ],
+        "status": "OPEN",
+        "message": "Define a constant instead of duplicating this literal \"PENDING\" 4 times.",
+        "effort": "10min",
+        "debt": "10min",
+        "author": "",
+        "tags": [
+          "design"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "DISTINCT",
+        "cleanCodeAttributeCategory": "ADAPTABLE",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "HIGH"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "ef239e66-5eb4-4e24-8b94-b2226eba78d6",
+        "rule": "java:S1192",
+        "severity": "CRITICAL",
+        "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+        "project": "stayora",
+        "line": 57,
+        "hash": "b9a11b784f2cdee752216c5cfba6b3c4",
+        "textRange": {
+          "startLine": 57,
+          "endLine": 57,
+          "startOffset": 43,
+          "endOffset": 54
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+                "textRange": {
+                  "startLine": 134,
+                  "endLine": 134,
+                  "startOffset": 37,
+                  "endOffset": 48
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+                "textRange": {
+                  "startLine": 158,
+                  "endLine": 158,
+                  "startOffset": 28,
+                  "endOffset": 39
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+                "textRange": {
+                  "startLine": 194,
+                  "endLine": 194,
+                  "startOffset": 11,
+                  "endOffset": 22
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          }
+        ],
+        "status": "OPEN",
+        "message": "Define a constant instead of duplicating this literal \"CONFIRMED\" 4 times.",
+        "effort": "10min",
+        "debt": "10min",
+        "author": "",
+        "tags": [
+          "design"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "DISTINCT",
+        "cleanCodeAttributeCategory": "ADAPTABLE",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "HIGH"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "769cf617-ea8c-4b2c-9b29-f054e71d0d6c",
+        "rule": "java:S1192",
+        "severity": "CRITICAL",
+        "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+        "project": "stayora",
+        "line": 89,
+        "hash": "e265e32cd00e7885a014b117786c4f99",
+        "textRange": {
+          "startLine": 89,
+          "endLine": 89,
+          "startOffset": 40,
+          "endOffset": 47
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+                "textRange": {
+                  "startLine": 142,
+                  "endLine": 142,
+                  "startOffset": 77,
+                  "endOffset": 84
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+                "textRange": {
+                  "startLine": 153,
+                  "endLine": 153,
+                  "startOffset": 40,
+                  "endOffset": 47
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          }
+        ],
+        "status": "OPEN",
+        "message": "Define a constant instead of duplicating this literal \"GUEST\" 3 times.",
+        "effort": "8min",
+        "debt": "8min",
+        "author": "",
+        "tags": [
+          "design"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "DISTINCT",
+        "cleanCodeAttributeCategory": "ADAPTABLE",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "HIGH"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "03f7e668-4ea3-4df4-ab63-ea03aac1ca37",
+        "rule": "java:S1192",
+        "severity": "CRITICAL",
+        "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+        "project": "stayora",
+        "line": 105,
+        "hash": "ff867841e3b5fef8a4448a22513d5479",
+        "textRange": {
+          "startLine": 105,
+          "endLine": 105,
+          "startOffset": 22,
+          "endOffset": 33
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+                "textRange": {
+                  "startLine": 183,
+                  "endLine": 183,
+                  "startOffset": 20,
+                  "endOffset": 31
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+                "textRange": {
+                  "startLine": 208,
+                  "endLine": 208,
+                  "startOffset": 29,
+                  "endOffset": 40
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          }
+        ],
+        "status": "OPEN",
+        "message": "Define a constant instead of duplicating this literal \"SIMULATED\" 3 times.",
+        "effort": "8min",
+        "debt": "8min",
+        "author": "",
+        "tags": [
+          "design"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "DISTINCT",
+        "cleanCodeAttributeCategory": "ADAPTABLE",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "HIGH"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "ec1e886b-3ee3-4a0a-b22c-a33500fb9239",
+        "rule": "java:S8688",
+        "severity": "INFO",
+        "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+        "project": "stayora",
+        "line": 132,
+        "hash": "058100d1a85c4a1d29a438d2a71595ca",
+        "textRange": {
+          "startLine": 132,
+          "endLine": 132,
+          "startOffset": 43,
+          "endOffset": 48
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Explicitly specify the time zone by passing a ZoneId or a Clock to the .now() method.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "datetime",
+          "java8",
+          "timezone",
+          "pitfall"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "INFO"
+          },
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "INFO"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "f500e5d4-674d-4fe9-acef-a6dad6437310",
+        "rule": "java:S8688",
+        "severity": "INFO",
+        "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+        "project": "stayora",
+        "line": 160,
+        "hash": "d1e5e0366fa43a2de64676202f20f37e",
+        "textRange": {
+          "startLine": 160,
+          "endLine": 160,
+          "startOffset": 37,
+          "endOffset": 42
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Explicitly specify the time zone by passing a ZoneId or a Clock to the .now() method.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "datetime",
+          "java8",
+          "timezone",
+          "pitfall"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "INFO"
+          },
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "INFO"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "6f64f590-00a9-4284-bc6c-a394ff908caf",
+        "rule": "java:S8688",
+        "severity": "INFO",
+        "component": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+        "project": "stayora",
+        "line": 195,
+        "hash": "fff28ae5237fe234620268b3e770d28f",
+        "textRange": {
+          "startLine": 195,
+          "endLine": 195,
+          "startOffset": 41,
+          "endOffset": 46
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Explicitly specify the time zone by passing a ZoneId or a Clock to the .now() method.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "datetime",
+          "java8",
+          "timezone",
+          "pitfall"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "INFO"
+          },
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "INFO"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "98f5e0b8-bcc7-4ad4-a06e-59696e1100a3",
+        "rule": "java:S1192",
+        "severity": "CRITICAL",
+        "component": "stayora:backend/src/main/java/com/stayora/reviews/ReviewService.java",
+        "project": "stayora",
+        "line": 49,
+        "hash": "0b8ae8fce43bfc5006f55bc47aa04796",
+        "textRange": {
+          "startLine": 49,
+          "endLine": 49,
+          "startOffset": 75,
+          "endOffset": 82
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/reviews/ReviewService.java",
+                "textRange": {
+                  "startLine": 55,
+                  "endLine": 55,
+                  "startOffset": 40,
+                  "endOffset": 47
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/reviews/ReviewService.java",
+                "textRange": {
+                  "startLine": 75,
+                  "endLine": 75,
+                  "startOffset": 39,
+                  "endOffset": 46
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/reviews/ReviewService.java",
+                "textRange": {
+                  "startLine": 119,
+                  "endLine": 119,
+                  "startOffset": 39,
+                  "endOffset": 46
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          }
+        ],
+        "status": "OPEN",
+        "message": "Define a constant instead of duplicating this literal \"GUEST\" 4 times.",
+        "effort": "10min",
+        "debt": "10min",
+        "author": "",
+        "tags": [
+          "design"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "DISTINCT",
+        "cleanCodeAttributeCategory": "ADAPTABLE",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "HIGH"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "61028a68-67f8-43d0-b7bc-bf2dcfde0157",
+        "rule": "java:S1192",
+        "severity": "CRITICAL",
+        "component": "stayora:backend/src/main/java/com/stayora/shared/ApiErrors.java",
+        "project": "stayora",
+        "line": 21,
+        "hash": "c65cd6429b4fa986acf494be9169210e",
+        "textRange": {
+          "startLine": 21,
+          "endLine": 21,
+          "startOffset": 21,
+          "endOffset": 29
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/shared/ApiErrors.java",
+                "textRange": {
+                  "startLine": 38,
+                  "endLine": 38,
+                  "startOffset": 51,
+                  "endOffset": 59
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/shared/ApiErrors.java",
+                "textRange": {
+                  "startLine": 47,
+                  "endLine": 47,
+                  "startOffset": 16,
+                  "endOffset": 24
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/shared/ApiErrors.java",
+                "textRange": {
+                  "startLine": 55,
+                  "endLine": 55,
+                  "startOffset": 16,
+                  "endOffset": 24
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          }
+        ],
+        "status": "OPEN",
+        "message": "Define a constant instead of duplicating this literal \"status\" 4 times.",
+        "effort": "10min",
+        "debt": "10min",
+        "author": "",
+        "tags": [
+          "design"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "DISTINCT",
+        "cleanCodeAttributeCategory": "ADAPTABLE",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "HIGH"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "e4fd9831-b7af-446b-bbaf-f03e2d78cf0f",
+        "rule": "java:S1192",
+        "severity": "CRITICAL",
+        "component": "stayora:backend/src/main/java/com/stayora/shared/ApiErrors.java",
+        "project": "stayora",
+        "line": 21,
+        "hash": "c65cd6429b4fa986acf494be9169210e",
+        "textRange": {
+          "startLine": 21,
+          "endLine": 21,
+          "startOffset": 49,
+          "endOffset": 58
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/shared/ApiErrors.java",
+                "textRange": {
+                  "startLine": 38,
+                  "endLine": 38,
+                  "startOffset": 66,
+                  "endOffset": 75
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/shared/ApiErrors.java",
+                "textRange": {
+                  "startLine": 47,
+                  "endLine": 47,
+                  "startOffset": 31,
+                  "endOffset": 40
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/shared/ApiErrors.java",
+                "textRange": {
+                  "startLine": 57,
+                  "endLine": 57,
+                  "startOffset": 16,
+                  "endOffset": 25
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          }
+        ],
+        "status": "OPEN",
+        "message": "Define a constant instead of duplicating this literal \"message\" 4 times.",
+        "effort": "10min",
+        "debt": "10min",
+        "author": "",
+        "tags": [
+          "design"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "DISTINCT",
+        "cleanCodeAttributeCategory": "ADAPTABLE",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "HIGH"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "0317ef27-abb4-4110-ab6b-13d2e0332752",
+        "rule": "java:S8989",
+        "severity": "CRITICAL",
+        "component": "stayora:backend/src/main/java/com/stayora/shared/DevSeeder.java",
+        "project": "stayora",
+        "line": 27,
+        "hash": "933fb3e5a5966697bb5e101684888f3e",
+        "textRange": {
+          "startLine": 27,
+          "endLine": 27,
+          "startOffset": 14,
+          "endOffset": 17
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/shared/DevSeeder.java",
+                "textRange": {
+                  "startLine": 26,
+                  "endLine": 26,
+                  "startOffset": 2,
+                  "endOffset": 59
+                },
+                "msg": "@Transactional annotation",
+                "msgFormattings": []
+              }
+            ]
+          }
+        ],
+        "status": "OPEN",
+        "message": "Specify rollback behavior for checked exceptions using \"rollbackFor\" or \"noRollbackFor\" attributes.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "spring",
+          "transaction",
+          "pitfall"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": true,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "COMPLETE",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "MEDIUM"
+          },
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "HIGH"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "fb0d2c88-4837-46eb-8d0a-be21efc9aece",
+        "rule": "java:S8688",
+        "severity": "INFO",
+        "component": "stayora:backend/src/main/java/com/stayora/shared/DevSeeder.java",
+        "project": "stayora",
+        "line": 31,
+        "hash": "112de0b593f91fc9ea878091321d305e",
+        "textRange": {
+          "startLine": 31,
+          "endLine": 31,
+          "startOffset": 32,
+          "endOffset": 37
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Explicitly specify the time zone by passing a ZoneId or a Clock to the .now() method.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "datetime",
+          "java8",
+          "timezone",
+          "pitfall"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "INFO"
+          },
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "INFO"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "e372f30a-f98d-45d5-ba57-29c88fc5f243",
+        "rule": "java:S1192",
+        "severity": "CRITICAL",
+        "component": "stayora:backend/src/main/java/com/stayora/shared/DevSeeder.java",
+        "project": "stayora",
+        "line": 41,
+        "hash": "e58c6b094442a33c2df32a5d836928f1",
+        "textRange": {
+          "startLine": 41,
+          "endLine": 41,
+          "startOffset": 8,
+          "endOffset": 19
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/shared/DevSeeder.java",
+                "textRange": {
+                  "startLine": 66,
+                  "endLine": 66,
+                  "startOffset": 8,
+                  "endOffset": 19
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/main/java/com/stayora/shared/DevSeeder.java",
+                "textRange": {
+                  "startLine": 76,
+                  "endLine": 76,
+                  "startOffset": 8,
+                  "endOffset": 19
+                },
+                "msg": "Duplication",
+                "msgFormattings": []
+              }
+            ]
+          }
+        ],
+        "status": "OPEN",
+        "message": "Define a constant instead of duplicating this literal \"CONFIRMED\" 3 times.",
+        "effort": "8min",
+        "debt": "8min",
+        "author": "",
+        "tags": [
+          "design"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "DISTINCT",
+        "cleanCodeAttributeCategory": "ADAPTABLE",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "HIGH"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "9ddf3b08-ffea-4acf-9c92-f38e407e6c7b",
+        "rule": "java:S8688",
+        "severity": "INFO",
+        "component": "stayora:backend/src/main/java/com/stayora/shared/DevSeeder.java",
+        "project": "stayora",
+        "line": 56,
+        "hash": "94c5278722218ca70dd7434335ee6080",
+        "textRange": {
+          "startLine": 56,
+          "endLine": 56,
+          "startOffset": 36,
+          "endOffset": 41
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Explicitly specify the time zone by passing a ZoneId or a Clock to the .now() method.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "datetime",
+          "java8",
+          "timezone",
+          "pitfall"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "INFO"
+          },
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "INFO"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "78726aa3-68ff-4d3d-899f-b257b87d4778",
+        "rule": "java:S107",
+        "severity": "MAJOR",
+        "component": "stayora:backend/src/main/java/com/stayora/shared/DevSeeder.java",
+        "project": "stayora",
+        "line": 86,
+        "hash": "0580d239da2e2d2da42525504756b2de",
+        "textRange": {
+          "startLine": 86,
+          "endLine": 86,
+          "startOffset": 15,
+          "endOffset": 21
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Method has 9 parameters, which is greater than 7 authorized.",
+        "effort": "20min",
+        "debt": "20min",
+        "author": "",
+        "tags": [
+          "brain-overload"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "FOCUSED",
+        "cleanCodeAttributeCategory": "ADAPTABLE",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "22e4db09-104a-4e7a-bef3-1da4c5dac17b",
+        "rule": "java:S2925",
+        "severity": "MAJOR",
+        "component": "stayora:backend/src/test/java/com/stayora/ai/AiSafetyTest.java",
+        "project": "stayora",
+        "line": 114,
+        "hash": "3d739e5afdd20f43caaa152abad6d5a7",
+        "textRange": {
+          "startLine": 114,
+          "endLine": 114,
+          "startOffset": 21,
+          "endOffset": 26
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Remove this use of \"Thread.sleep()\".",
+        "effort": "20min",
+        "debt": "20min",
+        "author": "",
+        "tags": [
+          "tests",
+          "bad-practice"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "TEST",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "COMPLETE",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "e02f6564-4fbd-4f1f-8f4f-c67b1aed3ab2",
+        "rule": "java:S5778",
+        "severity": "MAJOR",
+        "component": "stayora:backend/src/test/java/com/stayora/shared/DemoConfigurationTest.java",
+        "project": "stayora",
+        "line": 13,
+        "hash": "1520eb86cfb605f76eafe6244fbaabc6",
+        "textRange": {
+          "startLine": 13,
+          "endLine": 13,
+          "startOffset": 4,
+          "endOffset": 22
+        },
+        "flows": [
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/test/java/com/stayora/shared/DemoConfigurationTest.java",
+                "textRange": {
+                  "startLine": 13,
+                  "endLine": 13,
+                  "startOffset": 62,
+                  "endOffset": 68
+                },
+                "msg": "May throw a runtime exception",
+                "msgFormattings": []
+              }
+            ]
+          },
+          {
+            "locations": [
+              {
+                "component": "stayora:backend/src/test/java/com/stayora/shared/DemoConfigurationTest.java",
+                "textRange": {
+                  "startLine": 13,
+                  "endLine": 13,
+                  "startOffset": 33,
+                  "endOffset": 50
+                },
+                "msg": "May throw a runtime exception",
+                "msgFormattings": []
+              }
+            ]
+          }
+        ],
+        "status": "OPEN",
+        "message": "Refactor the code of the lambda to have only one invocation possibly throwing a runtime exception.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "junit",
+          "tests"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:56:38+0100",
+        "type": "CODE_SMELL",
+        "scope": "TEST",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "CLEAR",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "40495dbb-9aba-43bf-8172-d163b5f1a597",
+        "rule": "typescript:S3358",
+        "severity": "MAJOR",
+        "component": "stayora:frontend/src/app/accounts/auth.component.ts",
+        "project": "stayora",
+        "line": 159,
+        "hash": "27a610824f949eded9e955b4d50a8b5a",
+        "textRange": {
+          "startLine": 159,
+          "endLine": 161,
+          "startOffset": 12,
+          "endOffset": 22
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Extract this nested ternary operation into an independent statement.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "editable-source",
+          "confusing"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "CLEAR",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "868b21e6-33e4-4237-b91d-1e33ecd0f923",
+        "rule": "typescript:S3358",
+        "severity": "MAJOR",
+        "component": "stayora:frontend/src/app/availability/calendar.component.ts",
+        "project": "stayora",
+        "line": 256,
+        "hash": "58fd9b037219597f491451927515b42c",
+        "textRange": {
+          "startLine": 256,
+          "endLine": 258,
+          "startOffset": 8,
+          "endOffset": 13
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Extract this nested ternary operation into an independent statement.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "editable-source",
+          "confusing"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "CLEAR",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "5912cabe-861b-4145-95ce-24da7f455c96",
+        "rule": "typescript:S3358",
+        "severity": "MAJOR",
+        "component": "stayora:frontend/src/app/availability/calendar.component.ts",
+        "project": "stayora",
+        "line": 259,
+        "hash": "14c91939d00c1f51cc9d9bbdb6d33a64",
+        "textRange": {
+          "startLine": 259,
+          "endLine": 261,
+          "startOffset": 8,
+          "endOffset": 38
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Extract this nested ternary operation into an independent statement.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "editable-source",
+          "confusing"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "CLEAR",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "833172a6-16fc-4ff1-a690-a2e7bddb325c",
+        "rule": "typescript:S7723",
+        "severity": "MINOR",
+        "component": "stayora:frontend/src/app/availability/calendar.component.ts",
+        "project": "stayora",
+        "line": 291,
+        "hash": "82135a9b8cfbcf99301047638f92bfa7",
+        "textRange": {
+          "startLine": 291,
+          "endLine": 291,
+          "startOffset": 42,
+          "endOffset": 54
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Use `new Array()` instead of `Array()`.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "convention"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": true,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "CONVENTIONAL",
+        "cleanCodeAttributeCategory": "CONSISTENT",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "LOW"
+          },
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "LOW"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "d7f554b2-bd47-45ad-84e7-b8597c440d6f",
+        "rule": "typescript:S3358",
+        "severity": "MAJOR",
+        "component": "stayora:frontend/src/app/availability/calendar.component.ts",
+        "project": "stayora",
+        "line": 362,
+        "hash": "53d73a151a3a33086e8519d9572b0a81",
+        "textRange": {
+          "startLine": 362,
+          "endLine": 364,
+          "startOffset": 8,
+          "endOffset": 46
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Extract this nested ternary operation into an independent statement.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "",
+        "tags": [
+          "editable-source",
+          "confusing"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "CLEAR",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "158c9d73-c398-4b5b-a779-9abb62124b43",
+        "rule": "typescript:S2699",
+        "severity": "BLOCKER",
+        "component": "stayora:frontend/src/app/reservations/reservation-api.service.spec.ts",
+        "project": "stayora",
+        "line": 25,
+        "hash": "f748251d2520386b5ff1e0e8aec6d694",
+        "textRange": {
+          "startLine": 25,
+          "endLine": 25,
+          "startOffset": 2,
+          "endOffset": 4
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Add at least one assertion to this test case.",
+        "effort": "10min",
+        "debt": "10min",
+        "author": "",
+        "tags": [
+          "chai",
+          "type-dependent",
+          "mocha",
+          "jasmine",
+          "jest",
+          "cypress",
+          "node",
+          "sinon",
+          "tests",
+          "playwright",
+          "editable-source",
+          "bun",
+          "supertest",
+          "vitest"
+        ],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "TEST",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "TESTED",
+        "cleanCodeAttributeCategory": "ADAPTABLE",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "BLOCKER"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "fd7236f0-69f9-4bc4-84c0-d57938b033a3",
+        "rule": "css:S4666",
+        "severity": "MAJOR",
+        "component": "stayora:frontend/src/styles.css",
+        "project": "stayora",
+        "line": 1096,
+        "hash": "37c710382c8c946851cce55b1cfaf9c2",
+        "textRange": {
+          "startLine": 1096,
+          "endLine": 1096,
+          "startOffset": 0,
+          "endOffset": 16
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Duplicate selector \".assistant-panel\", first used at line 83",
+        "effort": "1min",
+        "debt": "1min",
+        "author": "",
+        "tags": [],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "a844d5bc-cf6b-47d9-9f54-e1c0c862f014",
+        "rule": "css:S4666",
+        "severity": "MAJOR",
+        "component": "stayora:frontend/src/styles.css",
+        "project": "stayora",
+        "line": 1475,
+        "hash": "f1a232f85f5051e2bc7471052297939d",
+        "textRange": {
+          "startLine": 1475,
+          "endLine": 1475,
+          "startOffset": 0,
+          "endOffset": 7
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Duplicate selector \".status\", first used at line 268",
+        "effort": "1min",
+        "debt": "1min",
+        "author": "",
+        "tags": [],
+        "creationDate": "2026-10-11T20:53:51+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "bfdb398f-f913-4acd-be51-67d4fc31cac3",
+        "rule": "java:S4032",
+        "severity": "MINOR",
+        "component": "stayora:backend/src/main/java/com/stayora/community/package-info.java",
+        "project": "stayora",
+        "flows": [],
+        "status": "OPEN",
+        "message": "Remove this package.",
+        "effort": "2min",
+        "debt": "2min",
+        "author": "aymen.hmani.tech@gmail.com",
+        "tags": [
+          "unused"
+        ],
+        "creationDate": "2026-10-04T22:34:46+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "CODE_SMELL",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "CLEAR",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "MAINTAINABILITY",
+            "severity": "LOW"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      },
+      {
+        "key": "53e51ab5-a916-4006-8208-606a68ae8ca8",
+        "rule": "typescript:S6544",
+        "severity": "MAJOR",
+        "component": "stayora:frontend/src/app/listings/map.component.ts",
+        "project": "stayora",
+        "line": 39,
+        "hash": "fa1ad2be788289f764a2f5fd6b2445e2",
+        "textRange": {
+          "startLine": 39,
+          "endLine": 66,
+          "startOffset": 2,
+          "endOffset": 3
+        },
+        "flows": [],
+        "status": "OPEN",
+        "message": "Promise-returning method provided where a void return was expected by extended/implemented type 'AfterViewInit'.",
+        "effort": "5min",
+        "debt": "5min",
+        "author": "aymen.hmani.tech@gmail.com",
+        "tags": [
+          "async",
+          "underscore.js",
+          "lodash",
+          "es2017",
+          "type-dependent",
+          "promise"
+        ],
+        "creationDate": "2026-10-04T22:34:46+0100",
+        "updateDate": "2026-10-11T20:53:51+0100",
+        "type": "BUG",
+        "scope": "MAIN",
+        "quickFixAvailable": false,
+        "messageFormattings": [],
+        "codeVariants": [],
+        "cleanCodeAttribute": "LOGICAL",
+        "cleanCodeAttributeCategory": "INTENTIONAL",
+        "impacts": [
+          {
+            "softwareQuality": "RELIABILITY",
+            "severity": "MEDIUM"
+          }
+        ],
+        "issueStatus": "OPEN",
+        "prioritizedRule": false,
+        "fromSonarQubeUpdate": false,
+        "internalTags": [],
+        "linkedTicketStatus": "NOT_LINKED"
+      }
+    ],
+    "components": [
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/reservations/ReservationService.java",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "ReservationService.java",
+        "longName": "backend/src/main/java/com/stayora/reservations/ReservationService.java",
+        "path": "backend/src/main/java/com/stayora/reservations/ReservationService.java"
+      },
+      {
+        "key": "stayora:frontend/src/app/availability/calendar.component.ts",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "calendar.component.ts",
+        "longName": "frontend/src/app/availability/calendar.component.ts",
+        "path": "frontend/src/app/availability/calendar.component.ts"
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/community/package-info.java",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "package-info.java",
+        "longName": "backend/src/main/java/com/stayora/community/package-info.java",
+        "path": "backend/src/main/java/com/stayora/community/package-info.java"
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/accounts/AuthService.java",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "AuthService.java",
+        "longName": "backend/src/main/java/com/stayora/accounts/AuthService.java",
+        "path": "backend/src/main/java/com/stayora/accounts/AuthService.java"
+      },
+      {
+        "key": "stayora:frontend/src/app/listings/map.component.ts",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "map.component.ts",
+        "longName": "frontend/src/app/listings/map.component.ts",
+        "path": "frontend/src/app/listings/map.component.ts"
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/availability/HostController.java",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "HostController.java",
+        "longName": "backend/src/main/java/com/stayora/availability/HostController.java",
+        "path": "backend/src/main/java/com/stayora/availability/HostController.java"
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/listings/PropertyManagementService.java",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "PropertyManagementService.java",
+        "longName": "backend/src/main/java/com/stayora/listings/PropertyManagementService.java",
+        "path": "backend/src/main/java/com/stayora/listings/PropertyManagementService.java"
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/shared/ApiErrors.java",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "ApiErrors.java",
+        "longName": "backend/src/main/java/com/stayora/shared/ApiErrors.java",
+        "path": "backend/src/main/java/com/stayora/shared/ApiErrors.java"
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/messages/MessageDraftAiSkill.java",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "MessageDraftAiSkill.java",
+        "longName": "backend/src/main/java/com/stayora/messages/MessageDraftAiSkill.java",
+        "path": "backend/src/main/java/com/stayora/messages/MessageDraftAiSkill.java"
+      },
+      {
+        "key": "stayora",
+        "enabled": true,
+        "qualifier": "TRK",
+        "name": "Stayora",
+        "longName": "Stayora"
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/reviews/ReviewService.java",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "ReviewService.java",
+        "longName": "backend/src/main/java/com/stayora/reviews/ReviewService.java",
+        "path": "backend/src/main/java/com/stayora/reviews/ReviewService.java"
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "AiPrivacy.java",
+        "longName": "backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+        "path": "backend/src/main/java/com/stayora/ai/AiPrivacy.java"
+      },
+      {
+        "key": "stayora:frontend/src/app/accounts/auth.component.ts",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "auth.component.ts",
+        "longName": "frontend/src/app/accounts/auth.component.ts",
+        "path": "frontend/src/app/accounts/auth.component.ts"
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/listings/WishlistService.java",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "WishlistService.java",
+        "longName": "backend/src/main/java/com/stayora/listings/WishlistService.java",
+        "path": "backend/src/main/java/com/stayora/listings/WishlistService.java"
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/availability/HostAvailabilityManager.java",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "HostAvailabilityManager.java",
+        "longName": "backend/src/main/java/com/stayora/availability/HostAvailabilityManager.java",
+        "path": "backend/src/main/java/com/stayora/availability/HostAvailabilityManager.java"
+      },
+      {
+        "key": "stayora:frontend/src/app/reservations/reservation-api.service.spec.ts",
+        "enabled": true,
+        "qualifier": "UTS",
+        "name": "reservation-api.service.spec.ts",
+        "longName": "frontend/src/app/reservations/reservation-api.service.spec.ts",
+        "path": "frontend/src/app/reservations/reservation-api.service.spec.ts"
+      },
+      {
+        "key": "stayora:backend/src/test/java/com/stayora/shared/DemoConfigurationTest.java",
+        "enabled": true,
+        "qualifier": "UTS",
+        "name": "DemoConfigurationTest.java",
+        "longName": "backend/src/test/java/com/stayora/shared/DemoConfigurationTest.java",
+        "path": "backend/src/test/java/com/stayora/shared/DemoConfigurationTest.java"
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/shared/DevSeeder.java",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "DevSeeder.java",
+        "longName": "backend/src/main/java/com/stayora/shared/DevSeeder.java",
+        "path": "backend/src/main/java/com/stayora/shared/DevSeeder.java"
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "ConfiguredAiProvider.java",
+        "longName": "backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+        "path": "backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java"
+      },
+      {
+        "key": "stayora:frontend/src/styles.css",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "styles.css",
+        "longName": "frontend/src/styles.css",
+        "path": "frontend/src/styles.css"
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/availability/NightlyPrice.java",
+        "enabled": true,
+        "qualifier": "FIL",
+        "name": "NightlyPrice.java",
+        "longName": "backend/src/main/java/com/stayora/availability/NightlyPrice.java",
+        "path": "backend/src/main/java/com/stayora/availability/NightlyPrice.java"
+      },
+      {
+        "key": "stayora:backend/src/test/java/com/stayora/ai/AiSafetyTest.java",
+        "enabled": true,
+        "qualifier": "UTS",
+        "name": "AiSafetyTest.java",
+        "longName": "backend/src/test/java/com/stayora/ai/AiSafetyTest.java",
+        "path": "backend/src/test/java/com/stayora/ai/AiSafetyTest.java"
+      }
+    ],
+    "facets": []
+  },
+  "hotspots": {
+    "paging": {
+      "pageIndex": 1,
+      "pageSize": 500,
+      "total": 0
+    },
+    "hotspots": [],
+    "components": []
+  },
+  "modules": {
+    "paging": {
+      "pageIndex": 1,
+      "pageSize": 500,
+      "total": 28
+    },
+    "baseComponent": {
+      "key": "stayora",
+      "name": "Stayora",
+      "qualifier": "TRK",
+      "measures": []
+    },
+    "components": [
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/accounts",
+        "name": "accounts",
+        "qualifier": "DIR",
+        "path": "backend/src/main/java/com/stayora/accounts",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "1",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "88.4",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "425"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/test/java/com/stayora/accounts",
+        "name": "accounts",
+        "qualifier": "DIR",
+        "path": "backend/src/test/java/com/stayora/accounts",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:frontend/src/app/accounts",
+        "name": "accounts",
+        "qualifier": "DIR",
+        "path": "frontend/src/app/accounts",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "1",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "58.1",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "226"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/ai",
+        "name": "ai",
+        "qualifier": "DIR",
+        "path": "backend/src/main/java/com/stayora/ai",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "7",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "81.7",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "327"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/test/java/com/stayora/ai",
+        "name": "ai",
+        "qualifier": "DIR",
+        "path": "backend/src/test/java/com/stayora/ai",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "1",
+            "bestValue": false
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:frontend/src/app",
+        "name": "app",
+        "qualifier": "DIR",
+        "path": "frontend/src/app",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "1",
+            "bestValue": false
+          },
+          {
+            "metric": "code_smells",
+            "value": "6",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "37.9",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "4878"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/availability",
+        "name": "availability",
+        "qualifier": "DIR",
+        "path": "backend/src/main/java/com/stayora/availability",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "5",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "82.7",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "440"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:frontend/src/app/availability",
+        "name": "availability",
+        "qualifier": "DIR",
+        "path": "frontend/src/app/availability",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "4",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "37.1",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "749"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src",
+        "name": "backend/src",
+        "qualifier": "DIR",
+        "path": "backend/src",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "35",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "85.4",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "3059"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/community",
+        "name": "community",
+        "qualifier": "DIR",
+        "path": "backend/src/main/java/com/stayora/community",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "1",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "1"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:frontend/src/app/core",
+        "name": "core",
+        "qualifier": "DIR",
+        "path": "frontend/src/app/core",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "coverage",
+            "value": "53.1",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "204"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:frontend/src",
+        "name": "frontend/src",
+        "qualifier": "DIR",
+        "path": "frontend/src",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "1",
+            "bestValue": false
+          },
+          {
+            "metric": "code_smells",
+            "value": "8",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "37.9",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "6392"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora",
+        "name": "java/com/stayora",
+        "qualifier": "DIR",
+        "path": "backend/src/main/java/com/stayora",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "33",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "85.4",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "3007"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/listings",
+        "name": "listings",
+        "qualifier": "DIR",
+        "path": "backend/src/main/java/com/stayora/listings",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "2",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "91.9",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "499"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/test/java/com/stayora/listings",
+        "name": "listings",
+        "qualifier": "DIR",
+        "path": "backend/src/test/java/com/stayora/listings",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:frontend/src/app/listings",
+        "name": "listings",
+        "qualifier": "DIR",
+        "path": "frontend/src/app/listings",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "1",
+            "bestValue": false
+          },
+          {
+            "metric": "code_smells",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "coverage",
+            "value": "28.4",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "1318"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/main",
+        "name": "main",
+        "qualifier": "DIR",
+        "path": "backend/src/main",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "33",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "85.4",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "3059"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/messages",
+        "name": "messages",
+        "qualifier": "DIR",
+        "path": "backend/src/main/java/com/stayora/messages",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "1",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "88.8",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "366"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:frontend/src/app/messages",
+        "name": "messages",
+        "qualifier": "DIR",
+        "path": "frontend/src/app/messages",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "coverage",
+            "value": "43.9",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "514"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/reservations",
+        "name": "reservations",
+        "qualifier": "DIR",
+        "path": "backend/src/main/java/com/stayora/reservations",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "8",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "90.6",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "451"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:frontend/src/app/reservations",
+        "name": "reservations",
+        "qualifier": "DIR",
+        "path": "frontend/src/app/reservations",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "1",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "42.3",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "827"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/main/resources",
+        "name": "resources",
+        "qualifier": "DIR",
+        "path": "backend/src/main/resources",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "ncloc",
+            "value": "52"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/reviews",
+        "name": "reviews",
+        "qualifier": "DIR",
+        "path": "backend/src/main/java/com/stayora/reviews",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "1",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "90.3",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "279"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:frontend/src/app/reviews",
+        "name": "reviews",
+        "qualifier": "DIR",
+        "path": "frontend/src/app/reviews",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "coverage",
+            "value": "43.2",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "408"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/main/java/com/stayora/shared",
+        "name": "shared",
+        "qualifier": "DIR",
+        "path": "backend/src/main/java/com/stayora/shared",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "7",
+            "bestValue": false
+          },
+          {
+            "metric": "coverage",
+            "value": "45.9",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "210"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/test/java/com/stayora/shared",
+        "name": "shared",
+        "qualifier": "DIR",
+        "path": "backend/src/test/java/com/stayora/shared",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "1",
+            "bestValue": false
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:frontend/src/app/shared",
+        "name": "shared",
+        "qualifier": "DIR",
+        "path": "frontend/src/app/shared",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "coverage",
+            "value": "21.4",
+            "bestValue": false
+          },
+          {
+            "metric": "ncloc",
+            "value": "347"
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      },
+      {
+        "key": "stayora:backend/src/test/java/com/stayora",
+        "name": "test/java/com/stayora",
+        "qualifier": "DIR",
+        "path": "backend/src/test/java/com/stayora",
+        "measures": [
+          {
+            "metric": "bugs",
+            "value": "0",
+            "bestValue": true
+          },
+          {
+            "metric": "code_smells",
+            "value": "2",
+            "bestValue": false
+          },
+          {
+            "metric": "vulnerabilities",
+            "value": "0",
+            "bestValue": true
+          }
+        ]
+      }
+    ]
+  }
+}

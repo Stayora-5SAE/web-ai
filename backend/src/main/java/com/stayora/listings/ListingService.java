@@ -31,7 +31,7 @@ public class ListingService {
     if (guests != null && (guests < 1 || guests > 20))
       throw ApiException.badRequest("Guests must be between 1 and 20.");
     return properties.findAll().stream()
-        .filter(p -> "PUBLISHED".equals(p.status))
+        .filter(p -> "PUBLISHED".equals(p.status) && !p.archived)
         .filter(
             p ->
                 destination == null
@@ -50,6 +50,14 @@ public class ListingService {
         .filter(p -> p.hostId.equals(hostId))
         .map(this::view)
         .toList();
+  }
+
+  /** Reviews owns the aggregate. Caller must hold the shared property lock in a transaction. */
+  public void updateRating(UUID propertyId, BigDecimal rating, int count) {
+    Property property = properties.findById(propertyId).orElseThrow(ApiException::notFound);
+    property.rating = rating;
+    property.reviewCount = count;
+    properties.saveAndFlush(property);
   }
 
   private PropertyView view(Property p) {
@@ -73,7 +81,7 @@ public class ListingService {
         p.serviceFee,
         p.rating,
         p.reviewCount,
-        p.status,
+        p.archived ? "ARCHIVED" : p.status,
         accounts.get(p.hostId).name());
   }
 

@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Component, Input, inject } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { IconComponent } from './icon.component';
+import { IdentityService } from '../accounts/identity.service';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -16,24 +17,57 @@ import { IconComponent } from './icon.component';
           <a routerLink="/host/today" routerLinkActive="active">Today</a
           ><a routerLink="/host/listings" routerLinkActive="active">Listings</a
           ><a routerLink="/host/calendar" routerLinkActive="active">Calendar</a>
+          <a routerLink="/host/reservations" routerLinkActive="active">Requests</a>
         } @else {
-          <a routerLink="/explore" routerLinkActive="active">Explore</a
-          ><button disabled title="Wishlists module coming soon">Wishlists</button
-          ><button disabled title="Trips module coming soon">Trips</button>
+          <a routerLink="/explore" routerLinkActive="active">Explore</a>
+          @if (!identity.account() || identity.account()?.role === 'GUEST') {
+            <a routerLink="/wishlists" routerLinkActive="active">Wishlists</a>
+            <a routerLink="/trips" routerLinkActive="active">Trips</a>
+            <a routerLink="/reviews" routerLinkActive="active">Reviews</a>
+          }
         }
-        <button disabled title="Messaging module coming soon">Messages</button>
+        <a [routerLink]="host ? '/host/messages' : '/messages'" routerLinkActive="active"
+          >Messages</a
+        >
       </nav>
-      <a class="mode-switch" [routerLink]="host ? '/explore' : '/host/today'">{{
-        host ? 'Switch to Guest mode' : 'Switch to hosting'
-      }}</a>
-      <div class="avatar-pill" aria-label="Development demo identity">
-        <app-icon name="menu" /><span class="avatar">{{ host ? 'N' : 'SB' }}</span>
-      </div>
+      @if (
+        host ||
+        identity.account()?.role === 'HOST' ||
+        (!identity.account() && identity.demoEnabled())
+      ) {
+        <a class="mode-switch" [routerLink]="host ? '/explore' : '/host/today'">{{
+          host ? 'Explore stays' : 'Switch to hosting'
+        }}</a>
+      }
+      @if (identity.account(); as account) {
+        <div class="header-account">
+          <span class="text-xs">{{ account.name }}</span
+          ><button class="text-link" (click)="signOut()">Sign out</button>
+        </div>
+      } @else {
+        <a class="avatar-pill" routerLink="/login" aria-label="Sign in or create an account"
+          ><app-icon name="menu" /><span class="avatar">{{ host ? 'N' : 'SB' }}</span></a
+        >
+      }
+      @if (error) {
+        <p role="alert" class="error-text">{{ error }}</p>
+      }
     </div>
   </header>`,
 })
 export class HeaderComponent {
   @Input() host = false;
+  readonly identity = inject(IdentityService);
+  private readonly router = inject(Router);
+  error = '';
+  async signOut() {
+    try {
+      await this.identity.signOut();
+      await this.router.navigateByUrl('/explore');
+    } catch {
+      this.error = 'Sign out failed. Check your connection and try again.';
+    }
+  }
 }
 @Component({
   selector: 'app-footer',
@@ -46,12 +80,14 @@ export class HeaderComponent {
       </div>
       <div class="footer-links">
         <span>Warm editorial travel discoveries and sanctuaries.</span
-        ><span class="badge">Development demo</span>
+        ><span class="badge">{{ identity.demoEnabled() ? 'Development demo' : 'Stayora' }}</span>
       </div>
     </div>
   </footer>`,
 })
-export class FooterComponent {}
+export class FooterComponent {
+  readonly identity = inject(IdentityService);
+}
 @Component({
   selector: 'app-guest-layout',
   standalone: true,

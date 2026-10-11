@@ -4,6 +4,7 @@ import com.stayora.accounts.AccountService;
 import com.stayora.listings.ListingService;
 import com.stayora.reservations.ReservationService;
 import com.stayora.shared.ApiException;
+import jakarta.validation.Valid;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -19,16 +20,19 @@ public class HostController {
   private final ListingService listings;
   private final ReservationService reservations;
   private final AvailabilityService availability;
+  private final HostAvailabilityManager manager;
 
   public HostController(
       AccountService accounts,
       ListingService listings,
       ReservationService reservations,
-      AvailabilityService availability) {
+      AvailabilityService availability,
+      HostAvailabilityManager manager) {
     this.accounts = accounts;
     this.listings = listings;
     this.reservations = reservations;
     this.availability = availability;
+    this.manager = manager;
   }
 
   @GetMapping("/listings")
@@ -53,7 +57,47 @@ public class HostController {
     UUID host = accounts.requireRole("HOST").id();
     if (!listings.get(propertyId).hostId().equals(host)) throw ApiException.forbidden();
     return new CalendarView(
-        reservations.forProperty(propertyId), availability.forProperty(propertyId));
+        reservations.forProperty(propertyId),
+        availability.forProperty(propertyId),
+        availability.prices(propertyId));
+  }
+
+  @PostMapping("/availability/blocks")
+  @ResponseStatus(org.springframework.http.HttpStatus.CREATED)
+  public AvailabilityService.BlockView createBlock(
+      @Valid @RequestBody HostAvailabilityManager.BlockRequest request) {
+    return manager.saveBlock(null, request);
+  }
+
+  @PutMapping("/availability/blocks/{id}")
+  public AvailabilityService.BlockView updateBlock(
+      @PathVariable UUID id, @Valid @RequestBody HostAvailabilityManager.BlockRequest request) {
+    return manager.saveBlock(id, request);
+  }
+
+  @DeleteMapping("/availability/blocks/{id}")
+  @ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
+  public void deleteBlock(@PathVariable UUID id) {
+    manager.deleteBlock(id);
+  }
+
+  @PostMapping("/availability/prices")
+  @ResponseStatus(org.springframework.http.HttpStatus.CREATED)
+  public AvailabilityService.PriceView createPrice(
+      @Valid @RequestBody HostAvailabilityManager.PriceRequest request) {
+    return manager.savePrice(null, request);
+  }
+
+  @PutMapping("/availability/prices/{id}")
+  public AvailabilityService.PriceView updatePrice(
+      @PathVariable UUID id, @Valid @RequestBody HostAvailabilityManager.PriceRequest request) {
+    return manager.savePrice(id, request);
+  }
+
+  @DeleteMapping("/availability/prices/{id}")
+  @ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
+  public void deletePrice(@PathVariable UUID id) {
+    manager.deletePrice(id);
   }
 
   @GetMapping("/dashboard")
@@ -62,10 +106,16 @@ public class HostController {
     YearMonth period = month == null ? YearMonth.now() : month;
     List<ListingService.PropertyView> properties = listings.forHost(host);
     List<ReservationService.ReservationView> bookings = reservations.forHost(host);
+    var liveIds =
+        properties.stream()
+            .filter(p -> "PUBLISHED".equals(p.status()))
+            .map(ListingService.PropertyView::id)
+            .toList();
     LocalDate start = period.atDay(1), end = period.plusMonths(1).atDay(1);
     long bookedNights =
         bookings.stream()
             .filter(r -> "CONFIRMED".equals(r.status()))
+            .filter(r -> liveIds.contains(r.propertyId()))
             .filter(r -> r.checkIn().isBefore(end) && r.checkOut().isAfter(start))
             .mapToLong(
                 r ->
@@ -74,6 +124,24 @@ public class HostController {
                         r.checkOut().isBefore(end) ? r.checkOut() : end))
             .sum();
     long live = properties.stream().filter(p -> "PUBLISHED".equals(p.status())).count();
+    long blockedNights =
+        liveIds.stream()
+            .mapToLong(
+                id -> {
+                  var blocks = availability.forProperty(id);
+                  return start
+                      .datesUntil(end)
+                      .filter(
+                          date ->
+                              blocks.stream()
+                                  .anyMatch(
+                                      block ->
+                                          !date.isBefore(block.startDate())
+                                              && date.isBefore(block.endDate())))
+                      .count();
+                })
+            .sum();
+    long sellableNights = live * period.lengthOfMonth() - blockedNights;
     BigDecimal payout =
         bookings.stream()
             .filter(
@@ -84,15 +152,29 @@ public class HostController {
             .map(r -> r.subtotal().add(r.cleaningFee()))
             .reduce(BigDecimal.ZERO, BigDecimal::add);
     int occupancy =
-        live == 0 ? 0 : (int) Math.round(100.0 * bookedNights / (live * period.lengthOfMonth()));
-    return new Dashboard(accounts.get(host), period.toString(), live, occupancy, payout, bookings);
+        sellableNights == 0
+            ? 0
+            : (int) Math.min(100, Math.round(100.0 * bookedNights / sellableNights));
+    long pendingRequests = bookings.stream().filter(r -> "PENDING".equals(r.status())).count();
+    return new Dashboard(
+        accounts.get(host),
+        period.toString(),
+        live,
+        occupancy,
+        payout.setScale(3),
+        bookings,
+        bookedNights,
+        blockedNights,
+        sellableNights,
+        pendingRequests);
   }
 
   public record Decision(String status) {}
 
   public record CalendarView(
       List<ReservationService.ReservationView> reservations,
-      List<AvailabilityService.BlockView> blocks) {}
+      List<AvailabilityService.BlockView> blocks,
+      List<AvailabilityService.PriceView> prices) {}
 
   public record Dashboard(
       AccountService.AccountView host,
@@ -100,5 +182,9 @@ public class HostController {
       long activeListings,
       int occupancy,
       BigDecimal payout,
-      List<ReservationService.ReservationView> reservations) {}
+      List<ReservationService.ReservationView> reservations,
+      long bookedNights,
+      long blockedNights,
+      long sellableNights,
+      long pendingRequests) {}
 }

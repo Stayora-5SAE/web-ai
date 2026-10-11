@@ -19,11 +19,11 @@ public class DemoConfiguration {
 
   @PostConstruct
   void verify() {
-    if (!demo
-        || !environment.acceptsProfiles(Profiles.of("dev", "test"))
-        || java.util.Arrays.stream(environment.getActiveProfiles())
-            .anyMatch(p -> !p.equals("dev") && !p.equals("test")))
+    if (demo
+        && (!environment.acceptsProfiles(Profiles.of("dev", "test"))
+            || java.util.Arrays.stream(environment.getActiveProfiles())
+                .anyMatch(p -> !p.equals("dev") && !p.equals("test"))))
       throw new IllegalStateException(
-          "Real authentication is not implemented. Run locally with the dev profile; demo mode is forbidden outside dev/test.");
+          "Demo mode is forbidden outside dev/test. Disable demo mode and use registered accounts.");
   }
 }

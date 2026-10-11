@@ -1,0 +1,390 @@
+
+> stayora-frontend@0.0.1 test:coverage
+> ng test --configuration=coverage --watch=false --browsers=ChromeHeadless
+
+- Generating browser application bundles (phase: setup)...
+√ Browser application bundle generation complete.
+11 10 2026 21:08:20.645:INFO [karma-server]: Karma v6.4.4 server started at http://localhost:9876/
+11 10 2026 21:08:20.649:INFO [launcher]: Launching browsers ChromeHeadless with concurrency unlimited
+11 10 2026 21:08:20.670:INFO [launcher]: Starting browser ChromeHeadless
+11 10 2026 21:08:24.620:INFO [Chrome Headless 155.0.0.0 (Windows 10)]: Connected on socket kWlZqjCa27RtvUtlAAAA with id 76122437
+Chrome Headless 155.0.0.0 (Windows 10): Executed 0 of 33[32m SUCCESS[39m (0 secs / 0 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 1 of 33[32m SUCCESS[39m (0 secs / 0.015 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 2 of 33[32m SUCCESS[39m (0 secs / 0.018 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 3 of 33[32m SUCCESS[39m (0 secs / 0.02 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 4 of 33[32m SUCCESS[39m (0 secs / 0.023 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 5 of 33[32m SUCCESS[39m (0 secs / 0.025 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 6 of 33[32m SUCCESS[39m (0 secs / 0.029 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 7 of 33[32m SUCCESS[39m (0 secs / 0.032 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 8 of 33[32m SUCCESS[39m (0 secs / 0.036 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 9 of 33[32m SUCCESS[39m (0 secs / 0.038 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 10 of 33[32m SUCCESS[39m (0 secs / 0.04 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 11 of 33[32m SUCCESS[39m (0 secs / 0.042 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 12 of 33[32m SUCCESS[39m (0 secs / 0.044 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 13 of 33[32m SUCCESS[39m (0 secs / 0.047 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 14 of 33[32m SUCCESS[39m (0 secs / 0.048 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 15 of 33[32m SUCCESS[39m (0 secs / 0.051 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 16 of 33[32m SUCCESS[39m (0 secs / 0.053 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 17 of 33[32m SUCCESS[39m (0 secs / 0.056 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 18 of 33[32m SUCCESS[39m (0 secs / 0.058 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 19 of 33[32m SUCCESS[39m (0 secs / 0.06 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 20 of 33[32m SUCCESS[39m (0 secs / 0.063 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 21 of 33[32m SUCCESS[39m (0 secs / 0.065 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 22 of 33[32m SUCCESS[39m (0 secs / 0.069 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 23 of 33[32m SUCCESS[39m (0 secs / 0.071 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 24 of 33[32m SUCCESS[39m (0 secs / 0.073 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 25 of 33[32m SUCCESS[39m (0 secs / 0.075 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 26 of 33[32m SUCCESS[39m (0 secs / 0.092 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 27 of 33[32m SUCCESS[39m (0 secs / 0.094 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 28 of 33[32m SUCCESS[39m (0 secs / 0.096 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 29 of 33[32m SUCCESS[39m (0 secs / 0.098 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 30 of 33[32m SUCCESS[39m (0 secs / 0.101 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 31 of 33[32m SUCCESS[39m (0 secs / 0.103 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 32 of 33[32m SUCCESS[39m (0 secs / 0.105 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 33 of 33[32m SUCCESS[39m (0 secs / 0.107 secs)
+[1A[2KChrome Headless 155.0.0.0 (Windows 10): Executed 33 of 33[32m SUCCESS[39m (0.153 secs / 0.107 secs)
+[32mTOTAL: 33 SUCCESS[39m
+√ Browser application bundle generation complete.
+
+=============================== Coverage summary ===============================
+Statements   : 55.21% ( 360/652 )
+Branches     : 35.09% ( 53/151 )
+Functions    : 47.43% ( 74/156 )
+Lines        : 54.88% ( 320/583 )
+================================================================================
+11 10 2026 21:08:28.239:WARN [launcher]: ChromeHeadless was not killed in 2000 ms, sending SIGKILL.
+11 10 2026 21:08:30.253:WARN [launcher]: ChromeHeadless was not killed by SIGKILL in 2000 ms, continuing.
+√ Browser application bundle generation complete.
+[INFO] Scanning for projects...
+Downloading from central: https://repo.maven.apache.org/maven2/com/diffplug/spotless/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/cyclonedx/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/jacoco/maven-metadata.xml
+Progress (1): 243 B
+Progress (2): 243 B | 237 B
+Progress (3): 243 B | 237 B | 249 B
+                                   
+Downloading from central: https://repo.maven.apache.org/maven2/org/flywaydb/maven-metadata.xml
+Downloaded from central: https://repo.maven.apache.org/maven2/org/cyclonedx/maven-metadata.xml (243 B at 361 B/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/maven-metadata.xml (249 B at 370 B/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jacoco/maven-metadata.xml (237 B at 352 B/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/jooq/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/maven-metadata.xml
+Progress (1): 375 B
+Progress (2): 375 B | 398 B
+Progress (3): 375 B | 398 B | 234 B
+Progress (4): 375 B | 398 B | 234 B | 255 B
+                                           
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jooq/maven-metadata.xml (398 B at 4.2 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/flywaydb/maven-metadata.xml (234 B at 2.1 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/maven-metadata.xml (375 B at 3.9 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/liquibase/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/graalvm/buildtools/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml
+Downloaded from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/maven-metadata.xml (255 B at 2.6 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml
+Progress (1): 242 B
+Progress (2): 242 B | 394 B
+Progress (3): 242 B | 394 B | 3.7 kB
+Progress (3): 242 B | 394 B | 7.4 kB
+Progress (3): 242 B | 394 B | 13 kB 
+Progress (3): 242 B | 394 B | 19 kB
+Progress (3): 242 B | 394 B | 20 kB
+                                   
+Downloaded from central: https://repo.maven.apache.org/maven2/org/liquibase/maven-metadata.xml (394 B at 4.6 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/graalvm/buildtools/maven-metadata.xml (242 B at 2.8 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml (20 kB at 247 kB/s)
+Progress (1): 3.9 kB
+Progress (1): 7.7 kB
+Progress (1): 10 kB 
+                   
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml (10 kB at 99 kB/s)
+[INFO] 
+[INFO] ------------------------< com.stayora:stayora >-------------------------
+[INFO] Building Stayora 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ stayora ---
+[INFO] Deleting C:\Users\everp\Documents\GitHub\web-ai\backend\target
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (coverage-agent) @ stayora ---
+[INFO] jacocoArgLine set to -javaagent:C:\\Users\\everp\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.15\\org.jacoco.agent-0.8.15-runtime.jar=destfile=C:\\Users\\everp\\Documents\\GitHub\\web-ai\\backend\\target\\jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ stayora ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 9 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ stayora ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 63 source files with javac [debug parameters release 17] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ stayora ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ stayora ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 10 source files with javac [debug parameters release 17] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ stayora ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.stayora.accounts.AuthIntegrationTest
+21:09:01.621 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.stayora.accounts.AuthIntegrationTest]: AuthIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:09:02.066 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.stayora.StayoraApplication for test class com.stayora.accounts.AuthIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.6)
+
+2026-10-11T21:09:03.333+01:00  INFO 6388 --- [stayora] [           main] c.stayora.accounts.AuthIntegrationTest   : Starting AuthIntegrationTest using Java 17.0.7 with PID 6388 (started by everp in C:\Users\everp\Documents\GitHub\web-ai\backend)
+2026-10-11T21:09:03.337+01:00  INFO 6388 --- [stayora] [           main] c.stayora.accounts.AuthIntegrationTest   : The following 1 profile is active: "test"
+2026-10-11T21:09:06.643+01:00  INFO 6388 --- [stayora] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T21:09:06.892+01:00  INFO 6388 --- [stayora] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 226 ms. Found 12 JPA repository interfaces.
+2026-10-11T21:09:08.895+01:00  INFO 6388 --- [stayora] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-10-11T21:09:08.923+01:00  INFO 6388 --- [stayora] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T21:09:08.923+01:00  INFO 6388 --- [stayora] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2026-10-11T21:09:09.088+01:00  INFO 6388 --- [stayora] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-10-11T21:09:09.090+01:00  INFO 6388 --- [stayora] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5707 ms
+2026-10-11T21:09:10.514+01:00  INFO 6388 --- [stayora] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:5433/stayora_test (PostgreSQL 18.6)
+2026-10-11T21:09:10.542+01:00  WARN 6388 --- [stayora] [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 18.6 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 16.
+2026-10-11T21:09:10.664+01:00  INFO 6388 --- [stayora] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.095s)
+2026-10-11T21:09:10.737+01:00  INFO 6388 --- [stayora] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "stayora": 8
+2026-10-11T21:09:10.742+01:00  INFO 6388 --- [stayora] [           main] o.f.core.internal.command.DbMigrate      : Schema "stayora" is up to date. No migration necessary.
+2026-10-11T21:09:11.045+01:00  INFO 6388 --- [stayora] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-10-11T21:09:11.339+01:00  INFO 6388 --- [stayora] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-10-11T21:09:11.465+01:00  INFO 6388 --- [stayora] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-10-11T21:09:12.350+01:00  INFO 6388 --- [stayora] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T21:09:12.463+01:00  INFO 6388 --- [stayora] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-11T21:09:12.556+01:00  INFO 6388 --- [stayora] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-11T21:09:15.362+01:00  INFO 6388 --- [stayora] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T21:09:15.466+01:00  INFO 6388 --- [stayora] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T21:09:17.336+01:00  INFO 6388 --- [stayora] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-11T21:09:20.963+01:00  INFO 6388 --- [stayora] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T21:09:21.308+01:00  INFO 6388 --- [stayora] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 12094 (http) with context path '/'
+2026-10-11T21:09:21.334+01:00  INFO 6388 --- [stayora] [           main] c.stayora.accounts.AuthIntegrationTest   : Started AuthIntegrationTest in 18.858 seconds (process running for 22.497)
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-10-11T21:09:22.579+01:00  INFO 6388 --- [stayora] [1-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T21:09:22.580+01:00  INFO 6388 --- [stayora] [1-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T21:09:22.581+01:00  INFO 6388 --- [stayora] [1-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 24.25 s -- in com.stayora.accounts.AuthIntegrationTest
+[INFO] Running com.stayora.ai.AiSafetyTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.222 s -- in com.stayora.ai.AiSafetyTest
+[INFO] Running com.stayora.AvailabilityManagementIntegrationTest
+2026-10-11T21:09:26.442+01:00  INFO 6388 --- [stayora] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.stayora.AvailabilityManagementIntegrationTest]: AvailabilityManagementIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T21:09:26.468+01:00  INFO 6388 --- [stayora] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.stayora.StayoraApplication for test class com.stayora.AvailabilityManagementIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.6)
+
+2026-10-11T21:09:26.534+01:00  INFO 6388 --- [stayora] [           main] .s.AvailabilityManagementIntegrationTest : Starting AvailabilityManagementIntegrationTest using Java 17.0.7 with PID 6388 (started by everp in C:\Users\everp\Documents\GitHub\web-ai\backend)
+2026-10-11T21:09:26.535+01:00  INFO 6388 --- [stayora] [           main] .s.AvailabilityManagementIntegrationTest : The following 1 profile is active: "test"
+2026-10-11T21:09:27.196+01:00  INFO 6388 --- [stayora] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T21:09:27.249+01:00  INFO 6388 --- [stayora] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 12 JPA repository interfaces.
+2026-10-11T21:09:27.488+01:00  INFO 6388 --- [stayora] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-10-11T21:09:27.490+01:00  INFO 6388 --- [stayora] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T21:09:27.490+01:00  INFO 6388 --- [stayora] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2026-10-11T21:09:27.575+01:00  INFO 6388 --- [stayora] [           main] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2026-10-11T21:09:27.575+01:00  INFO 6388 --- [stayora] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1037 ms
+2026-10-11T21:09:27.968+01:00  INFO 6388 --- [stayora] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:5433/stayora_test (PostgreSQL 18.6)
+2026-10-11T21:09:27.972+01:00  WARN 6388 --- [stayora] [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 18.6 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 16.
+2026-10-11T21:09:27.997+01:00  INFO 6388 --- [stayora] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.020s)
+2026-10-11T21:09:28.042+01:00  INFO 6388 --- [stayora] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "stayora": 8
+2026-10-11T21:09:28.042+01:00  INFO 6388 --- [stayora] [           main] o.f.core.internal.command.DbMigrate      : Schema "stayora" is up to date. No migration necessary.
+2026-10-11T21:09:28.105+01:00  INFO 6388 --- [stayora] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-10-11T21:09:28.112+01:00  INFO 6388 --- [stayora] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-10-11T21:09:28.134+01:00  INFO 6388 --- [stayora] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T21:09:28.136+01:00  INFO 6388 --- [stayora] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-10-11T21:09:28.175+01:00  INFO 6388 --- [stayora] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-10-11T21:09:28.626+01:00  INFO 6388 --- [stayora] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T21:09:28.670+01:00  INFO 6388 --- [stayora] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T21:09:29.959+01:00  INFO 6388 --- [stayora] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T21:09:30.013+01:00  INFO 6388 --- [stayora] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 10214 (http) with context path '/'
+2026-10-11T21:09:30.023+01:00  INFO 6388 --- [stayora] [           main] .s.AvailabilityManagementIntegrationTest : Started AvailabilityManagementIntegrationTest in 3.55 seconds (process running for 31.186)
+2026-10-11T21:09:30.098+01:00  INFO 6388 --- [stayora] [1-auto-2-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T21:09:30.098+01:00  INFO 6388 --- [stayora] [1-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T21:09:30.100+01:00  INFO 6388 --- [stayora] [1-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.837 s -- in com.stayora.AvailabilityManagementIntegrationTest
+[INFO] Running com.stayora.BookingIntegrationTest
+2026-10-11T21:09:31.283+01:00  INFO 6388 --- [stayora] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.stayora.BookingIntegrationTest]: BookingIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T21:09:31.286+01:00  INFO 6388 --- [stayora] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.stayora.StayoraApplication for test class com.stayora.BookingIntegrationTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.919 s -- in com.stayora.BookingIntegrationTest
+[INFO] Running com.stayora.ListingManagementIntegrationTest
+2026-10-11T21:09:32.203+01:00  INFO 6388 --- [stayora] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.stayora.ListingManagementIntegrationTest]: ListingManagementIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T21:09:32.206+01:00  INFO 6388 --- [stayora] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.stayora.StayoraApplication for test class com.stayora.ListingManagementIntegrationTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.779 s -- in com.stayora.ListingManagementIntegrationTest
+[INFO] Running com.stayora.listings.ListingAiSkillTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.stayora.listings.ListingAiSkillTest
+[INFO] Running com.stayora.MessagingIntegrationTest
+2026-10-11T21:09:32.987+01:00  INFO 6388 --- [stayora] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.stayora.MessagingIntegrationTest]: MessagingIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T21:09:32.990+01:00  INFO 6388 --- [stayora] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.stayora.StayoraApplication for test class com.stayora.MessagingIntegrationTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.911 s -- in com.stayora.MessagingIntegrationTest
+[INFO] Running com.stayora.ReservationLifecycleIntegrationTest
+2026-10-11T21:09:33.898+01:00  INFO 6388 --- [stayora] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.stayora.ReservationLifecycleIntegrationTest]: ReservationLifecycleIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T21:09:33.901+01:00  INFO 6388 --- [stayora] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.stayora.StayoraApplication for test class com.stayora.ReservationLifecycleIntegrationTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.471 s -- in com.stayora.ReservationLifecycleIntegrationTest
+[INFO] Running com.stayora.ReviewManagementIntegrationTest
+2026-10-11T21:09:34.372+01:00  INFO 6388 --- [stayora] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.stayora.ReviewManagementIntegrationTest]: ReviewManagementIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T21:09:34.375+01:00  INFO 6388 --- [stayora] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.stayora.StayoraApplication for test class com.stayora.ReviewManagementIntegrationTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.680 s -- in com.stayora.ReviewManagementIntegrationTest
+[INFO] Running com.stayora.shared.DemoConfigurationTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.stayora.shared.DemoConfigurationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 51, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ stayora ---
+[INFO] Building jar: C:\Users\everp\Documents\GitHub\web-ai\backend\target\stayora-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.3.6:repackage (repackage) @ stayora ---
+[INFO] Replacing main artifact C:\Users\everp\Documents\GitHub\web-ai\backend\target\stayora-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to C:\Users\everp\Documents\GitHub\web-ai\backend\target\stayora-0.0.1-SNAPSHOT.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.15:report (coverage-report) @ stayora ---
+[INFO] Loading execution data file C:\Users\everp\Documents\GitHub\web-ai\backend\target\jacoco.exec
+[INFO] Analyzed bundle 'Stayora' with 79 classes
+[INFO] 
+[INFO] --- spotless:2.43.0:check (default-cli) @ stayora ---
+[INFO] Index file does not exist. Fallback to an empty index
+[INFO] Spotless.Java is keeping 73 files clean - 0 needs changes to be clean, 73 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- dependency:3.6.1:copy-dependencies (default-cli) @ stayora ---
+[INFO] Copying spring-boot-starter-web-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-starter-web-3.3.6.jar
+[INFO] Copying spring-boot-starter-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-starter-3.3.6.jar
+[INFO] Copying spring-boot-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-3.3.6.jar
+[INFO] Copying spring-boot-autoconfigure-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-autoconfigure-3.3.6.jar
+[INFO] Copying spring-boot-starter-logging-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-starter-logging-3.3.6.jar
+[INFO] Copying logback-classic-1.5.12.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\logback-classic-1.5.12.jar
+[INFO] Copying logback-core-1.5.12.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\logback-core-1.5.12.jar
+[INFO] Copying log4j-to-slf4j-2.23.1.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\log4j-to-slf4j-2.23.1.jar
+[INFO] Copying log4j-api-2.23.1.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\log4j-api-2.23.1.jar
+[INFO] Copying jul-to-slf4j-2.0.16.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jul-to-slf4j-2.0.16.jar
+[INFO] Copying jakarta.annotation-api-2.1.1.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jakarta.annotation-api-2.1.1.jar
+[INFO] Copying snakeyaml-2.2.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\snakeyaml-2.2.jar
+[INFO] Copying spring-boot-starter-json-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-starter-json-3.3.6.jar
+[INFO] Copying jackson-databind-2.17.3.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jackson-databind-2.17.3.jar
+[INFO] Copying jackson-annotations-2.17.3.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jackson-annotations-2.17.3.jar
+[INFO] Copying jackson-datatype-jdk8-2.17.3.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jackson-datatype-jdk8-2.17.3.jar
+[INFO] Copying jackson-datatype-jsr310-2.17.3.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jackson-datatype-jsr310-2.17.3.jar
+[INFO] Copying jackson-module-parameter-names-2.17.3.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jackson-module-parameter-names-2.17.3.jar
+[INFO] Copying spring-boot-starter-tomcat-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-starter-tomcat-3.3.6.jar
+[INFO] Copying tomcat-embed-core-10.1.33.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\tomcat-embed-core-10.1.33.jar
+[INFO] Copying tomcat-embed-websocket-10.1.33.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\tomcat-embed-websocket-10.1.33.jar
+[INFO] Copying spring-web-6.1.15.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-web-6.1.15.jar
+[INFO] Copying spring-beans-6.1.15.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-beans-6.1.15.jar
+[INFO] Copying spring-webmvc-6.1.15.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-webmvc-6.1.15.jar
+[INFO] Copying spring-aop-6.1.15.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-aop-6.1.15.jar
+[INFO] Copying spring-context-6.1.15.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-context-6.1.15.jar
+[INFO] Copying spring-expression-6.1.15.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-expression-6.1.15.jar
+[INFO] Copying spring-boot-starter-data-jpa-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-starter-data-jpa-3.3.6.jar
+[INFO] Copying spring-boot-starter-aop-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-starter-aop-3.3.6.jar
+[INFO] Copying aspectjweaver-1.9.22.1.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\aspectjweaver-1.9.22.1.jar
+[INFO] Copying spring-boot-starter-jdbc-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-starter-jdbc-3.3.6.jar
+[INFO] Copying HikariCP-5.1.0.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\HikariCP-5.1.0.jar
+[INFO] Copying spring-jdbc-6.1.15.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-jdbc-6.1.15.jar
+[INFO] Copying hibernate-core-6.5.3.Final.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\hibernate-core-6.5.3.Final.jar
+[INFO] Copying jakarta.persistence-api-3.1.0.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jakarta.persistence-api-3.1.0.jar
+[INFO] Copying jakarta.transaction-api-2.0.1.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jakarta.transaction-api-2.0.1.jar
+[INFO] Copying jboss-logging-3.5.3.Final.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jboss-logging-3.5.3.Final.jar
+[INFO] Copying hibernate-commons-annotations-6.0.6.Final.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\hibernate-commons-annotations-6.0.6.Final.jar
+[INFO] Copying jandex-3.1.2.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jandex-3.1.2.jar
+[INFO] Copying classmate-1.7.0.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\classmate-1.7.0.jar
+[INFO] Copying byte-buddy-1.14.19.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\byte-buddy-1.14.19.jar
+[INFO] Copying jaxb-runtime-4.0.5.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jaxb-runtime-4.0.5.jar
+[INFO] Copying jaxb-core-4.0.5.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jaxb-core-4.0.5.jar
+[INFO] Copying angus-activation-2.0.2.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\angus-activation-2.0.2.jar
+[INFO] Copying txw2-4.0.5.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\txw2-4.0.5.jar
+[INFO] Copying istack-commons-runtime-4.1.2.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\istack-commons-runtime-4.1.2.jar
+[INFO] Copying jakarta.inject-api-2.0.1.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jakarta.inject-api-2.0.1.jar
+[INFO] Copying antlr4-runtime-4.13.0.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\antlr4-runtime-4.13.0.jar
+[INFO] Copying spring-data-jpa-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-data-jpa-3.3.6.jar
+[INFO] Copying spring-data-commons-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-data-commons-3.3.6.jar
+[INFO] Copying spring-orm-6.1.15.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-orm-6.1.15.jar
+[INFO] Copying spring-tx-6.1.15.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-tx-6.1.15.jar
+[INFO] Copying spring-aspects-6.1.15.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-aspects-6.1.15.jar
+[INFO] Copying spring-boot-starter-validation-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-starter-validation-3.3.6.jar
+[INFO] Copying tomcat-embed-el-10.1.33.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\tomcat-embed-el-10.1.33.jar
+[INFO] Copying hibernate-validator-8.0.1.Final.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\hibernate-validator-8.0.1.Final.jar
+[INFO] Copying jakarta.validation-api-3.0.2.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jakarta.validation-api-3.0.2.jar
+[INFO] Copying spring-boot-starter-actuator-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-starter-actuator-3.3.6.jar
+[INFO] Copying spring-boot-actuator-autoconfigure-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-actuator-autoconfigure-3.3.6.jar
+[INFO] Copying spring-boot-actuator-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-actuator-3.3.6.jar
+[INFO] Copying micrometer-observation-1.13.8.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\micrometer-observation-1.13.8.jar
+[INFO] Copying micrometer-commons-1.13.8.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\micrometer-commons-1.13.8.jar
+[INFO] Copying micrometer-jakarta9-1.13.8.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\micrometer-jakarta9-1.13.8.jar
+[INFO] Copying micrometer-core-1.13.8.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\micrometer-core-1.13.8.jar
+[INFO] Copying HdrHistogram-2.2.2.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\HdrHistogram-2.2.2.jar
+[INFO] Copying LatencyUtils-2.0.3.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\LatencyUtils-2.0.3.jar
+[INFO] Copying postgresql-42.7.13.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\postgresql-42.7.13.jar
+[INFO] Copying checker-qual-3.55.1.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\checker-qual-3.55.1.jar
+[INFO] Copying flyway-core-10.10.0.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\flyway-core-10.10.0.jar
+[INFO] Copying jackson-dataformat-toml-2.17.3.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jackson-dataformat-toml-2.17.3.jar
+[INFO] Copying jackson-core-2.17.3.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jackson-core-2.17.3.jar
+[INFO] Copying gson-2.10.1.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\gson-2.10.1.jar
+[INFO] Copying flyway-database-postgresql-10.10.0.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\flyway-database-postgresql-10.10.0.jar
+[INFO] Copying springdoc-openapi-starter-webmvc-ui-2.6.0.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\springdoc-openapi-starter-webmvc-ui-2.6.0.jar
+[INFO] Copying springdoc-openapi-starter-webmvc-api-2.6.0.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\springdoc-openapi-starter-webmvc-api-2.6.0.jar
+[INFO] Copying springdoc-openapi-starter-common-2.6.0.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\springdoc-openapi-starter-common-2.6.0.jar
+[INFO] Copying swagger-core-jakarta-2.2.22.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\swagger-core-jakarta-2.2.22.jar
+[INFO] Copying commons-lang3-3.14.0.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\commons-lang3-3.14.0.jar
+[INFO] Copying swagger-annotations-jakarta-2.2.22.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\swagger-annotations-jakarta-2.2.22.jar
+[INFO] Copying swagger-models-jakarta-2.2.22.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\swagger-models-jakarta-2.2.22.jar
+[INFO] Copying jackson-dataformat-yaml-2.17.3.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jackson-dataformat-yaml-2.17.3.jar
+[INFO] Copying swagger-ui-5.17.14.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\swagger-ui-5.17.14.jar
+[INFO] Copying spring-boot-starter-test-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-starter-test-3.3.6.jar
+[INFO] Copying spring-boot-test-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-test-3.3.6.jar
+[INFO] Copying spring-boot-test-autoconfigure-3.3.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-boot-test-autoconfigure-3.3.6.jar
+[INFO] Copying json-path-2.9.0.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\json-path-2.9.0.jar
+[INFO] Copying jakarta.xml.bind-api-4.0.2.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jakarta.xml.bind-api-4.0.2.jar
+[INFO] Copying jakarta.activation-api-2.1.3.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jakarta.activation-api-2.1.3.jar
+[INFO] Copying json-smart-2.5.1.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\json-smart-2.5.1.jar
+[INFO] Copying accessors-smart-2.5.1.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\accessors-smart-2.5.1.jar
+[INFO] Copying asm-9.6.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\asm-9.6.jar
+[INFO] Copying assertj-core-3.25.3.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\assertj-core-3.25.3.jar
+[INFO] Copying awaitility-4.2.2.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\awaitility-4.2.2.jar
+[INFO] Copying hamcrest-2.2.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\hamcrest-2.2.jar
+[INFO] Copying junit-jupiter-5.10.5.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\junit-jupiter-5.10.5.jar
+[INFO] Copying junit-jupiter-api-5.10.5.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\junit-jupiter-api-5.10.5.jar
+[INFO] Copying opentest4j-1.3.0.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\opentest4j-1.3.0.jar
+[INFO] Copying junit-platform-commons-1.10.5.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\junit-platform-commons-1.10.5.jar
+[INFO] Copying apiguardian-api-1.1.2.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\apiguardian-api-1.1.2.jar
+[INFO] Copying junit-jupiter-params-5.10.5.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\junit-jupiter-params-5.10.5.jar
+[INFO] Copying junit-jupiter-engine-5.10.5.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\junit-jupiter-engine-5.10.5.jar
+[INFO] Copying junit-platform-engine-1.10.5.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\junit-platform-engine-1.10.5.jar
+[INFO] Copying mockito-core-5.11.0.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\mockito-core-5.11.0.jar
+[INFO] Copying byte-buddy-agent-1.14.19.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\byte-buddy-agent-1.14.19.jar
+[INFO] Copying objenesis-3.3.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\objenesis-3.3.jar
+[INFO] Copying mockito-junit-jupiter-5.11.0.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\mockito-junit-jupiter-5.11.0.jar
+[INFO] Copying jsonassert-1.5.3.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\jsonassert-1.5.3.jar
+[INFO] Copying android-json-0.0.20131108.vaadin1.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\android-json-0.0.20131108.vaadin1.jar
+[INFO] Copying spring-core-6.1.15.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-core-6.1.15.jar
+[INFO] Copying spring-jcl-6.1.15.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-jcl-6.1.15.jar
+[INFO] Copying spring-test-6.1.15.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\spring-test-6.1.15.jar
+[INFO] Copying xmlunit-core-2.9.1.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\xmlunit-core-2.9.1.jar
+[INFO] Copying httpclient5-5.3.1.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\httpclient5-5.3.1.jar
+[INFO] Copying httpcore5-5.2.5.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\httpcore5-5.2.5.jar
+[INFO] Copying httpcore5-h2-5.2.5.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\httpcore5-h2-5.2.5.jar
+[INFO] Copying slf4j-api-2.0.16.jar to C:\Users\everp\Documents\GitHub\web-ai\backend\target\sonar-libraries\slf4j-api-2.0.16.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  58.987 s
+[INFO] Finished at: 2026-10-11T21:09:43+01:00
+[INFO] ------------------------------------------------------------------------

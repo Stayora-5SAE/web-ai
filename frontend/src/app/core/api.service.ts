@@ -5,6 +5,7 @@ import { IdentityService } from '../accounts/identity.service';
 import {
   Account,
   AiResponse,
+  AiSkill,
   BookingRequest,
   CalendarData,
   Dashboard,
@@ -13,12 +14,11 @@ import {
   Reservation,
 } from './models';
 export const demoInterceptor: HttpInterceptorFn = (request, next) => {
-  const mode = inject(IdentityService).mode();
-  return next(
-    request.url.startsWith('/api/')
-      ? request.clone({ setHeaders: { 'X-Demo-Identity': mode } })
-      : request,
-  );
+  const identity = inject(IdentityService);
+  const headers: Record<string, string> = {};
+  if (!identity.account() && identity.demoEnabled()) headers['X-Demo-Identity'] = identity.mode();
+  if (identity.csrf()) headers['X-CSRF-Token'] = identity.csrf();
+  return next(request.url.startsWith('/api/') ? request.clone({ setHeaders: headers }) : request);
 };
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -64,6 +64,9 @@ export class ApiService {
   }
   assist(skill: string, context: string) {
     return firstValueFrom(this.http.post<AiResponse>('/api/ai/assist', { skill, context }));
+  }
+  skills() {
+    return firstValueFrom(this.http.get<AiSkill[]>('/api/ai/skills'));
   }
 }
 export function errorMessage(error: unknown): string {

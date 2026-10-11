@@ -7,7 +7,9 @@ import com.stayora.listings.ListingService.PropertyView;
 import com.stayora.shared.ApiException;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Instant;
@@ -24,16 +26,19 @@ public class ReservationService {
   private final ListingService listings;
   private final AvailabilityService availability;
   private final AccountService accounts;
+  private final ReservationPaymentRepository payments;
 
   public ReservationService(
       ReservationRepository reservations,
       ListingService listings,
       AvailabilityService availability,
-      AccountService accounts) {
+      AccountService accounts,
+      ReservationPaymentRepository payments) {
     this.reservations = reservations;
     this.listings = listings;
     this.availability = availability;
     this.accounts = accounts;
+    this.payments = payments;
   }
 
   public void validateDates(LocalDate start, LocalDate end) {
@@ -61,7 +66,10 @@ public class ReservationService {
     if (!available(p.id(), request.checkIn(), request.checkOut()))
       throw ApiException.conflict("These dates are no longer available. Choose another stay.");
     long nights = ChronoUnit.DAYS.between(request.checkIn(), request.checkOut());
-    BigDecimal subtotal = money(p.nightlyPrice().multiply(BigDecimal.valueOf(nights)));
+    BigDecimal subtotal =
+        money(
+            availability.accommodationTotal(
+                p.id(), request.checkIn(), request.checkOut(), p.nightlyPrice()));
     return new Quote(
         p.id(),
         request.checkIn(),
@@ -96,7 +104,9 @@ public class ReservationService {
     r.status = "PENDING";
     r.paymentStatus = "SIMULATED";
     r.createdAt = Instant.now();
-    return view(reservations.saveAndFlush(r));
+    reservations.saveAndFlush(r);
+    recordPayment(r);
+    return view(r);
   }
 
   public ReservationView get(UUID id) {
@@ -119,10 +129,109 @@ public class ReservationService {
     em.refresh(initial);
     if (!"PENDING".equals(initial.status))
       throw ApiException.conflict("This request has already been decided.");
+    if (initial.checkIn.isBefore(LocalDate.now()))
+      throw ApiException.conflict("A request whose check-in has passed cannot be decided.");
     if (decision == null || !List.of("CONFIRMED", "DECLINED").contains(decision))
       throw ApiException.badRequest("Choose CONFIRMED or DECLINED.");
     initial.status = decision;
+    if ("DECLINED".equals(decision)) refund(initial);
     return view(reservations.saveAndFlush(initial));
+  }
+
+  public List<ReservationView> trips() {
+    return reservations.findByGuestIdOrderByCheckInDesc(accounts.requireRole("GUEST").id()).stream()
+        .map(this::view)
+        .toList();
+  }
+
+  public List<ReservationView> hostRequests() {
+    return forHost(accounts.requireRole("HOST").id());
+  }
+
+  @Transactional
+  public ReservationView cancel(UUID id, String reason) {
+    UUID guestId = accounts.requireRole("GUEST").id();
+    Reservation r = reservations.findById(id).orElseThrow(ApiException::notFound);
+    if (!guestId.equals(r.guestId)) throw ApiException.forbidden();
+    listings.lock(r.propertyId);
+    entityManager.refresh(r);
+    if (!List.of("PENDING", "CONFIRMED").contains(r.status))
+      throw ApiException.conflict("Only pending or confirmed stays can be cancelled.");
+    if (!r.checkIn.isAfter(LocalDate.now()))
+      throw ApiException.conflict("Cancellation closes on the check-in date.");
+    if (reason == null || reason.trim().length() < 3 || reason.trim().length() > 500)
+      throw ApiException.badRequest("Provide a cancellation reason between 3 and 500 characters.");
+    r.status = "CANCELLED";
+    r.cancelledAt = Instant.now();
+    r.cancellationReason = reason.trim();
+    refund(r);
+    return view(reservations.saveAndFlush(r));
+  }
+
+  public PaymentView payment(UUID id) {
+    ReservationView owned = get(id);
+    return payments
+        .findByReservationId(id)
+        .map(this::paymentView)
+        .orElseGet(
+            () ->
+                new PaymentView(
+                    null,
+                    id,
+                    owned.total(),
+                    "TND",
+                    "SIMULATED",
+                    "SIMULATED_REFUNDED".equals(owned.paymentStatus()) ? "REFUNDED" : "CAPTURED",
+                    "DEMO-" + id,
+                    null,
+                    null));
+  }
+
+  /** Service contract for reviews: only the guest of a completed confirmed stay is eligible. */
+  public boolean eligibleForReview(UUID reservationId, UUID guestId) {
+    Reservation r = reservations.findById(reservationId).orElseThrow(ApiException::notFound);
+    return r.guestId.equals(guestId)
+        && "CONFIRMED".equals(r.status)
+        && !r.checkOut.isAfter(LocalDate.now());
+  }
+
+  private ReservationPayment recordPayment(Reservation r) {
+    return payments
+        .findByReservationId(r.id)
+        .orElseGet(
+            () -> {
+              ReservationPayment payment = new ReservationPayment();
+              payment.id = UUID.randomUUID();
+              payment.reservationId = r.id;
+              payment.amount = r.total;
+              payment.currency = "TND";
+              payment.mode = "SIMULATED";
+              payment.status = "CAPTURED";
+              payment.reference = "DEMO-" + r.id;
+              payment.capturedAt = r.createdAt;
+              return payments.saveAndFlush(payment);
+            });
+  }
+
+  private void refund(Reservation r) {
+    ReservationPayment payment = recordPayment(r);
+    payment.status = "REFUNDED";
+    payment.refundedAt = Instant.now();
+    payments.saveAndFlush(payment);
+    r.paymentStatus = "SIMULATED_REFUNDED";
+  }
+
+  private PaymentView paymentView(ReservationPayment p) {
+    return new PaymentView(
+        p.id,
+        p.reservationId,
+        p.amount,
+        p.currency,
+        p.mode,
+        p.status,
+        p.reference,
+        p.capturedAt,
+        p.refundedAt);
   }
 
   @jakarta.persistence.PersistenceContext private jakarta.persistence.EntityManager entityManager;
@@ -168,6 +277,19 @@ public class ReservationService {
       @NotNull LocalDate checkIn,
       @NotNull LocalDate checkOut,
       @Min(1) @Max(20) int guests) {}
+
+  public record CancellationRequest(@NotBlank @Size(min = 3, max = 500) String reason) {}
+
+  public record PaymentView(
+      UUID id,
+      UUID reservationId,
+      BigDecimal amount,
+      String currency,
+      String mode,
+      String status,
+      String reference,
+      Instant capturedAt,
+      Instant refundedAt) {}
 
   public record Quote(
       UUID propertyId,

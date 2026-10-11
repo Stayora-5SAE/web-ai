@@ -19,7 +19,12 @@ public class ApiException extends RuntimeException {
   }
 
   public static ApiException forbidden() {
-    return new ApiException(HttpStatus.FORBIDDEN, "This demo identity cannot access this action.");
+    return new ApiException(
+        HttpStatus.FORBIDDEN, "You do not have permission to access this action.");
+  }
+
+  public static ApiException unauthorized(String message) {
+    return new ApiException(HttpStatus.UNAUTHORIZED, message);
   }
 
   public static ApiException conflict(String message) {

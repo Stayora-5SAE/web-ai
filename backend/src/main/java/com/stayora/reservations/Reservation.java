@@ -37,4 +37,6 @@ public class Reservation {
   public String status;
   public String paymentStatus;
   public Instant createdAt;
+  public Instant cancelledAt;
+  public String cancellationReason;
 }
