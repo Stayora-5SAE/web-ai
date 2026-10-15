@@ -73,7 +73,7 @@ export function assertTestDatabase(value = 'jdbc:postgresql://127.0.0.1:5433/sta
   return value;
 }
 async function main() {
-  dotenv.config({ path: path.join(root, 'quality/.env') });
+  dotenv.config({ path: path.join(root, '.env') });
   const action = process.argv[2];
   if (action === 'coverage') {
     assertTestDatabase(process.env.TEST_DB_URL);
@@ -101,9 +101,7 @@ async function main() {
       !existsSync(path.join(home, 'bin/windows-x86-64/StartSonar.bat')) ||
       !existsSync(path.join(jdk, 'bin/java.exe'))
     ) {
-      throw new Error(
-        'Configure SONAR_HOME and SONAR_JAVA_HOME in quality/.env. See quality/README.md.',
-      );
+      throw new Error('Configure SONAR_HOME and SONAR_JAVA_HOME in .env. See quality/README.md.');
     }
     const env = {
       ...process.env,
@@ -123,13 +121,12 @@ async function main() {
   }
   if (action !== 'scan') throw new Error('Use start, coverage, or scan.');
   assertReports();
-  if (!process.env.SONAR_TOKEN?.trim()) throw new Error('Set SONAR_TOKEN in ignored quality/.env.');
+  if (!process.env.SONAR_TOKEN?.trim()) throw new Error('Set SONAR_TOKEN in ignored .env.');
   const home = process.env.SONAR_SCANNER_HOME;
   const scanner =
     home &&
     path.join(home, 'bin', process.platform === 'win32' ? 'sonar-scanner.bat' : 'sonar-scanner');
-  if (!scanner || !existsSync(scanner))
-    throw new Error('Configure SONAR_SCANNER_HOME in quality/.env.');
+  if (!scanner || !existsSync(scanner)) throw new Error('Configure SONAR_SCANNER_HOME in .env.');
   if (!process.env.JAVA_HOME) throw new Error('JAVA_HOME must point to the project Java 17 JDK.');
   const env = {
     ...process.env,

@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import dotenv from 'dotenv';
 const root = fileURLToPath(new URL('../', import.meta.url));
-dotenv.config({ path: `${root}backend/.env` });
+dotenv.config({ path: `${root}.env` });
 const windows = process.platform === 'win32';
 const args = windows ? process.argv.slice(2) : ['./mvnw', ...process.argv.slice(2)];
 const child = spawn(windows ? 'mvnw.cmd' : 'sh', args, {

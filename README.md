@@ -8,20 +8,20 @@ Requirements: **Node 22**, npm, **Java 17** (set `JAVA_HOME`), internet access f
 
 ```sh
 npm ci
-cp backend/.env.example backend/.env
-# Fill the four DB variables in backend/.env; never commit it.
+cp .env.example .env
+# Fill the four DB variables in .env; never commit it.
 npm run setup
 npm run dev
 ```
 
-PowerShell: use `Copy-Item backend/.env.example backend/.env` instead of `cp`. Do not overwrite an already configured `.env`.
+PowerShell: use `Copy-Item .env.example .env` instead of `cp`. Do not overwrite an already configured `.env`.
 
 - App: http://localhost:4200
 - Backend health: http://127.0.0.1:8081/actuator/health
 - API documentation: http://127.0.0.1:8081/api/docs
 - OpenAPI JSON: http://127.0.0.1:8081/v3/api-docs
 
-The root launcher loads `backend/.env` into the backend process. Spring does **not** automatically read `.env` when launched from an IDE: configure the same environment variables there. `npm run dev:backend` and `npm run dev:frontend` start each part separately. Both listen on loopback by default. To change the backend port, set `PORT` and update `frontend/proxy.conf.json` together.
+The backend and SonarQube launchers load the shared `.env` from the repository root. The frontend does not load this file. Spring does **not** automatically read `.env` when launched from an IDE: configure the same environment variables there. `npm run dev:backend` and `npm run dev:frontend` start each part separately. Both listen on loopback by default. To change the backend port, set `PORT` and update `frontend/proxy.conf.json` together.
 
 ## SonarQube and testing report
 
@@ -118,7 +118,7 @@ Each member contributes one `AiSkill` implementation to the shared assistant reg
 
 `GET /api/ai/skills` lists IDs, labels and owners. `POST /api/ai/assist` accepts `{ "skill": "listing-description", "context": "La Marsa, apartment, kitchen" }`. Responses include `mode` (`mock` or `live`), `skill`, `text`, `notice` and `reviewRequired`. AI does not execute a booking, publish a listing, change prices, assign stars or send a message.
 
-Default `AI_PROVIDER=mock` is deterministic and requires no key or external request. Optional providers use server-only variables in ignored `backend/.env`:
+Default `AI_PROVIDER=mock` is deterministic and requires no key or external request. Optional providers use server-only variables in ignored `.env`:
 
 - **Groq:** `AI_PROVIDER=groq`, `AI_BASE_URL=https://api.groq.com/openai/v1`, `AI_API_KEY=<your key>`, and a supported `AI_MODEL`.
 - **Local Ollama:** `AI_PROVIDER=ollama`, `AI_BASE_URL=http://127.0.0.1:11434/v1`, and `AI_MODEL=<an installed local model>`; a key is not required.

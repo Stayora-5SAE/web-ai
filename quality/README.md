@@ -22,10 +22,10 @@ From the repository root, install the root dependencies and copy the example onl
 
 ```powershell
 npm ci
-Copy-Item quality/.env.example quality/.env
+Copy-Item .env.example .env
 ```
 
-Set paths for your machine in ignored `quality/.env`:
+Set paths for your machine in ignored `.env`:
 
 ```dotenv
 SONAR_HOST_URL=http://127.0.0.1:9000
@@ -38,7 +38,7 @@ SONAR_REPORT_TOKEN=YOUR_LOCAL_READ_CAPABLE_USER_TOKEN
 SONAR_LOW_DISK_DEMO=false
 ```
 
-`SONAR_TOKEN` is a placeholder here. Generate a project analysis token through the local SonarQube UI and place the real value only in ignored `quality/.env`. It must not enter command arguments, source files, screenshots, CI artifacts or the French report. Keep `backend/.env` for application database/AI configuration. Never copy the application database password into a Sonar property file.
+`SONAR_TOKEN` is a placeholder here. Generate a project analysis token through the local SonarQube UI and place the real value only in ignored `.env`. It must not enter command arguments, source files, screenshots, CI artifacts or the French report. The same root file also holds application database/AI configuration. Never copy the application database password into a Sonar property file.
 
 Check `$env:JAVA_HOME` still identifies Java 17 before generating Java coverage. The launcher passes `SONAR_JAVA_HOME` only to Sonar processes, and tells the analyzer where the project's Java 17 JDK lives. It does not require a permanent PATH change or replacement of the project's JDK.
 
@@ -52,7 +52,7 @@ npm run sonar:start
 
 Leave that terminal running. The Windows launcher calls the ZIP distribution's `StartSonar.bat`, selects the separate Sonar Java runtime and binds the web UI to the loopback address from `SONAR_HOST_URL`. Wait until the server reports it is operational, then open [the local SonarQube UI](http://127.0.0.1:9000).
 
-On a new installation, perform the local administrator password setup, create project **Stayora** with key **stayora**, and generate a project analysis token under **My Account → Security**. Store it in `quality/.env`. Native ZIP installations support an embedded H2 database for evaluation; this workflow keeps Sonar's evaluation data separate from Stayora and Neon. See the [official ZIP installation guide](https://docs.sonarsource.com/sonarqube-community-build/server-installation/from-zip-file/basic-installation).
+On a new installation, perform the local administrator password setup, create project **Stayora** with key **stayora**, and generate a project analysis token under **My Account → Security**. Store it in `.env`. Native ZIP installations support an embedded H2 database for evaluation; this workflow keeps Sonar's evaluation data separate from Stayora and Neon. See the [official ZIP installation guide](https://docs.sonarsource.com/sonarqube-community-build/server-installation/from-zip-file/basic-installation).
 
 Stop the foreground server using its terminal when the analysis/demonstration is finished. Unix contributors can use the native distribution's `sonar.sh` launcher; the provided `sonar:start` wrapper currently targets Windows.
 
@@ -112,7 +112,7 @@ Record the actual SonarQube/scanner versions, scan timestamp, analyzed revision,
 npm run sonar:export
 ```
 
-This reads the completed task in `.scannerwork/report-task.txt` and saves metrics, findings, hotspots and gate conditions to `docs/testing-report/evidence/sonarqube.json`. A project analysis token may lack hotspot read permissions; use a local user token with the required project permissions in `SONAR_REPORT_TOKEN`. Keep both tokens in ignored `quality/.env`. The locally generated administrator password is also stored there as `SONAR_ADMIN_PASSWORD`; no real credential is committed.
+This reads the completed task in `.scannerwork/report-task.txt` and saves metrics, findings, hotspots and gate conditions to `docs/testing-report/evidence/sonarqube.json`. A project analysis token may lack hotspot read permissions; use a local user token with the required project permissions in `SONAR_REPORT_TOKEN`. Keep both tokens in ignored `.env`. The locally generated administrator password is also stored there as `SONAR_ADMIN_PASSWORD`; no real credential is committed.
 
 The professor's [French report](../docs/testing-report/rapport.pdf) contains the executed results and screenshots. Its Markdown source, raw scanner/test logs, coverage files and source hashes are in the same report folder. `generate-report.py` regenerates the PDF using Python and ReportLab (Arial on Windows or DejaVu Sans on Linux). Take new screenshots and refresh evidence after a new scan; the committed report describes the recorded snapshot.
 
@@ -131,7 +131,7 @@ GitHub Actions does not receive the local Sonar token, launch this desktop Sonar
 | Local coverage refuses the database         | Use loopback PostgreSQL and the disposable database name `stayora_test`; keep Neon out of tests                        |
 | Angular coverage cannot launch Chrome       | Install/use Chrome or Chromium and configure `CHROME_BIN`                                                              |
 | Scan reports missing inputs                 | Run `npm run sonar:coverage` successfully after the last source changes                                                |
-| Authentication fails                        | Generate an appropriate local project analysis token and update only ignored `quality/.env`                            |
+| Authentication fails                        | Generate an appropriate local project analysis token and update only ignored `.env`                                    |
 | Scanner exits nonzero after upload          | Check the quality gate and server task result; a gate failure is a real result to address                              |
 | Server disk-space allocation blocks startup | Free space first; the documented low-disk flag is limited to a short local demonstration                               |
 

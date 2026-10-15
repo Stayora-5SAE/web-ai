@@ -130,7 +130,7 @@ Live output must be nonblank, no longer than 4000 characters, contain no angle b
 
 ## Backend-only configuration examples
 
-These examples contain no actual key. Add configuration only to ignored `backend/.env`, or to the corresponding process environment. The frontend never receives provider credentials.
+These examples contain no actual key. Add configuration only to ignored `.env`, or to the corresponding process environment. The frontend never receives provider credentials.
 
 Offline demonstration:
 

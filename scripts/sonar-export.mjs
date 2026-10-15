@@ -5,10 +5,10 @@ import dotenv from 'dotenv';
 import { validateLocalUrl } from './sonar.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-dotenv.config({ path: path.join(root, 'quality/.env') });
+dotenv.config({ path: path.join(root, '.env') });
 const origin = validateLocalUrl(process.env.SONAR_HOST_URL || 'http://127.0.0.1:9000');
 const token = process.env.SONAR_REPORT_TOKEN || process.env.SONAR_TOKEN;
-if (!token) throw new Error('Set SONAR_REPORT_TOKEN or SONAR_TOKEN in ignored quality/.env.');
+if (!token) throw new Error('Set SONAR_REPORT_TOKEN or SONAR_TOKEN in ignored .env.');
 async function get(endpoint, params = {}) {
   const url = new URL(endpoint, origin);
   url.search = new URLSearchParams(params).toString();

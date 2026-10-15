@@ -130,7 +130,7 @@ AI drafts depend on a public-property context and a bounded arrival/question/che
 
 ## Database and migrations
 
-Application traffic uses pooled JDBC connections; Flyway uses the direct Neon endpoint. JDBC parameters retain `sslmode=require` and use `channelBinding=require`. Database usernames/passwords and optional AI secrets belong only to ignored `backend/.env`; `.env.example` contains placeholders. No database credential is included in the frontend, committed documentation or logs.
+Application traffic uses pooled JDBC connections; Flyway uses the direct Neon endpoint. JDBC parameters retain `sslmode=require` and use `channelBinding=require`. Database usernames/passwords and optional AI secrets belong only to ignored `.env`; `.env.example` contains placeholders. No database credential is included in the frontend, committed documentation or logs.
 
 Flyway owns the explicitly qualified `stayora` schema; Hibernate runs in schema-validation mode. The migration sequence is:
 
