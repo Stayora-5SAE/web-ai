@@ -1,0 +1,261 @@
+<main
+  id="main"
+  class="container page"
+  [appPageContext]="{
+    label:
+      (host ? 'Host reviews' : 'Visitor reviews') +
+      (tab === 'published' ? ' you wrote' : ' received'),
+    skill: 'review-summary',
+    facts: loading
+      ? ''
+      : 'reviews count=' +
+        (tab === 'published' ? reviews.length : reputation?.reviewCount || 0) +
+        '; rating average=' +
+        (tab === 'published' ? publishedRating : reputation?.rating || 0),
+    prompts: ['Summarize these ratings', 'Explain this review sample'],
+  }"
+>
+  <div class="review-heading">
+    <div>
+      <span class="eyebrow">{{
+        host ? 'Your hosting reputation' : 'The people behind every stay'
+      }}</span>
+      <h1>{{ host ? 'Great hosting. In their words.' : 'Every stay has a story.' }}</h1>
+      <p class="muted">
+        {{
+          host
+            ? 'See what guests love, find room to grow, and share your experience of hosting them.'
+            : 'Share your experience, revisit your reviews, and see what hosts say about you.'
+        }}
+      </p>
+    </div>
+    <a class="btn secondary" [routerLink]="host ? '/host/reservations' : '/trips'">{{
+      host ? 'View reservations' : 'Your trips'
+    }}</a>
+  </div>
+  <app-feedback [loading]="loading" [error]="loadError" (retry)="load()" />
+  @if (message) {
+    <p class="notice" role="status">{{ message }}</p>
+  }
+  @if (!loading && !loadError) {
+    <div class="review-overview">
+      <section class="panel reputation">
+        <span class="eyebrow">{{
+          host ? 'Your guest rating · all time' : 'Your rating from hosts'
+        }}</span>
+        @if (reputation) {
+          <app-reputation [data]="reputation" [distribution]="true" />
+        }
+      </section>
+      <section class="panel">
+        <span class="eyebrow">Keep the conversation going</span>
+        <h2 class="mt-3">
+          {{ stays.length }} {{ stays.length === 1 ? 'stay' : 'stays' }} ready to review
+        </h2>
+        <p class="muted mt-3">
+          {{
+            host
+              ? 'A thoughtful review helps other hosts welcome great guests.'
+              : 'Your honest feedback helps hosts improve and guests find their next stay.'
+          }}
+        </p>
+        <button class="btn mt-4" (click)="tab = 'write'; close()">
+          {{ stays.length ? 'Write a review' : 'See review eligibility' }}
+        </button>
+      </section>
+    </div>
+    <nav class="review-tabs" aria-label="Review views">
+      <button [attr.aria-pressed]="tab === 'received'" (click)="tab = 'received'; close()">
+        {{ host ? 'Guest feedback' : 'Reviews about you' }} ({{ reputation?.reviewCount || 0 }})
+      </button>
+      <button [attr.aria-pressed]="tab === 'write'" (click)="tab = 'write'; close()">
+        To review ({{ stays.length }})
+      </button>
+      <button [attr.aria-pressed]="tab === 'published'" (click)="tab = 'published'; close()">
+        Reviews you wrote ({{ reviews.length }})
+      </button>
+    </nav>
+    @if (tab === 'received') {
+      <h2>{{ host ? 'What your guests are saying' : 'Your stays, through your hosts’ eyes' }}</h2>
+      <app-review-feed [reviews]="reputation?.reviews || []" [context]="true" />
+      @if (!reputation?.reviewCount) {
+        <p class="empty-review">
+          {{
+            host
+              ? 'Your first guest review will appear here after a completed stay.'
+              : 'Reviews from your hosts will appear here after a completed stay.'
+          }}
+        </p>
+      }
+    }
+    @if (selected || editing) {
+      <form class="panel review-form" (ngSubmit)="save()">
+        <h2 id="review-form-title" tabindex="-1">
+          {{
+            editing
+              ? 'Edit your review'
+              : host
+                ? 'How was hosting this guest?'
+                : 'How was your stay?'
+          }}
+        </h2>
+        <p class="muted">
+          {{
+            selected
+              ? (host ? selected.guestName + ' · ' : '') + selected.propertyTitle
+              : editing?.propertyTitle
+          }}
+        </p>
+        <fieldset>
+          <legend>{{ host ? 'Guest rating' : 'Overall stay rating' }}</legend>
+          <div class="star-picker">
+            @for (star of [1, 2, 3, 4, 5]; track star) {
+              <label [class.selected]="rating >= star"
+                ><input
+                  type="radio"
+                  name="rating"
+                  [value]="star"
+                  [(ngModel)]="rating"
+                  required
+                  [attr.aria-label]="star + (star === 1 ? ' star' : ' stars')"
+                  [disabled]="saving"
+                /><span aria-hidden="true">★</span></label
+              >
+            }
+          </div>
+        </fieldset>
+        @if (!host) {
+          <fieldset>
+            <legend>What stood out about your host?</legend>
+            <p class="muted text-sm">
+              Optional · choose one tag per topic. Selecting the opposite replaces it.
+            </p>
+            @for (sentiment of ['GOOD', 'BAD']; track sentiment) {
+              <p class="text-sm mt-4">
+                <strong>{{ sentiment === 'GOOD' ? 'Highlights' : 'Room to improve' }}</strong>
+              </p>
+              <div class="pills">
+                @for (tag of tagOptions; track tag.id) {
+                  @if (tag.sentiment === sentiment) {
+                    <button
+                      type="button"
+                      class="pill"
+                      [class.bad]="sentiment === 'BAD'"
+                      [attr.aria-pressed]="selectedTags.includes(tag.id)"
+                      [disabled]="saving"
+                      (click)="toggleTag(tag)"
+                    >
+                      <span aria-hidden="true">{{ sentiment === 'GOOD' ? '+' : '−' }}</span
+                      >{{ tag.label }}
+                    </button>
+                  }
+                }
+              </div>
+            }
+          </fieldset>
+        }
+        <label for="review-body">{{
+          host ? 'Your experience hosting this guest' : 'Your experience'
+        }}</label>
+        <textarea
+          id="review-body"
+          name="body"
+          [(ngModel)]="body"
+          minlength="10"
+          maxlength="2000"
+          required
+          rows="5"
+          [disabled]="saving"
+          [placeholder]="
+            host
+              ? 'How did the guest care for the space and communicate with you?'
+              : 'What made this stay memorable? What could be better?'
+          "
+          aria-describedby="review-hint"
+        ></textarea>
+        <p id="review-hint" class="muted text-sm">
+          {{ body.length }}/2,000 characters · At least 10 characters. Keep personal details
+          private.
+        </p>
+        @if (saveError) {
+          <p class="error-text mt-3" role="alert">{{ saveError }}</p>
+        }
+        <div class="review-actions">
+          <button class="btn" type="submit" [disabled]="saving">
+            {{ saving ? 'Publishing…' : 'Publish review' }}</button
+          ><button class="btn secondary" type="button" [disabled]="saving" (click)="close()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    }
+    @if (tab === 'write') {
+      <div class="review-list">
+        @for (stay of stays; track stay.reservationId) {
+          <article class="panel stay-row">
+            <img [src]="stay.image" [alt]="stay.propertyTitle" />
+            <div>
+              <p class="eyebrow">Completed stay</p>
+              <h3>{{ host ? stay.guestName : stay.propertyTitle }}</h3>
+              <p class="muted">
+                {{ host ? stay.propertyTitle + ' · ' : '' }}{{ stay.checkIn | date: 'MMM d' }} –
+                {{ stay.checkOut | date: 'mediumDate' }}
+              </p>
+              <button class="btn secondary mt-3" [disabled]="saving" (click)="start(stay)">
+                {{ host ? 'Review guest' : 'Review stay' }}
+              </button>
+            </div>
+          </article>
+        } @empty {
+          <section class="panel">
+            <h2>You're all caught up</h2>
+            <p class="muted mt-3">Reviews open on the check-out date of a confirmed stay.</p>
+          </section>
+        }
+      </div>
+    }
+    @if (tab === 'published') {
+      <app-review-summary [count]="reviews.length" [rating]="publishedRating" scope="published" />
+      @for (review of reviews; track review.id) {
+        <section class="panel mb-4">
+          <h3>{{ host ? review.subjectName : review.propertyTitle }}</h3>
+          <app-review-feed [reviews]="[review]" [context]="host" />
+          <div class="review-actions">
+            <a
+              [routerLink]="
+                host
+                  ? ['/host/reservations', review.reservationId]
+                  : ['/properties', review.propertyId]
+              "
+              >{{ host ? 'View reservation' : 'View property' }}</a
+            >
+            <button class="btn secondary" [disabled]="saving" (click)="edit(review)">Edit</button
+            ><button class="btn secondary" [disabled]="saving" (click)="deleteTarget = review.id">
+              Delete
+            </button>
+          </div>
+          @if (deleteTarget === review.id) {
+            <div class="inset mt-4">
+              <p>
+                Delete your review? Its rating{{ host ? '' : ' and tags' }} will be removed from the
+                total.
+              </p>
+              <div class="review-actions">
+                <button class="btn danger" [disabled]="saving" (click)="remove(review)">
+                  Confirm deletion</button
+                ><button class="btn secondary" [disabled]="saving" (click)="deleteTarget = ''">
+                  Keep review
+                </button>
+              </div>
+            </div>
+          }
+        </section>
+      } @empty {
+        <p class="empty-review">Your published reviews will appear here.</p>
+      }
+      @if (deleteError) {
+        <p class="error-text" role="alert">{{ deleteError }}</p>
+      }
+    }
+  }
+</main>
