@@ -79,3 +79,21 @@ Useful answers for the AI integration professor:
 There are no attachments, typing indicators, push/email delivery, blocked-user moderation, message search, chat export, or real-time sockets. Inbox/thread retrieval currently loads the participant's full conversation history; pagination and batched projections are future performance work. Message removal is an application tombstone with erased text, not an immutable moderation audit trail. Rate limiting and abuse reporting should be added before public launch. This module needs no additional key in mock mode; live AI uses the project's shared backend provider configuration.
 
 Follow the root README for setup/check commands, the English technical report for functional verification and the French static-analysis report for ESLint evidence. Do not describe an unexecuted test or a mock response as proof of production-provider behavior.
+
+## Shared AI provider setup
+
+This module's embedded AI tool and its skill in the shared assistant use the same OpenRouter backend connection. Replace `OPENROUTER_API_KEY` in ignored root `.env` and restart the backend; `AI_MODEL` selects the model (`google/gemma-4-26b-a4b-it:free` by default). No provider key belongs in the frontend. Successful validated output is `mode: live`; missing/placeholder keys and provider failures remain explicitly labeled offline with a visible notice. Tests use controlled providers/mock mode and do not prove a live-key round trip. See [shared AI setup](README.md#shared-openrouter-connection-16-october-2026) and [provider configuration](../ai-prompts.md#backend-only-configuration-examples).
+
+The shared provider now fails over in order from Gemma 26B to Gemma 31B to Cohere North Mini Code when OpenRouter cannot serve the selected model. The same sanitized module prompt is used throughout. `AI_FALLBACK_MODELS` configures backups, and `model` in the AI response identifies the actual answering model. A backup can produce a live result; exhaustion still returns an explicitly labeled offline example. See [ordered failover](README.md#ordered-free-model-failover).
+
+## AI response formatting (16 October 2026)
+
+AI message suggestions now use `AiMarkdownComponent` for formatted preview text. The existing plain-text composer, conversation messages and explicit apply/send actions retain their behavior.
+
+## Responsive layout update (16 October 2026)
+
+Shared guest/host headers now use a compact phone layout with scrollable navigation and visible account/mode controls. The floating assistant becomes a labeled 48 px icon button on phones, respects safe-area insets, and keeps its panel inside the available width and dynamic viewport height. Message screens were included in the route checks.
+
+## Expanded demo database (16 October 2026)
+
+The expanded seed adds 12 reservation conversations and 24 synthetic messages with varied recipient-read state. Participants match the property host and reservation guest. No real message is sent. See [seed data](../seed-data.md).

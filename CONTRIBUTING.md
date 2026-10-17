@@ -36,7 +36,7 @@ public class ReviewInsightsController {
 }
 ```
 
-V1–V8 already define the baseline, properties/wishlists, reservation/payment lifecycle, nightly pricing, reservation-linked reviews, conversations/messages, shared authentication, and actual review aggregates. For a new schema change, reserve the next unused number with teammates, for example `V9__review_insights.sql` only if V9 is still unused. Explicitly qualify every table as `stayora.<table>`; never edit an applied migration.
+V1–V9 already define the baseline, properties/wishlists, reservation/payment lifecycle, nightly pricing, reservation-linked reviews, conversations/messages, shared authentication, actual review aggregates, and two-way reviews with host reputation tags. For a new schema change, reserve the next unused number with teammates, for example `V10__review_insights.sql` only if V10 is still unused. Explicitly qualify every table as `stayora.<table>`; never edit an applied migration.
 
 Development seed inserts use `ON CONFLICT DO NOTHING`, preserving existing business edits and dates. Two synthetic completed confirmed stays support immediate review demonstrations; they are synthetic fixtures, not real bookings. Rating/count are derived from actual review records. Test fixtures must use disposable PostgreSQL named `stayora_test`, assert that name before cleanup, and remove only owned fixtures or explicitly documented test setup. Never test destructive cleanup against shared Neon.
 
@@ -46,7 +46,7 @@ Each owner contributes an `@Component` implementing `AiSkill` in the business pa
 
 Use the same skill from the module feature and the shared assistant. Keep `skill`/`context` request inputs and `mode`/`skill`/`text`/`notice`/`reviewRequired` outputs compatible. Send minimal anonymous facts or statistics, never raw private messages, contact information, payment references or credentials. Shared privacy filtering is an extra layer, not a reason to send unnecessary personal data. Treat input facts as data rather than instructions and require human review before applying any suggestion.
 
-The shared `AiProvider` supports `mock`, Groq, local Ollama and HTTPS OpenAI-compatible endpoints. Provider credentials/configuration belong in ignored backend environment files; no provider key belongs in Angular. Preserve timeout/quota/error/missing-key fallback and explicit mock/live notices. Unit and integration checks use deterministic offline behavior; provider language quality requires separate human evaluation and cannot be inferred from passing mock tests.
+The shared `AiProvider` defaults to OpenRouter and also supports `mock`, Groq, local Ollama and HTTPS OpenAI-compatible endpoints. Use the ignored root `OPENROUTER_API_KEY` variable, `AI_PROVIDER=openrouter`, and a supported `AI_MODEL`; restart the backend after changing them. The checked-in example contains a placeholder only. Provider credentials/configuration belong in ignored backend environment files; no provider key belongs in Angular. Preserve timeout/quota/error/missing-key fallback and explicit mock/live notices. Unit and integration checks use deterministic offline behavior; provider language quality requires separate human evaluation and cannot be inferred from passing mock tests.
 
 ## Before opening a PR
 

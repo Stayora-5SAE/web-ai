@@ -1,0 +1,10 @@
+ALTER TABLE stayora.reviews ADD COLUMN direction varchar(16) NOT NULL DEFAULT 'STAY';
+ALTER TABLE stayora.reviews ADD COLUMN subject_id uuid REFERENCES stayora.accounts(id);
+ALTER TABLE stayora.reviews ADD COLUMN tags varchar(500) NOT NULL DEFAULT '';
+UPDATE stayora.reviews r SET subject_id = p.host_id FROM stayora.properties p WHERE p.id = r.property_id;
+ALTER TABLE stayora.reviews ALTER COLUMN subject_id SET NOT NULL;
+ALTER TABLE stayora.reviews ADD CONSTRAINT reviews_direction CHECK (direction IN ('STAY', 'GUEST'));
+ALTER TABLE stayora.reviews ADD CONSTRAINT reviews_guest_no_tags CHECK (direction = 'STAY' OR tags = '');
+DROP INDEX stayora.reviews_one_per_reservation;
+CREATE UNIQUE INDEX reviews_one_per_direction ON stayora.reviews(reservation_id, direction) WHERE reservation_id IS NOT NULL;
+CREATE INDEX reviews_subject_direction ON stayora.reviews(subject_id, direction, created_at DESC);

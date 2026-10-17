@@ -105,6 +105,11 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'today', pathMatch: 'full' },
       {
+        path: 'reviews',
+        data: { host: true },
+        loadComponent: () => import('./reviews/reviews.component').then((m) => m.ReviewsComponent),
+      },
+      {
         path: 'listings/new',
         loadComponent: () =>
           import('./listings/listing-editor.component').then((m) => m.ListingEditorComponent),

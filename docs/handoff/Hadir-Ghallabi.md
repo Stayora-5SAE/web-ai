@@ -59,3 +59,27 @@ Frontend tests in `reservation-api.service.spec.ts` verify the cancellation body
 ## Maintenance boundaries
 
 Do not directly edit another member's JPA entities. Use `ListingService` for catalog facts/property locking, `AvailabilityService` for blocks and nightly totals, `AccountService` for the caller and roles, and the shared AI interface for provider access. Do not weaken cancellation/ownership rules in Angular: the server is the authority. Add a new numbered Flyway migration for database changes; never modify an applied migration. Keep secrets in ignored backend environment files and keep the UI/documentation in English; only the requested static-analysis report is French.
+
+## Two-way review integration
+
+Completed confirmed stays link directly into Wassim's review hubs: guest trip cards/details use `/reviews?reservationId=UUID`, and host reservation details use `/host/reviews?reservationId=UUID`. The hub opens either an eligible review form or the author's existing review for editing. Host reservation details also embed visitor reputation via `GET /api/host/guests/{guestId}/reviews`, accessible only to a host with a reservation involving that guest. Guests see host-written feedback in their own `/reviews` hub.
+
+A reservation permits one guest-to-stay (`STAY`) and one host-to-visitor (`GUEST`) review independently, beginning on its check-out date when confirmed. Host-written visitor reviews use stars and text only; positive/negative tags belong exclusively to guest-written feedback about hosts. Neither reviews nor their edits change reservation state, immutable totals or simulated payments. Server-side review eligibility/ownership and uniqueness are owned by Wassim, rather than inferred from button visibility. V9 replaces reservation-only review uniqueness with `(reservation_id, direction)`.
+
+## Shared AI provider setup
+
+This module's embedded AI tool and its skill in the shared assistant use the same OpenRouter backend connection. Replace `OPENROUTER_API_KEY` in ignored root `.env` and restart the backend; `AI_MODEL` selects the model (`google/gemma-4-26b-a4b-it:free` by default). No provider key belongs in the frontend. Successful validated output is `mode: live`; missing/placeholder keys and provider failures remain explicitly labeled offline with a visible notice. Tests use controlled providers/mock mode and do not prove a live-key round trip. See [shared AI setup](README.md#shared-openrouter-connection-16-october-2026) and [provider configuration](../ai-prompts.md#backend-only-configuration-examples).
+
+The shared provider now fails over in order from Gemma 26B to Gemma 31B to Cohere North Mini Code when OpenRouter cannot serve the selected model. The same sanitized module prompt is used throughout. `AI_FALLBACK_MODELS` configures backups, and `model` in the AI response identifies the actual answering model. A backup can produce a live result; exhaustion still returns an explicitly labeled offline example. See [ordered failover](README.md#ordered-free-model-failover).
+
+## AI response formatting (16 October 2026)
+
+The trip itinerary now uses `AiMarkdownComponent` for formatted headings, lists and emphasis. The itinerary remains advisory and preserves the live/offline label and provider notice.
+
+## Responsive layout update (16 October 2026)
+
+Trip and reservation layouts now allow grid children and long text to shrink/wrap. Narrow reservation details can stack their property image and wrap dates/status; shared mobile controls have larger touch targets. Guest trip list/detail and checkout are included in the responsive route sweep.
+
+## Expanded demo database (16 October 2026)
+
+The expanded seed adds 68 reservations: 54 completed, 12 upcoming, one cancelled and one declined. Every reservation has a simulated receipt, and four completed stays remain eligible for guest stay reviews. Repeat seeding preserves original booking dates and price snapshots. See [seed data](../seed-data.md).

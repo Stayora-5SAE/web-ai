@@ -5,9 +5,11 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 interface ReviewRepository extends JpaRepository<Review, UUID> {
-  List<Review> findByPropertyIdOrderByCreatedAtDesc(UUID propertyId);
+  List<Review> findByPropertyIdAndDirectionOrderByCreatedAtDesc(UUID propertyId, String direction);
+
+  List<Review> findBySubjectIdAndDirectionOrderByCreatedAtDesc(UUID subjectId, String direction);
 
   List<Review> findByAuthorIdOrderByCreatedAtDesc(UUID authorId);
 
-  boolean existsByReservationId(UUID reservationId);
+  boolean existsByReservationIdAndDirection(UUID reservationId, String direction);
 }

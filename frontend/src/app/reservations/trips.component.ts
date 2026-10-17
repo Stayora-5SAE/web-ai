@@ -33,6 +33,11 @@ import { ReservationApiService } from './reservation-api.service';
           <h2 class="mt-4">{{ trip.propertyTitle }}</h2>
           <p>{{ trip.checkIn | date: 'mediumDate' }} – {{ trip.checkOut | date: 'mediumDate' }}</p>
           <p class="muted mt-2">{{ trip.guests }} guests · {{ trip.total | money }}</p>
+          @if (trip.status === 'CONFIRMED' && trip.checkOut <= today) {
+            <a class="btn mt-4" routerLink="/reviews" [queryParams]="{ reservationId: trip.id }"
+              >Review your stay</a
+            >
+          }
           <a class="btn secondary mt-4" [routerLink]="['/trips', trip.id]">Manage trip</a>
         </article>
       }
@@ -44,6 +49,7 @@ import { ReservationApiService } from './reservation-api.service';
 })
 export class TripsComponent implements OnInit {
   private readonly api = inject(ReservationApiService);
+  readonly today = new Date().toLocaleDateString('en-CA');
   trips: Reservation[] = [];
   loading = true;
   error = '';

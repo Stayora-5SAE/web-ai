@@ -132,6 +132,21 @@ Live output must be nonblank, no longer than 4000 characters, contain no angle b
 
 These examples contain no actual key. Add configuration only to ignored `.env`, or to the corresponding process environment. The frontend never receives provider credentials.
 
+OpenRouter is the application default for all five skills and the shared assistant. The ignored root `.env` already contains the placeholder. Replace it locally and restart the backend; no frontend rebuild is required.
+
+```dotenv
+AI_PROVIDER=openrouter
+AI_BASE_URL=https://openrouter.ai/api/v1
+OPENROUTER_API_KEY=REPLACE_WITH_YOUR_OPENROUTER_API_KEY
+AI_MODEL=google/gemma-4-26b-a4b-it:free
+AI_FALLBACK_MODELS=google/gemma-4-31b-it:free,cohere/north-mini-code:free
+AI_TIMEOUT_SECONDS=30
+```
+
+`google/gemma-4-26b-a4b-it:free` selects Gemma 4 26B A4B directly; `AI_MODEL` may instead name a specific supported OpenRouter model. The provider uses `POST /api/v1/chat/completions`, Bearer authentication, and `X-OpenRouter-Title: Stayora`, following the [OpenRouter API documentation](https://openrouter.ai/docs/quickstart). The shared property `stayora.ai.api-key` resolves `OPENROUTER_API_KEY` first, falling back to legacy `AI_API_KEY` only when the former is absent. When changing providers, remove the OpenRouter variable from the process environment so it cannot mask the alternative key.
+
+Missing/placeholder keys make no external request. The response explicitly names the required configuration and remains `mode: mock`; only validated model output becomes `mode: live`. All embedded tools display the provider notice. A valid key is required to verify actual generation; the transport tests use a controlled HTTP client rather than OpenRouter quota.
+
 Offline demonstration:
 
 ```dotenv
@@ -161,10 +176,24 @@ AI_TIMEOUT_SECONDS=12
 
 An additional compatible service can use `AI_PROVIDER=openai-compatible` and an appropriate HTTPS base URL, model and key. The model must exist on the selected service or local installation. Configuration examples describe supported code paths; they do not assert that an external provider or specific model was exercised during verification.
 
+## AI response formatting
+
+All five embedded tools and the shared assistant render responses with the shared Angular `AiMarkdownComponent`. Markdown bold/italic, headings, nested lists, blockquotes, links, code and tables receive consistent spacing and Stayora colors. Model headings start at level 3 within the surrounding page sections. Plain responses retain paragraphs and line breaks. The listing suggestion is now a formatted preview; applying a draft still copies the original text into the editable plain-text field.
+
+The Marked parser escapes raw HTML and renders image labels without fetching remote images. Angular's normal `[innerHTML]` sanitization stays enabled; never bypass it with `bypassSecurityTrustHtml`. Response notices, live/offline labels and user review actions remain separate from the formatted content.
+
 ## Failure behavior and demonstration evidence
 
-Mock mode performs no external request. Missing key, quota response, timeout, connection or HTTP failure, unsupported/malformed response, excessive output or privacy validation failure produces a deterministic offline result with a notice. Interrupted requests restore the Java thread's interrupted state before returning fallback information.
+Mock mode performs no external request. Missing/placeholder key, invalid credentials, insufficient credits, empty content, error envelopes (including HTTP 200 error bodies), quota response, timeout, connection or HTTP failure, unsupported/malformed response, excessive output or privacy validation failure produces a deterministic offline result with a notice. Interrupted requests restore the Java thread's interrupted state before returning fallback information.
 
 For the professor, show the skill registry, explain each member's module-owned prompt, and generate one response per module. Display the actual `mode` and notice, explain exactly which public/aggregate facts are eligible for transmission, and demonstrate that advice requires a separate user action to affect the application. Use a controlled fake provider in tests for timeout/quota/invalid-output scenarios rather than spending real provider quota or sending personal data.
 
 The coordinator records executed tests and any live-provider evidence after integration. Never present deterministic mock responses as proof of a real model call or describe source-level checks as a successful provider integration test.
+
+## Ordered model failover
+
+All five skills and the shared assistant send the same ordered free model chain to [OpenRouter model fallbacks](https://openrouter.ai/docs/guides/routing/model-fallbacks): `google/gemma-4-26b-a4b-it:free`, `google/gemma-4-31b-it:free`, `cohere/north-mini-code:free`. The primary is `AI_MODEL`; the comma-separated `AI_FALLBACK_MODELS` supplies the next candidates. Duplicate/blank entries are removed, and at most three distinct candidates are sent. Set an empty fallback list to use only the primary. Non-OpenRouter providers continue sending a single `model`.
+
+OpenRouter performs the sequential failover inside one HTTP request when a provider is rate-limited or otherwise fails. The existing timeout caps the whole request, preventing three separate 30-second waits. Reasoning is disabled for these concise writing/summary tasks. Authentication and credit failures still produce actionable offline notices. HTTP 429 and embedded 429 error envelopes indicate exhaustion of the configured chain and never get labeled live.
+
+The API now includes optional `model` metadata. For a valid live response, it reflects the actual returned model, including a backup. Offline or validation-rejected output has `model: null`. Raw provider errors and keys are excluded. Automated transport tests check the exact model order, backup model reporting, primary success, exhausted-chain fallback and privacy behavior. Live UI tests confirm the provider-reported model; screenshots are captured only for live results.

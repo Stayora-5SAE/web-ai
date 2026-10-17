@@ -7,12 +7,13 @@ import { ApiService, errorMessage } from '../core/api.service';
 import { Reservation } from '../core/models';
 import { FeedbackComponent } from '../shared/feedback.component';
 import { MoneyPipe } from '../shared/money.pipe';
+import { AiMarkdownComponent } from '../shared/ai-markdown.component';
 import { PaymentReceipt, ReservationApiService } from './reservation-api.service';
 
 @Component({
   selector: 'app-trip-detail',
   standalone: true,
-  imports: [DatePipe, FormsModule, RouterLink, FeedbackComponent, MoneyPipe],
+  imports: [DatePipe, FormsModule, RouterLink, FeedbackComponent, MoneyPipe, AiMarkdownComponent],
   template: `<main id="main" class="container page">
     <a routerLink="/trips">← Back to your trips</a>
     <app-feedback [loading]="loading" [error]="error" (retry)="load()" />
@@ -36,7 +37,12 @@ import { PaymentReceipt, ReservationApiService } from './reservation-api.service
             >
             <a class="btn secondary mt-4" [routerLink]="['/messages', r.id]">Contact host</a>
             @if (r.status === 'CONFIRMED' && r.checkOut <= today) {
-              <a class="btn secondary mt-4" routerLink="/reviews">Review your stay</a>
+              <a
+                class="btn secondary mt-4"
+                routerLink="/reviews"
+                [queryParams]="{ reservationId: r.id }"
+                >Review your stay</a
+              >
             }
           </section>
           <section class="panel">
@@ -51,7 +57,10 @@ import { PaymentReceipt, ReservationApiService } from './reservation-api.service
             @if (aiText) {
               <div class="inset mt-4">
                 <span class="eyebrow">{{ aiMode }} AI · advice only</span>
-                <p class="ai-text mt-3" role="status">{{ aiText }}</p>
+                @if (aiNotice) {
+                  <p class="text-xs muted mt-3">{{ aiNotice }}</p>
+                }
+                <app-ai-markdown class="mt-3" [text]="aiText" />
               </div>
             }
             @if (aiError) {
@@ -126,7 +135,7 @@ import { PaymentReceipt, ReservationApiService } from './reservation-api.service
     }
   </main>`,
   styles: [
-    '.trip-photo{width:100%;max-height:300px;object-fit:cover;border-radius:12px}.ai-text{white-space:pre-wrap}.receipt-ref{overflow-wrap:anywhere;font-size:12px}textarea{width:100%;border:1px solid #ddd;border-radius:12px;padding:12px}',
+    '.trip-photo{width:100%;max-height:300px;object-fit:cover;border-radius:12px}.receipt-ref{overflow-wrap:anywhere;font-size:12px}textarea{width:100%;border:1px solid #ddd;border-radius:12px;padding:12px}',
   ],
 })
 export class TripDetailComponent implements OnInit {
@@ -146,6 +155,7 @@ export class TripDetailComponent implements OnInit {
   aiBusy = false;
   aiText = '';
   aiMode = '';
+  aiNotice = '';
   aiError = '';
   readonly today = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}-${String(new Date().getDate()).padStart(2, '0')}`;
   ngOnInit() {
@@ -207,6 +217,7 @@ export class TripDetailComponent implements OnInit {
       );
       this.aiText = result.text;
       this.aiMode = result.mode;
+      this.aiNotice = result.notice ?? '';
     } catch (error) {
       this.aiError = errorMessage(error);
     } finally {

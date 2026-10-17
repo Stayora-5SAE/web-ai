@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.stayora.reviews.ReviewAiSkill;
 import com.stayora.reviews.ReviewService.PropertyReviews;
+import com.stayora.reviews.ReviewService.Reputation;
 import com.stayora.reviews.ReviewService.ReviewView;
 import java.time.LocalDate;
 import java.util.List;
@@ -256,5 +257,219 @@ class ReviewManagementIntegrationTest {
         .contains("mock", "Small samples");
     assertThat(skill.owner()).isEqualTo("Wassim Hamouda");
     assertThat(skill.systemPrompt()).contains("never invent", "human review");
+  }
+
+  private HttpEntity<?> host(Object body) {
+    HttpHeaders headers = new HttpHeaders();
+    headers.set("X-Demo-Identity", "host");
+    return new HttpEntity<>(body, headers);
+  }
+
+  @Test
+  void bothSidesReviewSameStayAndGuestRatingsNeverChangePropertyRating() {
+    assertThat(create(stay, 5).getStatusCode()).isEqualTo(HttpStatus.CREATED);
+    var written =
+        http.exchange(
+            "/api/host/reviews",
+            HttpMethod.POST,
+            host(review(stay, 2, "The guest left the space untidy.")),
+            ReviewView.class);
+    assertThat(written.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+    assertThat(written.getBody().direction()).isEqualTo("GUEST");
+    assertThat(written.getBody().subjectId())
+        .isEqualTo(UUID.fromString("00000000-0000-0000-0000-000000000001"));
+    assertThat(written.getBody().tags()).isEmpty();
+    assertThat(http.getForObject("/api/reviews/received", Reputation.class).rating())
+        .isEqualByComparingTo("2.00");
+    var property =
+        http.getForObject("/api/properties/" + PROPERTY + "/reviews", PropertyReviews.class);
+    assertThat(property.rating()).isEqualByComparingTo("5.00");
+    assertThat(property.reviewCount()).isEqualTo(1);
+    assertThat(
+            http.exchange(
+                    "/api/host/reviews",
+                    HttpMethod.POST,
+                    host(review(stay, 4, "Another review for the same guest.")),
+                    String.class)
+                .getStatusCode())
+        .isEqualTo(HttpStatus.CONFLICT);
+    assertThat(
+            http.exchange(
+                    "/api/reviews/" + written.getBody().id(),
+                    HttpMethod.PUT,
+                    new HttpEntity<>(
+                        Map.of("rating", 5, "body", "A guest trying to change their rating.")),
+                    String.class)
+                .getStatusCode())
+        .isEqualTo(HttpStatus.FORBIDDEN);
+    assertThat(
+            http.exchange(
+                    "/api/reviews/" + written.getBody().id(),
+                    HttpMethod.PUT,
+                    host(Map.of("rating", 4, "body", "Updated guest experience after hosting.")),
+                    ReviewView.class)
+                .getStatusCode())
+        .isEqualTo(HttpStatus.OK);
+    assertThat(http.getForObject("/api/reviews/received", Reputation.class).rating())
+        .isEqualByComparingTo("4.00");
+    assertThat(
+            http.exchange(
+                    "/api/reviews/" + written.getBody().id(),
+                    HttpMethod.DELETE,
+                    host(null),
+                    String.class)
+                .getStatusCode())
+        .isEqualTo(HttpStatus.NO_CONTENT);
+    assertThat(http.getForObject("/api/reviews/received", Reputation.class).reviewCount()).isZero();
+  }
+
+  @Test
+  void hostTagCountsFollowCreateEditDeleteAndRejectConflictingOrUnknownTags() {
+    for (var tags :
+        List.of(
+            List.of("clean", "needs-cleaning"), List.of("unknown"), List.of("clean", "clean"))) {
+      assertThat(
+              http.postForEntity(
+                      "/api/reviews",
+                      Map.of(
+                          "reservationId",
+                          stay,
+                          "rating",
+                          5,
+                          "body",
+                          "A comfortable and welcoming stay.",
+                          "tags",
+                          tags),
+                      String.class)
+                  .getStatusCode())
+          .isEqualTo(HttpStatus.BAD_REQUEST);
+    }
+    var first =
+        http.postForEntity(
+                "/api/reviews",
+                Map.of(
+                    "reservationId",
+                    stay,
+                    "rating",
+                    5,
+                    "body",
+                    "A comfortable and welcoming stay.",
+                    "tags",
+                    List.of("clean", "responsive")),
+                ReviewView.class)
+            .getBody();
+    UUID second =
+        insertStay(
+            "CONFIRMED", LocalDate.now().minusDays(8), "00000000-0000-0000-0000-000000000001");
+    http.postForEntity(
+        "/api/reviews",
+        Map.of(
+            "reservationId",
+            second,
+            "rating",
+            4,
+            "body",
+            "Another clean and comfortable stay.",
+            "tags",
+            List.of("clean")),
+        ReviewView.class);
+    var reputation =
+        http.exchange("/api/host/reviews", HttpMethod.GET, host(null), Reputation.class).getBody();
+    assertThat(
+            reputation.tags().stream()
+                .filter(t -> t.id().equals("clean"))
+                .findFirst()
+                .orElseThrow()
+                .count())
+        .isEqualTo(2);
+    http.exchange(
+        "/api/reviews/" + first.id(),
+        HttpMethod.PUT,
+        new HttpEntity<>(
+            Map.of(
+                "rating",
+                2,
+                "body",
+                "The room needed more cleaning.",
+                "tags",
+                List.of("needs-cleaning"))),
+        ReviewView.class);
+    var property =
+        http.getForObject("/api/properties/" + PROPERTY + "/reviews", PropertyReviews.class);
+    assertThat(property.tags())
+        .extracting(t -> t.id())
+        .containsExactlyInAnyOrder("clean", "needs-cleaning");
+    http.exchange("/api/reviews/" + first.id(), HttpMethod.DELETE, HttpEntity.EMPTY, String.class);
+    property = http.getForObject("/api/properties/" + PROPERTY + "/reviews", PropertyReviews.class);
+    assertThat(property.tags()).extracting(t -> t.id()).containsExactly("clean");
+  }
+
+  @Test
+  void hostReviewsRequireOwnedCompletedConfirmedStayAndCannotCarryTags() {
+    jdbc.update(
+        "update stayora.properties set host_id='00000000-0000-0000-0000-000000000003' where id=?",
+        PROPERTY);
+    try {
+      assertThat(
+              http.exchange(
+                      "/api/host/reviews",
+                      HttpMethod.POST,
+                      host(review(stay, 5, "A polite and respectful guest.")),
+                      String.class)
+                  .getStatusCode())
+          .isEqualTo(HttpStatus.FORBIDDEN);
+    } finally {
+      jdbc.update(
+          "update stayora.properties set host_id='00000000-0000-0000-0000-000000000002' where id=?",
+          PROPERTY);
+    }
+    for (String status : List.of("PENDING", "DECLINED", "CANCELLED")) {
+      UUID id =
+          insertStay(status, LocalDate.now().minusDays(1), "00000000-0000-0000-0000-000000000001");
+      assertThat(
+              http.exchange(
+                      "/api/host/reviews",
+                      HttpMethod.POST,
+                      host(review(id, 5, "A polite and respectful guest.")),
+                      String.class)
+                  .getStatusCode())
+          .isEqualTo(HttpStatus.FORBIDDEN);
+    }
+    UUID future =
+        insertStay(
+            "CONFIRMED", LocalDate.now().plusDays(5), "00000000-0000-0000-0000-000000000001");
+    assertThat(
+            http.exchange(
+                    "/api/host/reviews",
+                    HttpMethod.POST,
+                    host(review(future, 5, "A polite and respectful guest.")),
+                    String.class)
+                .getStatusCode())
+        .isEqualTo(HttpStatus.FORBIDDEN);
+    assertThat(
+            http.exchange(
+                    "/api/host/reviews",
+                    HttpMethod.POST,
+                    host(
+                        Map.of(
+                            "reservationId",
+                            stay,
+                            "rating",
+                            4,
+                            "body",
+                            "A polite and respectful guest.",
+                            "tags",
+                            List.of("clean"))),
+                    String.class)
+                .getStatusCode())
+        .isEqualTo(HttpStatus.BAD_REQUEST);
+    assertThat(
+            http.exchange(
+                    "/api/host/guests/" + UUID.randomUUID() + "/reviews",
+                    HttpMethod.GET,
+                    host(null),
+                    String.class)
+                .getStatusCode())
+        .isEqualTo(HttpStatus.FORBIDDEN);
   }
 }

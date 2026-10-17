@@ -32,19 +32,25 @@ public class AiService {
     String safeContext = privacy.context(request.context());
     AiProvider.ProviderResult result = provider.generate(skill.systemPrompt(), safeContext);
     if (result.text() != null && privacy.safeOutput(result.text()))
-      return new AiResponse("live", skill.id(), result.text(), result.notice(), true);
+      return new AiResponse(
+          "live", skill.id(), result.text(), result.notice(), true, result.model());
     String notice =
         result.text() == null
             ? result.notice()
             : "The provider response did not pass validation. Showing the offline response.";
-    return new AiResponse("mock", skill.id(), skill.mock(safeContext), notice, true);
+    return new AiResponse("mock", skill.id(), skill.mock(safeContext), notice, true, null);
   }
 
   public record AiRequest(
       @NotBlank @Size(max = 80) String skill, @NotBlank @Size(max = 2000) String context) {}
 
   public record AiResponse(
-      String mode, String skill, String text, String notice, boolean reviewRequired) {}
+      String mode,
+      String skill,
+      String text,
+      String notice,
+      boolean reviewRequired,
+      String model) {}
 
   public record SkillView(String id, String label, String owner) {}
 }

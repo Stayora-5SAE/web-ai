@@ -20,7 +20,7 @@ import { ListingManagementService } from './listing-management.service';
       <a class="btn" routerLink="/host/listings/new"><app-icon name="plus" /> Create listing</a>
     </div>
     <div class="listing-toolbar">
-      <div class="flex gap-2">
+      <div class="flex flex-wrap gap-2">
         <button class="chip" [class.active]="filter === 'ALL'" (click)="filter = 'ALL'">
           All listings ({{ properties.length }})</button
         ><button

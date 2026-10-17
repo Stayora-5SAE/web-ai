@@ -52,3 +52,25 @@ Run the root documented verification commands. Do not use the shared Neon databa
 ## Limits and future changes
 
 There is no demand forecast, autonomous dynamic pricing, external channel-manager sync, real payout or physical smart lock. The calendar and base pricing are authoritative only inside Stayora. Payout follows a check-in-month convention rather than accrual accounting. Human hosts remain responsible for availability and reviewing AI recommendations. Preserve module boundaries, three-digit decimal precision, locking and ownership checks when extending the module.
+
+## Host reputation integration
+
+`/host/today` prominently embeds Wassim's `ReviewHighlightComponent` with `host=true`, using `GET /api/host/reviews`. It displays all-time guest rating/count, the percentage of 4–5 star feedback, recent reviews and counted positive/negative host tags, with a link to `/host/reviews`. This is separate from selected-month occupancy and payout: changing the reporting month must not reinterpret review counts as monthly metrics. Review loading/retry is independent of operational dashboard loading. The host header includes Reviews; guest review composition and reputation persistence remain Wassim's responsibility. The `host-summary` AI payload remains aggregate operational metrics; no review body, guest identity or tag text is added.
+
+## Shared AI provider setup
+
+This module's embedded AI tool and its skill in the shared assistant use the same OpenRouter backend connection. Replace `OPENROUTER_API_KEY` in ignored root `.env` and restart the backend; `AI_MODEL` selects the model (`google/gemma-4-26b-a4b-it:free` by default). No provider key belongs in the frontend. Successful validated output is `mode: live`; missing/placeholder keys and provider failures remain explicitly labeled offline with a visible notice. Tests use controlled providers/mock mode and do not prove a live-key round trip. See [shared AI setup](README.md#shared-openrouter-connection-16-october-2026) and [provider configuration](../ai-prompts.md#backend-only-configuration-examples).
+
+The shared provider now fails over in order from Gemma 26B to Gemma 31B to Cohere North Mini Code when OpenRouter cannot serve the selected model. The same sanitized module prompt is used throughout. `AI_FALLBACK_MODELS` configures backups, and `model` in the AI response identifies the actual answering model. A backup can produce a live result; exhaustion still returns an explicitly labeled offline example. See [ordered failover](README.md#ordered-free-model-failover).
+
+## AI response formatting (16 October 2026)
+
+The host performance AI summary now uses `AiMarkdownComponent` for formatted headings, lists and emphasis, with the existing mode, provider notice and human review reminder.
+
+## Responsive layout update (16 October 2026)
+
+The host dashboard/calendar grid children can shrink without forcing page overflow. Shared mobile/touch controls use at least 44 px heights, and input text uses 16 px on phones/tablets and short landscape screens. Calendar previous/next navigation and the assistant panel were exercised in portrait and landscape.
+
+## Expanded demo database (16 October 2026)
+
+The expanded seed populates host performance using completed/current/upcoming reservations, eight owner blocks and 36 nightly-price overrides. Default host Nadia has eight additional published properties plus a draft. The new fixtures are additive and repeatable. See [seed data](../seed-data.md).

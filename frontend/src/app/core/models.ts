@@ -78,6 +78,7 @@ export interface AiResponse {
   text: string;
   notice?: string;
   reviewRequired?: boolean;
+  model?: string | null;
 }
 
 export interface AiSkill {

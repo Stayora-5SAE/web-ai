@@ -3,12 +3,13 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService, errorMessage } from '../core/api.service';
 import { FeedbackComponent } from '../shared/feedback.component';
+import { AiMarkdownComponent } from '../shared/ai-markdown.component';
 import { ListingManagementService, PropertyRequest } from './listing-management.service';
 
 @Component({
   selector: 'app-listing-editor',
   standalone: true,
-  imports: [FormsModule, RouterLink, FeedbackComponent],
+  imports: [FormsModule, RouterLink, FeedbackComponent, AiMarkdownComponent],
   styles: [
     `
       .editor {
@@ -24,6 +25,7 @@ import { ListingManagementService, PropertyRequest } from './listing-management.
       }
       textarea {
         font: inherit;
+        font-size: 16px;
         width: 100%;
         min-height: 130px;
         border: 1px solid var(--border);
@@ -149,8 +151,15 @@ import { ListingManagementService, PropertyRequest } from './listing-management.
               @if (aiDraft) {
                 <div class="ai-draft">
                   <p class="muted">{{ aiMode }} · Suggested text</p>
-                  <textarea readonly aria-label="Suggested description" [value]="aiDraft"></textarea
-                  ><button type="button" class="btn secondary small" (click)="applyDraft()">
+                  @if (aiNotice) {
+                    <p class="text-xs muted">{{ aiNotice }}</p>
+                  }
+                  <app-ai-markdown
+                    class="inset mt-3"
+                    aria-label="Suggested description"
+                    [text]="aiDraft"
+                  />
+                  <button type="button" class="btn secondary small mt-3" (click)="applyDraft()">
                     Apply reviewed draft
                   </button>
                 </div>
@@ -232,6 +241,7 @@ export class ListingEditorComponent implements OnInit {
   aiError = '';
   aiDraft = '';
   aiMode = '';
+  aiNotice = '';
   aiBusy = false;
   photos = '';
   amenities = '';
@@ -355,6 +365,7 @@ export class ListingEditorComponent implements OnInit {
       const response = await this.api.assist('listing-description', context);
       this.aiDraft = response.text;
       this.aiMode = response.mode;
+      this.aiNotice = response.notice ?? '';
     } catch (e) {
       this.aiError = errorMessage(e);
     } finally {

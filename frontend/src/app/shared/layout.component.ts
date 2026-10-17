@@ -18,6 +18,7 @@ import { IdentityService } from '../accounts/identity.service';
           ><a routerLink="/host/listings" routerLinkActive="active">Listings</a
           ><a routerLink="/host/calendar" routerLinkActive="active">Calendar</a>
           <a routerLink="/host/reservations" routerLinkActive="active">Requests</a>
+          <a routerLink="/host/reviews" routerLinkActive="active">Reviews</a>
         } @else {
           <a routerLink="/explore" routerLinkActive="active">Explore</a>
           @if (!identity.account() || identity.account()?.role === 'GUEST') {

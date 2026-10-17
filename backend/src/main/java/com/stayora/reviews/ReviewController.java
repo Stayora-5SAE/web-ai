@@ -38,6 +38,37 @@ class ReviewController {
     return reviews.eligible();
   }
 
+  @GetMapping("/reviews/tags")
+  List<ReviewService.ReviewTag> tags() {
+    return ReviewService.TAGS;
+  }
+
+  @GetMapping("/host/reviews")
+  ReviewService.Reputation performance() {
+    return reviews.hostPerformance();
+  }
+
+  @GetMapping("/reviews/received")
+  ReviewService.Reputation received() {
+    return reviews.received();
+  }
+
+  @GetMapping("/host/guests/{id}/reviews")
+  ReviewService.Reputation guest(@PathVariable UUID id) {
+    return reviews.guestReputation(id);
+  }
+
+  @GetMapping("/host/reviews/eligible")
+  List<ReviewService.EligibleStay> hostEligible() {
+    return reviews.eligible(true);
+  }
+
+  @PostMapping("/host/reviews")
+  @ResponseStatus(HttpStatus.CREATED)
+  ReviewService.ReviewView guestReview(@Valid @RequestBody ReviewService.CreateReview request) {
+    return reviews.createGuestReview(request);
+  }
+
   @PostMapping("/reviews")
   @ResponseStatus(HttpStatus.CREATED)
   ReviewService.ReviewView create(@Valid @RequestBody ReviewService.CreateReview request) {

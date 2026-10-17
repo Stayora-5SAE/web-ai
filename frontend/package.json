@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "18.2.14",
     "@angular/router": "18.2.14",
     "leaflet": "1.9.4",
+    "marked": "18.1.1",
     "rxjs": "7.8.2",
     "tslib": "2.8.1",
     "zone.js": "0.14.10"

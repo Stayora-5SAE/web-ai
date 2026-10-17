@@ -1,3 +1,4 @@
+import { ReviewHighlightComponent } from '../reviews/review-highlight.component';
 import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -13,7 +14,14 @@ import { IdentityService } from '../accounts/identity.service';
 @Component({
   selector: 'app-property-detail',
   standalone: true,
-  imports: [FormsModule, RouterLink, FeedbackComponent, IconComponent, MoneyPipe],
+  imports: [
+    ReviewHighlightComponent,
+    FormsModule,
+    RouterLink,
+    FeedbackComponent,
+    IconComponent,
+    MoneyPipe,
+  ],
   template: ` <main id="main" class="container page">
     <a
       routerLink="/search"
@@ -112,6 +120,8 @@ import { IdentityService } from '../accounts/identity.service';
               <span><app-icon name="check" />{{ amenity }}</span>
             }
           </div>
+          <div class="divider"></div>
+          <app-review-highlight [propertyId]="p.id" />
           <div class="divider"></div>
           <h2>House rules & stay policies</h2>
           <p class="muted mt-4">

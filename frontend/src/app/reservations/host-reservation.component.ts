@@ -1,3 +1,4 @@
+import { ReviewHighlightComponent } from '../reviews/review-highlight.component';
 import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -10,7 +11,14 @@ import { MoneyPipe } from '../shared/money.pipe';
 @Component({
   selector: 'app-host-reservation',
   standalone: true,
-  imports: [DatePipe, RouterLink, FeedbackComponent, IconComponent, MoneyPipe],
+  imports: [
+    ReviewHighlightComponent,
+    DatePipe,
+    RouterLink,
+    FeedbackComponent,
+    IconComponent,
+    MoneyPipe,
+  ],
   template: ` <main id="main" class="container page">
     <a routerLink="/host/reservations" class="inline-flex items-center gap-2"
       ><app-icon name="back" /> Back to reservations</a
@@ -42,6 +50,11 @@ import { MoneyPipe } from '../shared/money.pipe';
             </div>
             <div class="divider"></div>
             <p class="text-sm">{{ r.guest.email }}</p>
+            @if (r.status === 'CONFIRMED' && r.checkOut <= today) {
+              <a class="btn mt-4" routerLink="/host/reviews" [queryParams]="{ reservationId: r.id }"
+                >Review this guest</a
+              >
+            }
             <a class="btn secondary small mt-4" [routerLink]="['/host/messages', r.id]">
               <app-icon name="message" /> Message guest
             </a>
@@ -87,6 +100,7 @@ import { MoneyPipe } from '../shared/money.pipe';
               <p role="status" class="text-sm mt-3">{{ copyStatus }}</p>
             }
           </section>
+          <app-review-highlight [guestId]="r.guest.id" />
           <section class="panel">
             <h2>Guest communication</h2>
             <p class="muted">Keep in touch with your guest through the reservation conversation.</p>
@@ -157,6 +171,7 @@ export class HostReservationComponent implements OnInit {
   error = '';
   busy = false;
   actionError = '';
+  readonly today = new Date().toLocaleDateString('en-CA');
   copyStatus = '';
   initials(name: string) {
     return name

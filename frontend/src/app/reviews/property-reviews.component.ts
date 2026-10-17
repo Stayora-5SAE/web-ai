@@ -3,31 +3,44 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ApiService, errorMessage } from '../core/api.service';
 import { FeedbackComponent } from '../shared/feedback.component';
+import { AiMarkdownComponent } from '../shared/ai-markdown.component';
 import { PropertyReviews, ReviewApiService } from './review-api.service';
-import { REVIEW_STYLES } from './reviews.component';
+import { ReviewFeedComponent } from './review-feed.component';
+import { ReputationComponent } from './reputation.component';
+import { IdentityService } from '../accounts/identity.service';
 
 @Component({
   selector: 'app-property-reviews',
   standalone: true,
-  imports: [CommonModule, RouterLink, FeedbackComponent],
+  imports: [
+    ReviewFeedComponent,
+    ReputationComponent,
+    CommonModule,
+    RouterLink,
+    FeedbackComponent,
+    AiMarkdownComponent,
+  ],
   template: `
-    <main class="shell review-shell">
+    <main id="main" class="container page">
       <a [routerLink]="['/properties', propertyId]">← Back to the property</a>
-      <h1>Stories from verified stays.</h1>
+      <span class="eyebrow block mt-6">The Stayora community</span>
+      <h1 class="mt-2">Stories from verified stays.</h1>
       <p class="muted">Reviews written by guests after their stay.</p>
       <app-feedback [loading]="loading" [error]="error" (retry)="load()" />
       @if (data && !loading && !error) {
-        <section class="rating-summary" aria-label="Property rating">
-          <p class="rating-number">{{ data.rating | number: '1.2-2' }} <span>/ 5</span></p>
-          <p>{{ data.reviewCount }} {{ data.reviewCount === 1 ? 'review' : 'reviews' }}</p>
-          <a routerLink="/reviews" class="btn secondary">Review your stay</a>
+        <section class="panel reputation mt-6 mb-6" aria-label="Property rating">
+          <app-reputation [data]="data" [distribution]="true" />
+          @if (!identity.account() || identity.account()?.role === 'GUEST') {
+            <a routerLink="/reviews" class="btn secondary mt-4">Review your stay</a>
+          }
         </section>
         @if (data.reviewCount === 0) {
           <p class="empty">
             No guest stories yet. Be the first to share your experience after a completed stay.
           </p>
         } @else {
-          <section class="review-card" aria-label="Rating summary assistant">
+          <details class="panel mt-6" aria-label="Rating summary assistant">
+            <summary>Rating snapshot assistant</summary>
             <h2>Rating snapshot</h2>
             <p class="muted">
               The assistant sees only the review count and average rating. Read the reviews for the
@@ -40,35 +53,22 @@ import { REVIEW_STYLES } from './reviews.component';
               <p class="error-text" role="alert">{{ aiError }}</p>
             }
             @if (aiText) {
-              <p>{{ aiText }}</p>
+              <app-ai-markdown class="mt-3" [text]="aiText" />
               <p class="muted">{{ aiMode }} assistance · Check this summary before sharing.</p>
+              @if (aiNotice) {
+                <p class="text-xs muted">{{ aiNotice }}</p>
+              }
             }
-          </section>
+          </details>
         }
-        <div class="review-grid" style="margin-top:24px">
-          @for (review of data.reviews; track review.id) {
-            <article class="review-card">
-              <h3>{{ review.authorName }}</h3>
-              <p class="stars" [attr.aria-label]="review.rating + ' out of 5 stars'">
-                {{ stars(review.rating) }}
-              </p>
-              <p>{{ review.body }}</p>
-              <p class="muted">
-                {{ review.createdAt | date
-                }}{{ review.reservationId ? ' · Verified stay' : ' · Historical review' }}
-              </p>
-            </article>
-          }
-        </div>
+        <app-review-feed [reviews]="data.reviews" />
       }
     </main>
   `,
-  styles: [
-    REVIEW_STYLES,
-    '.rating-summary{padding:24px;margin:24px 0;background:#eef8f2;border-radius:20px}.rating-number{font-size:40px;font-weight:700;margin:0}.rating-number span{font-size:18px;font-weight:400}',
-  ],
+  styleUrl: './review-ui.css',
 })
 export class PropertyReviewsComponent implements OnInit {
+  readonly identity = inject(IdentityService);
   private readonly route = inject(ActivatedRoute);
   private readonly reviews = inject(ReviewApiService);
   private readonly api = inject(ApiService);
@@ -81,6 +81,7 @@ export class PropertyReviewsComponent implements OnInit {
   aiError = '';
   aiText = '';
   aiMode = '';
+  aiNotice = '';
   ngOnInit() {
     void this.load();
   }
@@ -110,6 +111,7 @@ export class PropertyReviewsComponent implements OnInit {
       );
       this.aiText = response.text;
       this.aiMode = response.mode;
+      this.aiNotice = response.notice ?? '';
     } catch (e) {
       this.aiError = errorMessage(e);
     } finally {

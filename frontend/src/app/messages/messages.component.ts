@@ -9,11 +9,12 @@ import { FeedbackComponent } from '../shared/feedback.component';
 import { ChatMessage, Conversation, MessagingApiService } from './messaging-api.service';
 import { AiResponse } from '../core/models';
 import { IdentityService } from '../accounts/identity.service';
+import { AiMarkdownComponent } from '../shared/ai-markdown.component';
 
 @Component({
   selector: 'app-messages',
   standalone: true,
-  imports: [DatePipe, FormsModule, RouterLink, FeedbackComponent],
+  imports: [DatePipe, FormsModule, RouterLink, FeedbackComponent, AiMarkdownComponent],
   template: `<main id="main" class="container page">
     <div class="heading">
       <div>
@@ -156,7 +157,7 @@ import { IdentityService } from '../accounts/identity.service';
                   <span class="status">{{
                     response.mode === 'mock' ? 'Mock AI' : 'AI draft'
                   }}</span>
-                  <p class="message-body mt-3">{{ response.text }}</p>
+                  <app-ai-markdown class="mt-3" [text]="response.text" />
                   @if (response.notice) {
                     <p class="small muted">{{ response.notice }}</p>
                   }

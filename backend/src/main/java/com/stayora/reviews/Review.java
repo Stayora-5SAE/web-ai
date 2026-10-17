@@ -22,6 +22,15 @@ class Review {
   UUID reservationId;
 
   @Column(nullable = false)
+  String direction = "STAY";
+
+  @Column(name = "subject_id", nullable = false)
+  UUID subjectId;
+
+  @Column(nullable = false)
+  String tags = "";
+
+  @Column(nullable = false)
   int rating;
 
   @Column(nullable = false, columnDefinition = "text")

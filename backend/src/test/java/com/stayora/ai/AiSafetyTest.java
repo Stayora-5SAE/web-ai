@@ -91,7 +91,7 @@ class AiSafetyTest {
   void missingKeysNeverAttemptExternalRequests() {
     AiProvider provider =
         new ConfiguredAiProvider(
-            "groq", "https://api.groq.com/openai/v1", "", "example", 1, new ObjectMapper());
+            "groq", "https://api.groq.com/openai/v1", "", "example", 1, new ObjectMapper(), "");
     assertThat(provider.generate("Prompt", "La Marsa").notice()).contains("No AI key");
   }
 
@@ -136,7 +136,8 @@ class AiSafetyTest {
               "",
               "local-model",
               1,
-              new ObjectMapper());
+              new ObjectMapper(),
+              "");
       assertThat(provider.generate("Prompt", "La Marsa").notice()).contains("quota");
       behavior.set("malformed");
       assertThat(provider.generate("Prompt", "La Marsa").text()).isNull();

@@ -6,19 +6,21 @@ import { IdentityService } from './accounts/identity.service';
 import { IconComponent } from './shared/icon.component';
 import { AiResponse, AiSkill } from './core/models';
 import { WishlistService } from './listings/wishlist.service';
+import { AiMarkdownComponent } from './shared/ai-markdown.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, IconComponent],
+  imports: [RouterOutlet, FormsModule, IconComponent, AiMarkdownComponent],
   template: `
     <a class="skip-link" href="#main">Skip to content</a><router-outlet />
     <button
       class="assistant-toggle"
+      aria-label="AI assistant"
       (click)="open = !open"
       [attr.aria-expanded]="open"
       aria-controls="assistant-panel"
     >
-      <app-icon name="message" /> AI assistant
+      <app-icon name="message" /><span class="assistant-toggle-label">AI assistant</span>
     </button>
     @if (open) {
       <section class="assistant-panel panel" id="assistant-panel" aria-label="AI assistant">
@@ -29,7 +31,11 @@ import { WishlistService } from './listings/wishlist.service';
           </button>
         </div>
         <span class="badge">{{
-          response?.mode === 'live' ? 'Provider draft' : 'Offline demonstration'
+          response
+            ? response.mode === 'live'
+              ? 'AI model response'
+              : 'Offline response'
+            : 'AI assistance'
         }}</span>
         <p class="text-xs muted">
           Use public property facts or anonymous counts. Personal names, contact details, and
@@ -61,7 +67,7 @@ import { WishlistService } from './listings/wishlist.service';
         @if (response?.notice) {
           <p class="text-xs muted">{{ response?.notice }}</p>
         }
-        <p aria-live="polite">{{ answer }}</p>
+        <app-ai-markdown class="mt-3" [text]="answer" />
         @if (response) {
           <p class="text-xs muted">
             Review this draft before using it. No action has been performed.

@@ -1,3 +1,4 @@
+import { ReviewHighlightComponent } from '../reviews/review-highlight.component';
 import { Component, OnInit, inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -8,10 +9,20 @@ import { AvailabilityApi, HostPerformance } from './availability-api.service';
 import { FeedbackComponent } from '../shared/feedback.component';
 import { IconComponent } from '../shared/icon.component';
 import { MoneyPipe } from '../shared/money.pipe';
+import { AiMarkdownComponent } from '../shared/ai-markdown.component';
 @Component({
   selector: 'app-today',
   standalone: true,
-  imports: [DatePipe, FormsModule, RouterLink, FeedbackComponent, IconComponent, MoneyPipe],
+  imports: [
+    AiMarkdownComponent,
+    ReviewHighlightComponent,
+    DatePipe,
+    FormsModule,
+    RouterLink,
+    FeedbackComponent,
+    IconComponent,
+    MoneyPipe,
+  ],
   template: ` <main id="main" class="container page">
     <div class="page-intro">
       <div>
@@ -30,6 +41,7 @@ import { MoneyPipe } from '../shared/money.pipe';
     <div class="divider"></div>
     <app-feedback [loading]="loading" [error]="error" (retry)="load()" />
     @if (dashboard; as d) {
+      <app-review-highlight [host]="true" class="block mb-6" />
       <div class="two-columns">
         <div class="stack">
           <section class="panel">
@@ -167,7 +179,10 @@ import { MoneyPipe } from '../shared/money.pipe';
             </button>
             @if (insightText) {
               <span class="status mt-4">AI mode: {{ insightMode }}</span>
-              <p class="mt-4" style="white-space: pre-wrap">{{ insightText }}</p>
+              @if (insightNotice) {
+                <p class="text-xs muted mt-3">{{ insightNotice }}</p>
+              }
+              <app-ai-markdown class="mt-4" [text]="insightText" />
               <p class="text-xs muted mt-3">
                 Recommendations need human review. AI cannot alter your calendar or prices.
               </p>
@@ -189,6 +204,7 @@ export class TodayComponent implements OnInit {
   insightBusy = false;
   insightText = '';
   insightMode = '';
+  insightNotice = '';
   insightError = '';
   loading = true;
   error = '';
@@ -242,6 +258,7 @@ export class TodayComponent implements OnInit {
       );
       this.insightText = response.text;
       this.insightMode = response.mode;
+      this.insightNotice = response.notice ?? '';
     } catch (error) {
       this.insightError = errorMessage(error);
     } finally {

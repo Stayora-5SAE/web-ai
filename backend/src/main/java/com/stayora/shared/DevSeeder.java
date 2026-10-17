@@ -8,6 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.stereotype.Component;
 
@@ -25,9 +26,7 @@ public class DevSeeder implements ApplicationRunner {
   @Override
   @org.springframework.transaction.annotation.Transactional
   public void run(ApplicationArguments args) throws Exception {
-    try (Connection connection = dataSource.getConnection()) {
-      ScriptUtils.executeSqlScript(connection, new ClassPathResource("dev-seed.sql"));
-    }
+    executeScript("dev-seed.sql");
     LocalDate start = LocalDate.now().withDayOfMonth(1).plusMonths(1).withDayOfMonth(12);
     insert(
         "20000000-0000-0000-0000-000000001026",
@@ -75,12 +74,22 @@ public class DevSeeder implements ApplicationRunner {
         0,
         "CONFIRMED");
     jdbc.update(
-        "INSERT INTO stayora.reviews (id,property_id,author_id,rating,body,reservation_id,created_at,updated_at) VALUES ('50000000-0000-0000-0000-000000000092','10000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000001',5,'A peaceful seaside stay with a comfortable space and thoughtful amenities.','20000000-0000-0000-0000-000000000092',now(),now()) ON CONFLICT DO NOTHING");
+        "INSERT INTO stayora.reviews (id,property_id,author_id,rating,body,reservation_id,subject_id,created_at,updated_at) VALUES ('50000000-0000-0000-0000-000000000092','10000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000001',5,'A peaceful seaside stay with a comfortable space and thoughtful amenities.','20000000-0000-0000-0000-000000000092','00000000-0000-0000-0000-000000000002',now(),now()) ON CONFLICT DO NOTHING");
+    executeScript("dev-demo-seed.sql");
     jdbc.update(
         "INSERT INTO stayora.reservation_payments SELECT id,id,total,'TND','SIMULATED',CASE WHEN payment_status='SIMULATED_REFUNDED' THEN 'REFUNDED' ELSE 'CAPTURED' END,'DEMO-'||id::text,created_at,CASE WHEN payment_status='SIMULATED_REFUNDED' THEN created_at ELSE NULL END FROM stayora.reservations ON CONFLICT DO NOTHING");
     jdbc.query("SELECT id FROM stayora.properties ORDER BY id FOR UPDATE", rs -> {});
     jdbc.update(
-        "UPDATE stayora.properties p SET rating=COALESCE((SELECT round(avg(r.rating),2) FROM stayora.reviews r WHERE r.property_id=p.id),0),review_count=(SELECT count(*) FROM stayora.reviews r WHERE r.property_id=p.id)");
+        "UPDATE stayora.properties p SET rating=COALESCE((SELECT round(avg(r.rating),2) FROM stayora.reviews r WHERE r.property_id=p.id AND r.direction='STAY'),0),review_count=(SELECT count(*) FROM stayora.reviews r WHERE r.property_id=p.id AND r.direction='STAY')");
+  }
+
+  private void executeScript(String resource) {
+    Connection connection = DataSourceUtils.getConnection(dataSource);
+    try {
+      ScriptUtils.executeSqlScript(connection, new ClassPathResource(resource));
+    } finally {
+      DataSourceUtils.releaseConnection(connection, dataSource);
+    }
   }
 
   private void insert(

@@ -54,7 +54,7 @@ For an immediate local demonstration, the guest layout uses **Sami Ben Ali** and
 1. **Aymen:** create/edit a property at `/host/listings`, publish or safely archive it; search by destination, dates, capacity, category and nightly price; save guest wishlists at `/wishlists`.
 2. **Hadir:** review an authoritative quote, agree to the simulation and create a `PENDING` reservation. Inspect persisted trips/receipts at `/trips`; the owning host accepts or declines at `/host/reservations`. Guests can cancel eligible future stays, releasing dates and recording a simulated refund.
 3. **Rania:** create/edit/remove owner blocks and nightly-price overrides at `/host/calendar`. `/host/today` computes occupancy, pending requests and simulated payout from persisted data.
-4. **Wassim:** submit/edit/delete a review for an owned completed confirmed stay at `/reviews`. Property review pages display actual reviews and the recalculated average/count.
+4. **Wassim:** submit/edit/delete a review for an owned completed confirmed stay at `/reviews`. Property details/review pages show actual ratings and counted positive/negative host tags. Hosts track all-time reputation at `/host/today` and `/host/reviews`, review completed visitors with stars/body, and see visitor reputation in reservation details. Each stay allows one review per direction.
 5. **Kawther:** start a pre-booking inquiry from a property or a reservation conversation. Guest/host inboxes support replies, read state and sender-owned message editing/removal.
 
 All prices are TND with three decimal places. Quote inputs contain only property ID, dates and guest count. The backend ignores client prices and recomputes totals, including nightly overrides. Reservations keep immutable agreed price snapshots. Stays use `[check-in, check-out)` intervals; adjacent stays are allowed. Pending and confirmed requests block dates; declined and cancelled requests do not. Pending expiry is deferred, so a host decision or permitted guest cancellation releases those holds.
@@ -79,8 +79,11 @@ Applied schema changes are versioned as follows:
 | V6        | Inquiry/reservation conversations, participant read state and message lifecycle |
 | V7        | Shared password credentials and session storage                                 |
 | V8        | Derive property rating/count from actual review records                         |
+| V9        | Two-way reviews, subject identity and positive/negative host tags               |
 
-The `dev` profile uses stable IDs and `ON CONFLICT DO NOTHING` for synthetic profiles, eight properties, two future sample reservations, one owner block and two completed confirmed stays. One completed stay already has a review; the other lets the guest demonstrate eligibility immediately. Seeded reservations have simulated payment receipts. Future sample dates start next month at first startup; completed stays use earlier dates at first insertion. Existing records and dates are preserved on repeat startup. Rating/count are derived values recalculated from actual reviews, replacing illustrative design numbers.
+The `dev` profile runs the original fixtures and an expanded [demo dataset](docs/seed-data.md) in one transaction. The expanded set adds 20 properties (18 published, one draft, one archived), 16 synthetic profiles, 68 reservations, 86 two-way reviews, conversations/messages, wishlists, owner blocks and nightly-price overrides. Stable IDs and `ON CONFLICT DO NOTHING` preserve existing records and first-insert dates on repeat startup. Completed stays include examples still eligible for review. All payment receipts are simulated. Property rating/count caches are recalculated from actual stay reviews.
+
+The original eight seed properties receive working [Pexels stock photo sets](docs/seed-data.md#photo-sources) only if they still use the original design-image URLs; custom photo URLs are preserved. All property names, descriptions, reviews and people are fictional demo content, and the stock photos illustrate the experience rather than document real rental properties. Start/restart the backend with the `dev` profile to populate a fresh database; no schema reset is required.
 
 Shared Neon data is shared across contributors—use separate Neon branches or local databases when experimenting. Never drop the shared schema to reset a demo, and never rewrite an already applied migration.
 
@@ -118,10 +121,27 @@ Each member contributes one `AiSkill` implementation to the shared assistant reg
 
 `GET /api/ai/skills` lists IDs, labels and owners. `POST /api/ai/assist` accepts `{ "skill": "listing-description", "context": "La Marsa, apartment, kitchen" }`. Responses include `mode` (`mock` or `live`), `skill`, `text`, `notice` and `reviewRequired`. AI does not execute a booking, publish a listing, change prices, assign stars or send a message.
 
-Default `AI_PROVIDER=mock` is deterministic and requires no key or external request. Optional providers use server-only variables in ignored `.env`:
+All embedded AI tools and the shared assistant now use **OpenRouter** by default through the same backend provider. In the root ignored `.env`, replace the placeholder for `OPENROUTER_API_KEY`, then restart `npm run dev:backend` (or `npm run dev`). The key is never exposed to Angular. `.env.example` documents the same setup:
+
+```dotenv
+AI_PROVIDER=openrouter
+AI_BASE_URL=https://openrouter.ai/api/v1
+OPENROUTER_API_KEY=REPLACE_WITH_YOUR_OPENROUTER_API_KEY
+AI_MODEL=google/gemma-4-26b-a4b-it:free
+AI_FALLBACK_MODELS=google/gemma-4-31b-it:free,cohere/north-mini-code:free
+AI_TIMEOUT_SECONDS=30
+```
+
+The default [Gemma 4 26B A4B model](https://openrouter.ai/google/gemma-4-26b-a4b-it:free) uses a fixed free model; change `AI_MODEL` to an OpenRouter model ID to select a particular model. Free model availability and rate limits depend on OpenRouter. Requests use its [chat completions API](https://openrouter.ai/docs/quickstart), with Bearer authentication and the module-owned system prompt.
+
+OpenRouter receives the configured primary and fallbacks as an ordered `models` array: Gemma 26B → Gemma 31B → Cohere North Mini Code. It switches when a model is rate-limited or otherwise unavailable, within a single request bounded by `AI_TIMEOUT_SECONDS`. Only these three free candidates are configured; the backend does not add a paid model. `AI_FALLBACK_MODELS` is a comma-separated list; blank entries and duplicates are removed, and the chain is limited to three distinct models including the primary. An empty value disables additional models. This setting applies only to OpenRouter. Reasoning is disabled for these short UI tasks to reduce delay. The response's optional `model` field identifies the model that actually answered; a backup response remains `mode: live` after validation. If the full chain is rate-limited, the UI explicitly reports that all configured models are unavailable and displays the offline example.
+
+Until the key is replaced, no external request is made and each tool clearly identifies its offline response and setup notice. Successful validated model output is marked `mode: live`. Tests explicitly use `mock` and never spend provider quota. Optional alternatives use backend-only variables (unset `OPENROUTER_API_KEY` before using another provider's `AI_API_KEY`):
+
+- **Offline demo:** `AI_PROVIDER=mock`, deterministic output with no model request.
 
 - **Groq:** `AI_PROVIDER=groq`, `AI_BASE_URL=https://api.groq.com/openai/v1`, `AI_API_KEY=<your key>`, and a supported `AI_MODEL`.
 - **Local Ollama:** `AI_PROVIDER=ollama`, `AI_BASE_URL=http://127.0.0.1:11434/v1`, and `AI_MODEL=<an installed local model>`; a key is not required.
 - **OpenAI-compatible server:** `AI_PROVIDER=openai-compatible`, its HTTPS `AI_BASE_URL`, key and model.
 
-`AI_TIMEOUT_SECONDS` defaults to 12 and is capped at 30. Missing keys, provider failure/quota, timeout, malformed or rejected output fall back to the module's labeled offline response. Shared privacy handling reconstructs outbound context from anonymous allowed public facts; raw private chat, contact information and credentials are not forwarded. Provider output is bounded and validated, and every response requires human review. Configure a real provider only to demonstrate live integration; the complete business flow works without one.
+`AI_TIMEOUT_SECONDS` defaults to 30 and is capped at 30. Missing keys, provider failure/quota, timeout, malformed or rejected output fall back to the module's labeled offline response. Shared privacy handling reconstructs outbound context from anonymous allowed public facts; raw private chat, contact information and credentials are not forwarded. Provider output is bounded and validated, and every response requires human review. Authentication/credit failures, empty model output and fallback notices are shown in both the shared assistant and embedded tools; an offline response is never labeled live. A real-key OpenRouter round trip still requires your key.
