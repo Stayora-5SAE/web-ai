@@ -1,0 +1,256 @@
+[
+  {
+    "file": "Presentation_Finale 2.pdf",
+    "pages": [
+      {
+        "page": 1,
+        "text": "TEST ET VALIDATION\nDES LOGICIELS\nCodeWizards\n"
+      },
+      {
+        "page": 2,
+        "text": "Nutritionist\nSarra Sahli Rayen Jouida Mohamed AzizLahmer MohamedAziz Azizi Sofien Meddeb\nMEMBRES DE L’ÉQUIPE\n"
+      },
+      {
+        "page": 3,
+        "text": "JIRA1.\nXRAY2.\nTests Statiques3.\nEtude de l’éxistant4.\nP L A N"
+      },
+      {
+        "page": 4,
+        "text": "INTRODUCTION\n           Le test et la validation des logiciels sont essentiels\npour garantir leur qualité et leur fiabilité. Ils permettent de\ndétecter les erreurs avant le déploiement, réduisant ainsi les\nrisques de dysfonctionnements coûteux. \n            Ces étapes assurent également que le logiciel répond\naux exigences des utilisateurs, améliore la sécurité et\nminimise les coûts de maintenance. En bref, elles sont\ncruciales pour livrer des logiciels robustes et conformes aux\nattentes.\n"
+      },
+      {
+        "page": 5,
+        "text": "0 1 . J I R A"
+      },
+      {
+        "page": 6,
+        "text": "SPRINT BACKLOG\n"
+      },
+      {
+        "page": 7,
+        "text": "SPRINT BACKLOG\n"
+      },
+      {
+        "page": 8,
+        "text": "SPRINT BACKLOG\n"
+      },
+      {
+        "page": 9,
+        "text": "SPRINT BACKLOG\n"
+      },
+      {
+        "page": 10,
+        "text": "0 2 . X R A Y"
+      },
+      {
+        "page": 11,
+        "text": "TESTS MANUELS\n"
+      },
+      {
+        "page": 12,
+        "text": "03.TESTS\nSTATIQUES"
+      },
+      {
+        "page": 13,
+        "text": "SONAR QUBE"
+      },
+      {
+        "page": 14,
+        "text": "S o n a r Q u b e  e s t  u n  o u t i l  o p e n - s o u r c e  q u i  a n a l y s e  l a\nq u a l i t é  d u  c o d e  e n  d é t e c t a n t  l e s  b u g s ,  v u l n é r a b i l i t é s\ne t  m a u v a i s e s  p r a t i q u e s .  I l  e s t  u t i l i s é  d a n s  l e s\np r o j e t s  d e  d é v e l o p p e m e n t  p o u r  a s s u r e r  u n  c o d e\nm a i n t e n a b l e  e t  s é c u r i s é ,  e t  f a c i l i t e  l ' i n t é g r a t i o n\nc o n t i n u e  e n  f o u r n i s s a n t  d e s  r a p p o r t s  d é t a i l l é s  s u r  l a\nq u a l i t é  d u  c o d e .\nSONAR QUBE\n"
+      },
+      {
+        "page": 15,
+        "text": "CAPTURE DE TEST FRONTEND"
+      },
+      {
+        "page": 16,
+        "text": "Notre projet est bien sécurisé, sans problème critique,\nmais il y a 11 hotspots de sécurité à examiner\nmanuellement pour s'assurer qu'il n'y a pas de risques\ncachés.\nSÉCURITE:\nLa situation est préoccupante avec 331 problèmes\nouverts. Une note E indique que des problèmes majeurs\npourraient affecter le bon fonctionnement de notre\nprojet. Ces problèmes doivent être priorisés pour éviter\ndes incidents en production.\nFIABILITÉ :\nBien que nous ayons beaucoup de problèmes de\nmaintenabilité (777), leur faible gravité (note A) signifie\nqu'ils n'empêchent pas le développement, mais qu'il est\npréférable de les résoudre à long terme pour éviter une\naccumulation de dettes techniques.\nMAINTENABILITÉ :\n Un taux de duplication de 4,5% est modéré, mais il\npourrait être réduit pour faciliter la maintenance du code.\nDUPLICATIONS :"
+      },
+      {
+        "page": 17,
+        "text": "CAPTURE DE TEST BACKEND\n"
+      },
+      {
+        "page": 18,
+        "text": "Bien gérée avec aucun problème ouvert, mais les 5\nhotspots de sécurité doivent être examinés pour garantir\nque ce sont de faux positifs ou non critiques.\nSÉCURITE:\nLes 2 problèmes ouverts nécessitent une attention pour\naméliorer la stabilité du projet.\nFIABILITÉ :\nMême avec 20 problèmes, le code semble relativement\nmaintenable, mais il serait bon de traiter ces problèmes\navant qu'ils ne s'accumulent.\nMAINTENABILITÉ :\nUn taux de duplication de 4,5% peut être acceptable\ndans certains contextes, mais il serait bénéfique de\nrefactoriser le code pour réduire ce chiffre.\nDUPLICATIONS :"
+      },
+      {
+        "page": 19,
+        "text": "04.ETUDE\nDE\nL’EXISTANT"
+      },
+      {
+        "page": 20,
+        "text": "TRELLO\n"
+      },
+      {
+        "page": 21,
+        "text": "TRELLO\nT r e l l o  e s t  u n  o u t i l  d e  g e s t i o n  d e  p r o j e t s  v i s u e l  b a s é\ns u r  d e s  t a b l e a u x ,  u t i l i s é  p o u r  o r g a n i s e r  e t  s u i v r e\nd e s  t â c h e s .  I l  e s t  s i m p l e  à  u t i l i s e r ,  c o l l a b o r a t i f ,  e t\na d a p t é  à  d i v e r s  t y p e s  d e  p r o j e t s  g r â c e  à  s e s  c a r t e s\ne t  l i s t e s  i n t e r a c t i v e s .\n"
+      },
+      {
+        "page": 22,
+        "text": "Facilité d'utilisation Fonctionnalités Flexibilité\nJIRA\nTRELLO\nCOMPARAISON\n Mettre X ne signifie pas que cet outil ne est pas bon, mais plutôt que\nl'autre est meilleur pour cette fonctionnalité.\""
+      },
+      {
+        "page": 23,
+        "text": "TRELLO OU JIRA ?\nTRELLO JIRA\nse distingue par son interfacesimple et visuelle avec destableaux, cartes et listes,permettant une gestion flexible etintuitive des projets.\nconçu pour la gestion de projetscomplexes, avec des fonctionnalitésavancées comme le suivi des bugs,la gestion des sprints et desrapports détaillés pour les équipesAgile."
+      },
+      {
+        "page": 24,
+        "text": "MERCI POUR VOTREATTENTION\nCodeWizards\n"
+      }
+    ]
+  },
+  {
+    "file": "Presentation_Finale.pdf",
+    "pages": [
+      {
+        "page": 1,
+        "text": "TEST ET VALIDATION\n DE LOGICIEL\nPRESENTATION"
+      },
+      {
+        "page": 2,
+        "text": "Meet Our Team\nB e n  A l i  H a m z a\n"
+      },
+      {
+        "page": 3,
+        "text": "Plan\nIntroduction1 JIRA2\n43 X R A Y T e s t s S t a t i q u e s\n5\nE t u d e  d e  l ’ é x i s t a n t"
+      },
+      {
+        "page": 4,
+        "text": "Introduction\nDans un monde où les logiciels sont omniprésents, évaluer la\nqualité d'un logiciel est essentiel pour éviter les risques de\ndéfaillance. Un logiciel défectueux peut entraîner des\nconséquences graves : pertes financières, interruption de\nservices vitaux et perte de confiance des utilisateurs.\nLe test et la validation jouent un rôle clé en détectant les erreurs\navant leur déploiement, garantissant ainsi la conformité, la\nsécurité et la performance du logiciel. Ils permettent de prévenir\nles risques de défaillance et d'assurer un produit fiable, capable\nde faire face aux défis du monde numérique."
+      },
+      {
+        "page": 5,
+        "text": "Parexlanko est une marque spécialisée dans les solutions de construction et de rénovation,\noffrant des produits pour le traitement des façades, l'isolation thermique et l'entretien des\nbâtiments. Leur simulateur en ligne permet d'appliquer différentes teintes et finitions sur des\nfaçades en 360°, offrant une expérience interactive pour visualiser les choix esthétiques\navant de commencer les travaux.\n"
+      },
+      {
+        "page": 6,
+        "text": "Gestion de l'authentification des utilisateurs1\nGestion des produits2\nLocalisation des distributeurs4\nSimulateur de façade3\nGestion des articles et du blog5\nLES BESOINS\nFONCTIONNELS"
+      },
+      {
+        "page": 7,
+        "text": "JIRA"
+      },
+      {
+        "page": 8,
+        "text": "Chronologie"
+      },
+      {
+        "page": 9,
+        "text": "Details ticket"
+      },
+      {
+        "page": 10,
+        "text": "Backlog et sprint \n1"
+      },
+      {
+        "page": 11,
+        "text": "Backlog et sprint 2\n1"
+      },
+      {
+        "page": 12,
+        "text": ""
+      },
+      {
+        "page": 13,
+        "text": "Plan des tests"
+      },
+      {
+        "page": 14,
+        "text": "Suite  tests"
+      },
+      {
+        "page": 15,
+        "text": "Test case"
+      },
+      {
+        "page": 16,
+        "text": "         Exécution des tests"
+      },
+      {
+        "page": 17,
+        "text": "             Exécution test case\n1"
+      },
+      {
+        "page": 18,
+        "text": "             Rapport\n1\n"
+      },
+      {
+        "page": 19,
+        "text": "Performance et temps de réponse1\nSécurité des données utilisateur2\nRéférencement SEO4\nScalabilité3\nDisponibilité et uptime5\nLES BESOINS\nNON\nFONCTIONNELS"
+      },
+      {
+        "page": 20,
+        "text": "TESTS\nSTATIQUES"
+      },
+      {
+        "page": 21,
+        "text": "SonarQube\nSonarQube est une plateforme d’analyse de code\nsource qui permet de détecter les bugs, les\nvulnérabilités et les mauvaises pratiques dans le\ncode afin d'améliorer sa qualité et sa sécurité"
+      },
+      {
+        "page": 22,
+        "text": "SonarQube"
+      },
+      {
+        "page": 23,
+        "text": "SonarQube"
+      },
+      {
+        "page": 24,
+        "text": "TESTS \nDYNAMIQUE"
+      },
+      {
+        "page": 25,
+        "text": "Pm2 dashboard\nPM2 Dashboard est un outil de surveillance en temps\nréel des applications Node.js, permettant de suivre\nles performances, l'état et les processus de manière\nsimple et efficace."
+      },
+      {
+        "page": 26,
+        "text": "Pm2 dashboard"
+      },
+      {
+        "page": 27,
+        "text": "Pm2 dashboard"
+      },
+      {
+        "page": 28,
+        "text": "Google Search console\nGoogle Search Console est un outil  \npermettant  les sites web à améliorer leur\nvisibilité sur Google"
+      },
+      {
+        "page": 29,
+        "text": "Google search console\n"
+      },
+      {
+        "page": 30,
+        "text": "Google Analytics\nGoogle Analytics est un outil gratuit de\nGoogle permettant de suivre et d'analyser\nle trafic des sites web."
+      },
+      {
+        "page": 31,
+        "text": "Google search console\n"
+      },
+      {
+        "page": 32,
+        "text": "Google Analytics\n"
+      },
+      {
+        "page": 33,
+        "text": "Google Analytics\n"
+      },
+      {
+        "page": 34,
+        "text": "ETUDE DE \nL’EXISTANT"
+      },
+      {
+        "page": 35,
+        "text": ""
+      },
+      {
+        "page": 36,
+        "text": "Best alternative"
+      },
+      {
+        "page": 37,
+        "text": "THANK YOU"
+      }
+    ]
+  }
+]

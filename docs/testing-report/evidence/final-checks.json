@@ -1,0 +1,17 @@
+{
+  "secretsAbsentFromCandidateFiles": true,
+  "privateEnvironmentFilesIgnored": true,
+  "analyzedSourcesUnchanged": 139,
+  "pdfPages": 3,
+  "nativeScreenshotsEmbedded": 2,
+  "renderedPagesVisuallyChecked": 3,
+  "coverageOrchestratorExit": 0,
+  "tests": {
+    "backend": 51,
+    "frontend": 33,
+    "workflow": 6
+  },
+  "sonarNewCodeGate": "OK",
+  "overallCoveragePercent": 67.1,
+  "openFindings": 44
+}

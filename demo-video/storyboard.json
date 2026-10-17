@@ -1,0 +1,216 @@
+{
+  "durationSeconds": 157,
+  "chapters": [
+    {
+      "title": "Visitors",
+      "start": 2
+    },
+    {
+      "title": "Hosts",
+      "start": 83
+    }
+  ],
+  "shots": [
+    {
+      "kind": "title",
+      "name": "Opening",
+      "duration": 2,
+      "start": 0
+    },
+    {
+      "kind": "title",
+      "name": "Chapter 1 - Visitors",
+      "duration": 4,
+      "text": "Visitors",
+      "start": 2
+    },
+    {
+      "name": "Visitors - Discover and save",
+      "duration": 12,
+      "title": "Find your stay.",
+      "file": "07-discovery.webm",
+      "raw": 9.36,
+      "start": 6,
+      "speed": 0.77333
+    },
+    {
+      "name": "Visitors - Book and view receipt",
+      "duration": 13,
+      "title": "Book with confidence.",
+      "file": "09-booking.webm",
+      "raw": 7.08,
+      "start": 18,
+      "speed": 0.53846
+    },
+    {
+      "name": "Visitors - AI itinerary after booking",
+      "duration": 9,
+      "title": "Plan your days with AI.",
+      "file": "02-ai-itinerary.webm",
+      "resultAt": 10.5,
+      "start": 31,
+      "aiPill": true
+    },
+    {
+      "name": "Visitors - Shared AI assistant",
+      "duration": 7,
+      "title": "A little extra AI help.",
+      "file": "06-ai-assistant.webm",
+      "resultAt": 8,
+      "start": 40,
+      "aiPill": true
+    },
+    {
+      "name": "Visitors - Contact your host",
+      "duration": 8,
+      "title": "Talk to your host.",
+      "file": "14-messages.webm",
+      "raw": 7.2,
+      "start": 47,
+      "speed": 0.89
+    },
+    {
+      "name": "Visitors - AI message suggestion",
+      "duration": 7,
+      "title": "Draft it with AI.",
+      "file": "05-ai-message-draft.webm",
+      "resultAt": 3,
+      "start": 55,
+      "aiPill": true
+    },
+    {
+      "name": "Visitors - Review your stay",
+      "duration": 5,
+      "title": "Share your experience.",
+      "file": "edits/13-guest-review.mp4",
+      "raw": 1.6,
+      "start": 62,
+      "speed": 0.304
+    },
+    {
+      "name": "Visitors - AI rating snapshot",
+      "duration": 7,
+      "title": "See the pattern with AI.",
+      "file": "04-ai-review-summary.webm",
+      "resultAt": 3,
+      "start": 67,
+      "aiPill": true
+    },
+    {
+      "name": "Visitors - Cancellation and refund",
+      "duration": 6,
+      "title": "When plans change.",
+      "file": "11-refund.webm",
+      "raw": 7.04,
+      "start": 74,
+      "speed": 1.16
+    },
+    {
+      "name": "Visitors - Mobile",
+      "duration": 3,
+      "title": "Take your trip with you.",
+      "file": "edits/16-visitor-mobile.mp4",
+      "raw": 3.3,
+      "mobile": true,
+      "start": 80,
+      "speed": 1.07333
+    },
+    {
+      "kind": "title",
+      "name": "Chapter 2 - Hosts",
+      "duration": 4,
+      "text": "Hosts",
+      "start": 83
+    },
+    {
+      "name": "Hosts - Create and manage listings",
+      "duration": 11,
+      "title": "Make your place stand out.",
+      "file": "08-listings.webm",
+      "raw": 7.52,
+      "start": 87,
+      "speed": 0.67636
+    },
+    {
+      "name": "Hosts - AI listing draft",
+      "duration": 9,
+      "title": "Find the words with AI.",
+      "file": "01-ai-description.webm",
+      "resultAt": 4,
+      "start": 98,
+      "aiPill": true
+    },
+    {
+      "name": "Hosts - Confirm a request",
+      "duration": 7,
+      "title": "Welcome your next guest.",
+      "file": "10-host-decision.webm",
+      "raw": 9,
+      "start": 107,
+      "speed": 1.27429
+    },
+    {
+      "name": "Hosts - Calendar and nightly prices",
+      "duration": 11,
+      "title": "Set your availability.",
+      "file": "12-calendar.webm",
+      "raw": 9.12,
+      "start": 114,
+      "speed": 0.82182
+    },
+    {
+      "name": "Hosts - Performance dashboard",
+      "duration": 5,
+      "title": "Know how you are doing.",
+      "file": "17-host-workspace.webm",
+      "raw": 8.08,
+      "start": 125,
+      "speed": 1.6
+    },
+    {
+      "name": "Hosts - AI performance insights",
+      "duration": 9,
+      "title": "Go deeper with AI.",
+      "file": "03-ai-host-summary.webm",
+      "resultAt": 7,
+      "start": 130,
+      "aiPill": true
+    },
+    {
+      "name": "Hosts - Review your visitors",
+      "duration": 5,
+      "title": "Review your visitors.",
+      "file": "edits/13-host-review.mp4",
+      "raw": 1.8,
+      "start": 139,
+      "speed": 0.344
+    },
+    {
+      "name": "Hosts - Reputation and counted tags",
+      "duration": 6,
+      "title": "Build your reputation.",
+      "file": "edits/13-reputation.mp4",
+      "raw": 3.2,
+      "start": 144,
+      "speed": 0.52
+    },
+    {
+      "name": "Hosts - Mobile workspace",
+      "duration": 4,
+      "title": "Host from anywhere.",
+      "file": "edits/16-host-mobile.mp4",
+      "raw": 4.9,
+      "mobile": true,
+      "start": 150,
+      "speed": 1.205,
+      "aiPill": true
+    },
+    {
+      "kind": "title",
+      "name": "Closing",
+      "duration": 3,
+      "closing": true,
+      "start": 154
+    }
+  ]
+}

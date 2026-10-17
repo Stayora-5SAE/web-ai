@@ -1,0 +1,136 @@
+{
+  "capturedOn": "2026-10-16",
+  "isolatedDatabase": "stayora_demo_video",
+  "liveAiResponses": 6,
+  "captures": [
+    {
+      "id": "01-ai-description",
+      "resultAt": 3.229,
+      "endAt": 10.444,
+      "mode": "live",
+      "model": "cohere/north-mini-code:free",
+      "notice": "OpenRouter backup model response: review before using it.",
+      "capture": "01-ai-description.webm",
+      "rawDurationSeconds": 12.48
+    },
+    {
+      "id": "02-ai-itinerary",
+      "resultAt": 9.038,
+      "endAt": 16.556,
+      "mode": "live",
+      "model": "cohere/north-mini-code:free",
+      "notice": "OpenRouter backup model response: review before using it.",
+      "capture": "02-ai-itinerary.webm",
+      "rawDurationSeconds": 22.8
+    },
+    {
+      "id": "03-ai-host-summary",
+      "resultAt": 6.205,
+      "endAt": 13.742,
+      "mode": "live",
+      "model": "cohere/north-mini-code:free",
+      "notice": "OpenRouter backup model response: review before using it.",
+      "capture": "03-ai-host-summary.webm",
+      "rawDurationSeconds": 15.96
+    },
+    {
+      "id": "04-ai-review-summary",
+      "resultAt": 2.148,
+      "endAt": 9.681,
+      "mode": "live",
+      "model": "cohere/north-mini-code:free",
+      "notice": "OpenRouter backup model response: review before using it.",
+      "capture": "04-ai-review-summary.webm",
+      "rawDurationSeconds": 11.96
+    },
+    {
+      "id": "05-ai-message-draft",
+      "resultAt": 2.088,
+      "endAt": 9.622,
+      "mode": "live",
+      "model": "cohere/north-mini-code:free",
+      "notice": "OpenRouter backup model response: review before using it.",
+      "capture": "05-ai-message-draft.webm",
+      "rawDurationSeconds": 11.92
+    },
+    {
+      "id": "06-ai-assistant",
+      "resultAt": 6.34,
+      "endAt": 14.534,
+      "mode": "live",
+      "model": "cohere/north-mini-code:free",
+      "notice": "OpenRouter backup model response: review before using it.",
+      "capture": "06-ai-assistant.webm",
+      "rawDurationSeconds": 16.76
+    },
+    {
+      "id": "07-discovery",
+      "endAt": 6.879,
+      "capture": "07-discovery.webm",
+      "rawDurationSeconds": 9.36
+    },
+    {
+      "id": "08-listings",
+      "endAt": 5.305,
+      "capture": "08-listings.webm",
+      "rawDurationSeconds": 7.52
+    },
+    {
+      "id": "09-booking",
+      "reservationId": "5c94e770-18b5-46fe-a801-d5d14d79988d",
+      "endAt": 5.08,
+      "metadataRecoveredAfterRecording": true,
+      "capture": "09-booking.webm",
+      "rawDurationSeconds": 7.08
+    },
+    {
+      "id": "10-host-decision",
+      "endAt": 4.922,
+      "capture": "10-host-decision.webm",
+      "rawDurationSeconds": 9.0
+    },
+    {
+      "id": "11-refund",
+      "endAt": 5.313,
+      "capture": "11-refund.webm",
+      "rawDurationSeconds": 7.04
+    },
+    {
+      "id": "12-calendar",
+      "endAt": 6.886,
+      "capture": "12-calendar.webm",
+      "rawDurationSeconds": 9.12
+    },
+    {
+      "id": "13-reviews",
+      "guestTags": 0,
+      "endAt": 9.722,
+      "capture": "13-reviews.webm",
+      "rawDurationSeconds": 11.48
+    },
+    {
+      "id": "14-messages",
+      "endAt": 4.992,
+      "capture": "14-messages.webm",
+      "rawDurationSeconds": 7.2
+    },
+    {
+      "id": "15-accounts",
+      "endAt": 10.362,
+      "capture": "15-accounts.webm",
+      "rawDurationSeconds": 14.96
+    },
+    {
+      "id": "16-mobile",
+      "endAt": 5.96,
+      "capture": "16-mobile.webm",
+      "rawDurationSeconds": 9.4
+    },
+    {
+      "id": "17-host-workspace",
+      "endAt": 4.57,
+      "capture": "17-host-workspace.webm",
+      "rawDurationSeconds": 8.08
+    }
+  ]
+}

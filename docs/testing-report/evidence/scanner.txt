@@ -1,0 +1,273 @@
+20:56:27.656 INFO  Scanner configuration file: C:\custom\bins\sonar-scanner\sonar-scanner-8.1.0.6389\bin\..\conf\sonar-scanner.properties
+20:56:27.662 INFO  Project root configuration file: C:\Users\everp\Documents\GitHub\web-ai\sonar-project.properties
+20:56:27.683 INFO  SonarScanner CLI 8.1.0.6389
+20:56:27.695 INFO  Windows 11 10.0 amd64
+20:56:31.987 INFO  Communicating with SonarQube Community Build 26.9.0.129388
+20:56:31.988 INFO  JRE provisioning is disabled
+20:56:31.989 INFO  Using the java executable 'C:\custom\bins\jdk\jdk-21.0.12.1+1\bin\java.exe' from JAVA_HOME
+20:56:32.597 INFO  Starting SonarScanner Engine...
+20:56:32.598 INFO  Java 21.0.12.1 Eclipse Adoptium (64-bit)
+20:56:37.165 INFO  Load global settings
+20:56:37.315 INFO  Load global settings (done) | time=147ms
+20:56:37.323 INFO  Server id: 147B411E-AaEsg1b21OkC6dsewtD_
+20:56:37.339 INFO  Loading required plugins
+20:56:37.340 INFO  Load plugins index
+20:56:37.360 INFO  Load plugins index (done) | time=21ms
+20:56:37.361 INFO  Load/download plugins
+20:56:37.410 INFO  Load/download plugins (done) | time=49ms
+20:56:37.920 INFO  Process project properties
+20:56:37.944 INFO  Process project properties (done) | time=23ms
+20:56:37.968 INFO  Project key: stayora
+20:56:37.969 INFO  Base dir: C:\Users\everp\Documents\GitHub\web-ai
+20:56:37.969 INFO  Working dir: C:\Users\everp\Documents\GitHub\web-ai\.scannerwork
+20:56:37.987 INFO  Load project settings for component key: 'stayora'
+20:56:38.011 INFO  Load project settings for component key: 'stayora' (done) | time=23ms
+20:56:38.061 INFO  Load quality profiles
+20:56:38.154 INFO  Load quality profiles (done) | time=95ms
+20:56:38.221 INFO  Load active rules
+20:56:38.763 INFO  Load active rules (done) | time=540ms
+20:56:38.778 INFO  Load analysis cache
+20:56:38.838 INFO  Load analysis cache | time=60ms
+20:56:39.147 INFO  Preprocessing files...
+20:56:39.684 INFO  5 languages detected in 139 preprocessed files (done) | time=536ms
+20:56:39.685 INFO  55 files ignored because of inclusion/exclusion patterns
+20:56:39.685 INFO  0 files ignored because of scm ignore settings
+20:56:39.688 INFO  Loading plugins for detected languages
+20:56:39.689 INFO  Load/download plugins
+20:56:39.706 INFO  Load/download plugins (done) | time=17ms
+20:56:40.061 INFO  Load project repositories
+20:56:40.220 INFO  Load project repositories (done) | time=160ms
+20:56:40.264 INFO  Indexing files...
+20:56:40.264 INFO  Project configuration:
+20:56:40.265 INFO    Excluded sources: frontend/src/**/*.spec.ts, backend/src/test/java/**/*.java, frontend/src/**/*.spec.ts
+20:56:40.265 INFO    Included tests: backend/src/test/java/**/*.java, frontend/src/**/*.spec.ts
+20:56:40.325 INFO  139 files indexed (done) | time=60ms
+20:56:40.326 INFO  Quality profile for css: Sonar way
+20:56:40.327 INFO  Quality profile for java: Sonar way
+20:56:40.327 INFO  Quality profile for ts: Sonar way
+20:56:40.328 INFO  Quality profile for web: Sonar way
+20:56:40.328 INFO  Quality profile for yaml: Sonar way
+20:56:40.328 INFO  ------------- Run sensors on module Stayora
+20:56:40.443 INFO  Load metrics repository
+20:56:40.474 INFO  Load metrics repository (done) | time=32ms
+20:56:41.804 INFO  Reflections took 194 ms to scan 1 urls, producing 30 keys and 295 values
+20:56:42.432 INFO  Sensor JavaSensor [java]
+20:56:42.439 INFO  Configured Java source version (sonar.java.source): 17, preview features enabled (sonar.java.enablePreview): false
+20:56:42.479 INFO  Server-side caching is enabled. The Java analyzer will not try to leverage data from a previous analysis.
+20:56:42.483 INFO  Using ECJ batch to parse 63 Main java source files with batch size 425 KB.
+20:56:42.934 INFO  Starting batch processing.
+20:56:44.205 INFO  The Java analyzer cannot skip unchanged files in this context. A full analysis is performed for all files.
+20:56:49.984 INFO  100% analyzed
+20:56:49.984 INFO  Batch processing: Done.
+20:56:49.989 INFO  Did not optimize analysis for any files, performed a full analysis for all 63 files.
+20:56:49.998 INFO  Using ECJ batch to parse 10 Test java source files with batch size 425 KB.
+20:56:50.026 INFO  Starting batch processing.
+20:56:51.541 INFO  100% analyzed
+20:56:51.542 INFO  Batch processing: Done.
+20:56:51.546 INFO  Did not optimize analysis for any files, performed a full analysis for all 10 files.
+20:56:51.552 WARN  Unresolved imports/types have been detected during analysis. Enable DEBUG mode to see them.
+20:56:51.552 WARN  Use of preview features have been detected during analysis. Enable DEBUG mode to see them.
+20:56:51.553 INFO  No "Generated" source files to scan.
+20:56:51.566 INFO  Sensor JavaSensor [java] (done) | time=9133ms
+20:56:51.566 INFO  Sensor IaC YAML File Type Classification Sensor [iac]
+20:56:51.587 INFO  Sensor IaC YAML File Type Classification Sensor [iac] (done) | time=21ms
+20:56:51.587 INFO  Sensor SurefireSensor [java]
+20:56:51.590 INFO  parsing [C:\Users\everp\Documents\GitHub\web-ai\backend\target\surefire-reports]
+20:56:51.824 INFO  Sensor SurefireSensor [java] (done) | time=236ms
+20:56:51.824 INFO  Sensor HTML [web]
+20:56:51.907 INFO  Sensor HTML [web] (done) | time=81ms
+20:56:51.908 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+20:56:51.916 INFO  Importing 1 report(s). Turn your logs in debug mode in order to see the exhaustive list.
+20:56:52.062 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=155ms
+20:56:52.062 INFO  Sensor IaC CloudFormation Sensor [iac]
+20:56:52.063 INFO  There are no files to be analyzed for the CloudFormation language
+20:56:52.063 INFO  Sensor IaC CloudFormation Sensor [iac] (done) | time=1ms
+20:56:52.063 INFO  Sensor IaC cfn-lint report Sensor [iac]
+20:56:52.064 INFO  Sensor IaC cfn-lint report Sensor [iac] (done) | time=1ms
+20:56:52.065 INFO  Sensor IaC Kustomization Sensor [iac]
+20:56:52.067 INFO  Sensor IaC Kustomization Sensor [iac] (done) | time=0ms
+20:56:52.067 INFO  Sensor IaC hadolint report Sensor [iac]
+20:56:52.067 INFO  Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
+20:56:52.067 INFO  Sensor Java Config Sensor [iac]
+20:56:52.084 INFO  1 source file to be analyzed
+20:56:52.148 INFO  1/1 source file has been analyzed
+20:56:52.149 INFO  Sensor Java Config Sensor [iac] (done) | time=82ms
+20:56:52.149 INFO  Sensor IaC Docker Sensor [iac]
+20:56:52.155 INFO  There are no files to be analyzed for the Docker language
+20:56:52.156 INFO  Sensor IaC Docker Sensor [iac] (done) | time=5ms
+20:56:52.157 INFO  Sensor JavaScript/TypeScript module configuration [javascript]
+20:56:52.159 INFO  Sensor JavaScript/TypeScript module configuration [javascript] (done) | time=4ms
+20:56:52.159 INFO  Sensor JavaScript/TypeScript Coverage [javascript]
+20:56:52.159 INFO  Analysing [C:\Users\everp\Documents\GitHub\web-ai\frontend\coverage\stayora\lcov.info]
+20:56:52.302 INFO  Sensor JavaScript/TypeScript Coverage [javascript] (done) | time=142ms
+20:56:52.302 INFO  Sensor IaC Kubernetes Sensor [iac]
+20:56:52.376 INFO  There are no files to be analyzed for the Kubernetes language
+20:56:52.376 INFO  Sensor IaC Kubernetes Sensor [iac] (done) | time=74ms
+20:56:52.376 INFO  Sensor TextAndSecretsSensor [text]
+20:56:52.403 INFO  Available processors: 16
+20:56:52.404 INFO  Using 16 threads for analysis.
+20:56:52.811 INFO  Start fetching files for the text and secrets analysis
+20:56:53.033 INFO  Using Git CLI to retrieve dirty files
+20:56:53.113 INFO  Retrieving language associated files and files included via "sonar.text.inclusions" that are tracked by git
+20:56:53.114 INFO  Starting the text and secrets analysis
+20:56:53.117 INFO  129 source files to be analyzed for the text and secrets analysis
+20:56:53.280 INFO  129/129 source files have been analyzed for the text and secrets analysis
+20:56:53.288 INFO  Sensor TextAndSecretsSensor [text] (done) | time=913ms
+20:56:53.296 INFO  ------------- Run sensors on project
+20:56:53.730 INFO  Sensor JaCoCo Aggregate XML Report Importer [jacoco]
+20:56:53.731 INFO  Sensor JaCoCo Aggregate XML Report Importer [jacoco] (done) | time=0ms
+20:56:53.732 INFO  Sensor JavaScript/TypeScript/CSS analysis [javascript]
+20:56:54.849 INFO  'sonar.nodejs.executable' is set. Skipping embedded Node.js runtime deployment.
+20:56:54.851 INFO  Using Node.js executable C:\custom\bins\node\node-v22.23.3-win-x64\node.exe from property sonar.nodejs.executable.
+20:57:10.370 INFO  Memory configuration: OS (32435 MB), Node.js (4144 MB).
+20:57:10.390 INFO  gRPC analyze-project server listening on 127.0.0.1:10044
+20:57:10.596 INFO  Plugin version: [13.8.0.44569]
+20:57:13.346 INFO  Resolving provided TSConfig files using 'C:/Users/everp/Documents/GitHub/web-ai/frontend/tsconfig.app.json,C:/Users/everp/Documents/GitHub/web-ai/frontend/tsconfig.spec.json'
+20:57:22.218 INFO  Found 2 tsconfig.json file(s): [C:/Users/everp/Documents/GitHub/web-ai/frontend/tsconfig.app.json, C:/Users/everp/Documents/GitHub/web-ai/frontend/tsconfig.spec.json]
+20:57:22.219 INFO  54 source files to be analyzed
+20:57:22.219 INFO  Creating TypeScript(6.0.3) program with configuration file C:/Users/everp/Documents/GitHub/web-ai/frontend/tsconfig.app.json [lib: lib.es2022.d.ts, lib.dom.d.ts]
+20:57:22.220 INFO  Analyzing 37 file(s) from tsconfig C:/Users/everp/Documents/GitHub/web-ai/frontend/tsconfig.app.json (297 total files in program)
+20:57:22.220 INFO  Creating TypeScript(6.0.3) program with configuration file C:/Users/everp/Documents/GitHub/web-ai/frontend/tsconfig.spec.json [lib: lib.es2022.d.ts, lib.dom.d.ts]
+20:57:22.220 INFO  Analyzing 15 file(s) from tsconfig C:/Users/everp/Documents/GitHub/web-ai/frontend/tsconfig.spec.json (296 total files in program)
+20:57:22.220 INFO  54/54 source files have been analyzed
+20:57:22.242 INFO  Hit the cache for 0 out of 53
+20:57:22.244 INFO  Miss the cache for 53 out of 53: ANALYSIS_MODE_INELIGIBLE [53/53]
+20:57:22.245 INFO  Sensor JavaScript/TypeScript/CSS analysis [javascript] (done) | time=28512ms
+20:57:22.246 INFO  Sensor IaC Project Sensor [iac]
+20:57:22.246 INFO  Sensor IaC Project Sensor [iac] (done) | time=2ms
+20:57:22.246 INFO  Sensor JavaProjectSensor [java]
+20:57:22.248 INFO  Sensor JavaProjectSensor [java] (done) | time=2ms
+20:57:22.249 INFO  Sensor Zero Coverage Sensor
+20:57:22.284 INFO  Sensor Zero Coverage Sensor (done) | time=35ms
+20:57:22.285 INFO  Sensor Java CPD Block Indexer
+20:57:22.384 INFO  Sensor Java CPD Block Indexer (done) | time=99ms
+20:57:22.384 INFO  ------------- Gather SCA dependencies on project
+20:57:22.407 INFO  Dependency analysis skipped
+20:57:22.439 INFO  SCM Publisher SCM provider for this project is: git
+20:57:22.441 INFO  SCM Publisher 109 source files to be analyzed
+20:57:23.413 INFO  SCM Publisher 0/109 source files have been analyzed (done) | time=970ms
+20:57:23.413 WARN  Missing blame information for the following files:
+20:57:23.414 WARN    * backend/src/main/java/com/stayora/messages/MessagingService.java
+20:57:23.414 WARN    * backend/src/test/java/com/stayora/MessagingIntegrationTest.java
+20:57:23.414 WARN    * backend/src/main/java/com/stayora/ai/AiSkill.java
+20:57:23.415 WARN    * frontend/src/app/availability/calendar.component.spec.ts
+20:57:23.415 WARN    * frontend/src/app/reviews/reviews.component.ts
+20:57:23.415 WARN    * frontend/src/main.ts
+20:57:23.415 WARN    * frontend/src/app/core/models.ts
+20:57:23.415 WARN    * frontend/src/app/reservations/reservation-api.service.ts
+20:57:23.416 WARN    * backend/src/main/java/com/stayora/reviews/ReviewAiSkill.java
+20:57:23.416 WARN    * backend/src/main/java/com/stayora/reservations/ReservationController.java
+20:57:23.416 WARN    * backend/src/main/java/com/stayora/reviews/ReviewService.java
+20:57:23.417 WARN    * frontend/src/app/reviews/property-reviews.component.spec.ts
+20:57:23.417 WARN    * backend/src/test/java/com/stayora/listings/ListingAiSkillTest.java
+20:57:23.417 WARN    * frontend/src/app/availability/availability-api.service.ts
+20:57:23.417 WARN    * backend/src/main/java/com/stayora/accounts/AuthController.java
+20:57:23.417 WARN    * backend/src/main/java/com/stayora/availability/HostController.java
+20:57:23.418 WARN    * backend/src/test/java/com/stayora/ReviewManagementIntegrationTest.java
+20:57:23.418 WARN    * frontend/src/app/listings/listing-management.service.spec.ts
+20:57:23.418 WARN    * backend/src/main/java/com/stayora/availability/HostAvailabilityManager.java
+20:57:23.418 WARN    * backend/src/main/java/com/stayora/reservations/Reservation.java
+20:57:23.418 WARN    * backend/src/main/java/com/stayora/availability/NightlyPriceRepository.java
+20:57:23.418 WARN    * backend/src/main/java/com/stayora/accounts/AccountRepository.java
+20:57:23.419 WARN    * frontend/src/app/reviews/reviews.component.spec.ts
+20:57:23.419 WARN    * backend/src/main/java/com/stayora/listings/WishlistEntry.java
+20:57:23.419 WARN    * backend/src/main/java/com/stayora/ai/AiService.java
+20:57:23.419 WARN    * frontend/src/app/messages/messages.component.ts
+20:57:23.419 WARN    * backend/src/main/java/com/stayora/shared/DevSeeder.java
+20:57:23.419 WARN    * backend/src/test/java/com/stayora/accounts/AuthIntegrationTest.java
+20:57:23.419 WARN    * backend/src/main/java/com/stayora/listings/PropertyRequest.java
+20:57:23.419 WARN    * frontend/src/app/listings/wishlist.service.spec.ts
+20:57:23.420 WARN    * frontend/src/app/messages/messages.component.spec.ts
+20:57:23.420 WARN    * frontend/src/app/messages/messaging-api.service.ts
+20:57:23.420 WARN    * backend/src/main/java/com/stayora/availability/HostSummaryAiSkill.java
+20:57:23.420 WARN    * frontend/src/app/reviews/review-api.service.spec.ts
+20:57:23.420 WARN    * backend/src/main/java/com/stayora/listings/ListingController.java
+20:57:23.420 WARN    * frontend/src/app/listings/search.component.ts
+20:57:23.420 WARN    * backend/src/main/java/com/stayora/reviews/ReviewRepository.java
+20:57:23.420 WARN    * backend/src/main/java/com/stayora/messages/MessagingController.java
+20:57:23.422 WARN    * backend/src/main/java/com/stayora/accounts/AccountService.java
+20:57:23.422 WARN    * backend/src/main/java/com/stayora/messages/Conversation.java
+20:57:23.422 WARN    * frontend/src/app/listings/listing-management.service.ts
+20:57:23.422 WARN    * frontend/src/app/listings/listing-editor.component.ts
+20:57:23.422 WARN    * backend/src/main/java/com/stayora/accounts/AccountSessionRepository.java
+20:57:23.422 WARN    * frontend/src/app/availability/today.component.ts
+20:57:23.422 WARN    * backend/src/main/java/com/stayora/ai/AiProvider.java
+20:57:23.422 WARN    * frontend/src/app/core/api.service.ts
+20:57:23.423 WARN    * frontend/src/app/shared/property-card.component.ts
+20:57:23.423 WARN    * backend/src/main/java/com/stayora/listings/PropertyManagementService.java
+20:57:23.423 WARN    * frontend/src/app/reviews/property-reviews.component.ts
+20:57:23.424 WARN    * backend/src/main/java/com/stayora/availability/AvailabilityService.java
+20:57:23.424 WARN    * backend/src/main/java/com/stayora/accounts/AuthService.java
+20:57:23.424 WARN    * backend/src/test/java/com/stayora/ReservationLifecycleIntegrationTest.java
+20:57:23.424 WARN    * frontend/src/app/reservations/review.component.ts
+20:57:23.425 WARN    * backend/src/main/java/com/stayora/listings/Property.java
+20:57:23.425 WARN    * backend/src/main/java/com/stayora/messages/MessageDraftAiSkill.java
+20:57:23.425 WARN    * backend/src/main/resources/application.yml
+20:57:23.425 WARN    * frontend/src/app/listings/wishlist.service.ts
+20:57:23.425 WARN    * backend/src/main/java/com/stayora/ai/AiController.java
+20:57:23.425 WARN    * backend/src/main/java/com/stayora/listings/ListingAiSkill.java
+20:57:23.426 WARN    * backend/src/main/java/com/stayora/reservations/ReservationRepository.java
+20:57:23.426 WARN    * backend/src/main/java/com/stayora/reservations/ReservationPaymentRepository.java
+20:57:23.426 WARN    * frontend/src/app/accounts/auth.component.ts
+20:57:23.426 WARN    * frontend/src/app/reservations/trip-detail.component.ts
+20:57:23.426 WARN    * frontend/src/app/listings/host-listings.component.ts
+20:57:23.426 WARN    * backend/src/main/java/com/stayora/reviews/ReviewController.java
+20:57:23.426 WARN    * frontend/src/app/messages/messaging-api.service.spec.ts
+20:57:23.428 WARN    * backend/src/main/java/com/stayora/availability/NightlyPrice.java
+20:57:23.428 WARN    * backend/src/main/java/com/stayora/listings/WishlistService.java
+20:57:23.428 WARN    * backend/src/test/java/com/stayora/ai/AiSafetyTest.java
+20:57:23.428 WARN    * backend/src/test/java/com/stayora/shared/DemoConfigurationTest.java
+20:57:23.429 WARN    * backend/src/main/java/com/stayora/listings/WishlistController.java
+20:57:23.429 WARN    * frontend/src/app/listings/listing-editor.component.spec.ts
+20:57:23.429 WARN    * frontend/src/app/reservations/trips.component.ts
+20:57:23.429 WARN    * backend/src/test/java/com/stayora/ListingManagementIntegrationTest.java
+20:57:23.429 WARN    * frontend/src/app/reservations/host-requests.component.ts
+20:57:23.430 WARN    * frontend/src/app/reservations/reservation-api.service.spec.ts
+20:57:23.430 WARN    * backend/src/main/java/com/stayora/messages/ConversationRepository.java
+20:57:23.430 WARN    * backend/src/main/java/com/stayora/accounts/Credential.java
+20:57:23.430 WARN    * frontend/src/app/availability/calendar.component.ts
+20:57:23.431 WARN    * backend/src/main/java/com/stayora/shared/ApiException.java
+20:57:23.431 WARN    * backend/src/main/java/com/stayora/accounts/CredentialRepository.java
+20:57:23.431 WARN    * backend/src/main/java/com/stayora/accounts/SessionRequestFilter.java
+20:57:23.431 WARN    * frontend/src/app/listings/property-detail.component.ts
+20:57:23.431 WARN    * frontend/src/styles.css
+20:57:23.431 WARN    * frontend/src/app/accounts/identity.service.spec.ts
+20:57:23.431 WARN    * backend/src/main/java/com/stayora/accounts/AccountSession.java
+20:57:23.432 WARN    * backend/src/main/java/com/stayora/accounts/PasswordHasher.java
+20:57:23.432 WARN    * frontend/src/app/reservations/host-reservation.component.ts
+20:57:23.432 WARN    * backend/src/main/java/com/stayora/reservations/ReservationAiSkill.java
+20:57:23.432 WARN    * backend/src/main/java/com/stayora/reservations/ReservationService.java
+20:57:23.432 WARN    * backend/src/main/java/com/stayora/shared/DemoConfiguration.java
+20:57:23.432 WARN    * backend/src/main/java/com/stayora/listings/PropertyManagementController.java
+20:57:23.432 WARN    * backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java
+20:57:23.432 WARN    * frontend/src/app/listings/wishlists.component.ts
+20:57:23.432 WARN    * frontend/src/app/accounts/identity.service.ts
+20:57:23.432 WARN    * backend/src/main/java/com/stayora/ai/AiPrivacy.java
+20:57:23.434 WARN    * backend/src/main/java/com/stayora/messages/ChatMessage.java
+20:57:23.434 WARN    * backend/src/main/java/com/stayora/messages/ChatMessageRepository.java
+20:57:23.434 WARN    * backend/src/main/java/com/stayora/listings/ListingService.java
+20:57:23.434 WARN    * backend/src/test/java/com/stayora/AvailabilityManagementIntegrationTest.java
+20:57:23.434 WARN    * frontend/src/app/shared/layout.component.ts
+20:57:23.434 WARN    * backend/src/main/java/com/stayora/listings/WishlistRepository.java
+20:57:23.434 WARN    * frontend/src/app/app.component.ts
+20:57:23.434 WARN    * backend/src/main/java/com/stayora/shared/ApiErrors.java
+20:57:23.434 WARN    * frontend/src/app/reservations/trip-detail.component.spec.ts
+20:57:23.434 WARN    * backend/src/main/java/com/stayora/reservations/ReservationPayment.java
+20:57:23.435 WARN    * frontend/src/app/app.routes.ts
+20:57:23.435 WARN    * backend/src/main/java/com/stayora/reviews/Review.java
+20:57:23.435 WARN    * frontend/src/app/reviews/review-api.service.ts
+20:57:23.435 WARN  This may lead to missing/broken features in SonarQube
+20:57:23.436 INFO  CPD Executor 25 files had no CPD blocks
+20:57:23.436 INFO  CPD Executor Calculating CPD for 77 files
+20:57:23.502 INFO  CPD Executor CPD calculation finished (done) | time=75ms
+20:57:23.511 INFO  SCM revision ID '0f8496538bde0a890cbbf2f4cb8f3b55e1792b6a'
+20:57:23.872 INFO  Analysis report generated in 303ms, dir size=1.1 MB
+20:57:34.184 INFO  Analysis report compressed in 10311ms, zip size=518.8 kB
+20:57:34.248 INFO  Analysis report uploaded in 63ms
+20:57:34.252 INFO  ------------- Check Quality Gate status
+20:57:34.252 INFO  Waiting for the analysis report to be processed (max 300s)
+20:57:44.333 INFO  QUALITY GATE STATUS: PASSED - View details on http://127.0.0.1:9000/dashboard?id=stayora
+20:57:44.824 INFO  Analysis total time: 1:07.338 s
+20:57:44.851 INFO  SonarScanner Engine completed successfully
+20:57:44.934 INFO  EXECUTION SUCCESS
+20:57:44.935 INFO  Total time: 1:17.283s

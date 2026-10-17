@@ -1,0 +1,30 @@
+{
+  "start": "2026-10-17T20:13:33.413Z",
+  "finish": "2026-10-17T20:13:36.469Z",
+  "durationMs": 3054,
+  "exitCode": 0,
+  "node": "v22.23.3",
+  "files": 59,
+  "errors": 0,
+  "warnings": 1,
+  "command": "node node_modules/eslint/bin/eslint.js --config ../docs/static-testing-2026-10-11/eslint-rapport.cjs --resolve-plugins-relative-to . --ext .ts,.html --format json --report-unused-disable-directives src",
+  "scope": "frontend/src, TypeScript et HTML, configuration de rapport sans --fix",
+  "findings": [
+    {
+      "file": "frontend/src/main.ts",
+      "messages": [
+        {
+          "ruleId": "no-console",
+          "severity": 1,
+          "message": "Unexpected console statement.",
+          "line": 20,
+          "column": 16,
+          "nodeType": "MemberExpression",
+          "messageId": "unexpected",
+          "endLine": 20,
+          "endColumn": 29
+        }
+      ]
+    }
+  ]
+}

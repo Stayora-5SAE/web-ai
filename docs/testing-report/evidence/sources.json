@@ -1,0 +1,558 @@
+[
+  {
+    "file": "backend/src/main/java/com/stayora/accounts/Account.java",
+    "sha256": "9494a8c5c3d19033ce797ff20d0a9358d4471dde54885a18f252db652c3070df"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/accounts/AccountController.java",
+    "sha256": "fda230992a9f98a8e59036ddf7936e8e0d196261be8abf0ac2298ad9fb6fd38c"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/accounts/AccountRepository.java",
+    "sha256": "d4c19d17cd9260bbff9bad35fa78b8a1d6af1c956970e2aaecb2e1986cca44b6"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/accounts/AccountService.java",
+    "sha256": "11d0fa59ac54edd372ca7da9525efbdfe4dde7d3d74c7666c3e48f11dfb721f9"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/accounts/AccountSession.java",
+    "sha256": "a79dc268c38670598d1274825666577a276b508d570ba2d8f1378dc810528a61"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/accounts/AccountSessionRepository.java",
+    "sha256": "e9e3d3801f32897a10e99232533a83c30032e3fce262c502a788599d363a1d5e"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/accounts/AuthController.java",
+    "sha256": "e4c4c5af2b22a7cac131dc9908610bc7eabbbbf077b9072f83efff869d19b1bc"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/accounts/AuthService.java",
+    "sha256": "4fb5d1129a0429b94809ce4e8e11ef81388d0108583f5b70468b5548bd3ec2b7"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/accounts/Credential.java",
+    "sha256": "1f14d2cf1b27fc5e7227154a6e417b958d420dbe00221c50e52e8460f2c1af43"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/accounts/CredentialRepository.java",
+    "sha256": "36c8a719b65362c29c7ff0ad12190c7b93d3b28ac1b98950b6db5168532e78f8"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/accounts/PasswordHasher.java",
+    "sha256": "58c73b155e60fbf7bc6721e3aef9aafb7b833be063d34f9e6bc0629b0e628159"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/accounts/SessionRequestFilter.java",
+    "sha256": "76f3d1b1eaf54cc50c015eb2191275c1e84b47192e214d3745d53f39ff738bcd"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/ai/AiController.java",
+    "sha256": "abc382bfe2105454b012911eab16881e73b7edb1a4e87217e1a000e870cab832"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/ai/AiPrivacy.java",
+    "sha256": "785a7ab674a381d91b8d14ddc3da2f31bba413f3ba93c8b942934c52deec58ff"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/ai/AiProvider.java",
+    "sha256": "616e2d3bb899bea77d191207a25b25fa2aedc039ac7d79374e046de6fb61e4e0"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/ai/AiService.java",
+    "sha256": "f5d8f8eafccd9eb5841ddfb340b5eefa8a3426a7348330361e4f97ca7cc69761"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/ai/AiSkill.java",
+    "sha256": "bdb239a0ac1f8a452f40c31e0975602c145d9506622177139b6df8b1784c5e1a"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/ai/ConfiguredAiProvider.java",
+    "sha256": "cffc31746d827846384e9657d59053251f4bb0efdb056a9c0f9b770d7b83758b"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/availability/AvailabilityBlock.java",
+    "sha256": "0a1b7669eeb6045ef93ba51ac4e3aee7c830ec793a2bddc0097195198e361220"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/availability/AvailabilityRepository.java",
+    "sha256": "13dce7260f8999b4130362b30320bf0078165b895dac1125a5165167cd8d7bd9"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/availability/AvailabilityService.java",
+    "sha256": "271fe8e5331dd4b787c851ebe62db3cade737524dd0a5a08a56f99ae19a46aed"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/availability/HostAvailabilityManager.java",
+    "sha256": "a1251f65c597e75de431a220c7cd211dcd584f51d85b00ae2790677a6c639e19"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/availability/HostController.java",
+    "sha256": "e050018c9a1ca04fdd4efde98d8533cb90e0aa914776bfc0e6c1811185714e8e"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/availability/HostSummaryAiSkill.java",
+    "sha256": "a163403f36c49655e4e9048b7641692dc25f2ce797eb9e0582bd47917558587b"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/availability/NightlyPrice.java",
+    "sha256": "2cb270ef3c158372b0d250b65ac0df68ee09c0aa8cc0dd3b2077ab13530ceac8"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/availability/NightlyPriceRepository.java",
+    "sha256": "56a7ae3bccb0c2506893e9d4c960dccf1794942ab9a7da1314ea818c731d8887"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/community/package-info.java",
+    "sha256": "ee569b149a1bd40356238192ecfc9ba04576d78dc45d9773d699213143fb0ba4"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/listings/ListingAiSkill.java",
+    "sha256": "a7f4c6e84150c16c844b66564022469ea6944e8e8fd779d9643c9ed42d2eaba0"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/listings/ListingController.java",
+    "sha256": "05630d36c21f175260a840014f71da7a4fa8cea475214661fe04a723ec999eb7"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/listings/ListingService.java",
+    "sha256": "40bfc89756c266b1550d801bc44c4f0e879596a3554ed520d3af2bda263414aa"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/listings/Property.java",
+    "sha256": "e79807def580272a62946812a4827669eda39b727280b1dd36a783503c959412"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/listings/PropertyManagementController.java",
+    "sha256": "af2c18979eb6644c19a1d1e0178ca9bb238d13d5c50ecfd71a1118e5fd06d3e5"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/listings/PropertyManagementService.java",
+    "sha256": "cf01d71f9c56021095604e60e8361121c617523e74cb7c99a34be606036cf629"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/listings/PropertyRepository.java",
+    "sha256": "00d523c4d0c1d503f0f1b7d669c763ed7a7b860621eb3592bd50b610a383dc39"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/listings/PropertyRequest.java",
+    "sha256": "4116b8d403d6c34ea874ff5a23f0585b353cac85e85a836933fcd56c71542fdf"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/listings/WishlistController.java",
+    "sha256": "65bff2f5afcfb1833eed351d3cec3cd76e4720a98cbdd766294e6139ee70742d"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/listings/WishlistEntry.java",
+    "sha256": "852562d7ef9c43a131c3d7d212e244d877031adb4ae350bdfd634c9cc07baf3a"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/listings/WishlistRepository.java",
+    "sha256": "ac4ee048a44d97052f4f8cc755ec3b1890e9b456dfae4881ee79531f992b390e"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/listings/WishlistService.java",
+    "sha256": "3c5d695ba938cb2e1599e41fbda21bc4bf688851f414193eaef862980f9780e9"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/messages/ChatMessage.java",
+    "sha256": "678fdd49285373da33939509034c278ad3cd1b06b33e8624345b1fa5c9c130ad"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/messages/ChatMessageRepository.java",
+    "sha256": "c0e377e3eddcc434357cd455c9be9ffc1fbf0ff6c4e97e61daeac90fb70f7b07"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/messages/Conversation.java",
+    "sha256": "b2b2d884a883c7672ab8aead607b77ecf09303169a77329b0eddf0c6a1c5ffd4"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/messages/ConversationRepository.java",
+    "sha256": "2d7a4c9660c2675fd0584e5aac5ecd1c90b62f2513672ac5dd5cce71ef9ac327"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/messages/MessageDraftAiSkill.java",
+    "sha256": "20e9fe52cb0e2edd6965b79283e5381a29e2608440388a0c1f6d3f2db8594ba1"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/messages/MessagingController.java",
+    "sha256": "7e5b74df5a777c81918f4209ab4be30b12e8717adbae74a33172919f2a1bb8b5"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/messages/MessagingService.java",
+    "sha256": "55337c389c85cbf5535502971f80eb6c2f9daf7280da113aacf0af21402d978d"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/reservations/Reservation.java",
+    "sha256": "293c3cf2f3cc3b138b2a045d0d5c0c0647baaecbbedcc92e70bc6f4b5851ee7c"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/reservations/ReservationAiSkill.java",
+    "sha256": "655f6f7625418e6482e394a2a1f061382679626750dc5f132be25dc2a705e049"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/reservations/ReservationController.java",
+    "sha256": "846111d12f3d87f5948301e114ac13c057cef33fd0994548794f046878391be8"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/reservations/ReservationPayment.java",
+    "sha256": "fd8b9ab04c9f566a54614a443f0c054d0e0b5df77c35b51b52736873e4456da0"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/reservations/ReservationPaymentRepository.java",
+    "sha256": "ccff53cd926418255efafc0ef8e681fadf710bde9ed70e6d25c40214a0d5819d"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/reservations/ReservationRepository.java",
+    "sha256": "c06dc405f7e3474b84da1743cf0f4a7fc89d15c8ceb6fa68ee00521f420636d8"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/reservations/ReservationService.java",
+    "sha256": "ecdc61994f85ac694249261a54145f6acaf267c134d34f0248047995214b67a4"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/reviews/Review.java",
+    "sha256": "d6cc9c036f39a0514f122341ff7871fee5bc7c525bf95fb70f40fe76d0423bd9"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/reviews/ReviewAiSkill.java",
+    "sha256": "1568d8558b6a0410d8e6e386f3a128e1273fab9e6d760b0e6ce9d9b7954f2836"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/reviews/ReviewController.java",
+    "sha256": "f5657047c66e1ca684221188eefad991658100205d3ca4849530ea93dbfd254d"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/reviews/ReviewRepository.java",
+    "sha256": "02335bd6a1e9baffa96b2d3d69752858d6187267fb76eae3381f2c4f07c27697"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/reviews/ReviewService.java",
+    "sha256": "de74bcf782d8d81586193e876869320e800c5494207ae3b0d95b5d8e38f0acaf"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/shared/ApiErrors.java",
+    "sha256": "67e1fabe009b6426c76c4d106bcecc9d19e46b4761197c03ea9a6354a0bb661c"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/shared/ApiException.java",
+    "sha256": "d394c05a816e8cf69cae5d8fee06c2a25312b2e570811f80800284eb128a0b26"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/shared/DemoConfiguration.java",
+    "sha256": "d34a4da8affd68fa56a8d3b9458ed36bc05af82c88a7afe39ccf36cb21497e72"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/shared/DevSeeder.java",
+    "sha256": "599420f253f1036c98d73c7ffd87bf0d548d57efde2b3ce46c04d2ba8b818532"
+  },
+  {
+    "file": "backend/src/main/java/com/stayora/StayoraApplication.java",
+    "sha256": "9eebcaa74fdbbc39fdc93daa2b04880155e16ae78baac6474622900ab891745c"
+  },
+  {
+    "file": "backend/src/main/resources/application-dev.yml",
+    "sha256": "50c90872a00489b343deae92d17c2705b63deb7a12307cc37d7a1f49e959312f"
+  },
+  {
+    "file": "backend/src/main/resources/application.yml",
+    "sha256": "814d755f401d548cbcf20acf4eb2d025058714ca74f038c0e80d8d04e08565d4"
+  },
+  {
+    "file": "backend/src/main/resources/db/migration/V1__baseline.sql",
+    "sha256": "a24bcf403ab6a4cfe95e74fa16c5cad36c4132187847d29ee25ed77e9549b35a"
+  },
+  {
+    "file": "backend/src/main/resources/db/migration/V2__property_management.sql",
+    "sha256": "6d85c23dce0825677ed57e7106397c34e7a1cad2f1eebb2d94bd32c18a6fe945"
+  },
+  {
+    "file": "backend/src/main/resources/db/migration/V3__reservation_payments.sql",
+    "sha256": "a0cbe088f6abdbf0b2de105a9403f76f3c91edc8f35185ea9731f0bed1d973be"
+  },
+  {
+    "file": "backend/src/main/resources/db/migration/V4__availability_pricing.sql",
+    "sha256": "3b8d5bc394f48249d876fb31cd34ba4a980a1b868748dc4f51202a070f13e31f"
+  },
+  {
+    "file": "backend/src/main/resources/db/migration/V5__reviews_and_ratings.sql",
+    "sha256": "4058c98c578f518bbe104cc03b3a4b9c471c0d7a6d7b92d558cae5dfe290a20b"
+  },
+  {
+    "file": "backend/src/main/resources/db/migration/V6__guest_host_conversations.sql",
+    "sha256": "4a1c5d9044d064b4a6e2ba4706eb9cc3dd8d72b39b190fa0d4d12e85f778ac6c"
+  },
+  {
+    "file": "backend/src/main/resources/db/migration/V7__account_authentication.sql",
+    "sha256": "5bafdc98ebe4ab75783fee60e233dd70751a1fff5913803284ed180e34b6de64"
+  },
+  {
+    "file": "backend/src/main/resources/db/migration/V8__derive_actual_review_aggregates.sql",
+    "sha256": "b0fa20cc7050ca00c47938e75da0ab38fd1f6573ac399a0ef09c7019b36d1ec2"
+  },
+  {
+    "file": "backend/src/main/resources/dev-seed.sql",
+    "sha256": "70feab6b742c4bdbc1a761dc257d078dca2d44edb1c6624b173bf3d1e58c3a53"
+  },
+  {
+    "file": "backend/src/test/java/com/stayora/accounts/AuthIntegrationTest.java",
+    "sha256": "0e6bd6ef3066cac2969420a14e7ce4e0f8d4433ac3f229e5fb6e9f3485c02516"
+  },
+  {
+    "file": "backend/src/test/java/com/stayora/ai/AiSafetyTest.java",
+    "sha256": "a9911072d07ad2a01523b39d7c3aae794271a2cd3a660f87ff07aed13b584c7d"
+  },
+  {
+    "file": "backend/src/test/java/com/stayora/AvailabilityManagementIntegrationTest.java",
+    "sha256": "7b28c4615005469558d0e925fc97900c4f27fb228e0506dac7026b1157209adb"
+  },
+  {
+    "file": "backend/src/test/java/com/stayora/BookingIntegrationTest.java",
+    "sha256": "cdf6f09b4611f7ba2765305446345c4536f6c1208612f9f4756dfdaacf79d4bc"
+  },
+  {
+    "file": "backend/src/test/java/com/stayora/ListingManagementIntegrationTest.java",
+    "sha256": "25006361d95c396b1ac8f61a2cd04b64b857b28d9f65cdef61df0ad3a560b0a3"
+  },
+  {
+    "file": "backend/src/test/java/com/stayora/listings/ListingAiSkillTest.java",
+    "sha256": "5d5d73f098753478e5d096b641ffdad16c7a45ce2401b31c73fa45564140e42e"
+  },
+  {
+    "file": "backend/src/test/java/com/stayora/MessagingIntegrationTest.java",
+    "sha256": "ec4e84c3eea900c554bb895ea965ed3423ec157d7c502e41bd7591f188135932"
+  },
+  {
+    "file": "backend/src/test/java/com/stayora/ReservationLifecycleIntegrationTest.java",
+    "sha256": "30a284c05a02e04493e05c482a73d925b8b72a104b07da30ffa092346550a0e1"
+  },
+  {
+    "file": "backend/src/test/java/com/stayora/ReviewManagementIntegrationTest.java",
+    "sha256": "9dd7bdbf8071ac2d2af7faa88e81569ff3b5eea8b57de4e3670f3237b5bef982"
+  },
+  {
+    "file": "backend/src/test/java/com/stayora/shared/DemoConfigurationTest.java",
+    "sha256": "87aff080e994f53afd00cfd6012894932fbd90965efa5b207ad1a8a8a593653e"
+  },
+  {
+    "file": "frontend/src/app/accounts/auth.component.ts",
+    "sha256": "2af7319712cb3e3ff55574d8f50761f8e60c5f6096f871441b2bf86d9b2c8329"
+  },
+  {
+    "file": "frontend/src/app/accounts/identity.service.spec.ts",
+    "sha256": "e294aa3f91d7d3225b4c079e6dbc1a61002a745f6660326771a1535d63c9a85d"
+  },
+  {
+    "file": "frontend/src/app/accounts/identity.service.ts",
+    "sha256": "2f97925e3f4edc1d54eef1027faf45eafcfb93910b68284166068a4dd292a732"
+  },
+  {
+    "file": "frontend/src/app/app.component.ts",
+    "sha256": "5c3fd7e55f379417e1077b1f3c90b9cc0d9ea4f3995a0b61eb032dcb15596b20"
+  },
+  {
+    "file": "frontend/src/app/app.routes.ts",
+    "sha256": "1916098ee86438d8721f421f22db3f9f3fe64e0c8b785a3a99076e1970e780b8"
+  },
+  {
+    "file": "frontend/src/app/availability/availability-api.service.ts",
+    "sha256": "e3f8bf3da75fb60a7b05a7992b34bc6e2f9c3e9c872db90364a70aff563fa9de"
+  },
+  {
+    "file": "frontend/src/app/availability/calendar.component.spec.ts",
+    "sha256": "1289ab1f4a3e41a1cedade6ad95605864d3a3abf7a754a869e6c01392719b761"
+  },
+  {
+    "file": "frontend/src/app/availability/calendar.component.ts",
+    "sha256": "a2747b1e3cc69c2346db0a511ca11e6ff51d9aaa985b7da3050358e3aba2a3fc"
+  },
+  {
+    "file": "frontend/src/app/availability/today.component.ts",
+    "sha256": "a1f58cfd276eb9ab64a801a0d7c1cffc9f33cf25257ee677c5c91948f6e2049d"
+  },
+  {
+    "file": "frontend/src/app/community/README.md",
+    "sha256": "217fbc5252faff595a70e589a741c3e170afe5babb4dd3c7835a061ee17c2783"
+  },
+  {
+    "file": "frontend/src/app/core/api.service.spec.ts",
+    "sha256": "768b7c5bbbf45fd43b546cc9bf8727a33316231c18711aef6e378b358056e6d9"
+  },
+  {
+    "file": "frontend/src/app/core/api.service.ts",
+    "sha256": "7468a5228743a29dba3192251efb2a6c55abe9842026eb93be4efca73c1c4be2"
+  },
+  {
+    "file": "frontend/src/app/core/models.ts",
+    "sha256": "a6ccb943e7cec863cbd004ef1ebdea8aab8ff7cba2e1d33b01666a4d4b5f7213"
+  },
+  {
+    "file": "frontend/src/app/core/selection.service.ts",
+    "sha256": "8083186c1b039da86e5fcb4e32cd3504f105f2009493b48c8b55647153ecdc5d"
+  },
+  {
+    "file": "frontend/src/app/listings/explore.component.ts",
+    "sha256": "66b97336cdbc3a5c25607b3860e6b8e6df2c1a2eb61635811b6649921e638997"
+  },
+  {
+    "file": "frontend/src/app/listings/host-listings.component.ts",
+    "sha256": "fa15ad4568afbd7b2358d32216cb2b1f8967d5cf85da865c689c08c30249f01c"
+  },
+  {
+    "file": "frontend/src/app/listings/listing-editor.component.spec.ts",
+    "sha256": "d591301033c242a5ac29ed7b7daecef3950667a0f9b0419ecf7eaa602b42c3ce"
+  },
+  {
+    "file": "frontend/src/app/listings/listing-editor.component.ts",
+    "sha256": "3b2ba01074f2a2bdbe520267fa45aab5d33de57f1ecb31183ded21f93f3c3f33"
+  },
+  {
+    "file": "frontend/src/app/listings/listing-management.service.spec.ts",
+    "sha256": "8a95d0648f8479601dbae7388993fcf4974f87eaacf6e8b1a3ad4083f7979f89"
+  },
+  {
+    "file": "frontend/src/app/listings/listing-management.service.ts",
+    "sha256": "84957f6994a1e8183ec229f97fe3632076f7168728dba3e5f50adcd7eea5dd43"
+  },
+  {
+    "file": "frontend/src/app/listings/map.component.ts",
+    "sha256": "56156414d2f72563d30b042d4c74f6594cd05e858f795548fdcbfb6ee8c93143"
+  },
+  {
+    "file": "frontend/src/app/listings/property-detail.component.ts",
+    "sha256": "a31c792bf82cdf0ff8d3ea13ba73389abc569b19a0d69efb6d4627d736c41b9e"
+  },
+  {
+    "file": "frontend/src/app/listings/search.component.ts",
+    "sha256": "8411dd133265440ee33bcc3441891509f1879ad133cf902ee485c16cf0e8b9d8"
+  },
+  {
+    "file": "frontend/src/app/listings/wishlist.service.spec.ts",
+    "sha256": "a5a4279e1adecd921b796433e81473fa151b4f0b2ac6145c36ae0bab28646c92"
+  },
+  {
+    "file": "frontend/src/app/listings/wishlist.service.ts",
+    "sha256": "04fb0bfd015ee82bccb7d39640c6a402567786af0e32ea8d843594da0559ca27"
+  },
+  {
+    "file": "frontend/src/app/listings/wishlists.component.ts",
+    "sha256": "02d9d3f2a1cf2208998b85128da5ab05ebbb152037f9fac1573c16ff7dfdfe7f"
+  },
+  {
+    "file": "frontend/src/app/messages/messages.component.spec.ts",
+    "sha256": "ff4928140dcded2e48fd6274b6c06159a7a8ab5fc17e3ba423b1617f7dc2b29b"
+  },
+  {
+    "file": "frontend/src/app/messages/messages.component.ts",
+    "sha256": "f1f854339ac81ed54d73939bf8259b4210187685f862babbc65cee5ddee6d6e7"
+  },
+  {
+    "file": "frontend/src/app/messages/messaging-api.service.spec.ts",
+    "sha256": "763d5a73ed8f47327336b1bfe282c69e33146f7a5cc36fbfd5b6926b4f065779"
+  },
+  {
+    "file": "frontend/src/app/messages/messaging-api.service.ts",
+    "sha256": "d9a3647d4906403209bd7c95fe9bbc93ec3f645a868c18c701da688c6577ae87"
+  },
+  {
+    "file": "frontend/src/app/reservations/host-requests.component.ts",
+    "sha256": "899569bee7f28be4acdd24e96703e6c2a16df0086e7f743a8570677d17a3b407"
+  },
+  {
+    "file": "frontend/src/app/reservations/host-reservation.component.ts",
+    "sha256": "5a6861f1d374a33ce97ddcb0d1d313a72b1a6000142bbc56115a831a31ab9d51"
+  },
+  {
+    "file": "frontend/src/app/reservations/reservation-api.service.spec.ts",
+    "sha256": "431721ab6f470d17edac6a5b784c0aa9a3acbd001f7bdae3c44d7ac389cd9106"
+  },
+  {
+    "file": "frontend/src/app/reservations/reservation-api.service.ts",
+    "sha256": "6ee7444bfa041ba1895d764eddbc802a2d5c3b7b1750a5037989f179093ec148"
+  },
+  {
+    "file": "frontend/src/app/reservations/review.component.spec.ts",
+    "sha256": "cd65d4b2efec636bac329c87318f2f9d720dca93b36ca0729be9239a51fcbdb3"
+  },
+  {
+    "file": "frontend/src/app/reservations/review.component.ts",
+    "sha256": "c25da2d124e76c5eb89aa28934c239fc7ab4065ada3654ac582a6cf25bd861b5"
+  },
+  {
+    "file": "frontend/src/app/reservations/trip-detail.component.spec.ts",
+    "sha256": "40098321d15b320c4ea037bdb9afc30e9cfaf0f4126899912ac12a16ff7adb33"
+  },
+  {
+    "file": "frontend/src/app/reservations/trip-detail.component.ts",
+    "sha256": "269285a9f0adf9c57f94b435abf1896ab34cf62cebcc5bd1fc7fdb662f37d63c"
+  },
+  {
+    "file": "frontend/src/app/reservations/trips.component.ts",
+    "sha256": "7ab223604822de93e61163c9c9d6ee6369f3f94d1342762cede9a70384a95765"
+  },
+  {
+    "file": "frontend/src/app/reviews/property-reviews.component.spec.ts",
+    "sha256": "3352ad8434e053290f34a0159f2c8a6ca61aa65726d2b0d8b5bfd8979fceee61"
+  },
+  {
+    "file": "frontend/src/app/reviews/property-reviews.component.ts",
+    "sha256": "048049b0f3c718eb54758b9bcc18cbd1e7604b7bcce2780ccc632e3d0f145eee"
+  },
+  {
+    "file": "frontend/src/app/reviews/review-api.service.spec.ts",
+    "sha256": "f91ffad2cd5ff7ebd341b2e6fe3845b857ec3bcc0530eb68a9f9618dd0a0ad1d"
+  },
+  {
+    "file": "frontend/src/app/reviews/review-api.service.ts",
+    "sha256": "a3a1fd4441f9c9e610bd80115d7feb3c7ae342183b094015bc20c55bb78fd02e"
+  },
+  {
+    "file": "frontend/src/app/reviews/reviews.component.spec.ts",
+    "sha256": "ad9f1c0178300fe6e0e39f9c8ea00b36b1b144dab5da40e9e9c575abe59910d1"
+  },
+  {
+    "file": "frontend/src/app/reviews/reviews.component.ts",
+    "sha256": "6ed2ec03fd44e7b441d54d48d54d80878b62fa8696ad3108d8c563ffe2367a7f"
+  },
+  {
+    "file": "frontend/src/app/shared/feedback.component.ts",
+    "sha256": "2aa1bfec1782e57598969866452c4622ed37a52ccfc400aaa952c138882bd0a7"
+  },
+  {
+    "file": "frontend/src/app/shared/icon.component.ts",
+    "sha256": "63e16f55132101c3b6ebe59be2510bb8041612cab7a7e21c8fc4ab7da25b99f2"
+  },
+  {
+    "file": "frontend/src/app/shared/layout.component.ts",
+    "sha256": "5e4bf047905fa2ab3fb900be0cc75ad007206541cc8f1393eb92491cb1494df2"
+  },
+  {
+    "file": "frontend/src/app/shared/money.pipe.spec.ts",
+    "sha256": "e099451b000f7f57e9f02c6a1ae5715751e19863c9a5ba9a921018f220b1d6b7"
+  },
+  {
+    "file": "frontend/src/app/shared/money.pipe.ts",
+    "sha256": "b27a4f675048e4465d0fb837d09d2a14c3c731ae0067e0d2d83efd1135bc65f0"
+  },
+  {
+    "file": "frontend/src/app/shared/property-card.component.ts",
+    "sha256": "8fd129aac2277797c51a5968fbe8b0660bf7f707041989bbd2cfc3242b801d98"
+  },
+  {
+    "file": "frontend/src/app/shared/search-bar.component.ts",
+    "sha256": "1a2b3ccf311a9b039ada2f1bf0d2402565ea4023163b33fa24a293bb56e618f9"
+  },
+  {
+    "file": "frontend/src/index.html",
+    "sha256": "e4e894248fc4a1857c7300c1d5f7be9b8c077134a22fa76aff26ddf40a65344f"
+  },
+  {
+    "file": "frontend/src/main.ts",
+    "sha256": "042f73337e2702f3fc7c139121731bbb9eb940dcf9b4d00d36c05a35f4da04b2"
+  },
+  {
+    "file": "frontend/src/styles.css",
+    "sha256": "5abecf0149ddbc728e42505a91215cc81c2545608810f6ada34abf24e64e67e4"
+  }
+]

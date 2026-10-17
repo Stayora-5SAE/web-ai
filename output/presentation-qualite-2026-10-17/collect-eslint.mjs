@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {spawnSync} from 'node:child_process';
+const root=process.cwd(),out=path.join(root,'output/presentation-qualite-2026-10-17/evidence');fs.mkdirSync(out,{recursive:true});
+const args=['node_modules/eslint/bin/eslint.js','--config','../docs/static-testing-2026-10-11/eslint-rapport.cjs','--resolve-plugins-relative-to','.','--ext','.ts,.html','--format','json','--report-unused-disable-directives','src'];
+const start=new Date().toISOString(),timer=performance.now();
+const r=spawnSync(process.execPath,args,{cwd:path.join(root,'frontend'),encoding:'utf8',maxBuffer:10*1024*1024});
+fs.writeFileSync(path.join(out,'eslint-raw.json'),r.stdout);fs.writeFileSync(path.join(out,'eslint-stderr.txt'),r.stderr);
+const rows=JSON.parse(r.stdout), summary={start,finish:new Date().toISOString(),durationMs:Math.round(performance.now()-timer),exitCode:r.status,node:process.version,files:rows.length,errors:rows.reduce((n,r)=>n+r.errorCount,0),warnings:rows.reduce((n,r)=>n+r.warningCount,0),command:'node '+args.join(' '),scope:'frontend/src, TypeScript et HTML, configuration de rapport sans --fix',findings:rows.filter(r=>r.messages.length).map(r=>({file:path.relative(root,r.filePath).replaceAll('\\','/'),messages:r.messages}))};
+fs.writeFileSync(path.join(out,'eslint-execution.json'),JSON.stringify(summary,null,2));console.log(JSON.stringify(summary,null,2));

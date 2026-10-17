@@ -1,0 +1,112 @@
+[
+  {
+    "slide": 1,
+    "title": "Test et validation des logiciels",
+    "source": "Capture réelle de la campagne Réservations du 17/10/2026. Sources : manifeste et preuves Xray. Révision d70949c283394b5c23d9b3271f5e8564a3a5aa8d. La présentation exclut les membres de l’équipe."
+  },
+  {
+    "slide": 2,
+    "title": "Périmètre et plan",
+    "source": "Sources : critères Jira STAY-22 à STAY-28, STAY-38, STAY-39, STAY-41 et manifeste de campagne du 17/10/2026."
+  },
+  {
+    "slide": 3,
+    "title": "01  Jira",
+    "source": "Capture du tableau STAY, filtré sur les réservations. Aucun sprint terminé n’est revendiqué."
+  },
+  {
+    "slide": 4,
+    "title": "Critères d’acceptation",
+    "source": "Source : https://grp5sae9.atlassian.net/browse/STAY-22. Capture recadrée sur le ticket sans données de membre."
+  },
+  {
+    "slide": 5,
+    "title": "Traçabilité d’une anomalie",
+    "source": "Source : STAY-48. Le code 8492# est synthétique. Aucun fournisseur externe n’a été appelé."
+  },
+  {
+    "slide": 6,
+    "title": "Jira et Trello",
+    "source": "Comparaison adaptée au besoin Stayora, sans essai expérimental de Trello. Sources officielles : https://www.atlassian.com/software/trello/trello-and-jira et https://www.atlassian.com/blog/trello/trello-vs-jira."
+  },
+  {
+    "slide": 7,
+    "title": "02  Xray",
+    "source": "Source : plan natif STAY-46, suite STAY-45 et campagne STAY-47. Révision d70949c283394b5c23d9b3271f5e8564a3a5aa8d."
+  },
+  {
+    "slide": 8,
+    "title": "Suite de 73 tests",
+    "source": "Source : STAY-45 et manifest.json. Les états Jira To Do des cas sont distincts des résultats des Test Runs."
+  },
+  {
+    "slide": 9,
+    "title": "Étape manuelle, attendu et observation",
+    "source": "Source : Test Run de STAY-51 dans STAY-47. Actions manuelles réellement exécutées le 17/10/2026. Précondition native STAY-49."
+  },
+  {
+    "slide": 10,
+    "title": "72 tests réussis, 1 test échoué",
+    "source": "Source : STAY-47, résultat natif sauvegardé et manifeste. Les 39 tests frontend et 60 backend de npm run check sont complémentaires, non additionnés aux 73 runs."
+  },
+  {
+    "slide": 11,
+    "title": "Un échec relié à son défaut",
+    "source": "Source : Test Run FAILED de STAY-111 dans STAY-47, preuve API-061-resultat.json, défaut natif STAY-48. Aucun correctif ni retest de correctif."
+  },
+  {
+    "slide": 12,
+    "title": "Couverture et conformité",
+    "source": "Sources : panneaux natifs Test Coverage de STAY-22 et STAY-41, capturés le 17/10/2026. OK et NOK concernent le résultat de couverture, pas l’état Jira."
+  },
+  {
+    "slide": 13,
+    "title": "03  SonarQube",
+    "source": "Sources : docs/testing-report/evidence/sonarqube.json, verification.json et capture tableau-de-bord.png. Snapshot historique sur arbre local non encore commité, pas une nouvelle analyse du 17/10. Outil : Community Build 26.9.0.129388."
+  },
+  {
+    "slide": 14,
+    "title": "44 signalements ouverts",
+    "source": "Source : SonarQube, instantané du 11/10/2026. 44 signalements distincts, un signalement peut concerner plusieurs qualités. Les 16 + 40 ne doivent pas être additionnés. Règle S8786 : expressions régulières à examiner."
+  },
+  {
+    "slide": 15,
+    "title": "Portail validé et qualité globale",
+    "source": "Source : SonarQube historique du 11/10/2026 et https://docs.sonarsource.com/sonarqube-community-build/user-guide/about-new-code. Le portail concerne le nouveau code. Couverture Java 85,4 %, Angular 37,9 %, total 67,1 % dans verification.json."
+  },
+  {
+    "slide": 16,
+    "title": "04  ESLint",
+    "source": "Source : sortie JSON réelle, evidence/eslint-raw.json et eslint-execution.json. Node v22.23.3, ESLint 8.57.1. Rapport HTML local de lecture, pas interface native ESLint. Durée 3,054 s."
+  },
+  {
+    "slide": 17,
+    "title": "Configuration et périmètre",
+    "source": "Source : frontend/.eslintrc.json et docs/static-testing-2026-10-11/eslint-rapport.cjs, relancé le 17/10/2026. Exclut Java, SQL et validation métier à l’exécution."
+  },
+  {
+    "slide": 18,
+    "title": "Un avertissement de maintenance",
+    "source": "Source : exécution ESLint du 17/10/2026. Message original Unexpected console statement. Un message de démarrage fixe ne prouve pas une vulnérabilité. https://eslint.org/docs/latest/use/core-concepts/glossary et https://eslint.org/docs/latest/rules/no-console."
+  },
+  {
+    "slide": 19,
+    "title": "SonarQube et ESLint",
+    "source": "Sources : snapshots SonarQube du 11/10/2026 et ESLint du 17/10/2026. Dates et périmètres distincts, aucun classement numérique direct. https://www.sonarsource.com/resources/library/static-code-analysis-using-sonarqube/ et https://eslint.org/docs/latest/use/core-concepts/glossary."
+  },
+  {
+    "slide": 20,
+    "title": "Tests statiques et tests dynamiques",
+    "source": "Sources : campagne Xray du 17/10/2026 et rapports statiques. Xray gère et enregistre les scénarios, il ne remplace pas l’exécution réelle. La couverture affichée par SonarQube provient de tests dynamiques importés."
+  },
+  {
+    "slide": 21,
+    "title": "Bilan et priorités",
+    "source": "Sources : STAY-48, campagne STAY-47 et rapports SonarQube/ESLint. Aucun correctif réalisé pendant la campagne. La conformité complète du module ne peut pas être prononcée avec ce défaut ouvert."
+  },
+  {
+    "slide": 22,
+    "title": "Liens de consultation",
+    "source": "Liens réels vérifiés dans Jira. L’accès anonyme n’est pas disponible dans les espaces gérés par équipe. Source : https://support.atlassian.com/jira-software-cloud/docs/next-gen-permissions/. Aucun réglage global ni migration de projet modifié."
+  }
+]

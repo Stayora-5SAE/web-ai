@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: local Sonar URL accepts localhost and loopback
+ok 1 - local Sonar URL accepts localhost and loopback
+  ---
+  duration_ms: 1.235
+  type: 'test'
+  ...
+# Subtest: Sonar workflow rejects remote and credential-bearing URLs
+ok 2 - Sonar workflow rejects remote and credential-bearing URLs
+  ---
+  duration_ms: 1.4941
+  type: 'test'
+  ...
+# Subtest: coverage uses the local disposable database
+ok 3 - coverage uses the local disposable database
+  ---
+  duration_ms: 0.3651
+  type: 'test'
+  ...
+# Subtest: coverage rejects Neon and another local database
+ok 4 - coverage rejects Neon and another local database
+  ---
+  duration_ms: 0.2604
+  type: 'test'
+  ...
+# Subtest: missing reports fail before a scanner can publish a misleading analysis
+ok 5 - missing reports fail before a scanner can publish a misleading analysis
+  ---
+  duration_ms: 1.6368
+  type: 'test'
+  ...
+# Subtest: coverage reports must contain real counters and source records
+ok 6 - coverage reports must contain real counters and source records
+  ---
+  duration_ms: 45.0913
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 244.3773

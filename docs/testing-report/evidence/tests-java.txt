@@ -1,0 +1,220 @@
+[INFO] Scanning for projects...
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/com/diffplug/spotless/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/cyclonedx/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/jacoco/maven-metadata.xml
+Progress (1): 237 B
+                   
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jacoco/maven-metadata.xml (237 B at 379 B/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/flywaydb/maven-metadata.xml
+Progress (1): 243 B
+                   
+Downloaded from central: https://repo.maven.apache.org/maven2/org/cyclonedx/maven-metadata.xml (243 B at 383 B/s)
+Downloading from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/maven-metadata.xml
+Progress (1): 249 B
+                   
+Downloading from central: https://repo.maven.apache.org/maven2/org/jooq/maven-metadata.xml
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/maven-metadata.xml (249 B at 383 B/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/maven-metadata.xml
+Progress (1): 255 B
+                   
+Downloaded from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/maven-metadata.xml (255 B at 3.3 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/liquibase/maven-metadata.xml
+Progress (1): 398 B
+                   
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jooq/maven-metadata.xml (398 B at 4.5 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/graalvm/buildtools/maven-metadata.xml
+Progress (1): 234 B
+Progress (2): 234 B | 375 B
+                           
+Downloaded from central: https://repo.maven.apache.org/maven2/org/flywaydb/maven-metadata.xml (234 B at 1.8 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/maven-metadata.xml (375 B at 3.5 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml
+Progress (1): 242 B
+Progress (2): 242 B | 394 B
+                           
+Downloaded from central: https://repo.maven.apache.org/maven2/org/graalvm/buildtools/maven-metadata.xml (242 B at 2.8 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/liquibase/maven-metadata.xml (394 B at 3.5 kB/s)
+Progress (1): 3.7 kB
+Progress (1): 7.4 kB
+Progress (1): 13 kB 
+Progress (1): 19 kB
+Progress (1): 20 kB
+                   
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml (20 kB at 253 kB/s)
+Progress (1): 3.9 kB
+Progress (1): 7.7 kB
+Progress (1): 10 kB 
+                   
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml (10 kB at 107 kB/s)
+[INFO] 
+[INFO] ------------------------< com.stayora:stayora >-------------------------
+[INFO] Building Stayora 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ stayora ---
+[INFO] Deleting C:\Users\everp\Documents\GitHub\web-ai\backend\target
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (coverage-agent) @ stayora ---
+[INFO] jacocoArgLine set to -javaagent:C:\\Users\\everp\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.15\\org.jacoco.agent-0.8.15-runtime.jar=destfile=C:\\Users\\everp\\Documents\\GitHub\\web-ai\\backend\\target\\jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ stayora ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 9 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ stayora ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 63 source files with javac [debug parameters release 17] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ stayora ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ stayora ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 10 source files with javac [debug parameters release 17] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ stayora ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.stayora.accounts.AuthIntegrationTest
+20:44:25.290 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.stayora.accounts.AuthIntegrationTest]: AuthIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+20:44:26.022 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.stayora.StayoraApplication for test class com.stayora.accounts.AuthIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.6)
+
+2026-10-11T20:44:27.582+01:00  INFO 33016 --- [stayora] [           main] c.stayora.accounts.AuthIntegrationTest   : Starting AuthIntegrationTest using Java 17.0.7 with PID 33016 (started by everp in C:\Users\everp\Documents\GitHub\web-ai\backend)
+2026-10-11T20:44:27.591+01:00  INFO 33016 --- [stayora] [           main] c.stayora.accounts.AuthIntegrationTest   : The following 1 profile is active: "test"
+2026-10-11T20:44:31.139+01:00  INFO 33016 --- [stayora] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T20:44:31.474+01:00  INFO 33016 --- [stayora] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 287 ms. Found 12 JPA repository interfaces.
+2026-10-11T20:44:33.795+01:00  INFO 33016 --- [stayora] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-10-11T20:44:33.816+01:00  INFO 33016 --- [stayora] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T20:44:33.816+01:00  INFO 33016 --- [stayora] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2026-10-11T20:44:33.954+01:00  INFO 33016 --- [stayora] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-10-11T20:44:33.957+01:00  INFO 33016 --- [stayora] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6261 ms
+2026-10-11T20:44:35.252+01:00  INFO 33016 --- [stayora] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:5433/stayora_test (PostgreSQL 18.6)
+2026-10-11T20:44:35.267+01:00  WARN 33016 --- [stayora] [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 18.6 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 16.
+2026-10-11T20:44:35.378+01:00  INFO 33016 --- [stayora] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.081s)
+2026-10-11T20:44:35.431+01:00  INFO 33016 --- [stayora] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "stayora": 8
+2026-10-11T20:44:35.434+01:00  INFO 33016 --- [stayora] [           main] o.f.core.internal.command.DbMigrate      : Schema "stayora" is up to date. No migration necessary.
+2026-10-11T20:44:35.711+01:00  INFO 33016 --- [stayora] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-10-11T20:44:35.937+01:00  INFO 33016 --- [stayora] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-10-11T20:44:36.048+01:00  INFO 33016 --- [stayora] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-10-11T20:44:36.680+01:00  INFO 33016 --- [stayora] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T20:44:36.749+01:00  INFO 33016 --- [stayora] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-11T20:44:36.826+01:00  INFO 33016 --- [stayora] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-11T20:44:39.043+01:00  INFO 33016 --- [stayora] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T20:44:39.191+01:00  INFO 33016 --- [stayora] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T20:44:40.772+01:00  INFO 33016 --- [stayora] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-11T20:44:44.131+01:00  INFO 33016 --- [stayora] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T20:44:44.388+01:00  INFO 33016 --- [stayora] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 7388 (http) with context path '/'
+2026-10-11T20:44:44.413+01:00  INFO 33016 --- [stayora] [           main] c.stayora.accounts.AuthIntegrationTest   : Started AuthIntegrationTest in 17.732 seconds (process running for 22.685)
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-10-11T20:44:45.469+01:00  INFO 33016 --- [stayora] [1-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T20:44:45.470+01:00  INFO 33016 --- [stayora] [1-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T20:44:45.471+01:00  INFO 33016 --- [stayora] [1-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.05 s -- in com.stayora.accounts.AuthIntegrationTest
+[INFO] Running com.stayora.ai.AiSafetyTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.178 s -- in com.stayora.ai.AiSafetyTest
+[INFO] Running com.stayora.AvailabilityManagementIntegrationTest
+2026-10-11T20:44:48.596+01:00  INFO 33016 --- [stayora] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.stayora.AvailabilityManagementIntegrationTest]: AvailabilityManagementIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T20:44:48.611+01:00  INFO 33016 --- [stayora] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.stayora.StayoraApplication for test class com.stayora.AvailabilityManagementIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.6)
+
+2026-10-11T20:44:48.648+01:00  INFO 33016 --- [stayora] [           main] .s.AvailabilityManagementIntegrationTest : Starting AvailabilityManagementIntegrationTest using Java 17.0.7 with PID 33016 (started by everp in C:\Users\everp\Documents\GitHub\web-ai\backend)
+2026-10-11T20:44:48.648+01:00  INFO 33016 --- [stayora] [           main] .s.AvailabilityManagementIntegrationTest : The following 1 profile is active: "test"
+2026-10-11T20:44:49.128+01:00  INFO 33016 --- [stayora] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-11T20:44:49.185+01:00  INFO 33016 --- [stayora] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56 ms. Found 12 JPA repository interfaces.
+2026-10-11T20:44:49.331+01:00  INFO 33016 --- [stayora] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-10-11T20:44:49.333+01:00  INFO 33016 --- [stayora] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T20:44:49.334+01:00  INFO 33016 --- [stayora] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2026-10-11T20:44:49.384+01:00  INFO 33016 --- [stayora] [           main] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2026-10-11T20:44:49.385+01:00  INFO 33016 --- [stayora] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 735 ms
+2026-10-11T20:44:49.609+01:00  INFO 33016 --- [stayora] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:5433/stayora_test (PostgreSQL 18.6)
+2026-10-11T20:44:49.613+01:00  WARN 33016 --- [stayora] [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: PostgreSQL 18.6 is newer than this version of Flyway and support has not been tested. The latest supported version of PostgreSQL is 16.
+2026-10-11T20:44:49.639+01:00  INFO 33016 --- [stayora] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.021s)
+2026-10-11T20:44:49.678+01:00  INFO 33016 --- [stayora] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "stayora": 8
+2026-10-11T20:44:49.679+01:00  INFO 33016 --- [stayora] [           main] o.f.core.internal.command.DbMigrate      : Schema "stayora" is up to date. No migration necessary.
+2026-10-11T20:44:49.723+01:00  INFO 33016 --- [stayora] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-10-11T20:44:49.728+01:00  INFO 33016 --- [stayora] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-10-11T20:44:49.762+01:00  INFO 33016 --- [stayora] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-11T20:44:49.764+01:00  INFO 33016 --- [stayora] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-10-11T20:44:49.802+01:00  INFO 33016 --- [stayora] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-10-11T20:44:50.339+01:00  INFO 33016 --- [stayora] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-11T20:44:50.391+01:00  INFO 33016 --- [stayora] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-11T20:44:51.308+01:00  INFO 33016 --- [stayora] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T20:44:51.350+01:00  INFO 33016 --- [stayora] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 7400 (http) with context path '/'
+2026-10-11T20:44:51.362+01:00  INFO 33016 --- [stayora] [           main] .s.AvailabilityManagementIntegrationTest : Started AvailabilityManagementIntegrationTest in 2.747 seconds (process running for 29.633)
+2026-10-11T20:44:51.430+01:00  INFO 33016 --- [stayora] [1-auto-2-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T20:44:51.430+01:00  INFO 33016 --- [stayora] [1-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T20:44:51.431+01:00  INFO 33016 --- [stayora] [1-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.698 s -- in com.stayora.AvailabilityManagementIntegrationTest
+[INFO] Running com.stayora.BookingIntegrationTest
+2026-10-11T20:44:52.296+01:00  INFO 33016 --- [stayora] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.stayora.BookingIntegrationTest]: BookingIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T20:44:52.300+01:00  INFO 33016 --- [stayora] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.stayora.StayoraApplication for test class com.stayora.BookingIntegrationTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.669 s -- in com.stayora.BookingIntegrationTest
+[INFO] Running com.stayora.ListingManagementIntegrationTest
+2026-10-11T20:44:52.966+01:00  INFO 33016 --- [stayora] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.stayora.ListingManagementIntegrationTest]: ListingManagementIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T20:44:52.967+01:00  INFO 33016 --- [stayora] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.stayora.StayoraApplication for test class com.stayora.ListingManagementIntegrationTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.570 s -- in com.stayora.ListingManagementIntegrationTest
+[INFO] Running com.stayora.listings.ListingAiSkillTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.stayora.listings.ListingAiSkillTest
+[INFO] Running com.stayora.MessagingIntegrationTest
+2026-10-11T20:44:53.540+01:00  INFO 33016 --- [stayora] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.stayora.MessagingIntegrationTest]: MessagingIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T20:44:53.542+01:00  INFO 33016 --- [stayora] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.stayora.StayoraApplication for test class com.stayora.MessagingIntegrationTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.671 s -- in com.stayora.MessagingIntegrationTest
+[INFO] Running com.stayora.ReservationLifecycleIntegrationTest
+2026-10-11T20:44:54.211+01:00  INFO 33016 --- [stayora] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.stayora.ReservationLifecycleIntegrationTest]: ReservationLifecycleIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T20:44:54.213+01:00  INFO 33016 --- [stayora] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.stayora.StayoraApplication for test class com.stayora.ReservationLifecycleIntegrationTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.365 s -- in com.stayora.ReservationLifecycleIntegrationTest
+[INFO] Running com.stayora.ReviewManagementIntegrationTest
+2026-10-11T20:44:54.577+01:00  INFO 33016 --- [stayora] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.stayora.ReviewManagementIntegrationTest]: ReviewManagementIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-11T20:44:54.578+01:00  INFO 33016 --- [stayora] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.stayora.StayoraApplication for test class com.stayora.ReviewManagementIntegrationTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.508 s -- in com.stayora.ReviewManagementIntegrationTest
+[INFO] Running com.stayora.shared.DemoConfigurationTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.stayora.shared.DemoConfigurationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 51, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ stayora ---
+[INFO] Building jar: C:\Users\everp\Documents\GitHub\web-ai\backend\target\stayora-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.3.6:repackage (repackage) @ stayora ---
+[INFO] Replacing main artifact C:\Users\everp\Documents\GitHub\web-ai\backend\target\stayora-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to C:\Users\everp\Documents\GitHub\web-ai\backend\target\stayora-0.0.1-SNAPSHOT.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.15:report (coverage-report) @ stayora ---
+[INFO] Loading execution data file C:\Users\everp\Documents\GitHub\web-ai\backend\target\jacoco.exec
+[INFO] Analyzed bundle 'Stayora' with 79 classes
+[INFO] 
+[INFO] --- spotless:2.43.0:check (default-cli) @ stayora ---
+[INFO] Index file does not exist. Fallback to an empty index
+[INFO] Spotless.Java is keeping 73 files clean - 0 needs changes to be clean, 73 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  53.532 s
+[INFO] Finished at: 2026-10-11T20:45:01+01:00
+[INFO] ------------------------------------------------------------------------

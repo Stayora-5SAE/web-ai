@@ -1,0 +1,17 @@
+{
+  "designId": "DAHYTIyTmSg",
+  "title": "Stayora — Test et validation des logiciels",
+  "pageCount": 22,
+  "editUrl": "https://www.canva.com/d/DfRMtJsX6D0l_uP",
+  "viewUrl": "https://www.canva.com/d/S-Zw4vKOslWJBvh",
+  "language": "fr",
+  "chapters": [
+    "Jira",
+    "Xray",
+    "SonarQube",
+    "ESLint"
+  ],
+  "boardAccess": "Connexion Jira requise. L’accès anonyme est indisponible pour les espaces gérés par équipe.",
+  "pptx": "livrables/Stayora_Presentation_FR_Canva.pptx",
+  "pdf": "livrables/Stayora_Presentation_FR.pdf"
+}
