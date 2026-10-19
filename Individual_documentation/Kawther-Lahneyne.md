@@ -165,7 +165,7 @@ Une PR d'exercice est préparée séparément dans `docs/copilot-review-demo/`. 
 
 Pour demander une revue sur GitHub, utiliser **Reviewers → Copilot → Request**, si cette option est disponible pour le compte et le dépôt. Une simple mention n'est pas une preuve de revue. La [documentation GitHub](https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/copilot-code-review) décrit cette procédure.
 
-Lien de PR : **à renseigner après création**.
+Lien de PR : [PR de démonstration #1](https://github.com/Stayora-5SAE/web-ai/pull/1), créée en brouillon le 19 octobre 2026 ; revue Copilot non encore constatée.
 
 Lien du commentaire réellement produit par Copilot : **en attente de revue**.
 
