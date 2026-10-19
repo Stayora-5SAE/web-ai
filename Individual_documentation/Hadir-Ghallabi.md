@@ -10,18 +10,7 @@
 
 > Ce rapport a été préparé avec Codex à partir du dépôt et de preuves conservées. Il décrit le périmètre attribué à Hadir Ghallabi ; il ne constitue pas une déclaration signée de travail personnel. Les prompts de développement ci-dessous sont proposés pour de nouvelles interactions : aucune conversation passée, durée gagnée ou réponse Copilot n'est reconstituée. Les champs personnels doivent être complétés par le membre à partir de son utilisation réelle.
 
-## 1. Correspondance avec la grille individuelle
-
-| Critère                                          | Points | Éléments disponibles                                                            | Preuve personnelle restant à apporter                                                   |
-| ------------------------------------------------ | -----: | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| Maîtrise technique : IA et génie logiciel        |      1 | Architecture, responsabilités, prompt et limites décrits ici                    | Expliquer le fonctionnement et répondre aux questions sans se limiter à lire le rapport |
-| Documentation : prompts, interactions et modèles |      2 | Prompt applicatif exact, exemples et journal structuré                          | Sessions réelles, réponses, décisions et justification personnelle du modèle            |
-| Présentation et argumentation des choix          |    1,5 | Démonstration et méthode de mesure proposées                                    | Présentation orale, compromis et gain de productivité observé                           |
-| Intégration API / modèle dans le projet          |    3,5 | Fonction `reservation-itinerary` reliée au service IA et à une interface métier | Démonstration actuelle ; distinguer `live` et `mock`                                    |
-
-Les six critères collectifs totalisent séparément 12 points. Ce document fournit des éléments utiles aux tests assistés par IA et au rapport final, sans attribuer de note ni transformer une preuve collective en contribution individuelle certifiée.
-
-## 2. Périmètre métier et contribution à expliquer
+## 1. Périmètre métier et contribution à expliquer
 
 Proposer un programme de séjour à partir de la destination, des dates et du nombre de voyageurs, sans organiser une activité ni modifier une réservation.
 
@@ -31,7 +20,7 @@ Parcours à présenter : Ouvrir un séjour autorisé → demander un itinéraire
 
 L'attribution du module est cohérente avec le [tableau de responsabilités](../docs/technical-report.md) et le [handoff individuel](../docs/handoff/Hadir-Ghallabi.md). L'historique Git contient des commits sous le nom du membre ; une attribution de commit ne prouve pas à elle seule sa maîtrise ni l'usage personnel d'un LLM.
 
-## 3. Architecture de l'intégration IA
+## 2. Architecture de l'intégration IA
 
 - Interface métier : [`trip-detail.component.ts`](../frontend/src/app/reservations/trip-detail.component.ts) ; parcours `/trips/:id`.
 - Implémentation du skill : [`ReservationAiSkill.java`](../backend/src/main/java/com/stayora/reservations/ReservationAiSkill.java), identifiant `reservation-itinerary`.
@@ -41,7 +30,7 @@ L'attribution du module est cohérente avec le [tableau de responsabilités](../
 
 Le contexte utile est limité à : **destination publique, dates du séjour et nombre de voyageurs**. Le filtrage partagé est une défense supplémentaire ; il ne justifie pas d'envoyer des données personnelles inutiles. Un échec réseau, un quota, une sortie invalide ou une configuration absente peut produire un résultat déterministe `mock` clairement signalé. Une réponse HTTP 200 peut donc être un fallback et ne suffit pas à démontrer un appel réel réussi.
 
-## 4. Prompt applicatif exact, en anglais
+## 3. Prompt applicatif exact, en anglais
 
 Chaîne extraite de `systemPrompt()` dans la version examinée, avant les consignes communes ajoutées par le fournisseur :
 
@@ -51,7 +40,7 @@ Suggest a short English travel itinerary from only the supplied destination, sta
 
 Le fournisseur ajoute notamment une limitation aux faits anonymes, une réponse de moins de 200 mots et l'obligation de relecture humaine. Le contexte est une donnée à traiter, pas une autorisation d'exécuter des actions. La limite de longueur et les contrôles de sortie ne garantissent pas la justesse sémantique.
 
-## 5. Choix du modèle et paramètres
+## 4. Choix du modèle et paramètres
 
 La configuration actuelle du dépôt utilise `gemini-3.5-flash-lite` via Google Gemini. Le choix est centralisé pour les cinq modules. Il faut distinguer cet usage applicatif de Codex, utilisé ici pour préparer et analyser la documentation.
 
@@ -63,7 +52,7 @@ Techniques présentes : contexte minimal, consignes métier spécialisées, sort
 
 **À personnaliser :** modèle réellement utilisé par le membre, date, alternative envisagée, raison du choix et observations sur des entrées identiques. Ne pas attribuer au membre un choix partagé qu'il ne peut pas expliquer.
 
-## 6. Interactions de développement et décisions personnelles
+## 5. Interactions de développement et décisions personnelles
 
 Ces trois prompts sont des supports prêts à utiliser. Ils ne constituent pas des transcriptions de sessions passées. Utiliser uniquement des faits synthétiques ou du code autorisé, puis conserver les réponses réelles, y compris les erreurs de l'outil.
 
@@ -100,7 +89,7 @@ Décision personnelle et justification : **à renseigner**.
 Fichier, commit ou test concerné : **à renseigner**.
 Résultat de vérification : **à renseigner ; ne pas confondre résultat attendu et résultat observé**.
 
-## 7. Revue documentaire IA et tests après intégration
+## 6. Revue documentaire IA et tests après intégration
 
 **Analyse préparée dans cette session avec Codex :** Vérifier le cas frontière de deux séjours adjacents et distinguer une recommandation touristique d'un fait de réservation.
 
@@ -125,7 +114,7 @@ La présence d'un test sur une fonctionnalité IA ne prouve pas que l'IA a aidé
 
 Les vérifications fonctionnelles du projet utilisent une base de test PostgreSQL isolée nommée `stayora_test`. La commande collective est `npm run check`, selon les prérequis du README. **Aucun test métier n'est relancé lors de la rédaction de ce document.** Les chiffres historiques restent associés à leur date et version.
 
-## 8. Preuve historique de génération et limites observées
+## 7. Preuve historique de génération et limites observées
 
 Le [résultat conservé du 16 octobre 2026](../output/playwright/ai-failover-2026-10-16/test-results.json) contient une exécution de `reservation-itinerary` : mode `live`, modèle `cohere/north-mini-code:free`, statut HTTP 200, temps enregistré `7579 ms`.
 
@@ -135,7 +124,7 @@ Observation propre au module : Le bilan historique signale des trajets et temps 
 
 Les fichiers `output/` sont des preuves locales généralement ignorées par Git. Le lien ci-dessus peut donc être absent d'un clone ou de GitHub ; le membre doit fournir les captures ou une exportation anonymisée correspondante dans son dossier de remise, sans publier de clés ni de données privées.
 
-## 9. Évaluation, adaptation et productivité
+## 8. Évaluation, adaptation et productivité
 
 Limite principale : Une suggestion peut comporter un trajet, une durée ou un horaire non vérifié. La présence d'une réponse live ne valide pas ces informations touristiques.
 
@@ -150,9 +139,9 @@ Comparer le temps de préparation manuelle d'un court programme au temps génér
 | Gain de productivité  | Comparer travail manuel et travail assisté avec correction        | Non mesuré individuellement                                                 |
 | Adaptation du prompt  | Comparer deux versions sur les mêmes cas                          | Protocole proposé, comparaison à réaliser                                   |
 
-Les optimisations attendues par la grille peuvent être abordées par la précision du prompt, les paramètres, le choix comparé de modèles et la réduction du contexte. Ne pas annoncer RAG, agents, fine-tuning ou optimisation mesurée sans implémentation et preuve correspondantes.
+Les pistes d'optimisation portent sur la précision du prompt, les paramètres d'inférence, la comparaison de modèles et la réduction du contexte. Le recours au RAG, aux agents ou au fine-tuning nécessiterait une implémentation et une évaluation spécifiques.
 
-## 10. Démonstration orale et revue GitHub Copilot
+## 9. Démonstration orale et revue GitHub Copilot
 
 1. Présenter le périmètre métier et un contrôle côté serveur avec son test.
 2. Montrer l'entrée envoyée au skill et expliquer chaque champ utile.
@@ -173,7 +162,7 @@ Analyse personnelle du commentaire et test de la correction : **à renseigner ap
 
 La création de la PR et ses défauts intentionnels ne remplacent pas une réponse réelle du reviewer. Pour la soutenance, montrer l'auteur, la date, le commentaire, la vérification humaine et les tests de la correction réellement appliquée.
 
-## 11. Sources et finalisation personnelle
+## 10. Sources et finalisation personnelle
 
 - [Handoff de Hadir Ghallabi](../docs/handoff/Hadir-Ghallabi.md).
 - [Architecture et rapport technique](../docs/technical-report.md).
