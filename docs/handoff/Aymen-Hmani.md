@@ -83,9 +83,7 @@ Property details now embed Wassim's `ReviewHighlightComponent` with `propertyId`
 
 ## Shared AI provider setup
 
-This module's embedded AI tool and its skill in the shared assistant use the same OpenRouter backend connection. Replace `OPENROUTER_API_KEY` in ignored root `.env` and restart the backend; `AI_MODEL` selects the model (`google/gemma-4-26b-a4b-it:free` by default). No provider key belongs in the frontend. Successful validated output is `mode: live`; missing/placeholder keys and provider failures remain explicitly labeled offline with a visible notice. Tests use controlled providers/mock mode and do not prove a live-key round trip. See [shared AI setup](README.md#shared-openrouter-connection-16-october-2026) and [provider configuration](../ai-prompts.md#backend-only-configuration-examples).
-
-The shared provider now fails over in order from Gemma 26B to Gemma 31B to Cohere North Mini Code when OpenRouter cannot serve the selected model. The same sanitized module prompt is used throughout. `AI_FALLBACK_MODELS` configures backups, and `model` in the AI response identifies the actual answering model. A backup can produce a live result; exhaustion still returns an explicitly labeled offline example. See [ordered failover](README.md#ordered-free-model-failover).
+This module's embedded AI tool and the shared page assistant use Google's native Gemini API. Set `AI_GEMENI_KEY` in the ignored root `.env` and restart the backend. `AI_MODEL` defaults to `gemini-3.5-flash-lite`. The key remains on the backend. Validated model text is `mode: live`; quota, blocked output, key/configuration and connection failures produce a labelled offline response with a specific notice. See [current shared AI setup](README.md#google-gemini-connection-19-october-2026) and [provider configuration](../ai-prompts.md#backend-only-configuration-examples).
 
 ## AI response formatting (16 October 2026)
 

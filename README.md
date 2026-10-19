@@ -139,27 +139,20 @@ Each member contributes one `AiSkill` implementation to the shared assistant reg
 
 `GET /api/ai/skills` lists IDs, labels and owners. `POST /api/ai/assist` accepts `{ "skill": "listing-description", "context": "La Marsa, apartment, kitchen" }`. Responses include `mode` (`mock` or `live`), `skill`, `text`, `notice` and `reviewRequired`. AI does not execute a booking, publish a listing, change prices, assign stars or send a message.
 
-All embedded AI tools and the shared assistant now use **OpenRouter** by default through the same backend provider. In the root ignored `.env`, replace the placeholder for `OPENROUTER_API_KEY`, then restart `npm run dev:backend` (or `npm run dev`). The key is never exposed to Angular. `.env.example` documents the same setup:
+All embedded AI tools and the shared assistant use **Google Gemini directly** through the same backend provider. Put the Google AI Studio key in the ignored root environment file under the exact name `AI_GEMENI_KEY`, then restart `npm run dev:backend` (or `npm run dev`). The key stays on the backend. The example configuration is:
 
 ```dotenv
-AI_PROVIDER=openrouter
-AI_BASE_URL=https://openrouter.ai/api/v1
-OPENROUTER_API_KEY=REPLACE_WITH_YOUR_OPENROUTER_API_KEY
-AI_MODEL=google/gemma-4-26b-a4b-it:free
-AI_FALLBACK_MODELS=google/gemma-4-31b-it:free,cohere/north-mini-code:free
+AI_PROVIDER=gemini
+AI_BASE_URL=https://generativelanguage.googleapis.com/v1beta
+AI_GEMENI_KEY=REPLACE_WITH_YOUR_GEMINI_API_KEY
+AI_MODEL=gemini-3.5-flash-lite
 AI_TIMEOUT_SECONDS=30
 ```
 
-The default [Gemma 4 26B A4B model](https://openrouter.ai/google/gemma-4-26b-a4b-it:free) uses a fixed free model; change `AI_MODEL` to an OpenRouter model ID to select a particular model. Free model availability and rate limits depend on OpenRouter. Requests use its [chat completions API](https://openrouter.ai/docs/quickstart), with Bearer authentication and the module-owned system prompt.
+The default [Gemini 3.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models) model is listed in Google's [API free tier](https://ai.google.dev/gemini-api/docs/pricing). Availability and quotas depend on the Google project. Change `AI_MODEL` to a model available to that key; model IDs use Google's names, without a provider prefix or `:free` suffix.
 
-OpenRouter receives the configured primary and fallbacks as an ordered `models` array: Gemma 26B → Gemma 31B → Cohere North Mini Code. It switches when a model is rate-limited or otherwise unavailable, within a single request bounded by `AI_TIMEOUT_SECONDS`. Only these three free candidates are configured; the backend does not add a paid model. `AI_FALLBACK_MODELS` is a comma-separated list; blank entries and duplicates are removed, and the chain is limited to three distinct models including the primary. An empty value disables additional models. This setting applies only to OpenRouter. Reasoning is disabled for these short UI tasks to reduce delay. The response's optional `model` field identifies the model that actually answered; a backup response remains `mode: live` after validation. If the full chain is rate-limited, the UI explicitly reports that all configured models are unavailable and displays the offline example.
+The backend calls Google's native `models/{model}:generateContent` endpoint using the `x-goog-api-key` header. The shared API and all five module-owned prompts remain the same. It extracts answer text from candidate parts, excludes thought parts, and reports Google's actual `modelVersion` in the optional `model` field. The old routing chain and provider credentials are no longer used.
 
-Until the key is replaced, no external request is made and each tool clearly identifies its offline response and setup notice. Successful validated model output is marked `mode: live`. Tests explicitly use `mock` and never spend provider quota. Optional alternatives use backend-only variables (unset `OPENROUTER_API_KEY` before using another provider's `AI_API_KEY`):
+Missing/placeholder keys, blocked or incomplete output, invalid model IDs, key/permission rejection, quota limits, capacity errors, malformed responses, connection failure and timeouts display distinct notices and fall back to the module's labelled offline response. A valid, privacy-checked response is labelled `mode: live`. Requests are limited to 30 seconds, and provider errors never expose keys or raw error bodies. All recommendations still require human review.
 
-- **Offline demo:** `AI_PROVIDER=mock`, deterministic output with no model request.
-
-- **Groq:** `AI_PROVIDER=groq`, `AI_BASE_URL=https://api.groq.com/openai/v1`, `AI_API_KEY=<your key>`, and a supported `AI_MODEL`.
-- **Local Ollama:** `AI_PROVIDER=ollama`, `AI_BASE_URL=http://127.0.0.1:11434/v1`, and `AI_MODEL=<an installed local model>`; a key is not required.
-- **OpenAI-compatible server:** `AI_PROVIDER=openai-compatible`, its HTTPS `AI_BASE_URL`, key and model.
-
-`AI_TIMEOUT_SECONDS` defaults to 30 and is capped at 30. Missing keys, provider failure/quota, timeout, malformed or rejected output fall back to the module's labeled offline response. Shared privacy handling reconstructs outbound context from anonymous allowed public facts; raw private chat, contact information and credentials are not forwarded. Provider output is bounded and validated, and every response requires human review. Authentication/credit failures, empty model output and fallback notices are shown in both the shared assistant and embedded tools; an offline response is never labeled live. A real-key OpenRouter round trip still requires your key.
+Unit and integration tests use controlled responses or `AI_PROVIDER=mock` and never spend Google quota. `AI_PROVIDER=mock` also runs the demo offline. Optional Groq/HTTPS compatible endpoints use `AI_API_KEY` plus their own base URL and model; local Ollama does not require a key. Google Gemini reads only `AI_GEMENI_KEY`, so another provider's key cannot mask it.

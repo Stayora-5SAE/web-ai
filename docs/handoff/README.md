@@ -12,11 +12,19 @@ Stayora has five independent business modules. Shared accounts/authentication/se
 
 Read your handoff for owned tables, endpoints, business rules, source files, tests, AI privacy inputs and honest limitations. Read the root [README](../../README.md) for setup/configuration and [CONTRIBUTING](../../CONTRIBUTING.md) before changing shared contracts.
 
+## Google Gemini connection (19 October 2026)
+
+All five module AI tools and the shared page assistant now call Google Gemini directly. The exact backend key variable is `AI_GEMENI_KEY`; keep it in ignored `.env`. Defaults are `AI_PROVIDER=gemini`, `AI_MODEL=gemini-3.5-flash-lite`, and the native Google API base URL. Restart the backend after configuration changes. Read [AI configuration](../ai-prompts.md#backend-only-configuration-examples).
+
+Verification: **62 backend tests** and formatting passed. Each of the five skills returned HTTP 200 with `mode: live` and `model: gemini-3.5-flash-lite` using anonymous sample facts. The calendar UI also displayed a live Gemini response with no browser errors. These checks confirm transport and rendering; people still review drafts before applying changes or sending messages.
+
+The provider records below describe earlier October 16 checks and are retained as historical evidence. Their retired provider setup and model-routing instructions are superseded by the Gemini configuration above.
+
 ## Preparation
 
 Start the application with the documented commands. Use local development demo identities for the seeded guest/host and separately demonstrate a registered account session. Confirm the database connection and have a disposable property available for mutation examples. Use future dates that have no existing reservation/block. Completed-stay review examples use the synthetic past reservations, because a new future reservation is not yet eligible for review.
 
-Use the deterministic offline AI configuration if no provider is configured. If demonstrating OpenRouter, Groq or local Ollama, verify the response's actual `mode` and `notice` first; a fallback remains a mock response. Keep keys and environment files off the projector. Open the final test command output and French testing report separately; do not claim a result before checking the recorded evidence.
+Use the deterministic offline AI configuration if no provider is configured. If demonstrating Google Gemini, Groq or local Ollama, verify the response's actual `mode` and `notice` first; a fallback remains a mock response. Keep keys and environment files off the projector. Open the final test command output and French testing report separately; do not claim a result before checking the recorded evidence.
 
 ## Fifteen-minute demonstration in English
 
@@ -47,7 +55,7 @@ V9 adds independent stay and visitor reviews plus explicit positive/negative hos
 
 Verification for this update: backend `verify` passed **54 tests** (including 11 review integration tests) against local PostgreSQL `stayora_test`; frontend passed **35 tests**, lint and production build. Spotless and Prettier checks passed. Browser checks used the real API against the disposable local database: guest/host publication, received visitor feedback, host `Clean ×2` and negative pills, embedded property reviews, reservation reputation, and narrow-screen/landscape layouts. Sonar analysis was not rerun for this update; retain the historical reports as dated evidence.
 
-## Shared OpenRouter connection (16 October 2026)
+## Historical OpenRouter connection (16 October 2026)
 
 All five module AI tools and the shared assistant now use OpenRouter by default. Replace `OPENROUTER_API_KEY` in the ignored root `.env` and restart the backend. `AI_MODEL=google/gemma-4-26b-a4b-it:free` is configurable. Keep all provider keys server-side; never paste them into an Angular component or a handoff. Each embedded tool displays the actual provider/fallback notice, and a placeholder never causes an external request. Read [AI configuration](../ai-prompts.md#backend-only-configuration-examples) for setup and alternative providers. Deterministic mock behavior remains explicit in tests and as a labeled fallback; it is not evidence of live model execution.
 
@@ -59,7 +67,7 @@ Model: `google/gemma-4-26b-a4b-it:free`. The configured OpenRouter key authentic
 
 No generated listing draft was applied and no message was sent. Six feature screenshots, a sanitized provider diagnostic and per-feature response results are saved locally under `output/playwright/ai-live-2026-10-16/`, with a ZIP at `output/playwright/ai-live-2026-10-16.zip`. Retry after upstream capacity recovers or explicitly select another model before claiming live execution. Provider credentials are absent from the evidence.
 
-## Ordered free-model failover
+## Historical ordered free-model failover
 
 Shared AI now requests Gemma 26B → Gemma 31B → Cohere North Mini Code through OpenRouter's ordered model fallback routing. `AI_MODEL` selects the primary; `AI_FALLBACK_MODELS` sets the two backups. A backup's validated answer remains live and the API `model` field reports which model answered. If the whole chain is rate-limited, the app shows an explicit offline notice. The request uses one shared timeout budget; no paid model is inserted. This applies to all five embedded tools and the shared assistant. Live retest evidence is recorded separately, with screenshots only for successful live responses.
 
